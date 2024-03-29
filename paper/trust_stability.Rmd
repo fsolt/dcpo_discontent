@@ -1,0 +1,334 @@
+---
+output: 
+  bookdown::pdf_document2:
+    fig_caption: yes
+    keep_tex: yes
+    toc: no
+    number_sections: yes
+    latex_engine: xelatex
+    pandoc_args: --lua-filter=multibib.lua
+title: Macrointerest Across Countries
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+editor_options: 
+  markdown: 
+    wrap: sentence
+  chunk_output_type: console
+tables: true # enable longtable and booktabs
+citation_package: natbib
+citeproc: false
+fontsize: 12pt
+indent: true
+linestretch: 1.5 # double spacing using linestretch 1.5
+bibliography:
+  text: dcpo-macrointerest.bib
+  app: dcpo-macrointerest-app.bib
+biblio-style: apsr
+citecolor: black
+linkcolor: black
+endnote: no
+header-includes:
+      - \usepackage{array}
+      - \usepackage{caption}
+      - \usepackage{float}
+      - \usepackage{placeins}
+      - \usepackage{graphicx}
+      - \usepackage{siunitx}
+      - \usepackage{colortbl}
+      - \usepackage{xcolor}
+      - \usepackage{multirow}
+      - \usepackage{hhline}
+      - \usepackage{calc}
+      - \usepackage{tabularx}
+      - \usepackage{threeparttable}
+      - \usepackage{wrapfig}
+      - \usepackage{fullpage}
+      - \usepackage{lscape} #\usepackage{lscape} better for printing, page displayed vertically, content in landscape mode, \usepackage{pdflscape} better for screen, page displayed horizontally, content in landscape mode
+      - \newcommand{\blandscape}{\begin{landscape}}
+      - \newcommand{\elandscape}{\end{landscape}}
+      - \usepackage{titlesec}
+      - \titleformat*{\section}{\normalsize\bfseries}
+      - \titleformat*{\subsection}{\normalsize\itshape}
+      - \usepackage{titling} #use \maketitle repeatedly  
+      - \renewcommand{\topfraction}{.85} # Adjust LaTeX placement rules per
+      - \renewcommand{\textfraction}{.15}
+      - \renewcommand{\floatpagefraction}{.66}
+      - \setcounter{topnumber}{3}
+      - \setcounter{bottomnumber}{3}
+      - \setcounter{totalnumber}{4}
+      - \renewcommand{\bottomfraction}{.80} # https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html
+---
+
+\pagenumbering{gobble}
+
+# Authors {.unnumbered}
+
+-   Haofeng Ma, ORCID: <https://orcid.org/0000-0003-4379-8449>, Ph.D. Candidate, Department of Political Science, University of Iowa, [haofeng-ma\@uiowa.edu](mailto:haofeng-ma@uiowa.edu){.email}
+-   Jeongho Choi, ORCID: <https://orcid.org/0000-0002-8060-7907>, Ph.D. Candidate, Department of Political Science, University of Iowa, [jeongho-choi\@uiowa.edu](mailto:jeongho-choi@uiowa.edu){.email}
+-   Yuehong Cassandra Tai, ORCID: <https://orcid.org/0000-0001-7303-7443>, Postdoctoral Fellow, Center for Social Data Analytics, Pennsylvania State University, [yhcasstai\@psu.edu](mailto:yhcasstai@psu.edu){.email}
+-   Yue Hu, ORCID: <https://orcid.org/0000-0002-2829-3971>, Associate Professor, Department of Political Science, Tsinghua University, [yuehu\@tsinghua.edu.cn](mailto:yuehu@tsinghua.edu.cn){.email}
+-   Frederick Solt, ORCID: <https://orcid.org/0000-0002-3154-6132>, Professor, Department of Political Science, University of Iowa, [frederick-solt\@uiowa.edu](mailto:frederick-solt@uiowa.edu){.email}
+
+\pagebreak
+
+```{=tex}
+\renewcommand{\baselinestretch}{1}
+\selectfont
+\maketitle
+\renewcommand{\baselinestretch}{1.5}
+\selectfont
+```
+
+```{=tex}
+\begin{abstract}
+[abstract]
+\end{abstract}
+```
+\pagebreak
+
+\pagenumbering{arabic}
+
+```{r setup, include=FALSE}
+options(tinytex.verbose = TRUE)
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  dpi = 600,
+  cache = TRUE,
+  fig.width = 7,
+  fig.height = 4,
+  plot = function(x, options) {
+    hook_plot_tex(x, options)
+  }
+)
+
+# If `DCPOtools` is not yet installed:
+# remotes::install_github("fsolt/DCPOtools")
+
+if (!require(pacman)) install.packages("pacman")
+library(pacman)
+# load all the packages you will use below 
+p_load(
+  DCPOtools,
+  cmdstanr,
+  tidyverse,
+  here,
+  rio,
+  countrycode,
+  patchwork,
+  ggthemes,
+  ggdist,
+  imputeTS,
+  rsdmx,
+  osfr,
+  tabulizer,
+  brms,
+  bayestestR,
+  tidybayes,
+  repmis,
+  rvest,
+  vroom,
+  modelsummary,
+  kableExtra
+) 
+```
+
+```{r define_funs}
+# define functions
+get_coef <- function(iv, 
+                     results_df = coef_data,
+                     type = "both",
+                     width = .95,
+                     abs = FALSE) {
+  result_var <- results_df %>% 
+    filter(.width == width) %>% 
+    pull(.variable) %>% 
+    str_subset(iv)
+  
+  if (!type=="both") {
+    res <- results_df %>% 
+      filter(.variable == result_var & .width == width) %>% 
+      pull({{type}})
+    
+    if (abs) {
+      res <- as.character(res) %>% 
+        str_remove_all("-")
+    }
+  } else {
+    sc <- results_df %>% 
+      filter(.variable == result_var & .width == width) %>% 
+      pull(std_coef)
+    
+    ci <- results_df %>% 
+      filter(.variable == result_var & .width == width) %>% 
+      pull(ci)
+    
+    if (abs) {
+      sc <- str_remove_all(sc, "-")
+      ci <- str_remove_all(ci, "-") %>% 
+        str_replace("(\\d+\\.?\\d?) to (\\d+\\.?\\d?)", "\\2 to \\1")
+    }
+    
+    res <- paste0(sc, " (95% c.i.: ", ci, ")")
+  }
+  
+  return(res)
+}
+
+by2sd <- function(var) {
+  dich <- stats::na.omit(unique(var)) %>% 
+    sort() %>% identical(c(0, 1))
+  if (dich) 
+    sd <- 1
+  else 
+    sd <- 2 * stats::sd(var, na.rm = TRUE)
+  
+  return(sd)
+}
+
+set.seed(324)
+```
+
+
+# Introduction {.unnumbered}
+
+# Theory {.unnumbered}
+
+# Data {.unnumbered}
+
+```{r dcpo_output, eval=FALSE}
+if (!exists("results_path")) {
+  latest <- "20240129125552"
+  results_path <- here::here("data", "1000", latest)
+
+  # Define OSF_PAT in .Renviron: https://docs.ropensci.org/osfr/articles/auth
+  if (!file.exists(file.path(results_path, paste0("dcpo-", str_extract(latest, "\\d{12}"), "-1.csv")))) {
+    dir.create(results_path,
+               showWarnings = FALSE,
+               recursive = TRUE)
+    osf_retrieve_node("9uvdk") %>%
+      osf_ls_files() %>%
+      filter(str_detect(name, str_extract(latest, "\\d{12}"))) %>%
+      osf_download(path = here::here("data", "1000"))
+  }
+  
+  dcpo_output <- as_cmdstan_fit(here::here(results_path,
+                                           list.files(results_path,
+                                                      pattern = "csv$")))  
+}
+
+load(file = here::here("data", "dcpo_input.rda"))
+
+theta_summary <- DCPOtools::summarize_dcpo_results(dcpo_input,
+                                                   dcpo_output,
+                                                   "theta")
+
+save(theta_summary, file = here::here("data",
+                                      "theta_summary.rda"))
+
+theta_results <- extract_dcpo_results(dcpo_input,
+                                      dcpo_output,
+                                      par = "theta")
+
+save(theta_results, file = here::here("data",
+                                      "theta_results.rda"))
+
+alpha_results <- summarize_dcpo_results(dcpo_input,
+                                        dcpo_output = dcpo_output,
+                                        pars = "alpha") %>% 
+  transmute(item = question,
+            dispersion = mean)
+
+beta_results <- summarize_dcpo_results(dcpo_input,
+                                       dcpo_output,
+                                       "beta") %>% 
+  group_by(question) %>% 
+  summarize(difficulties0 = paste0(sprintf("%.2f", round(mean, 2)),
+                                   collapse = ", ")) %>% 
+  mutate(item = question,
+         cp = if_else(str_detect(item, "threestate"),
+                      2, 
+                      as.numeric(str_extract(item, "\\d+")) - 1),
+         term = str_glue("(( ?-?[0-9].[0-9][0-9]?,?){{{cp}}})"),
+         difficulties = str_extract(difficulties0, 
+                                    term) %>%
+           str_replace(",$", "") %>% 
+           str_trim()) %>% 
+  transmute(item, difficulties)
+
+save(alpha_results,
+     beta_results,
+     file = here::here("data",
+                       "item_results.rda"))
+```
+
+```{r theta_summary}
+load(file = here(here("data", "theta_summary.rda")))
+load(here("data", "theta_results.rda"))
+
+res_cy <- nrow(theta_summary) %>% 
+  scales::comma()
+
+res_c <- theta_summary %>% 
+  pull(country) %>% 
+  unique() %>% 
+  length()
+```
+
+
+
+
+# Results {.unnumbered}
+
+
+# Conclusions {.unnumbered}
+
+
+
+\pagebreak
+
+# References {.unnumbered}
+
+::: {#refs-text}
+:::
+
+\pagebreak
+
+# (APPENDIX) Appendix {-} 
+
+```{=tex}
+\renewcommand{\baselinestretch}{1}
+\selectfont
+\maketitle
+\selectfont
+```
+```{=tex}
+\pagenumbering{arabic}
+\renewcommand*{\thepage}{A\arabic{page}}
+```
+```{=tex}
+\setcounter{figure}{0}
+\renewcommand*{\thefigure}{A\arabic{figure}}
+```
+```{=tex}
+\setcounter{table}{0}
+\renewcommand*{\thetable}{A\arabic{table}}
+```
+```{=tex}
+\vspace{-.5in}
+\begin{center}
+\begin{Large}
+Appendices
+\end{Large}
+\end{center}
+```
+
+
+\clearpage
+\pagebreak
+
+# References {.unnumbered}
+
+::: {#refs-app}
+:::
