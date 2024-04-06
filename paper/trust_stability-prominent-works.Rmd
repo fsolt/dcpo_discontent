@@ -1,0 +1,20 @@
+---
+output: pdf_document
+bibliography: trust_stability-prominent-works.bib
+nocite: '@*'
+---
+
+```{=tex}
+\pagenumbering{arabic}
+\setcounter{page}{4}
+\renewcommand*{\thepage}{A\arabic{page}}
+```
+
+# Prominent Works
+## 1) Theoretical Works
+
+
+## 2) Empirical Works
+- @Marien2011 examine the relation between trust in the institutions of the political system and law-abiding attitudes using the 1999–2001 European Values Study. In this study, "political trust" is operationalized as an index summing up trust in parliament, in the justice system, in the armed forces, and in the police. They find citizens with low levels of trust feel it more acceptable to break the law, such as commit tax fraud.
+
+# Bibliography
