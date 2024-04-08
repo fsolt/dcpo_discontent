@@ -10,44 +10,46 @@ crossref:
   sec-prefix: OSM
   sec-labels: alpha A
     
-author:
-  - name: Yuehong 'Cassandra' Tai
-    email: yhcasstai@psu.edu
-    orcid: 0000-0001-7303-7443
-    affiliations:
-      - ref: psu
-  - name: Yue Hu
-    corresponding: true
-    affiliations:
-      - ref: tsu
-    orcid: 0000-0002-2829-3971
-    email: yuehu@tsinghua.edu.cn
-    url: https://sammo3182.github.io
-  - name: Haofeng Ma
-    orcid: https://orcid.org/0000-0003-4379-8449
-    email: haofeng-ma@uiowa.edu
-    affiliations:
-      - ref: ui
-  - name: Frederick Solt
-    orcid: 0000-0002-3154-6132
-    email: frederick-solt@uiowa.edu
-    affiliations:
-      - ref: ui
-affiliations:
-  - id: tsu
-    name: Department of Political Science, Tsinghua University, Beijing, China
-  - id: psu
-    name: Center for Social Data Analytics, Penn State University, PA, U.S.
-  - id: ui
-    name: Department of Political Science, University of Iowa, IA, U.S.
+# author:
+#   - name: Yuehong 'Cassandra' Tai
+#     email: yhcasstai@psu.edu
+#     orcid: 0000-0001-7303-7443
+#     affiliations:
+#       - ref: psu
+#   - name: Yue Hu
+#     corresponding: true
+#     affiliations:
+#       - ref: tsu
+#     orcid: 0000-0002-2829-3971
+#     email: yuehu@tsinghua.edu.cn
+#     url: https://sammo3182.github.io
+#   - name: Haofeng Ma
+#     orcid: https://orcid.org/0000-0003-4379-8449
+#     email: haofeng-ma@uiowa.edu
+#     affiliations:
+#       - ref: ui
+#   - name: Frederick Solt
+#     orcid: 0000-0002-3154-6132
+#     email: frederick-solt@uiowa.edu
+#     affiliations:
+#       - ref: ui
+# affiliations:
+#   - id: tsu
+#     name: Department of Political Science, Tsinghua University, Beijing, China
+#   - id: psu
+#     name: Center for Social Data Analytics, Penn State University, PA, U.S.
+#   - id: ui
+#     name: Department of Political Science, University of Iowa, IA, U.S.
 
 citeproc: false # to make multibib and wordcount work
 filters:
-  - authors-block
   - multibib # separate bib for main and appendix
   - at: pre-render
     path: "_extensions/andrewheiss/wordcount/wordcount.lua"
 validate-yaml: false # for multibib to work
+  # - authors-block
+
+# reference of multibib: https://www.andrewheiss.com/blog/2023/12/11/separate-bibliographies-quarto/
 
 bibliography: 
     main: p_dcpo_trustRegime_main.bib
@@ -83,9 +85,6 @@ keywords:
     - Cross-national panel
 ---
 
-\pagebreak
-
-
 ```{r setup, include=FALSE}
 if (!require(pacman)) install.packages("pacman")
 library(pacman)
@@ -116,19 +115,27 @@ conflicted::conflict_prefer("filter", "dplyr")
 
 ```
 
-# Literature
+Intro does not need a header.
+
+# Literature {.unnumbered}
 
 A test of citation [@Claassen2019;@HuEtAl2022a].
 
-# Theory
+# Theory {.unnumbered}
 
-# Research Design and Results
+# Research Design and Results {.unnumbered}
+
+```{r data}
+# load(here("data", "correct_cls_ajps.rda")) # https://osf.io/52u7n/download
+load(here("data", "expcor_cls_ajps.rda"))  # https://osf.io/cgxjd/download
+```
+
 
 See the descriptive statistics in @sec-app-descriptive.
 
 See the full, numeric results in @sec-app-numeric.
 
-# Summary and Discussion
+# Summary and Discussion {.unnumbered}
 
 # Reference {.unnumbered}
 
