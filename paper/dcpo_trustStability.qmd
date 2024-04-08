@@ -1,0 +1,165 @@
+---
+format:
+  pdf:
+    number-sections: true
+    papersize: a4
+    keep-tex: false
+    thanks: "Yue Hu appreciates the funding support from the National Natural Science Foundation of China (72374116)."
+
+crossref:
+  sec-prefix: OSM
+  sec-labels: alpha A
+    
+author:
+  - name: Yuehong 'Cassandra' Tai
+    email: yhcasstai@psu.edu
+    orcid: 0000-0001-7303-7443
+    affiliations:
+      - ref: psu
+  - name: Yue Hu
+    corresponding: true
+    affiliations:
+      - ref: tsu
+    orcid: 0000-0002-2829-3971
+    email: yuehu@tsinghua.edu.cn
+    url: https://sammo3182.github.io
+  - name: Haofeng Ma
+    orcid: https://orcid.org/0000-0003-4379-8449
+    email: haofeng-ma@uiowa.edu
+    affiliations:
+      - ref: ui
+  - name: Frederick Solt
+    orcid: 0000-0002-3154-6132
+    email: frederick-solt@uiowa.edu
+    affiliations:
+      - ref: ui
+affiliations:
+  - id: tsu
+    name: Department of Political Science, Tsinghua University, Beijing, China
+  - id: psu
+    name: Center for Social Data Analytics, Penn State University, PA, U.S.
+  - id: ui
+    name: Department of Political Science, University of Iowa, IA, U.S.
+
+citeproc: false # to make multibib and wordcount work
+filters:
+  - authors-block
+  - multibib # separate bib for main and appendix
+  - at: pre-render
+    path: "_extensions/andrewheiss/wordcount/wordcount.lua"
+validate-yaml: false # for multibib to work
+
+bibliography: 
+    main: p_dcpo_trustRegime_main.bib
+    appendix: p_dcpo_trustRegime_app.bib
+citation_package: natbib
+
+tables: true # enable longtable and booktabs
+fontsize: 12pt
+indent: true
+geometry: margin=1in
+linestretch: 1.5 # double spacing using linestretch 1.5
+colorlinks: true
+link-citations: true
+
+execute:
+  echo: false
+  message: false
+  warning: false
+  dpi: 300
+editor_options: 
+  chunk_output_type: console
+
+title:  "Does Political Trust Enhance the Regime? Yes and No"
+# subtitle: |
+
+abstract: |
+  Put abstract here.
+  And here.
+  
+keywords: 
+    - Political trust
+    - Regime stability
+    - Cross-national panel
+---
+
+\pagebreak
+
+
+```{r setup, include=FALSE}
+if (!require(pacman)) install.packages("pacman")
+library(pacman)
+
+p_load(
+  # Applied
+  DCPOtools,
+  DCPO,
+  
+  # Visualization
+  dotwhisker,
+  interplot,
+  patchwork,
+  modelsummary,
+  
+  # dependency
+  here,
+  tidyverse
+)
+
+# Functions preload
+theme_set(theme_minimal())
+set.seed(313)
+
+conflicted::conflict_prefer("select", "dplyr")
+conflicted::conflict_prefer("filter", "dplyr")
+
+
+```
+
+# Literature
+
+A test of citation [@Claassen2019;@HuEtAl2022a].
+
+# Theory
+
+# Research Design and Results
+
+See the descriptive statistics in @sec-app-descriptive.
+
+See the full, numeric results in @sec-app-numeric.
+
+# Summary and Discussion
+
+# Reference {.unnumbered}
+
+::: {#refs-main}
+:::
+
+\pagebreak
+
+\hypertarget{appendix-appendix}{%
+\appendix}
+
+# Online Supplementary Materials {.unnumbered}
+
+\setcounter{page}{1}
+\renewcommand{\thepage}{A\arabic{page}}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{A.\arabic{figure}}
+\setcounter{table}{0}
+\renewcommand{\thetable}{A.\arabic{table}}
+
+# Technical Details of DCPO 
+
+Another test of citation [@Rubin1987;@Claassen2020].
+
+# Descriptive Statistics {#sec-app-descriptive}
+
+Here's the appendix references list:
+
+# Numeric Results {#sec-app-numeric}
+
+# Reference {.unnumbered}
+
+::: {#refs-appendix}
+:::
