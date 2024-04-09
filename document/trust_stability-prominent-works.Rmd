@@ -12,11 +12,14 @@ nocite: '@*'
 
 # Prominent Works
 ## 1) Theoretical Works
+- @VanderMeer2017 has a good discussion of the conceptulization of "political trust", such as the subjects of political trust, and its distinction with related concepts, such as "political support", skepticism, etc.
 - @Almond1963 argue that the sense of trust in the political elite makes citizens willing to turn power over to them, and, the maintenance of elite power is essential in a democracy.
 
 
 ## 2) Empirical Works
 - @Marien2011 examine the relation between trust in the institutions of the political system and law-abiding attitudes using the 1999–2001 European Values Study. In this study, "political trust" is operationalized as an index summing up trust in parliament, in the justice system, in the armed forces, and in the police. They find citizens with low levels of trust feel it more acceptable to break the law, such as commit tax fraud.
 - @Dalton2004 reports that there is a rising trend of political distrust in advanced industrial democracies, which may erode the vitality of democracy and bring political change. Citizens who do not trust government and institutions appear to be less willing to comply with the law and the directives of government. Distrustful citizens also appear to be less involved in the traditional channels of representative democracy, such as voting and campaign activity, but are more likely to seek influence through protest and other direct forms of action.
+- @hetherington2005trust explores the consequences political trust on policy level, using the case of public support for redistributive programs in the U.S. He finds that, as political trust declines, citizens tend to prefer smaller government, even though their values do not become less liberal. In a later study, @hetherington2012trust show the effect of political trusts dependent on political issue's salience and media coverage.
+
 
 # Bibliography
