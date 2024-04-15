@@ -80,6 +80,10 @@ keywords:
 ```{r setup, include=FALSE}
 if (!require(pacman)) install.packages("pacman")
 library(pacman)
+p_install(janitor, force = FALSE)
+p_install_gh(c("fsolt/DCPOtools"), force = FALSE)
+if (!require(posterior))
+  install.packages("posterior")
 
 p_load(
   # Applied
@@ -120,6 +124,7 @@ A test of citation [@Claassen2019;@HuEtAl2022a].
 ```{r data}
 # load(here("data", "correct_cls_ajps.rda")) # https://osf.io/52u7n/download
 load(here("data", "expcor_cls_ajps.rda"))  # https://osf.io/cgxjd/download
+
 ```
 
 
