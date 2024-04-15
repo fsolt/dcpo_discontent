@@ -5,7 +5,6 @@ format:
     papersize: a4
     keep-tex: false
     thanks: "Yue Hu appreciates the funding support from the National Natural Science Foundation of China (72374116)."
-
 crossref:
   sec-prefix: OSM
   sec-labels: alpha A
@@ -40,7 +39,6 @@ crossref:
 #     name: Center for Social Data Analytics, Penn State University, PA, U.S.
 #   - id: ui
 #     name: Department of Political Science, University of Iowa, IA, U.S.
-
 citeproc: false # to make multibib and wordcount work
 filters:
   - multibib # separate bib for main and appendix
@@ -48,14 +46,11 @@ filters:
     path: "_extensions/andrewheiss/wordcount/wordcount.lua"
 validate-yaml: false # for multibib to work
   # - authors-block
-
 # reference of multibib: https://www.andrewheiss.com/blog/2023/12/11/separate-bibliographies-quarto/
-
 bibliography: 
     main: p_dcpo_trustRegime_main.bib
     appendix: p_dcpo_trustRegime_app.bib
 citation_package: natbib
-
 tables: true # enable longtable and booktabs
 fontsize: 12pt
 indent: true
@@ -63,7 +58,6 @@ geometry: margin=1in
 linestretch: 1.5 # double spacing using linestretch 1.5
 colorlinks: true
 link-citations: true
-
 execute:
   echo: false
   message: false
@@ -71,10 +65,8 @@ execute:
   dpi: 300
 editor_options: 
   chunk_output_type: console
-
 title:  "Does Political Trust Enhance the Regime? Yes and No"
 # subtitle: |
-
 abstract: |
   Put abstract here.
   And here.
