@@ -1,0 +1,59 @@
+Category,Item,Note
+Political_Trust,PT_natgov ,Trust national government
+Political_Trust,PT_natgov_right,"In general, the government usually does the right thing"
+Political_Trust,PT_natgov_info,Information provided by the government is generally unreliable
+Political_Trust,PT_natleader,"Trust national leaders, president/prime minister"
+Political_Trust,PT_natleader2,How much of the time can you trust 
+Political_Trust,PT_tradleader,How much do you trust  traditional leaders 
+Political_Trust,PT_oppoleader,1st /2nd opposition leader
+Political_Trust,PT_tvperson,a leading tv personality
+Political_Trust,PT_court,Trust court/judicial
+Political_Trust,PT_court_11,Trust in the legal system
+Political_Trust,PT_relleader,Trust religious leaders
+Political_Trust,PT_parlia,Trust parliament/congress
+Political_Trust,PT_parlia_11,Trust parliament/congress (11 scales)
+Political_Trust,PT_loccouncil ,Trust your local council 
+Political_Trust,PT_police,Trust police/army
+Political_Trust,PT_police_11,Trust police/army(11 scale)
+Political_Trust,PT_party,Trust party
+Political_Trust,PT_rulingparty,Trust the ruling party 
+Political_Trust,PT_oppoparty,Trust opposition political parties/organization
+Political_Trust,PT_armed,Trust army/Supreme Council of the Armed Forces (SCAF
+Political_Trust,PT_locgov,Trust local government
+Political_Trust,PT_tax,Trust tax department 
+Political_Trust,PT_regiongov,"Trust regional government, EU"
+Political_Trust,PT_regiongov_11,Trust in the European Parliament
+Political_Trust,PT_io,"Confidence on UN, IMF, WB, WHO,ICC, NATO?"
+Political_Trust,PT_io_11,Trust in the United Nations
+Political_Trust,PT_io_islam,The Organization of the Islamic World
+Political_Trust,PT_official*,You can generally trust the people who run our government to do what is right. /elite trustworth
+Political_Trust,PT_official_11,Trust in politicians
+Political_Trust,PT_locofficial*,"Generally speaking, we can trust the local government officials to do the right things. "
+Political_Trust,PT_soceity,"Trust civil society organizations, laborunion, movement"
+Political_Trust,PT_cvlservice,"Trust Civil service,   same with official??"
+Political_Trust,PT_cvlsys,"Confidence on education system/education institutions, healthcare system, security sevice"
+Political_Trust,PT_society_hosp,Private hospitals
+Political_Trust,PT_society_banks,Private banks
+Political_Trust,PT_society_uni,Private universities
+Political_Trust,PT_society_biz,Domestic business people 
+Political_Trust,PT_elecommit,The election commission / tunisian supreme commission for elections
+Political_Trust,PT_ngo,Non-governmental organizations or NGOs 
+Political_Trust,PT_loctrader,Trust traders in local markets 
+Political_Trust,PT_smallbiz,Trust small businesses/shopkeepers
+Political_Trust,PT_pricorp,Trust in private enterprise
+Political_Trust,PT_bigpricorp,Trust big private corporations
+Political_Trust,PT_forgeincorp,Multinational companies operating in (Japan)
+Political_Trust,PT_pubcorp,Trust public corporations 
+Political_Trust,PT_adtrustworthy*,Present president vs. past: Trustworthy 
+Political_Trust,PT_church,Confidence: Churches/ religious organization/God
+Political_Trust,PT_govrel,Government appointed religious authorities 
+Political_Trust,PT_musbro,The Muslim Brotherhood 
+Political_Trust,PT_Nahda,al-Nahda party
+Political_Trust,PT_transition,Tunisian transitional authorities
+Political_Trust,PT_sala,Salafists / Popular Islamic Alliance 
+Political_Trust,PT_jointmtparty,The Joint Meetings Party 
+Political_Trust,PT_gencongress,The General People’s Congress 
+Political_Trust,PT_actionbloc,The Popular Action Bloc 
+Political_Trust,PT_natalliance,The National Allianc
+Political_Trust,PT_natforce,The National Forces Alliance 
+Political_Trust,PT_election,Confidence: Elections/electoral institution
