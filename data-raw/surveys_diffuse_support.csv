@@ -239,7 +239,7 @@ aussa2005,big5,v10,c(1:5),"Would you say the government is run by a few big inte
 autnes2017,care5b,w1_q2x2,c(1:5),Politicians do not care about what people like me think,1 completely agree / 2 somewhat agree / 3 partly agree-disagree / 4 somewhat disagree / 4 completely disagree,eff
 autnes2017,care5b,w2_q2x2,c(1:5),Politicians do not care about what people like me think,1 completely agree / 2 somewhat agree / 3 partly agree-disagree / 4 somewhat disagree / 4 completely disagree,eff
 autnes2017,care5b,w3_q2x2,c(1:5),Politicians do not care about what people like me think,1 completely agree / 2 somewhat agree / 3 partly agree-disagree / 4 somewhat disagree / 4 completely disagree,eff
-autnes2017,care5b,w4_q2x2,c(1:5),Politicians do not care about what people like me think,1 completely agree / 2 somewhat agree / 3 partly agree-disagree / 4 somewhat disagree / 4 completely disagree,eff
+autnes2017,care5b,w4_q3x2,c(1:5),Politicians do not care about what people like me think,1 completely agree / 2 somewhat agree / 3 partly agree-disagree / 4 somewhat disagree / 4 completely disagree,eff
 autnes2017,care5b,w6_q34x6,c(1:5),Politicians do not care about what people like me think,1 completely agree / 2 somewhat agree / 3 partly agree-disagree / 4 somewhat disagree / 4 completely disagree,eff
 belgiumes1991,vote5,v72_3,c(1:5),Political parties are only interested in my vote and not in my opinions ,1 completely agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 completely disagree,eff
 belgiumes1991,care5e,v72_4,c(5:1),"If people like me let the politicians know what we think, then they will take our opinions into account",1 completely agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 completely disagree,eff
