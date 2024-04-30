@@ -141,7 +141,7 @@ anes_combo,big2,vcf0605,c(1:2),"Would you say that this country is run by a few 
 anes_combo,say2,vcf0613,c(1:2),People like me don't have any say about what the government does,1 agree / 2 disagree,eff
 anpas1979,right2a,trusgv79,"c(5,1)","In general, do you feel that the people in government are too often interested in looking after themselves, or do you feel that they can be trusted to do the right thing nearly all the time?",1 Do right thing / 5 Look after self,trust_eff
 ases2000,say5,v0071,c(1:5),"Generally speaking, people like me don’t have some say in what the government does",1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-ases2000,care5,v0075,c(1:5),I don't think governmental officials care much about what people like me think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,
+ases2000,care5,v0075,c(1:5),I don't think governmental officials care much about what people like me think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 asiab2003,trust_gov4,q21_a,c(4:1),Please indicate to what extent you trust the following institutions to operate in the best interests of society. Your central government,1 trust a lot / 2 trust to a degree / 3 don't really trust / 4 don't trust at all,trust_eff
 asiab2003,trust_parl4f,q21_f,c(4:1),Please indicate to what extent you trust the following institutions to operate in the best interests of society. Parliament,1 trust a lot / 2 trust to a degree / 3 don't really trust / 4 don't trust at all,trust_eff
 asiab2003,corrupt_gov5,q25_b,c(1:5),There is widespread corruption among those who govern the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,corrupt
@@ -352,8 +352,28 @@ canadianes2019,say4,cps19_govt_say,c(4:1),People like me don't have any say abou
 canadianes2019,care5a,pes19_govtcare,c(5:1),The government does not care much about what people like me think,1 disagree strongly / 2 somewhat disagree / 3 neither agree nor disagree / 4 somewhat agree / 5 agree,eff
 canadianes2021,say4,cps21_govt_say,c(4:1),People like me don't have any say about what the government does,1 disagree strongly / 2 somewhat disagree / 3 somewhat agree / 4 agree,eff
 canadianes2021,care5a,pes21_govtcare,c(5:1),The government does not care much about what people like me think,1 disagree strongly / 2 somewhat disagree / 3 neither agree nor disagree / 4 somewhat agree / 5 agree,eff
+cdem2022,say4,dc22_pos_govt_say,c(1:4),People like me don't have any say about what the government does,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
+cdem2022,care4d,dc22_pos_govt_care,c(1:4),The government does not care much about what people like me think,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
 cid_combo,care11a,v266,c(0:10),How much weight do politicians attach to opinions presented to them by ordinary people,0 none at all / 123456789 / 10 very large,eff
+cnes1993,say2,refh15,"c(1,5)",People like me don't have any say about what the government does,1 agree / 5 disagree,eff
+cnes1993,care4d,mbsd5,"c(1,3,5,7)",I don't think the government cares much what people like me think,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
+cnes1997,say4,cpsb10b,"c(1,3,5,7)",People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+cnes1997,care4d,cpsb10d,"c(1,3,5,7)",I don't think the government cares much what people like me think,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
+cnes2000,say4,mbsc12,c(1:4),People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+cnes2000,care4d,cpsb10d,"c(1,3,5,7)",I don't think the government cares much what people like me think,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
+cnep_combo,care5,"if_else(a.a.countryyear %in% {t_data %>% filter(b.dontcare == 3) %>% pull(a.a.countryyear) %>% unique()}, b.dontcare, NA)",c(1:5),Politicians don’t care much about what people like me think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+cnep_combo,care4,"if_else(a.a.countryyear %in% {t_data %>% filter(b.dontcare == 3) %>% pull(a.a.countryyear) %>% unique()}, NA, b.dontcare)","c(1,2,4,5)",Politicians don’t care much about what people like me think,1 strongly agree / 2 agree / 4 disagree / 5 strongly disagree,eff
+cnep_combo,say5,"if_else(a.a.countryyear %in% {t_data %>% filter(b.noinflu.f == 3) %>% pull(a.a.countryyear) %>% unique()}, b.noinflu.f, NA)",c(1:5),People like me have no influence over the government ,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+cnep_combo,say4,"if_else(a.a.countryyear %in% {t_data %>% filter(b.noinflu.f == 3) %>% pull(a.a.countryyear) %>% unique()}, NA, b.noinflu.f)","c(1,2,4,5)",People like me have no influence over the government ,1 strongly agree / 2 agree / 4 disagree / 5 strongly disagree,eff
 cses1,care5d,a3013,c(5:1),Some people say that political parties in [country] care what ordinary people think.  Others say that political parties in [country] don't care what ordinary people think.  Where would you place yourself?,1 political parties care what ordinary people think / 234 / 5 political parties don't care what ordinary people think,eff
+dkes1984,care5e,v227,c(1:5),Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes1990,care5e,v209,c(1:5),Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes1994,care5e,v300,c(1:5),Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes1998,care5e,v146,c(1:5),Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2001,care5e,v155,c(1:5),Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2005,care5e,v230,c(1:5),Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2007,care5e,v266,c(1:5),Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2011,care5e,v199,c(1:5),Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 eb24,right4,v24,c(4:1),How much do you trust the government to do what is right?,1 just about always / 2 most of the time / 3 only some of the time / 4 almost never,trust_eff
 eb26,care2a,v63,c(1:2),Do you ever feel that the people running the country don't really care what happens to people like you,1 yes / 2 no,eff
 eb30,care2a,v59,c(1:2),Do you ever feel that the people who run the country are not really concerned with what happens to you,1 yes / 2 no,eff
@@ -441,6 +461,8 @@ ess9_ro,trust_pol11,trstplt,c(0:10),"Using this card, please tell me on a score 
 ess9_ro,trust_parl11,trstprl,c(0:10),"Using this card, please tell me on a score of 0-10 how much you personally trust each of the institutions I read out. 0 means you do not trust an institution at all, and 10 means you have complete trust. [Country's] parliament?",0 no trust / 123456789 / 10 complete trust,trust
 ess9_ro,say5b,psppipla,c(1:5),And how much would you say that the political system in [country] allows people like you to have an influence on politics?,1 not at all / 2 very little / 3 some / 4 a lot / 5 a great deal,eff
 ess9_ro,say5a,psppsgva,c(1:5),And how much would you say that the political system in [country] allows people like you to have a say in what the government does?,1 not at all / 2 very little / 3 some / 4 a lot / 5 a great deal,eff
+eurasiab2001,say4d,q040a4,c(4:1),I can have influence on the national government,1 agree / 2 quite agree / 3 rather disagree / 4 disagree,eff
+eurasiab2010,say4d,v137_4,c(4:1),I can have influence on the national government,1 agree / 2 quite agree / 3 rather disagree / 4 disagree,eff
 evs_combo,big2,e128,c(1:2),"Generally speaking, would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?",1 run by a few big interests / 2 run for all the people,eff
 evs_combo,satis_gov4,e125,c(4:1),How satisfied are you with the way the people now in national office are handling the country's affairs? ,1 very satisfied / 2 fairly satisfied / 3 fairly dissatisfied / 4 very dissatisfied,sat
 feb450,care4c,q7_4,c(4:1),The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
@@ -469,6 +491,14 @@ gles2017,care5b,kp1_050a,c(1:5),Politicians care about what ordinary people thin
 gles2017,care5b,kp5_050a,c(1:5),Politicians care about what ordinary people think,1 strongly disagree / 2 rather disagree / 3 neither agree nor disagree / 4 rather agree / 5 strongly agree,eff
 gles2017,care5b,kp8_050a,c(1:5),Politicians care about what ordinary people think,1 strongly disagree / 2 rather disagree / 3 neither agree nor disagree / 4 rather agree / 5 strongly agree,eff
 gles2017,care5b,kp9_050a,c(1:5),Politicians care about what ordinary people think,1 strongly disagree / 2 rather disagree / 3 neither agree nor disagree / 4 rather agree / 5 strongly agree,eff
+icnl1985,care5,v0747,c(1:5),I do not think that public officials care much about what people like me think,"1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all ",eff
+icnl1985,touch5,v0748,c(1:5),"Once they are elected, members of Parliament lose touch with the people pretty soon","1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all ",eff
+icnl1985,say5,v0744,c(1:5),People like me have no say at all in what the government does,"1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all ",eff
+icnl1985,vote5,v0749,c(1:5),"Political parties are only interested in people's votes, not their opinions","1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all ",eff
+icnl1990,care5,w0747,c(1:5),I do not think that public officials care much about what people like me think,"1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all ",eff
+icnl1990,touch5,w0747,c(1:5),"Once they are elected, members of Parliament lose touch with the people pretty soon","1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all ",eff
+icnl1990,say5,w0747,c(1:5),People like me have no say at all in what the government does,"1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all ",eff
+icnl1990,vote5,w0747,c(1:5),"Political parties are only interested in people's votes, not their opinions","1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all ",eff
 issp1985,say2,v68,c(2:1),People like me have much to say about government,1 agree / 2 disagree,eff
 issp1985,say2a,v66,c(2:1),The average person has considerable influence on politics,1 agree / 2 disagree,eff
 issp1985,say2b,v64,c(2:1),The public has little control over what politicians do in office,1 agree / 2 disagree,eff
@@ -486,6 +516,12 @@ issp2014,get5,v44,c(1:5),Most politicians are in politics only for what they can
 issp2014,care5a,v42,c(1:5),I don't think the government cares much what people like me think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2016,say5,v47,c(1:5),People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2017,say5,v20,c(1:5),People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+itanes2001,say4,c4_1,c(1:4),People like me don't have any say about what the government does,1 true / 2 somewhat true / 3 somewhat false / 4 false,eff
+itanes2001,touch4,c4_2,c(1:4),People we elect in Parliament lose touch with their voters pretty quickly,1 true / 2 somewhat true / 3 somewhat false / 4 false,eff
+itanes2001,vote4,c4_3,c(1:4),"Parties are only interested in people's votes, not in their opinions",1 true / 2 somewhat true / 3 somewhat false / 4 false,eff
+itanes2013capi,say4,d38_1,c(4:1),People like me don't have any say about what the government does,1 not at all true / 2 not quite true / 3 fairly true / 4 completely true,eff
+itanes2013capi,touch4,d38_3,c(4:1),People we elect in Parliament lose touch with their voters pretty quickly,1 not at all true / 2 not quite true / 3 fairly true / 4 completely true,eff
+itanes2013capi,vote4,d38_4,c(4:1),"Parties are only interested in people's votes, not in their opinions",1 not at all true / 2 not quite true / 3 fairly true / 4 completely true,eff
 kobar1994,say4c,q5,c(4:1),"In general, how much influence do you think ordinary people like you have on government policy ",1 a great deal / 2 some / 3 a little / 4 none,eff
 kobar1996,say4c,q4,c(4:1),"In general, how much influence do you think ordinary people like you have on government policy ",1 a great deal / 2 some / 3 a little / 4 none,eff
 kobar1997,say4c,q14,c(4:1),"In general, how much influence do you think ordinary people like you have on government policy ",1 a great deal / 2 some / 3 a little / 4 none,eff
@@ -535,6 +571,10 @@ lb2020,big2a,p12st,c(1:2),"In general, would you say that the country is governe
 neb_combo,satis_gov21,a1b21p,"seq(-100, 100, 10)",Here is a scale for ranking how our system of government works. Where on this scale would you put our current system of governing with free elections and many parties?,minus-100 the worst / -90 to 90 / 100 the best,sat
 neb_combo,say4b,a12e1,c(4:1),Under our present system of government how much influence do you think people like yourself can have on government?,1 a lot of influence / 2 some influence / 3 not much influence / 4 no influence,eff
 neb_combo,equal4,a12f1,c(4:1),Under our present system of government do you think people like yourself are treated equally and fairly by government,1 definitely agree / 2 somewhat agree / 3 disagree somewhat / 4 definitely disagree,eff
+nores_combo1,vote5,hsamf4,c(1:5),"Parties are only interested in people's votes, not in their opinions",1 completely agree / 2 somewhat agree / 3 yes and no / 4 somewhat disagree / 5 completely disagree,eff
+nores_combo1,say5d,hsamf14,c(1:5),"People like me can vote, but we can't do anything else to influence politics",1 completely agree / 2 somewhat agree / 3 yes and no / 4 somewhat disagree / 5 completely disagree,eff
+nores_combo2,say5d,hsamf14,c(1:5),"People like me can vote, but we can't do anything else to influence politics",1 completely agree / 2 somewhat agree / 3 yes and no / 4 somewhat disagree / 5 completely disagree,eff
+nores2013,say5d,spm69i,c(1:5),"People like me can vote, but we can't do anything else to influence politics",1 completely agree / 2 somewhat agree / 3 yes and no / 4 somewhat disagree / 5 completely disagree,eff
 npes_combo,self_min4,v47_2,c(1:4),Ministers and state secretaries are primarily concerned about their personal interests,1 fully agree / 2 agree / 3 disagree / 4 fully disagree,eff
 npes_combo,care2,v48_1,c(1:2),Members of parliament do not care about the opinions of people like me,1 agree / 2 disagree,eff
 npes_combo,vote2,v48_2,c(1:2),Political parties are only interested in my vote and not in my opinions ,1 agree / 2 disagree,eff
