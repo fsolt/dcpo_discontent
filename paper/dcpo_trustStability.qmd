@@ -602,44 +602,70 @@ dcpo_output$save_output_files(dir = results_path,
                               random = FALSE)
 ```
 
-```{r dcpo_results}
- if (!exists("results_path")) {
-   latest <- "202404302127"
-   results_path <- here::here("data", "1000", latest)
-   
-   # Define OSF_PAT in .Renviron: https://docs.ropensci.org/osfr/articles/auth
-   if (!file.exists(file.path(results_path, paste0("dcpo-", latest, "-1.csv")))) {
-     dir.create(results_path, showWarnings = FALSE, recursive = TRUE)
-     osf_retrieve_node("82w36") %>% # needs updated for discontent
-       osf_ls_files() %>% 
-       filter(str_detect(name, latest)) %>% 
-       osf_download(path = results_path)
-   }
+```{r dcpo_output, eval=FALSE}
+if (!exists("results_path")) {
+  latest <- "202405012119"
+  results_path <- here::here("data", "1000", latest)
+
+  # Define OSF_PAT in .Renviron: https://docs.ropensci.org/osfr/articles/auth
+  if (!file.exists(file.path(results_path, paste0("dcpo-", str_extract(latest, "\\d{12}"), "-1.csv")))) {
+    dir.create(results_path,
+               showWarnings = FALSE,
+               recursive = TRUE)
+    osf_retrieve_node("9uvdk") %>%
+      osf_ls_files() %>%
+      filter(str_detect(name, str_extract(latest, "\\d{12}"))) %>%
+      osf_download(path = here::here("data", "1000"))
+  }
+  
+  dcpo_output <- as_cmdstan_fit(here::here(results_path,
+                                           list.files(results_path,
+                                                      pattern = "csv$")))  
 }
- 
-dcpo_output <- as_cmdstan_fit(here(results_path,
-                                   list.files(results_path,
-                                              pattern="csv$")))
 
-```
-
-```{r dcpo_summary, eval=FALSE}
 load(file = here::here("data", "dcpo_input.rda"))
+
 theta_summary <- DCPOtools::summarize_dcpo_results(dcpo_input,
                                                    dcpo_output,
                                                    "theta")
 
 save(theta_summary, file = here::here("data",
                                       "theta_summary.rda"))
-```
 
-```{r theta_results, eval=FALSE}
 theta_results <- extract_dcpo_results(dcpo_input,
                                       dcpo_output,
                                       par = "theta")
 
 save(theta_results, file = here::here("data",
                                       "theta_results.rda"))
+
+alpha_results <- summarize_dcpo_results(dcpo_input,
+                                        dcpo_output = dcpo_output,
+                                        pars = "alpha") %>% 
+  transmute(item = question,
+            dispersion = mean)
+
+beta_results <- summarize_dcpo_results(dcpo_input,
+                                       dcpo_output,
+                                       "beta") %>% 
+  group_by(question) %>% 
+  summarize(difficulties0 = paste0(sprintf("%.2f", round(mean, 2)),
+                                   collapse = ", ")) %>% 
+  mutate(item = question,
+         cp = if_else(str_detect(item, "threestate"),
+                      2, 
+                      as.numeric(str_extract(item, "\\d+")) - 1),
+         term = str_glue("(( ?-?[0-9].[0-9][0-9]?,?){{{cp}}})"),
+         difficulties = str_extract(difficulties0, 
+                                    term) %>%
+           str_replace(",$", "") %>% 
+           str_trim()) %>% 
+  transmute(item, difficulties)
+
+save(alpha_results,
+     beta_results,
+     file = here::here("data",
+                       "item_results.rda"))
 ```
 
 ```{r theta}
@@ -710,38 +736,43 @@ bottom5 <- p1_data %>%
 
 ```
 
+```{r ts, fig.cap="Macrointerest Scores Over Time Within OECD Democracies \\label{ts}", fig.height=9}
 
+load(here::here("data", "theta_summary.rda"))
 
-```{r tsplots, fig.cap="Support Over Time Within Selected Countries \\label{ts}", fig.height=3.5}
-countries <- c("Netherlands", "Sweden", "Brazil", "United States",
-               "Argentina", "Czechia", "South Korea", "Poland", 
-               "China", "Ukraine", "Indonesia", "Russia", 
-               "Nigeria", "Jamaica", "Mexico", "Uganda")
-
-countries2 <- countries %>% 
-  str_replace("United States", "U.S.")
+oecd_countries <- c("Australia", "Austria", "Belgium",
+                    "Canada", "Chile", "Colombia",
+                    "Costa Rica", "Czechia", "Denmark",
+                    "Estonia", "Finland", "France", 
+                    "Germany", "Greece", "Hungary",
+                    "Iceland", "Ireland", "Israel",
+                    "Italy", "Japan", "South Korea",
+                    "Latvia", "Lithuania", "Luxembourg",
+                    "Mexico", "Netherlands", "New Zealand",
+                    "Norway", "Poland", "Portugal", 
+                    "Slovakia", "Slovenia", "Spain",
+                    "Sweden", "Switzerland", "Turkey", 
+                    "United Kingdom", "United States")
 
 c_res <- theta_summary %>% 
-  filter(country %in% countries) %>%
-  mutate(country = factor(str_replace(country, "United States", "U.S.") %>% 
-           factor(levels = countries2)))
+  filter(country %in% oecd_countries) %>%
+  mutate(country = fct_reorder(country, mean, .desc = TRUE))
 
 ggplot(data = c_res, aes(x = year, y = mean)) +
   theme_bw() +
   theme(legend.position = "none") +
-  coord_cartesian(xlim = c(1985, 2025), ylim = c(0, 1)) +
-  labs(x = NULL, y = "SGR Scores") +
+  coord_cartesian(xlim = c(1982, 2022), ylim = c(0, 1)) +
+  labs(x = NULL, y = "Macrointerest") +
   geom_ribbon(data = c_res, aes(ymin = q10, ymax = q90, linetype=NA), alpha = .25) +
   geom_line(data = c_res) +
-  facet_wrap(~as_factor(country), nrow = 2) +
+  facet_wrap(~country, ncol = 5) +
   theme(axis.text.x  = element_text(size=7,
                                     angle = 90,
                                     vjust = .45,
                                     hjust = .95),
         strip.background = element_rect(fill = "white", colour = "white")) +
-  plot_annotation(caption = "Note: Countries are ordered by their SGR scores in their most recent\navailable year; gray shading represents 80% credible intervals.")
+  plot_annotation(caption = "Note: Countries are ordered by their median macrointerest score; gray shading represents 80% credible intervals.")
 ```
-
 
 # Literature {.unnumbered}
 
@@ -805,41 +836,6 @@ Online Supplementary Materials
 \renewcommand{\thetable}{A.\arabic{table}}
 
 \noindent Table A1: Indicators Used in the Support for Political Dissatisfaction Latent Variable Model
-```{r appendix_results, eval=FALSE}
-# set eval to TRUE to run
-alpha_results <- DCPOtools::summarize_dcpo_results(dcpo_input,
-                                        dcpo_output,
-                                        pars = "alpha") %>% 
-  transmute(item = question,
-            dispersion = mean)
-
-beta_results <- DCPOtools::summarize_dcpo_results(dcpo_input,
-                                       dcpo_output,
-                                       "beta") %>% 
-  group_by(question) %>% 
-  summarize(difficulties0 = paste0(sprintf("%.2f", round(mean, 2)),
-                                   collapse = ", ")) %>% 
-  mutate(item = question,
-         cp = if_else(str_detect(item, "threestate"),
-                      2, 
-                      as.numeric(str_extract(item, "\\d+")) - 1),
-         term = str_glue("(( ?-?[0-9].[0-9][0-9]?,?){{{cp}}})"),
-         difficulties = str_extract(difficulties0, 
-                                    term) %>%
-           str_replace(",$", "") %>% 
-           str_trim()) %>% 
-  transmute(item, difficulties)
-
-save(alpha_results,
-     file = here::here("data",
-                       "alpha_results.rda"))
-
-save(beta_results,
-     file = here::here("data",
-                       "beta_results.rda"))
-
-```
-
 ```{r dcpo_items}
 load(here::here("data",
                 "alpha_results.rda"))
