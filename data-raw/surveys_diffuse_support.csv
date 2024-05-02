@@ -251,7 +251,7 @@ belgiumes1999,care5e,r79_3,c(5:1),"If people like me let the politicians know wh
 belgiumes1999,say5,r79_4,c(5:1),People like me do have an influence on what political authorities do,1 completely agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 completely disagree,eff
 belgiumes2003,vote5,q61_b,c(1:5),Political parties are only interested in my vote and not in my opinions ,1 completely agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 completely disagree,eff
 belgiumes2003,care5e,q61_c,c(5:1),"If people like me let the politicians know what we think, then they will take our opinions into account",1 completely agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 completely disagree,eff
-belgiumes2007,vote5,q102_2,c(1:5),Political parties are only interested in my vote and not in my opinions ,1 completely agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 completely disagree,eff
+belgiumes2007,vote5,q102_2,c(5:1),Political parties are only interested in my vote and not in my opinions ,1 completely disagree / 2 disagree / 3 neither agree nor disagree / 4 agree / 5 completely agree,eff
 belgiumes2014,care4d,q32a,c(1:4),How much does the government care about what people like me think,1 none / 2 a little / 3 reasonably well / 4 a lot,eff
 bes1987,say5,v109d,c(1:5),People llke me have no say In what the government does,1 agree strongly / 2 agree / 3 neutral / 4 disagree / 5 disagree strongly,eff
 bes1987,vote5,v109h,c(1:5),"Parties are only interested in people's votes, not in their opinions",1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
@@ -514,7 +514,8 @@ issp1985,say2,v68,c(2:1),People like me have much to say about government,1 agre
 issp1985,say2a,v66,c(2:1),The average person has considerable influence on politics,1 agree / 2 disagree,eff
 issp1985,say2b,v64,c(2:1),The public has little control over what politicians do in office,1 agree / 2 disagree,eff
 issp1996,say5,v47,c(1:5),People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-issp2001,say5,v47,c(1:5),People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+issp1996,say5e,v48,c(1:5),The average citizen has considerable influence on politics,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+issp2001,say5,v64,c(1:5),People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2004,right5,v43,c(5:1),Most of the time we can trust people in government to do what is right,1 Strongly agree / 5 Strongly disagree,trust_eff
 issp2004,say5,v36,c(1:5),People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2004,get5,v50,c(1:5),Most politicians are in politics only for what they can get out of it personally,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,corrupt
@@ -536,14 +537,14 @@ itanes2013capi,say4,d38_1,c(4:1),People like me don't have any say about what th
 itanes2013capi,touch4,d38_3,c(4:1),People we elect in Parliament lose touch with their voters pretty quickly,1 not at all true / 2 not quite true / 3 fairly true / 4 completely true,eff
 itanes2013capi,vote4,d38_4,c(4:1),"Parties are only interested in people's votes, not in their opinions",1 not at all true / 2 not quite true / 3 fairly true / 4 completely true,eff
 kobar1994,say4c,q5,c(4:1),"In general, how much influence do you think ordinary people like you have on government policy ",1 a great deal / 2 some / 3 a little / 4 none,eff
-kobar1996,say4c,q4,c(4:1),"In general, how much influence do you think ordinary people like you have on government policy ",1 a great deal / 2 some / 3 a little / 4 none,eff
-kobar1997,say4c,q14,c(4:1),"In general, how much influence do you think ordinary people like you have on government policy ",1 a great deal / 2 some / 3 a little / 4 none,eff
+kobar1996,say4c,q4,c(4:1),How much influence do you think you have on what the government does these days? Or do you think you have no influence at all? ,1 can influence a lot / 2 an influence to some extent / 3 cannot influence much / 4 cannot influence at all,eff
+kobar1997,say4g,q14,c(4:1),How much influence do you think the votes of people like yourself have on the way our country is governed? ,1 a lot / 2 some / 3 a little / 4 none,eff
 kobar1997,care4b,q21,c(4:1),To what extent do you think government leaders take the interests and opinion of people like yourself into account when making important decisions,1 a lot / 2 some / 3 a little / 4 not at all,eff
-kobar1998,say4c,q29,c(4:1),"In general, how much influence do you think ordinary people like you have on government policy ",1 a great deal / 2 some / 3 a little / 4 none,eff
+kobar1998,say4g,q29,c(4:1),How much influence do you think the votes of people like yourself have on the way our country is governed? ,1 a lot / 2 some / 3 a little / 4 none,eff
 kobar1998,care4b,q33,c(4:1),To what extent do you think government leaders take the interests and opinion of people like yourself into account when making important decisions,1 a lot / 2 some / 3 a little / 4 not at all,eff
-kobar1999,say4c,q32,c(4:1),"In general, how much influence do you think ordinary people like you have on government policy ",1 a great deal / 2 some / 3 a little / 4 none,eff
+kobar1999,say4g,q32,c(4:1),How much influence do you think the votes of people like yourself have on the way our country is governed? ,1 a lot / 2 some / 3 a little / 4 none,eff
 kobar1999,care4b,q36,c(4:1),To what extent do you think government leaders take the interests and opinion of people like yourself into account when making important decisions,1 a lot / 2 some / 3 a little / 4 not at all,eff
-kobar2001,say4c,q39,c(4:1),"In general, how much influence do you think ordinary people like you have on government policy ",1 a great deal / 2 some / 3 a little / 4 none,eff
+kobar2001,say4g,q39,c(4:1),How much influence do you think the votes of people like yourself have on the way our country is governed? ,1 a lot / 2 some / 3 a little / 4 none,eff
 kobar2001,care4b,q40,c(4:1),To what extent do you think government leaders take the interests and opinion of people like yourself into account when making important decisions,1 a lot / 2 some / 3 a little / 4 not at all,eff
 kobar2004,say4,q16a6,c(4:1),People like me don’t have any influence over what the government does ,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
 kobar2010,say4,q12_6,c(4:1),People like me don’t have any influence over what the government does ,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
