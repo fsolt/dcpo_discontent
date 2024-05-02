@@ -140,6 +140,8 @@ anes_combo,vote2,vcf0611,c(1:2),"Parties are only interested in people's votes, 
 anes_combo,big2,vcf0605,c(1:2),"Would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?",1 run by a few big interests / 2 run for all the people,eff
 anes_combo,say2,vcf0613,c(1:2),People like me don't have any say about what the government does,1 agree / 2 disagree,eff
 anpas1979,right2a,trusgv79,"c(5,1)","In general, do you feel that the people in government are too often interested in looking after themselves, or do you feel that they can be trusted to do the right thing nearly all the time?",1 Do right thing / 5 Look after self,trust_eff
+arabb1,care4b,q5073,c(4:1),Government officials seriously consider citizens' opinions,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+arabb2,care4b,q2183,c(4:1),Government officials seriously consider citizens' opinions,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 ases2000,say5,v0071,c(1:5),"Generally speaking, people like me don’t have some say in what the government does",1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 ases2000,care5,v0075,c(1:5),I don't think governmental officials care much about what people like me think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 asiab2003,trust_gov4,q21_a,c(4:1),Please indicate to what extent you trust the following institutions to operate in the best interests of society. Your central government,1 trust a lot / 2 trust to a degree / 3 don't really trust / 4 don't trust at all,trust_eff
@@ -476,6 +478,11 @@ fsdelection_combo,vote4,fnes171,c(1:4),"Political parties are only interested in
 fsdelection2019,touch4,k10_2,c(1:4),Those elected to parliament soon lose touch with the problems of ordinary people,1 strongly agree / 2 agree to some extent / 3 disagree to some extent / 4 strongly disagree,eff
 fsdelection2019,say4d,k10_3,c(1:4),I have no say in what the Government and Parliament decide,1 strongly agree / 2 agree to some extent / 3 disagree to some extent / 4 strongly disagree,eff
 fsdelection2019,vote4,k10_4,c(1:4),"Political parties are only interested in people's votes, not their opinions",1 strongly agree / 2 agree to some extent / 3 disagree to some extent / 4 strongly disagree,eff
+gallup_vop2000,will2,q5,c(2:1),Would you say that your country is governed by the will of the people? ,1 yes / 2 no,eff
+gallup_vop2000,will2a,q7_5,c(0:1),Which of the following words describes your perception of the government of [this country]? READ OUT. Responds to the will of the people ,0 not mentioned / 1 mentioned,eff
+gallup_vop2004,will2,q8,c(2:1),Would you say that your country is governed by the will of the people? ,1 yes / 2 no,eff
+gallup_vop2005,will2,q4,c(2:1),Would you say that your country is governed by the will of the people? ,1 yes / 2 no,eff
+gallup_vop2007,will2,q1,c(2:1),Would you say that your country is governed by the will of the people? ,1 yes / 2 no,eff
 gles1994,vote5,v130a,c(5:1),"The parties only want the people's votes, they're not interested in their opinions",1 completely disagree / 2 tend to disagree / 3 part-part / 4 tend to disagree / 5 completely disagree,eff
 gles1998,vote5,v130a,c(5:1),"The parties only want the people's votes, they're not interested in their opinions",1 completely disagree / 2 tend to disagree / 3 part-part / 4 tend to disagree / 5 completely disagree,eff
 gles2002,vote5,v130a,c(5:1),"The parties only want the people's votes, they're not interested in their opinions",1 completely disagree / 2 tend to disagree / 3 part-part / 4 tend to disagree / 5 completely disagree,eff
