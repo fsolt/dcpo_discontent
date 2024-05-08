@@ -448,7 +448,6 @@ eb773,trust_parl2,qa13_3,c(2:1),3,How much trust do you have in certain institut
 eb781,trust_parties2,qa11_5,c(2:1),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb781,trust_parl2,qa11_7,c(2:1),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb791,corrupt_party2,qb7_7,c(1:0),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
-eb791,corrupt_pol2a,qb7_6,c(1:0),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national, regional, or local level",0 not mentioned / 1 mentioned,corrupt
 eb791,corrupt4,qb15_2,c(1:4),,There is corruption in national public institutions in (OUR COUNTRY) ,1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb791,corrupt4a,qb5,c(1:4),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
 eb793,trust_parties2,qa12_1,c(2:1),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
@@ -474,7 +473,6 @@ eb873,trust_parties2,qa8a_5,c(2:1),,How much trust do you have in certain instit
 eb873,trust_parl2,qa8a_8,c(2:1),,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb881,care4c,qc8_5,c(4:1),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
 eb882,corrupt_party2,qb7_7,c(1:0),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
-eb882,corrupt_pol2a,qb7_6,c(1:0),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national, regional, or local level",0 not mentioned / 1 mentioned,corrupt
 eb882,corrupt4,qb15_2,c(1:4),,There is corruption in national public institutions in (OUR COUNTRY) ,1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb882,corrupt4a,qb5,c(1:4),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
 eb883,trust_parties2,qa8a_6,c(2:1),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
@@ -505,7 +503,6 @@ eb961,care4c,qa19_5,c(4:1),,The interests of people like you are well taken into
 eb963,trust_parties2,qa6b_1,c(2:1),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb963,trust_parl2,qa6b_9,c(2:1),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb972,corrupt_party2,qa7_7,c(1:0),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
-eb972,corrupt_pol2a,qa7_6,c(1:0),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national, regional, or local level",0 not mentioned / 1 mentioned,corrupt
 eb972,corrupt4,qa15_2,c(1:4),,There is corruption in national public institutions in (OUR COUNTRY) ,1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb972,corrupt4a,qa5,c(1:4),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
 eb975,trust_parties2,qa6a_1,c(2:1),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
@@ -654,12 +651,11 @@ icnl1990,vote5,w0747,c(1:5),,"Political parties are only interested in people's 
 ines_long,say5e,v0311b,c(5:1),,The ordinary person has no influence on politics ,1 strongly disagree / 2 disagree / 3 neither agree nor disagree / 4 agree / 5 strongly agree,eff
 issp1985,say2,v68,c(2:1),,People like me have much to say about government,1 agree / 2 disagree,eff
 issp1985,say2a,v66,c(2:1),,The average person has considerable influence on politics,1 agree / 2 disagree,eff
-issp1985,say2b,v64,c(2:1),,The public has little control over what politicians do in office,1 agree / 2 disagree,eff
 issp1996,say5,v47,c(1:5),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp1996,say5e,v48,c(5:1),,The average citizen has considerable influence on politics,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2001,say5,v64,c(1:5),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2004,care5a,v37,c(1:5),,I don't think the government cares much what people like me think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-issp2004,get5,v50,c(1:5),,Most politicians are in politics only for what they can get out of it personally,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,corrupt
+issp2004,get5,v44,c(1:5),,Most politicians are in politics only for what they can get out of it personally,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,corrupt
 issp2004,right5,v43,c(5:1),,Most of the time we can trust people in government to do what is right,1 Strongly agree / 5 Strongly disagree,trust_eff
 issp2004,say5,v36,c(1:5),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2006,say5,v45,c(1:5),,People like me have no say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
@@ -703,7 +699,6 @@ lb1997,rigged2,sp35,c(2:1),,"Speaking generally, do you think that the elections
 lb1998,rigged2,sp32,c(2:1),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
 lb2001,right4,p43nas,c(4:1),,You can generally trust the people who run our government to do what is right,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,trust_eff
 lb2002,right4,p17st,c(4:1),,You can generally trust the people who run our government to do what is right,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,trust_eff
-lb2003,cred2,p59st,c(1:2),,Some people say politics and politicians have lost credibility and it seems like they cannot recover it. Other people say that politics depends on the people that are in charge and each one has the opportunity to recover that credibility,1 politics and politicians have lost credibility and it seems like they cannot recover it 2 politics depends on the people that are in charge and each one has the opportunity to recover that credibility,eff
 lb2004,big2,p24wvs,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2005,big2,p22st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2005,care4f,p35st,c(4:1),,Do you think that the political leaders are concerned about the issues that interest you?,1 a lot / 2 fairly / 3 a little / 4 not at all,eff
@@ -725,7 +720,6 @@ lb2013,big2,p14st,c(1:2),,"In general, would you say that the country is governe
 lb2015,big2,p14st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2015,sat_parties4,p49st_b,c(4:1),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
 lb2016,big2,p10st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
-lb2016,cred2,p35stm,c(1:2),,Some people say politics and politicians have lost credibility and it seems like they cannot recover it. Other people say that politics depends on the people that are in charge and each one has the opportunity to recover that credibility,1 politics and politicians have lost credibility and it seems like they cannot recover it 2 politics depends on the people that are in charge and each one has the opportunity to recover that credibility,eff
 lb2017,big2,p10st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2018,big2,p14st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2020,big2,p12st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
