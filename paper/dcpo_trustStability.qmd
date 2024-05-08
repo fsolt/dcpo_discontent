@@ -319,6 +319,30 @@ by2sd <- function(var) {
   return(sd)
 }
 
+pairwise_count <- function(x) {
+    x <- !is.na(x)
+    n <- crossprod(x)
+    return(n)
+}
+
+long_corr <- function(x) {
+    n_long <- crossprod(!is.na(x)) %>% 
+        as.data.frame() %>% 
+        rownames_to_column(var = "item1") %>% 
+        pivot_longer(cols = -item1,
+                     names_to = "item2",
+                     values_to = "n")
+    
+    cor(x, use = "pairwise.complete.obs") %>% 
+        as.data.frame() %>% 
+        rownames_to_column(var = "item1") %>% 
+        pivot_longer(cols = -item1,
+                     names_to = "item2",
+                     values_to = "corr") %>% 
+        filter(!is.na(corr)) %>% 
+        left_join(n_long, by = join_by(item1, item2))
+}
+
 set.seed(324)
 ```
 
@@ -330,15 +354,37 @@ Intro does not need a header.
 # set eval to TRUE to run; running time is <5 minutes
 surveys_ds <- read_csv(here::here("data-raw",
                                   "surveys_diffuse_support.csv"),
-                        col_types = "cccc") %>% 
-       # filter(group == "eff")
-    filter(str_detect(group, "eff"))
+                       col_types = "cccc")
+
+item_groups <- c("eff",
+                 "trust_eff",
+                 "corrupt",
+                 "sat",
+                 "trust")
+
+items_by_group <- map(item_groups, \(g) {
+    surveys_ds %>% 
+        filter(group == g) %>% 
+        pull(item) %>% 
+        unique() %>% 
+        sort()
+}) %>% 
+    set_names(item_groups)
 
 dcpo_input_raw <- DCPOtools::dcpo_setup(vars = surveys_ds,
                                         datapath = here::here("..",
                                                               "data", "dcpo_surveys"),
                                         file = here::here("data",
                                                           "dcpo_input_raw.csv"))
+
+dcpo_input_raw %>% 
+    group_by(country, year, item) %>% 
+    summarize(avg = sum(r*n)/sum(n)) %>%
+    pivot_wider(names_from = item, values_from = avg) %>%
+    ungroup() %>%
+    select(unname(unlist(items_by_group))) %>%
+    long_corr() %>%
+    View("long_corr")
 ```
 
 ```{r ds_summary_stats}
@@ -589,7 +635,7 @@ results_path <- here::here(file.path("data",
                                   {str_replace_all(Sys.time(),
                                                       "[- :]",
                                                    "") %>%
-                                         str_replace("\\d{2}.\\d{6}$",
+                                         str_replace("\\d{2}.\\d+$",
                                                      "")}))
 
 dir.create(results_path, 
@@ -604,7 +650,7 @@ dcpo_output$save_output_files(dir = results_path,
 
 ```{r dcpo_output, eval=FALSE}
 if (!exists("results_path")) {
-  latest <- "202405012119"
+  latest <- "202405080606"
   results_path <- here::here("data", "1000", latest)
 
   # Define OSF_PAT in .Renviron: https://docs.ropensci.org/osfr/articles/auth
@@ -837,11 +883,8 @@ Online Supplementary Materials
 
 \noindent Table A1: Indicators Used in the Support for Political Dissatisfaction Latent Variable Model
 ```{r dcpo_items}
-load(here::here("data",
-                "alpha_results.rda"))
-
-load(here::here("data",
-                "beta_results.rda"))
+load(here::here("data", "dcpo_input.rda"))
+load(here::here("data", "item_results.rda"))
 
 items_summary <- dcpo_input_raw1 %>%
   dplyr::select(country, year, item, survey) %>%
@@ -865,17 +908,19 @@ items_summary <- dcpo_input_raw1 %>%
   arrange(-n_cy)
 ```
 
-```{r dcpo_items_table, eval=FALSE}
+```{r dcpo_items_table}
 items_summary %>% 
-  transmute(`Survey\nItem\nCode` = item,
+  transmute(`Survey\nItem\nCode` = item %>%
+              str_replace_all(fixed("_"), "\\_"),
             `Country-Years` = as.character(n_cy),
             `Question Text` = str_replace(question_text, "([^(]*)\\(.*", "\\1"),
             `Response Categories` = response_categories,
             `Dispersion` = dispersion,
-            `Difficulties`= difficulties,
-            `Survey Dataset Codes` = all_surveys) %>% 
+            `Difficulties` = difficulties,
+            `Survey Dataset Codes*` = all_surveys) %>% 
   modelsummary::datasummary_df(output = "kableExtra",
-                               longtable = TRUE) %>% 
+                               longtable = TRUE, 
+                               title = "Survey Items Used to Estimate Public Political Discontent") %>% 
   kableExtra::column_spec(1, width = "7em") %>%
   kableExtra::column_spec(2, width = "4em") %>%
   kableExtra::column_spec(3, width = "13em") %>%
@@ -883,35 +928,79 @@ items_summary %>%
   kableExtra::column_spec(5, width = "4em") %>%
   kableExtra::column_spec(c(6, 7), width = "8em") %>% 
   kableExtra::kable_styling(font_size = 7) %>%
-  kableExtra::kable_styling(latex_options = c("repeat_header")) %>%
-  kableExtra::kable_styling(latex_options = "striped")
+  kableExtra::kable_styling(latex_options = "repeat_header") %>%
+  kableExtra::kable_styling(latex_options = "striped") %>%
+  kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package (Solt, Hu, and Tai 2019).")
 ```
 
-```{r obs, fig.height = 9, fig.width = 6.5, fig.cap = "Source Data Observations by Country and Year \\label{obs_by_cy}"}
-dcpo_input_raw1 %>% 
+```{r obs, fig.cap = "Source Data Observations by Country and Year", fig.height = 9}
+dcpo_input_plot <- dcpo_input_raw1 %>% 
   mutate(country = str_replace(country, "’", "'")) %>% 
   distinct(country, year, item, cc_rank) %>% 
   group_by(country, year) %>% 
   summarize(n = n(),
             cc_rank = mean(cc_rank)) %>% 
   ungroup() %>% 
-  distinct() %>% 
+  distinct() |> 
+  mutate(continent = countrycode(country, "country.name", "continent",
+                                 warn = FALSE), 
+         continent = case_when(country %in% c("Kosovo", "Northern Ireland") ~
+                                 "Europe",
+                               continent %in% c("Asia", "Oceania") ~
+                                 "Asia-Oceania",
+                               TRUE ~ continent)) %>% 
+  group_by(continent) %>% 
+  mutate(mean_cc_rank = mean(cc_rank),
+         continent = as_factor(continent))
+
+dcpo_input_plot %>%
+  filter(continent %in% c("Europe", "Asia-Oceania")) %>%
   ggplot(aes(x = year, 
              y = forcats::fct_reorder(country, cc_rank),
              fill = n)) + 
   geom_tile() +
-  scale_fill_viridis_b(option = "B",
-                       direction = -1,
-                       show.limits = TRUE,
-                       n.breaks = 7,
-                       name = "Observations") +
+  scale_fill_stepsn(colors = rev(hcl.colors(7, "inferno")),
+                    n.breaks = 7,
+                    show.limits = TRUE,
+                    right = FALSE,
+                    name = "Observations") +
   labs(x = NULL, y = NULL) +
-  scale_x_continuous(breaks=seq(1972, 2024, 4)) +
+  scale_x_continuous(breaks=seq(1982, 2022, 4),
+                     sec.axis = dup_axis()) +
   scale_y_discrete(position = "right") +
-  theme(legend.justification=c(0, 0), 
-        legend.position=c(0.01, 0.01),
-        axis.text.y  = element_text(size = 7)) 
+  theme(axis.text.y  = element_text(size = 7),
+        strip.background = element_rect(fill = "white", colour = "white"),
+        strip.placement = "outside") +
+  facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
+             ncol = 1,
+             scales = "free")
 ```
+
+```{r obs2, fig.cap = "Source Data Observations by Country and Year, cont.", fig.height = 9}
+
+dcpo_input_plot %>%
+  filter(!continent %in% c("Europe", "Asia-Oceania")) %>%
+  ggplot(aes(x = year, 
+             y = forcats::fct_reorder(country, cc_rank),
+             fill = n)) + 
+  geom_tile() +
+  scale_fill_stepsn(colors = rev(hcl.colors(7, "inferno")),
+                    limits = c(1, 7),
+                    show.limits = TRUE,
+                    right = FALSE,
+                    name = "Observations") +
+  labs(x = NULL, y = NULL) +
+  scale_x_continuous(breaks=seq(1982, 2022, 4),
+                     sec.axis = dup_axis()) +
+  scale_y_discrete(position = "right") +
+  theme(axis.text.y  = element_text(size = 7),
+        strip.background = element_rect(fill = "white", colour = "white"),
+        strip.placement = "outside") +
+  facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
+             ncol = 1,
+             scales = "free")
+```
+
 
 # Technical Details of DCPO 
 
