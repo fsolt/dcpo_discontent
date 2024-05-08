@@ -64,13 +64,13 @@ execute:
   dpi: 300
 editor_options: 
   chunk_output_type: console
-title:  "Does Political Trust Enhance the Regime? Yes and No"
+title:  "Political Discontent and Regime Instability"
 # subtitle: |
 abstract: |
-  Put abstract here.
-  And here.
+    Put abstract here.
+    And here.
 keywords: 
-    - Political trust
+    - Political discontent
     - Regime stability
     - Cross-national panel
 ---
@@ -110,19 +110,22 @@ library(pacman)
 p_install(janitor, force = FALSE)
 #p_install_gh(c("fsolt/DCPOtools"), force = FALSE)
 if (!require(posterior))
-  install.packages("posterior")
+    install.packages("posterior")
 
 p_load(
-  DCPOtools,
-  cmdstanr,
-  tidyverse,
-  here,
-  countrycode,
-  patchwork,
-  ggthemes,
-  rsdmx,
-  osfr,
-  kableExtra
+    DCPOtools,
+    cmdstanr,
+    tidyverse,
+    here,
+    countrycode,
+    patchwork,
+    ggthemes,
+    rsdmx,
+    osfr,
+    kableExtra,
+    rnaturalearth, # maps
+    rnaturalearthdata, # maps
+    sf # maps
 )
 
 theme_set(theme_minimal())
@@ -148,175 +151,175 @@ validation_plot <- function(v_data_raw,
         theta_summary <- get("theta_summary", envir = .GlobalEnv)
     if ("theta_results" %in% ls(envir = .GlobalEnv) & missing(theta_results))
         theta_results <- get("theta_results", envir = .GlobalEnv)
-
+    
     median_val <- Vectorize(function(x) median(1:x),
                             vectorize.args = "x")
     if (survey) {    
-      v_vars <- v_data_raw %>% 
-        select(item0 = item) %>% 
-        unique() %>% 
-        mutate(v_val = str_extract(item0, "\\d+") %>% 
-                 as.numeric() %>% 
-                 median_val(.) %>%
-                 `+`(.6) %>% 
-                 round())
-    
-      validation_summarized <- v_data_raw %>% 
-        DCPOtools::format_dcpo(scale_q = v_vars$item0[[1]], # these arguments are required
-                               scale_cp = 1) %>% # but they don't matter
-        pluck("data") %>% 
-        mutate(item0 = str_remove(item, " \\d or higher"),
-               title = factor(v_data_raw %>%
-                                pull(title) %>%
-                                first()), 
-                              levels = v_data_raw %>%
-                                pull(title) %>%
-                                unique(),
-               neg = v_data_raw %>% 
-                 pull(neg) %>% 
-                 first) %>% 
-        right_join(v_vars, by = "item0") %>%
-        arrange(title) %>% 
-        filter(str_detect(item, paste(v_val, "or higher"))) %>%
-        mutate(iso2c = countrycode::countrycode(country,
-                                                origin = "country.name",
-                                                destination = "iso2c",
-                                                warn = FALSE),
-               prop = if_else(neg, 1-y_r/n_r, y_r/n_r),
-               se = sqrt((prop*(1-prop))/n),
-               prop_90 = prop + qnorm(.9)*se,
-               prop_10 = prop - qnorm(.9)*se) %>%
-        inner_join(theta_summary %>% select(-kk, -tt), by = c("country", "year"))
+        v_vars <- v_data_raw %>% 
+            select(item0 = item) %>% 
+            unique() %>% 
+            mutate(v_val = str_extract(item0, "\\d+") %>% 
+                       as.numeric() %>% 
+                       median_val(.) %>%
+                       `+`(.6) %>% 
+                       round())
+        
+        validation_summarized <- v_data_raw %>% 
+            DCPOtools::format_dcpo(scale_q = v_vars$item0[[1]], # these arguments are required
+                                   scale_cp = 1) %>% # but they don't matter
+            pluck("data") %>% 
+            mutate(item0 = str_remove(item, " \\d or higher"),
+                   title = factor(v_data_raw %>%
+                                      pull(title) %>%
+                                      first()), 
+                   levels = v_data_raw %>%
+                       pull(title) %>%
+                       unique(),
+                   neg = v_data_raw %>% 
+                       pull(neg) %>% 
+                       first) %>% 
+            right_join(v_vars, by = "item0") %>%
+            arrange(title) %>% 
+            filter(str_detect(item, paste(v_val, "or higher"))) %>%
+            mutate(iso2c = countrycode::countrycode(country,
+                                                    origin = "country.name",
+                                                    destination = "iso2c",
+                                                    warn = FALSE),
+                   prop = if_else(neg, 1-y_r/n_r, y_r/n_r),
+                   se = sqrt((prop*(1-prop))/n),
+                   prop_90 = prop + qnorm(.9)*se,
+                   prop_10 = prop - qnorm(.9)*se) %>%
+            inner_join(theta_summary %>% select(-kk, -tt), by = c("country", "year"))
     } else {
-      validation_summarized <- v_data_raw %>% 
-        mutate(iso2c = countrycode::countrycode(country,
-                                                origin = "country.name",
-                                                destination = "iso2c",
-                                                warn = FALSE),
-               prop = prop,
-               se = se,
-               prop_90 = prop + qnorm(.9)*se,
-               prop_10 = prop - qnorm(.9)*se) %>%
-        inner_join(theta_summary %>% select(-kk, -tt), by = c("country", "year"))
+        validation_summarized <- v_data_raw %>% 
+            mutate(iso2c = countrycode::countrycode(country,
+                                                    origin = "country.name",
+                                                    destination = "iso2c",
+                                                    warn = FALSE),
+                   prop = prop,
+                   se = se,
+                   prop_90 = prop + qnorm(.9)*se,
+                   prop_10 = prop - qnorm(.9)*se) %>%
+            inner_join(theta_summary %>% select(-kk, -tt), by = c("country", "year"))
     }
     
     validation_cor <- theta_results %>%
-      inner_join(validation_summarized %>%
-                   select(country, year, title, prop, se),
-                 by = c("country", "year")) %>% 
-      rowwise() %>% 
-      mutate(sim = rnorm(1, mean = prop, sd = se)) %>% 
-      ungroup() %>% 
-      select(title, theta, sim, draw) %>% 
-      nest(data = c(theta, sim)) %>% 
-      mutate(r = lapply(data, function(df) cor(df)[2,1]) %>% 
-               unlist()) %>%
-      select(-data) %>% 
-      group_by(title) %>% 
-      summarize(r = paste("R =", sprintf("%.2f", round(mean(r), 2))))
-
+        inner_join(validation_summarized %>%
+                       select(country, year, title, prop, se),
+                   by = c("country", "year")) %>% 
+        rowwise() %>% 
+        mutate(sim = rnorm(1, mean = prop, sd = se)) %>% 
+        ungroup() %>% 
+        select(title, theta, sim, draw) %>% 
+        nest(data = c(theta, sim)) %>% 
+        mutate(r = lapply(data, function(df) cor(df)[2,1]) %>% 
+                   unlist()) %>%
+        select(-data) %>% 
+        group_by(title) %>% 
+        summarize(r = paste("R =", sprintf("%.2f", round(mean(r), 2))))
+    
     if ({validation_summarized %>%
-        pull(country) %>%
-        unique() %>% 
-        length()} > 1) {
-      val_plot <- validation_summarized %>%
-        ggplot(aes(x = mean,
-                   y = prop * 100)) +
-        geom_segment(aes(x = q10, xend = q90,
-                         y = prop * 100, yend = prop * 100),
-                     na.rm = TRUE,
-                     alpha = .2) +
-        geom_segment(aes(x = mean, xend = mean,
-                         y = prop_90 * 100, yend = prop_10 * 100),
-                     na.rm = TRUE,
-                     alpha = .2) +
-        geom_smooth(method = 'lm', formula = 'y ~ x', se = FALSE) +
-        facet_wrap(~ title, ncol = 4) +
-        geom_label(data = validation_cor, aes(x = lab_x,
-                                              y = lab_y,
-                                              label = r),
-                   size = 2)
+            pull(country) %>%
+            unique() %>% 
+            length()} > 1) {
+        val_plot <- validation_summarized %>%
+            ggplot(aes(x = mean,
+                       y = prop * 100)) +
+            geom_segment(aes(x = q10, xend = q90,
+                             y = prop * 100, yend = prop * 100),
+                         na.rm = TRUE,
+                         alpha = .2) +
+            geom_segment(aes(x = mean, xend = mean,
+                             y = prop_90 * 100, yend = prop_10 * 100),
+                         na.rm = TRUE,
+                         alpha = .2) +
+            geom_smooth(method = 'lm', formula = 'y ~ x', se = FALSE) +
+            facet_wrap(~ title, ncol = 4) +
+            geom_label(data = validation_cor, aes(x = lab_x,
+                                                  y = lab_y,
+                                                  label = r),
+                       size = 2)
     } else {
-      val_plot <- validation_summarized %>%
-        ggplot(aes(x = year,
-                   y = mean)) +
-        geom_line() +
-        geom_ribbon(aes(ymin = q10,
-                        ymax = q90,
-                        linetype = NA),
-                    alpha = .2) +
-        geom_point(aes(y = prop),
-                   fill = "black",
-                   shape = 21,
-                   size = .5,
-                   na.rm = TRUE) +
-        geom_path(aes(y = prop),
-                  linetype = 3,
-                  na.rm = TRUE,
-                  alpha = .7) +
-        geom_segment(aes(x = year, xend = year,
-                         y = prop_90, yend = prop_10),
-                     na.rm = TRUE,
-                     alpha = .2) +
-        facet_wrap(~ title, ncol = 4) +
-        geom_label(data = validation_cor, aes(x = lab_x,
-                                              y = lab_y,
-                                              label = r),
-                   size = 2)
+        val_plot <- validation_summarized %>%
+            ggplot(aes(x = year,
+                       y = mean)) +
+            geom_line() +
+            geom_ribbon(aes(ymin = q10,
+                            ymax = q90,
+                            linetype = NA),
+                        alpha = .2) +
+            geom_point(aes(y = prop),
+                       fill = "black",
+                       shape = 21,
+                       size = .5,
+                       na.rm = TRUE) +
+            geom_path(aes(y = prop),
+                      linetype = 3,
+                      na.rm = TRUE,
+                      alpha = .7) +
+            geom_segment(aes(x = year, xend = year,
+                             y = prop_90, yend = prop_10),
+                         na.rm = TRUE,
+                         alpha = .2) +
+            facet_wrap(~ title, ncol = 4) +
+            geom_label(data = validation_cor, aes(x = lab_x,
+                                                  y = lab_y,
+                                                  label = r),
+                       size = 2)
     }
     
     return(val_plot)
 }
 
 covered_share_of_spanned <- function(dcpo_input_raw) {
-  n_cy <- dcpo_input_raw %>%
-    distinct(country, year) %>% 
-    nrow()
-  
-  spanned_cy <- dcpo_input_raw %>% 
-    group_by(country) %>% 
-    summarize(years = max(year) - min(year) + 1) %>% 
-    summarize(n = sum(years)) %>% 
-    pull(n)
-  
-  {(n_cy/spanned_cy) * 100}
+    n_cy <- dcpo_input_raw %>%
+        distinct(country, year) %>% 
+        nrow()
+    
+    spanned_cy <- dcpo_input_raw %>% 
+        group_by(country) %>% 
+        summarize(years = max(year) - min(year) + 1) %>% 
+        summarize(n = sum(years)) %>% 
+        pull(n)
+    
+    {(n_cy/spanned_cy) * 100}
 }
 
 get_coef <- function(iv, results_df = coef_data, type = "both", width = .95) {
-  result_var <- results_df %>% 
-    filter(.width == width) %>% 
-    pull(.variable) %>% 
-    str_subset(iv)
-  
-  if (!type=="both") {
-    res <- results_df %>% 
-      filter(.variable == result_var & .width == width) %>% 
-      pull({{type}})
-  } else {
-    sc <- results_df %>% 
-      filter(.variable == result_var & .width == width) %>% 
-      pull(std_coef)
+    result_var <- results_df %>% 
+        filter(.width == width) %>% 
+        pull(.variable) %>% 
+        str_subset(iv)
     
-    ci <- results_df %>% 
-      filter(.variable == result_var & .width == width) %>% 
-      pull(ci)
+    if (!type=="both") {
+        res <- results_df %>% 
+            filter(.variable == result_var & .width == width) %>% 
+            pull({{type}})
+    } else {
+        sc <- results_df %>% 
+            filter(.variable == result_var & .width == width) %>% 
+            pull(std_coef)
+        
+        ci <- results_df %>% 
+            filter(.variable == result_var & .width == width) %>% 
+            pull(ci)
+        
+        res <- paste0(sc, " (95% c.i.: ", ci, ")")
+    }
     
-    res <- paste0(sc, " (95% c.i.: ", ci, ")")
-  }
-  
-  return(res)
+    return(res)
 }
 
 by2sd <- function(var) {
-  dich <- stats::na.omit(unique(var)) %>% 
-    sort() %>% 
-    identical(c(0, 1))
-  if (dich) 
-    sd <- 1
-  else 
-    sd <- 2 * stats::sd(var, na.rm = TRUE)
-  
-  return(sd)
+    dich <- stats::na.omit(unique(var)) %>% 
+        sort() %>% 
+        identical(c(0, 1))
+    if (dich) 
+        sd <- 1
+    else 
+        sd <- 2 * stats::sd(var, na.rm = TRUE)
+    
+    return(sd)
 }
 
 pairwise_count <- function(x) {
@@ -390,10 +393,10 @@ dcpo_input_raw %>%
 ```{r pd_summary_stats}
 surveys_pd <- read_csv(here::here("data-raw",
                                   "surveys_pd.csv"),
-                        col_types = "cccc")
+                       col_types = "cccc")
 
 dcpo_input_raw <- read_csv(here::here("data", "dcpo_input_raw.csv"),
-                                  col_types = "cdcddcd")
+                           col_types = "cdcddcd")
 
 process_dcpo_input_raw <- function(dcpo_input_raw_df) {
     dcpo_input_raw_df %>% 
@@ -409,33 +412,33 @@ process_dcpo_input_raw <- function(dcpo_input_raw_df) {
 dcpo_input_raw1 <- process_dcpo_input_raw(dcpo_input_raw)
 
 n_surveys <- surveys_pd %>%
-  distinct(survey) %>% 
-  nrow()
+    distinct(survey) %>% 
+    nrow()
 
 n_items <- dcpo_input_raw1 %>%
-  distinct(item) %>% 
-  nrow()
+    distinct(item) %>% 
+    nrow()
 
 n_countries <- dcpo_input_raw1 %>%
-  distinct(country) %>% 
-  nrow()
+    distinct(country) %>% 
+    nrow()
 
 n_cy <- dcpo_input_raw1 %>%
-  distinct(country, year) %>% 
-  nrow() %>% 
-  scales::comma()
+    distinct(country, year) %>% 
+    nrow() %>% 
+    scales::comma()
 
 n_years <- as.integer(summary(dcpo_input_raw1$year)[6]-summary(dcpo_input_raw1$year)[1] + 1)
 
 spanned_cy <- dcpo_input_raw1 %>% 
-  group_by(country) %>% 
-  summarize(years = max(year) - min(year) + 1) %>% 
-  summarize(n = sum(years)) %>% 
-  pull(n) %>% 
-  scales::comma()
+    group_by(country) %>% 
+    summarize(years = max(year) - min(year) + 1) %>% 
+    summarize(n = sum(years)) %>% 
+    pull(n) %>% 
+    scales::comma()
 
 total_cy <- {n_countries * n_years} %>% 
-  scales::comma()
+    scales::comma()
 
 year_range <- paste("from",
                     summary(dcpo_input_raw1$year)[1],
@@ -443,14 +446,14 @@ year_range <- paste("from",
                     summary(dcpo_input_raw1$year)[6])
 
 n_cyi <- dcpo_input_raw1 %>% 
-  distinct(country, year, item) %>% 
-  nrow() %>% 
-  scales::comma()
+    distinct(country, year, item) %>% 
+    nrow() %>% 
+    scales::comma()
 
 back_to_numeric <- function(string_number) {
-  string_number %>% 
-    str_replace(",", "") %>% 
-    as.numeric()
+    string_number %>% 
+        str_replace(",", "") %>% 
+        as.numeric()
 }
 
 covered_share_of_spanned <- {back_to_numeric(n_cy)/back_to_numeric(spanned_cy) * 100}
@@ -458,148 +461,181 @@ covered_share_of_spanned <- {back_to_numeric(n_cy)/back_to_numeric(spanned_cy) *
 
 ```{r itemcountry, fig.cap="Countries and Years with the Most Observations in the Source Data \\label{item_country_plots}", fig.height=3.5, fig.pos='h', cache=FALSE}
 items_plot <- dcpo_input_raw1 %>%
-  distinct(country, year, item) %>%
-  count(item) %>%
-  arrange(desc(n)) %>% 
-  head(12) %>% 
-  ggplot(aes(forcats::fct_reorder(item, n, .desc = TRUE), n)) +
-  geom_bar(stat = "identity") +
-  theme_bw() +
-  theme(axis.title.x = element_blank(),
-        axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
-        axis.title.y = element_text(size = 9),
-        plot.title = element_text(hjust = 0.5, size = 11)) +
-  ylab("Country-Years\nObserved") +
-  ggtitle("Items")
+    distinct(country, year, item) %>%
+    count(item) %>%
+    arrange(desc(n)) %>% 
+    head(12) %>% 
+    ggplot(aes(forcats::fct_reorder(item, n, .desc = TRUE), n)) +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    theme(axis.title.x = element_blank(),
+          axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
+          axis.title.y = element_text(size = 9),
+          plot.title = element_text(hjust = 0.5, size = 11)) +
+    ylab("Country-Years\nObserved") +
+    ggtitle("Items")
 
 just10_cy <- dcpo_input_raw1 %>% filter(item == "just10") %>% distinct(country, year) %>% nrow()
 
 just10_surveys <- dcpo_input_raw1 %>% filter(item == "just10") %>% distinct(survey) %>% pull(survey)
 
 countries_plot <- dcpo_input_raw1 %>%
-  mutate(country = if_else(stringr::str_detect(country, "United"),
-                           stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
-                           country)) %>% 
-  distinct(country, year, item) %>% 
-  count(country) %>%
-  arrange(desc(n)) %>% 
-  head(12) %>% 
-  ggplot(aes(forcats::fct_reorder(country, n, .desc = TRUE), n)) +
-  geom_bar(stat = "identity") +
-  theme_bw() +
-  theme(axis.title.x = element_blank(),
-        axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
-        axis.title.y = element_text(size = 9),
-        plot.title = element_text(hjust = 0.5, size = 11)) +
-  ylab("Year-Items\nObserved") +
-  ggtitle("Countries")
+    mutate(country = if_else(stringr::str_detect(country, "United"),
+                             stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
+                             country)) %>% 
+    distinct(country, year, item) %>% 
+    count(country) %>%
+    arrange(desc(n)) %>% 
+    head(12) %>% 
+    ggplot(aes(forcats::fct_reorder(country, n, .desc = TRUE), n)) +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    theme(axis.title.x = element_blank(),
+          axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
+          axis.title.y = element_text(size = 9),
+          plot.title = element_text(hjust = 0.5, size = 11)) +
+    ylab("Year-Items\nObserved") +
+    ggtitle("Countries")
 
 cby_plot <- dcpo_input_raw1 %>%
-  mutate(country = if_else(stringr::str_detect(country, "United"),
-                           stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
-                           country),
-         country = stringr::str_replace(country, "South", "S.")) %>% 
-  distinct(country, year) %>%
-  count(country) %>% 
-  arrange(desc(n)) %>% 
-  head(12) %>% 
-  ggplot(aes(forcats::fct_reorder(country, n, .desc = TRUE), n)) +
-  geom_bar(stat = "identity") +
-  theme_bw() +
-  theme(axis.title.x = element_blank(),
-        axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
-        axis.title.y = element_text(size = 9),
-        plot.title = element_text(hjust = 0.5, size = 11)) +
-  ylab("Years\nObserved") +
-  ggtitle("Countries")
+    mutate(country = if_else(stringr::str_detect(country, "United"),
+                             stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
+                             country),
+           country = stringr::str_replace(country, "South", "S.")) %>% 
+    distinct(country, year) %>%
+    count(country) %>% 
+    arrange(desc(n)) %>% 
+    head(12) %>% 
+    ggplot(aes(forcats::fct_reorder(country, n, .desc = TRUE), n)) +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    theme(axis.title.x = element_blank(),
+          axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
+          axis.title.y = element_text(size = 9),
+          plot.title = element_text(hjust = 0.5, size = 11)) +
+    ylab("Years\nObserved") +
+    ggtitle("Countries")
 
 
 ybc_plot <- dcpo_input_raw1 %>%
-  distinct(country, year) %>%
-  count(year, name = "nn") %>%
-  ggplot(aes(year, nn)) +
-  geom_bar(stat = "identity") +
-  theme_bw() +
-  theme(axis.title.x = element_blank(),
-        # axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
-        axis.title.y = element_text(size = 9),
-        plot.title = element_text(hjust = 0.5, size = 11)) +
-  ylab("Countries\nObserved") +
-  ggtitle("Years")
+    distinct(country, year) %>%
+    count(year, name = "nn") %>%
+    ggplot(aes(year, nn)) +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    theme(axis.title.x = element_blank(),
+          # axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
+          axis.title.y = element_text(size = 9),
+          plot.title = element_text(hjust = 0.5, size = 11)) +
+    ylab("Countries\nObserved") +
+    ggtitle("Years")
 
 us_obs <- dcpo_input_raw1 %>% 
-  distinct(country, year, item) %>%
-  count(country) %>%
-  filter(country == "United States") %>%
-  pull(n)
+    distinct(country, year, item) %>%
+    count(country) %>%
+    filter(country == "United States") %>%
+    pull(n)
 
 others <- dcpo_input_raw1 %>%
-  distinct(country, year, item) %>%
-  count(country) %>%
-  arrange(desc(n)) %>%
-  slice(2:5) %>%
-  pull(country) %>% 
-  paste(collapse = ", ") %>% 
-  str_replace(", (\\w+)$", ", and \\1") %>% 
-  str_replace("United", "the United")
+    distinct(country, year, item) %>%
+    count(country) %>%
+    arrange(desc(n)) %>%
+    slice(2:5) %>%
+    pull(country) %>% 
+    paste(collapse = ", ") %>% 
+    str_replace(", (\\w+)$", ", and \\1") %>% 
+    str_replace("United", "the United")
 
 countries_cp <- dcpo_input_raw1 %>%
-  mutate(country = if_else(stringr::str_detect(country, "United"),
-                           stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
-                           country),
-         country = stringr::str_replace(country, "South", "S.")) %>% 
-  distinct(country, year, item) %>%
-  count(country) %>% 
-  arrange(desc(n)) %>% 
-  head(12) %>% 
-  pull(country)
+    mutate(country = if_else(stringr::str_detect(country, "United"),
+                             stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
+                             country),
+           country = stringr::str_replace(country, "South", "S.")) %>% 
+    distinct(country, year, item) %>%
+    count(country) %>% 
+    arrange(desc(n)) %>% 
+    head(12) %>% 
+    pull(country)
 
 countries_cbyp <- dcpo_input_raw1 %>%
-  mutate(country = if_else(stringr::str_detect(country, "United"),
-                           stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
-                           country),
-         country = stringr::str_replace(country, "South", "S.")) %>% 
-  distinct(country, year) %>%
-  count(country) %>% 
-  arrange(desc(n)) %>% 
-  head(12) %>% 
-  pull(country)
+    mutate(country = if_else(stringr::str_detect(country, "United"),
+                             stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
+                             country),
+           country = stringr::str_replace(country, "South", "S.")) %>% 
+    distinct(country, year) %>%
+    count(country) %>% 
+    arrange(desc(n)) %>% 
+    head(12) %>% 
+    pull(country)
 
 adding <- setdiff(countries_cbyp, countries_cp) %>% 
-  knitr::combine_words()
+    knitr::combine_words()
 
 dropping <- setdiff(countries_cp, countries_cbyp) %>% 
-  knitr::combine_words()
+    knitr::combine_words()
 
 y_peak_year <- dcpo_input_raw1 %>%
-  distinct(country, year) %>%
-  count(year, name = "nn") %>% 
-  filter(nn == max(nn)) %>% 
-  pull(year)
+    distinct(country, year) %>%
+    count(year, name = "nn") %>% 
+    filter(nn == max(nn)) %>% 
+    pull(year)
 
 y_peak_nn <- dcpo_input_raw1 %>%
-  distinct(country, year) %>%
-  count(year, name = "nn") %>% 
-  filter(nn == max(nn)) %>% 
-  pull(nn)
+    distinct(country, year) %>%
+    count(year, name = "nn") %>% 
+    filter(nn == max(nn)) %>% 
+    pull(nn)
 
 data_poorest <- dcpo_input_raw1 %>%
-  distinct(country, year, item) %>%
-  count(country) %>%
-  arrange(n) %>%
-  filter(n == 3) %>%
-  pull(country) %>% 
-  knitr::combine_words()
+    distinct(country, year, item) %>%
+    count(country) %>%
+    arrange(n) %>%
+    filter(n == 3) %>%
+    pull(country) %>% 
+    knitr::combine_words()
 
 wordify_numeral <- function(x) setNames(c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", " seventeen", "eighteen", "nineteen"), 1:19)[x]
 
 n_data_poorest <- {data_poorest %>%
-    str_split(",") %>% 
-    first()} %>% 
-  length() %>% 
-  wordify_numeral()
+        str_split(",") %>% 
+        first()} %>% 
+    length() %>% 
+    wordify_numeral()
 
-(countries_plot + cby_plot) / (ybc_plot)
+world_map <- map_data("world") %>% 
+    filter(!long > 180)
+
+cby_map <- world_map %>% 
+    distinct(region) %>% 
+    mutate(country = countrycode::countrycode(region,
+                                              "country.name",
+                                              "country.name")) %>% 
+    filter(!region=="Antarctica") %>% 
+    left_join(dcpo_input_raw1 %>% 
+                  count(country, year) %>% 
+                  count(country, name = "Years"),
+              by = "country") %>% 
+    mutate(Years = ifelse(is.na(Years), 0, Years)) %>% 
+    ggplot(aes(fill = Years, map_id = region)) +
+    geom_map(map = world_map,
+             color = "white",
+             linewidth = 0.06) +
+    coord_map(projection = "mollweide", 
+              ylim=c(-80, 90),
+              xlim=c(-170, 170)) +
+    theme_void() +
+    scale_fill_distiller(na.value = "gray90", 
+                         palette = "Blues",
+                         direction = 1) +
+    ggtitle("Years Observed by Country") +
+    theme(plot.title = element_text(hjust = 0.5),
+          legend.position = c(.05,.1),
+          legend.justification = c(0,0), 
+          legend.direction = "vertical") +
+    scale_y_continuous(expand=c(0,0)) +
+    scale_x_continuous(expand=c(0,0))
+
+cby_map + (countries_plot/ ybc_plot) + plot_layout(widths = c(4, 1))
 ```
 
 # Estimates
@@ -613,30 +649,30 @@ save(dcpo_input, file = here::here("data", "dcpo_input.rda"))
 
 ```{r dcpo, eval=FALSE, include=FALSE, results=FALSE}
 iter <- 1000
- 
+
 dcpo <- paste0(.libPaths(), "/DCPO/stan/dcpo.stan")[1] |> 
-  cmdstan_model()
+    cmdstan_model()
 
 dcpo_output <- dcpo$sample(
-   data = dcpo_input[1:13], 
-   max_treedepth = 14,
-   adapt_delta = 0.99,
-   step_size = 0.005,
-   seed = 324, 
-   chains = 4, 
-   parallel_chains = 4,
-   iter_warmup = iter/2,
-   iter_sampling = iter/2,
-   refresh = iter/50
- )
+    data = dcpo_input[1:13], 
+    max_treedepth = 14,
+    adapt_delta = 0.99,
+    step_size = 0.005,
+    seed = 324, 
+    chains = 4, 
+    parallel_chains = 4,
+    iter_warmup = iter/2,
+    iter_sampling = iter/2,
+    refresh = iter/50
+)
 
 results_path <- here::here(file.path("data", 
                                      iter, 
-                                  {str_replace_all(Sys.time(),
+                                     {str_replace_all(Sys.time(),
                                                       "[- :]",
-                                                   "") %>%
-                                         str_replace("\\d{2}.\\d+$",
-                                                     "")}))
+                                                      "") %>%
+                                             str_replace("\\d{2}.\\d+$",
+                                                         "")}))
 
 dir.create(results_path, 
            showWarnings = FALSE, 
@@ -650,23 +686,23 @@ dcpo_output$save_output_files(dir = results_path,
 
 ```{r dcpo_output, eval=FALSE}
 if (!exists("results_path")) {
-  latest <- "202405080606"
-  results_path <- here::here("data", "1000", latest)
-
-  # Define OSF_PAT in .Renviron: https://docs.ropensci.org/osfr/articles/auth
-  if (!file.exists(file.path(results_path, paste0("dcpo-", str_extract(latest, "\\d{12}"), "-1.csv")))) {
-    dir.create(results_path,
-               showWarnings = FALSE,
-               recursive = TRUE)
-    osf_retrieve_node("9uvdk") %>%
-      osf_ls_files() %>%
-      filter(str_detect(name, str_extract(latest, "\\d{12}"))) %>%
-      osf_download(path = here::here("data", "1000"))
-  }
-  
-  dcpo_output <- as_cmdstan_fit(here::here(results_path,
-                                           list.files(results_path,
-                                                      pattern = "csv$")))  
+    latest <- "202405080606"
+    results_path <- here::here("data", "1000", latest)
+    
+    # Define OSF_PAT in .Renviron: https://docs.ropensci.org/osfr/articles/auth
+    if (!file.exists(file.path(results_path, paste0("dcpo-", str_extract(latest, "\\d{12}"), "-1.csv")))) {
+        dir.create(results_path,
+                   showWarnings = FALSE,
+                   recursive = TRUE)
+        osf_retrieve_node("9uvdk") %>%
+            osf_ls_files() %>%
+            filter(str_detect(name, str_extract(latest, "\\d{12}"))) %>%
+            osf_download(path = here::here("data", "1000"))
+    }
+    
+    dcpo_output <- as_cmdstan_fit(here::here(results_path,
+                                             list.files(results_path,
+                                                        pattern = "csv$")))  
 }
 
 load(file = here::here("data", "dcpo_input.rda"))
@@ -688,25 +724,25 @@ save(theta_results, file = here::here("data",
 alpha_results <- summarize_dcpo_results(dcpo_input,
                                         dcpo_output = dcpo_output,
                                         pars = "alpha") %>% 
-  transmute(item = question,
-            dispersion = mean)
+    transmute(item = question,
+              dispersion = mean)
 
 beta_results <- summarize_dcpo_results(dcpo_input,
                                        dcpo_output,
                                        "beta") %>% 
-  group_by(question) %>% 
-  summarize(difficulties0 = paste0(sprintf("%.2f", round(mean, 2)),
-                                   collapse = ", ")) %>% 
-  mutate(item = question,
-         cp = if_else(str_detect(item, "threestate"),
-                      2, 
-                      as.numeric(str_extract(item, "\\d+")) - 1),
-         term = str_glue("(( ?-?[0-9].[0-9][0-9]?,?){{{cp}}})"),
-         difficulties = str_extract(difficulties0, 
-                                    term) %>%
-           str_replace(",$", "") %>% 
-           str_trim()) %>% 
-  transmute(item, difficulties)
+    group_by(question) %>% 
+    summarize(difficulties0 = paste0(sprintf("%.2f", round(mean, 2)),
+                                     collapse = ", ")) %>% 
+    mutate(item = question,
+           cp = if_else(str_detect(item, "threestate"),
+                        2, 
+                        as.numeric(str_extract(item, "\\d+")) - 1),
+           term = str_glue("(( ?-?[0-9].[0-9][0-9]?,?){{{cp}}})"),
+           difficulties = str_extract(difficulties0, 
+                                      term) %>%
+               str_replace(",$", "") %>% 
+               str_trim()) %>% 
+    transmute(item, difficulties)
 
 save(alpha_results,
      beta_results,
@@ -722,12 +758,12 @@ load(here::here("data",
                 "theta_summary.rda"))
 
 res_cy <- nrow(theta_summary) %>% 
-  scales::comma()
+    scales::comma()
 
 res_c <- theta_summary %>% 
-  pull(country) %>% 
-  unique() %>% 
-  length()
+    pull(country) %>% 
+    unique() %>% 
+    length()
 ```
 
 ```{r cs, fig.cap="PD Scores, Most Recent Available Year \\label{cs_mry}", fig.height=10, fig.width=8}
@@ -735,50 +771,50 @@ n_panes <- 2
 axis_text_size <- 10
 
 p1_data <- theta_summary %>%
-  group_by(country) %>%
-  top_n(1, year) %>%
-  ungroup() %>%
-  arrange(mean) %>%
-  transmute(country_year = paste0(country, " (", year, ")") %>% 
-              str_replace("’", "'"),
-            estimate = mean,
-            conf.high = q90,
-            conf.low = q10,
-            pane = n_panes - (ntile(mean, n_panes) - 1),
-            ranked = as.factor(ceiling(row_number())))
+    group_by(country) %>%
+    top_n(1, year) %>%
+    ungroup() %>%
+    arrange(mean) %>%
+    transmute(country_year = paste0(country, " (", year, ")") %>% 
+                  str_replace("’", "'"),
+              estimate = mean,
+              conf.high = q90,
+              conf.low = q10,
+              pane = n_panes - (ntile(mean, n_panes) - 1),
+              ranked = as.factor(ceiling(row_number())))
 
 p_theta <- ggplot(p1_data,
                   aes(x = estimate, y = ranked)) +
-  geom_segment(aes(x = conf.low, xend = conf.high,
-                   y = ranked, yend = ranked),
-               na.rm = TRUE,
-               alpha = .4) +
-  geom_point(fill = "black", shape = 21, size = .5, na.rm = TRUE) +
-  theme_bw() + theme(legend.position="none",
-                     axis.text.x  = element_text(size = axis_text_size,
-                                                 angle = 90,
-                                                 vjust = .45,
-                                                 hjust = .95),
-                     axis.text.y  = element_text(size = axis_text_size),
-                     axis.title = element_blank(),
-                     strip.background = element_blank(), 
-                     strip.text = element_blank(),
-                     panel.grid.major = element_line(size = .3),
-                     panel.grid.minor = element_line(size = .15)) +
-  scale_y_discrete(breaks = p1_data$ranked, labels=p1_data$country_year) +
-  coord_cartesian(xlim=c(0, 1)) +
-  facet_wrap(vars(pane), scales = "free", nrow = 1)
+    geom_segment(aes(x = conf.low, xend = conf.high,
+                     y = ranked, yend = ranked),
+                 na.rm = TRUE,
+                 alpha = .4) +
+    geom_point(fill = "black", shape = 21, size = .5, na.rm = TRUE) +
+    theme_bw() + theme(legend.position="none",
+                       axis.text.x  = element_text(size = axis_text_size,
+                                                   angle = 90,
+                                                   vjust = .45,
+                                                   hjust = .95),
+                       axis.text.y  = element_text(size = axis_text_size),
+                       axis.title = element_blank(),
+                       strip.background = element_blank(), 
+                       strip.text = element_blank(),
+                       panel.grid.major = element_line(size = .3),
+                       panel.grid.minor = element_line(size = .15)) +
+    scale_y_discrete(breaks = p1_data$ranked, labels=p1_data$country_year) +
+    coord_cartesian(xlim=c(0, 1)) +
+    facet_wrap(vars(pane), scales = "free", nrow = 1)
 
 
 p_theta +
-  plot_annotation(caption = "Note: Gray whiskers represent 80% credible intervals.")
+    plot_annotation(caption = "Note: Gray whiskers represent 80% credible intervals.")
 
 bottom5 <- p1_data %>% 
-  arrange(ranked) %>% 
-  slice(1:5) %>% 
-  pull(country_year) %>% 
-  str_replace(" \\(.*", "") %>% 
-  knitr::combine_words()
+    arrange(ranked) %>% 
+    slice(1:5) %>% 
+    pull(country_year) %>% 
+    str_replace(" \\(.*", "") %>% 
+    knitr::combine_words()
 
 ```
 
@@ -801,23 +837,23 @@ oecd_countries <- c("Australia", "Austria", "Belgium",
                     "United Kingdom", "United States")
 
 c_res <- theta_summary %>% 
-  filter(country %in% oecd_countries) %>%
-  mutate(country = fct_reorder(country, mean, .desc = TRUE))
+    filter(country %in% oecd_countries) %>%
+    mutate(country = fct_reorder(country, mean, .desc = TRUE))
 
 ggplot(data = c_res, aes(x = year, y = mean)) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  coord_cartesian(xlim = c(1982, 2022), ylim = c(0, 1)) +
-  labs(x = NULL, y = "Macrointerest") +
-  geom_ribbon(data = c_res, aes(ymin = q10, ymax = q90, linetype=NA), alpha = .25) +
-  geom_line(data = c_res) +
-  facet_wrap(~country, ncol = 5) +
-  theme(axis.text.x  = element_text(size=7,
-                                    angle = 90,
-                                    vjust = .45,
-                                    hjust = .95),
-        strip.background = element_rect(fill = "white", colour = "white")) +
-  plot_annotation(caption = "Note: Countries are ordered by their median macrointerest score; gray shading represents 80% credible intervals.")
+    theme_bw() +
+    theme(legend.position = "none") +
+    coord_cartesian(xlim = c(1982, 2022), ylim = c(0, 1)) +
+    labs(x = NULL, y = "Macrointerest") +
+    geom_ribbon(data = c_res, aes(ymin = q10, ymax = q90, linetype=NA), alpha = .25) +
+    geom_line(data = c_res) +
+    facet_wrap(~country, ncol = 5) +
+    theme(axis.text.x  = element_text(size=7,
+                                      angle = 90,
+                                      vjust = .45,
+                                      hjust = .95),
+          strip.background = element_rect(fill = "white", colour = "white")) +
+    plot_annotation(caption = "Note: Countries are ordered by their median macrointerest score; gray shading represents 80% credible intervals.")
 ```
 
 # Literature {.unnumbered}
@@ -887,118 +923,125 @@ load(here::here("data", "dcpo_input.rda"))
 load(here::here("data", "item_results.rda"))
 
 items_summary <- dcpo_input_raw1 %>%
-  dplyr::select(country, year, item, survey) %>%
-  separate_rows(survey, sep=",\\s+") %>% 
-  distinct() %>%
-  group_by(item) %>% 
-  mutate(survey = str_extract(survey, "^[a-z]*"),
-         all_surveys = paste0(unique(survey), collapse = ", ")) %>% 
-  ungroup() %>% 
-  distinct(country, year, item, .keep_all = TRUE) %>% 
-  group_by(item) %>% 
-  mutate(n_cy = n()) %>% 
-  ungroup() %>%
-  distinct(item, n_cy, all_surveys) %>% 
-  left_join(surveys_pd %>%
-              select(item, question_text, response_categories) %>%
-              distinct(item, .keep_all = TRUE),
-            by = "item") %>% 
-  left_join(alpha_results, by = "item") %>% 
-  left_join(beta_results, by = "item") %>% 
-  arrange(-n_cy)
+    dplyr::select(country, year, item, survey) %>%
+    separate_rows(survey, sep=",\\s+") %>% 
+    distinct() %>%
+    group_by(item) %>% 
+    mutate(survey = str_extract(survey, "^[a-z]*"),
+           all_surveys = paste0(unique(survey), collapse = ", ")) %>% 
+    ungroup() %>% 
+    distinct(country, year, item, .keep_all = TRUE) %>% 
+    group_by(item) %>% 
+    mutate(n_cy = n()) %>% 
+    ungroup() %>%
+    distinct(item, n_cy, all_surveys) %>% 
+    left_join(surveys_pd %>%
+                  select(item, question_text, response_categories) %>%
+                  distinct(item, .keep_all = TRUE),
+              by = "item") %>% 
+    left_join(alpha_results, by = "item") %>% 
+    left_join(beta_results, by = "item") %>% 
+    arrange(-n_cy)
 ```
 
 ```{r dcpo_items_table}
 items_summary %>% 
-  transmute(`Survey\nItem\nCode` = item %>%
-              str_replace_all(fixed("_"), "\\_"),
-            `Country-Years` = as.character(n_cy),
-            `Question Text` = str_replace(question_text, "([^(]*)\\(.*", "\\1"),
-            `Response Categories` = response_categories,
-            `Dispersion` = dispersion,
-            `Difficulties` = difficulties,
-            `Survey Dataset Codes*` = all_surveys) %>% 
-  modelsummary::datasummary_df(output = "kableExtra",
-                               longtable = TRUE, 
-                               title = "Survey Items Used to Estimate Public Political Discontent") %>% 
-  kableExtra::column_spec(1, width = "7em") %>%
-  kableExtra::column_spec(2, width = "4em") %>%
-  kableExtra::column_spec(3, width = "13em") %>%
-  kableExtra::column_spec(4, width = "16em") %>%
-  kableExtra::column_spec(5, width = "4em") %>%
-  kableExtra::column_spec(c(6, 7), width = "8em") %>% 
-  kableExtra::kable_styling(font_size = 7) %>%
-  kableExtra::kable_styling(latex_options = "repeat_header") %>%
-  kableExtra::kable_styling(latex_options = "striped") %>%
-  kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package (Solt, Hu, and Tai 2019).")
+    transmute(`Survey\nItem\nCode` = item %>%
+                  str_replace_all(fixed("_"), "\\_"),
+              `Country-Years` = as.character(n_cy),
+              `Question Text` = str_replace(question_text, "([^(]*)\\(.*", "\\1"),
+              `Response Categories` = response_categories,
+              `Dispersion` = dispersion,
+              `Difficulties` = difficulties,
+              `Survey Dataset Codes*` = all_surveys) %>% 
+    modelsummary::datasummary_df(output = "kableExtra",
+                                 longtable = TRUE, 
+                                 title = "Survey Items Used to Estimate Public Political Discontent") %>% 
+    kableExtra::column_spec(1, width = "7em") %>%
+    kableExtra::column_spec(2, width = "4em") %>%
+    kableExtra::column_spec(3, width = "13em") %>%
+    kableExtra::column_spec(4, width = "16em") %>%
+    kableExtra::column_spec(5, width = "4em") %>%
+    kableExtra::column_spec(c(6, 7), width = "8em") %>% 
+    kableExtra::kable_styling(font_size = 7) %>%
+    kableExtra::kable_styling(latex_options = "repeat_header") %>%
+    kableExtra::kable_styling(latex_options = "striped") %>%
+    kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package (Solt, Hu, and Tai 2019).")
 ```
 
 ```{r obs, fig.cap = "Source Data Observations by Country and Year", fig.height = 9}
 dcpo_input_plot <- dcpo_input_raw1 %>% 
-  mutate(country = str_replace(country, "’", "'")) %>% 
-  distinct(country, year, item, cc_rank) %>% 
-  group_by(country, year) %>% 
-  summarize(n = n(),
-            cc_rank = mean(cc_rank)) %>% 
-  ungroup() %>% 
-  distinct() |> 
-  mutate(continent = countrycode(country, "country.name", "continent",
-                                 warn = FALSE), 
-         continent = case_when(country %in% c("Kosovo", "Northern Ireland") ~
-                                 "Europe",
-                               continent %in% c("Asia", "Oceania") ~
-                                 "Asia-Oceania",
-                               TRUE ~ continent)) %>% 
-  group_by(continent) %>% 
-  mutate(mean_cc_rank = mean(cc_rank),
-         continent = as_factor(continent))
+    mutate(country = str_replace(country, "’", "'")) %>% 
+    distinct(country, year, item, cc_rank) %>% 
+    group_by(country, year) %>% 
+    summarize(n = n(),
+              cc_rank = mean(cc_rank)) %>% 
+    ungroup() %>% 
+    distinct() |> 
+    mutate(continent = countrycode(country, "country.name", "continent",
+                                   warn = FALSE), 
+           continent = case_when(country %in% c("Kosovo", "Northern Ireland") ~
+                                     "Europe",
+                                 continent %in% c("Asia", "Oceania") ~
+                                     "Asia-Oceania",
+                                 TRUE ~ continent)) %>% 
+    group_by(continent) %>% 
+    mutate(mean_cc_rank = mean(cc_rank),
+           continent = as_factor(continent))
 
 dcpo_input_plot %>%
-  filter(continent %in% c("Europe", "Asia-Oceania")) %>%
-  ggplot(aes(x = year, 
-             y = forcats::fct_reorder(country, cc_rank),
-             fill = n)) + 
-  geom_tile() +
-  scale_fill_stepsn(colors = rev(hcl.colors(7, "inferno")),
-                    n.breaks = 7,
-                    show.limits = TRUE,
-                    right = FALSE,
-                    name = "Observations") +
-  labs(x = NULL, y = NULL) +
-  scale_x_continuous(breaks=seq(1968, 2024, 4),
-                     sec.axis = dup_axis()) +
-  scale_y_discrete(position = "right") +
-  theme(axis.text.y  = element_text(size = 7),
-        strip.background = element_rect(fill = "white", colour = "white"),
-        strip.placement = "outside") +
-  facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
-             ncol = 1,
-             scales = "free")
+    filter(continent %in% c("Europe", "Asia-Oceania")) %>%
+    ggplot(aes(x = year, 
+               y = forcats::fct_reorder(country, cc_rank),
+               fill = n)) + 
+    geom_tile() +
+    scale_fill_steps(low = rev(hcl.colors(8, "inferno"))[1],
+                     high = rev(hcl.colors(8, "inferno"))[8],
+                     breaks =  seq(2, 16, 2),
+                     show.limits = TRUE,
+                     right = FALSE,
+                     name = "Observations") +
+    labs(x = NULL, y = NULL) +
+    scale_x_continuous(breaks=seq(1968, 2024, 4),
+                       sec.axis = dup_axis()) +
+    scale_y_discrete(position = "right") +
+    theme(axis.text.x  = element_text(size = 6),
+          axis.text.y  = element_text(size = 7),
+          strip.background = element_rect(fill = "white", colour = "white"),
+          strip.placement = "outside",
+          legend.position = c(0.13, 0.12),
+          legend.background = element_rect(fill = "white", colour = NA)) +
+    facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
+               ncol = 1,
+               scales = "free_y")
 ```
 
 ```{r obs2, fig.cap = "Source Data Observations by Country and Year, cont.", fig.height = 9}
-
 dcpo_input_plot %>%
-  filter(!continent %in% c("Europe", "Asia-Oceania")) %>%
-  ggplot(aes(x = year, 
-             y = forcats::fct_reorder(country, cc_rank),
-             fill = n)) + 
-  geom_tile() +
-  scale_fill_stepsn(colors = rev(hcl.colors(7, "inferno")),
-                    limits = c(1, 7),
-                    show.limits = TRUE,
-                    right = FALSE,
-                    name = "Observations") +
-  labs(x = NULL, y = NULL) +
-  scale_x_continuous(breaks=seq(1968, 2024, 4),
-                     sec.axis = dup_axis()) +
-  scale_y_discrete(position = "right") +
-  theme(axis.text.y  = element_text(size = 7),
-        strip.background = element_rect(fill = "white", colour = "white"),
-        strip.placement = "outside") +
-  facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
-             ncol = 1,
-             scales = "free")
+    filter(!continent %in% c("Europe", "Asia-Oceania")) %>%
+    ggplot(aes(x = year, 
+               y = forcats::fct_reorder(country, cc_rank),
+               fill = n)) + 
+    geom_tile() +
+    scale_fill_steps(low = rev(hcl.colors(8, "inferno"))[1],
+                     high = rev(hcl.colors(8, "inferno"))[8],
+                     breaks =  seq(2, 16, 2),
+                     show.limits = TRUE,
+                     right = FALSE,
+                     name = "Observations") +
+    labs(x = NULL, y = NULL) +
+    scale_x_continuous(breaks=seq(1968, 2024, 4),
+                       sec.axis = dup_axis()) +
+    scale_y_discrete(position = "right") +
+    theme(axis.text.x  = element_text(size = 6),
+          axis.text.y  = element_text(size = 7),
+          strip.background = element_rect(fill = "white", colour = "white"),
+          strip.placement = "outside",
+          legend.position = c(0.13, 0.12),
+          legend.background = element_rect(fill = "white", colour = NA)) +
+    facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
+               ncol = 1,
+               scales = "free_y")
 ```
 
 
