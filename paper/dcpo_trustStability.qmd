@@ -352,8 +352,8 @@ Intro does not need a header.
 
 ```{r dcpo_input_raw, eval=FALSE, include=FALSE}
 # set eval to TRUE to run; running time is <5 minutes
-surveys_ds <- read_csv(here::here("data-raw",
-                                  "surveys_diffuse_support.csv"),
+surveys_pd <- read_csv(here::here("data-raw",
+                                  "surveys_pd.csv"),
                        col_types = "cccc")
 
 item_groups <- c("eff",
@@ -363,7 +363,7 @@ item_groups <- c("eff",
                  "trust")
 
 items_by_group <- map(item_groups, \(g) {
-    surveys_ds %>% 
+    surveys_pd %>% 
         filter(group == g) %>% 
         pull(item) %>% 
         unique() %>% 
@@ -371,7 +371,7 @@ items_by_group <- map(item_groups, \(g) {
 }) %>% 
     set_names(item_groups)
 
-dcpo_input_raw <- DCPOtools::dcpo_setup(vars = surveys_ds,
+dcpo_input_raw <- DCPOtools::dcpo_setup(vars = surveys_pd,
                                         datapath = here::here("..",
                                                               "data", "dcpo_surveys"),
                                         file = here::here("data",
@@ -387,9 +387,9 @@ dcpo_input_raw %>%
     View("long_corr")
 ```
 
-```{r ds_summary_stats}
-surveys_ds <- read_csv(here::here("data-raw",
-                                  "surveys_diffuse_support.csv"),
+```{r pd_summary_stats}
+surveys_pd <- read_csv(here::here("data-raw",
+                                  "surveys_pd.csv"),
                         col_types = "cccc")
 
 dcpo_input_raw <- read_csv(here::here("data", "dcpo_input_raw.csv"),
@@ -397,7 +397,7 @@ dcpo_input_raw <- read_csv(here::here("data", "dcpo_input_raw.csv"),
 
 process_dcpo_input_raw <- function(dcpo_input_raw_df) {
     dcpo_input_raw_df %>% 
-        filter(year >= 1970) %>% 
+        filter(year >= 1968) %>% 
         with_min_yrs(3) %>% 
         with_min_cy(5) %>% 
         group_by(country) %>% 
@@ -408,7 +408,7 @@ process_dcpo_input_raw <- function(dcpo_input_raw_df) {
 
 dcpo_input_raw1 <- process_dcpo_input_raw(dcpo_input_raw)
 
-n_surveys <- surveys_ds %>%
+n_surveys <- surveys_pd %>%
   distinct(survey) %>% 
   nrow()
 
@@ -899,7 +899,7 @@ items_summary <- dcpo_input_raw1 %>%
   mutate(n_cy = n()) %>% 
   ungroup() %>%
   distinct(item, n_cy, all_surveys) %>% 
-  left_join(surveys_ds %>%
+  left_join(surveys_pd %>%
               select(item, question_text, response_categories) %>%
               distinct(item, .keep_all = TRUE),
             by = "item") %>% 
@@ -965,7 +965,7 @@ dcpo_input_plot %>%
                     right = FALSE,
                     name = "Observations") +
   labs(x = NULL, y = NULL) +
-  scale_x_continuous(breaks=seq(1982, 2022, 4),
+  scale_x_continuous(breaks=seq(1968, 2024, 4),
                      sec.axis = dup_axis()) +
   scale_y_discrete(position = "right") +
   theme(axis.text.y  = element_text(size = 7),
@@ -990,7 +990,7 @@ dcpo_input_plot %>%
                     right = FALSE,
                     name = "Observations") +
   labs(x = NULL, y = NULL) +
-  scale_x_continuous(breaks=seq(1982, 2022, 4),
+  scale_x_continuous(breaks=seq(1968, 2024, 4),
                      sec.axis = dup_axis()) +
   scale_y_discrete(position = "right") +
   theme(axis.text.y  = element_text(size = 7),
