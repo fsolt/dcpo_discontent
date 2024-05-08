@@ -42,7 +42,7 @@ afrob8,trust_parl4,q41b,c(0:3),,"How much do you trust each of the following, or
 allbus,care4d,pe01,c(1:4),,Politicians don't care much about what people like me think ,1 completely agree / 2 tend to agree / 3 tend to disagree / 4 completely disagree,eff
 allbus,say4,pe03,c(1:4),,"However you look at it, people like me have no influence on what the government does",1 completely agree / 2 tend to agree / 3 tend to disagree / 4 completely disagree,eff
 allbus,trust_parl7,pt03,c(1:7),,Please tell me for each institution or organisation how much trust you place in it: Bundestag,1 no trust at all / 23456 / 7 great deal of trust,trust
-amb_argentina2018,corrupt_gov4a,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
+amb_argentina2018,corrupt_officials4,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
 amb_argentina2018,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_argentina2021,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_argentina2023,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
@@ -68,7 +68,7 @@ amb_colombia2021,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [CO
 amb_colombia2023,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
 amb_colombia2023,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_combo,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
-amb_combo,corrupt_gov4a,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
+amb_combo,corrupt_officials4,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
 amb_combo,parties7,epp3,c(1:7),,To what extent do political parties listen to people like you? ,1 not at all / 23456 / 7 a lot,eff
 amb_combo,rep_gov4,epn3a,c(4:1),,How much does the Central Government represent your interests and benefits you as a citizen?,1 a lot / 2 some / 3 a little / 4 not at all,eff
 amb_combo,rep_leg4,epn3b,c(4:1),,How much do the Representatives of the Legislature represent your interests and benefit you as a citizen?,1 a lot / 2 some / 3 a little / 4 not at all,eff
@@ -80,7 +80,7 @@ amb_dominicanrepublic2021,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicia
 amb_dominicanrepublic2023,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
 amb_dominicanrepublic2023,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_ecuador2018,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
-amb_ecuador2018,corrupt_gov4a,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
+amb_ecuador2018,corrupt_officials4,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
 amb_ecuador2018,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_ecuador2021,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_ecuador2023,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
@@ -107,7 +107,7 @@ amb_mexico2023,care7,eff1,c(1:7),,Those who govern this country are interested i
 amb_mexico2023,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_nicaragua2021,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_panama2018,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
-amb_panama2018,corrupt_gov4a,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
+amb_panama2018,corrupt_officials4,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
 amb_panama2018,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_panama2021,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_panama2023,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
@@ -122,15 +122,15 @@ amb_suriname2023,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [CO
 amb_trinidad2023,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
 amb_trinidad2023,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_uruguay2018,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
-amb_uruguay2018,corrupt_gov4a,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
+amb_uruguay2018,corrupt_officials4,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
 amb_uruguay2018,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_uruguay2021,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_uruguay2023,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
 amb_uruguay2023,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_us2010,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
-amb_us2010,corrupt_gov4a,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
+amb_us2010,corrupt_officials4,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
 amb_us2018,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
-amb_us2018,corrupt_gov4a,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
+amb_us2018,corrupt_officials4,exc7,c(1:4),,"Taking into account your own experience or what you have heard, corruption among public officials is",1 very common / 2 common / 3 uncommon / 4 very uncommon,corrupt
 amb_us2018,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_us2021,corrupt_pol5,exc7new,c(5:1),,"Thinking about politicians of [COUNTRY], how many to you think are involved in corruption?",1 none / 2 less than half / 3 half of the politicians / 4 more than half / 5 all,corrupt
 amb_us2023,care7,eff1,c(1:7),,Those who govern this country are interested in what people like you think ,1 strongly disagree / 23456 / 7 strongly agree,eff
@@ -180,29 +180,29 @@ asiab2008,right4e,q31f,c(4:1),,Please indicate to what extent you trust the foll
 asiab2008,say5c,q36c,c(1:5),,"Generally speaking, people like me don’t have the power to influence government policy or actions",1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 asiab2008,touch5a,q36f,c(1:5),,"Generally speaking, the people who are elected to the [NATIONAL PARLIAMENT] stop thinking about the public once they’re elected",1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 asianb1,big4c,q128,c(1:4),,The nation is run by a powerful few and ordinary citizens cannot do much about it,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
-asianb1,corrupt_gov4b,q115,c(1:4),,How widespread corruption in national government,1 almost everyone is corrupt / 2 most officials are corrupt / 3 not a lot of officials are corrupt / 4 hardly anyone is involved,corrupt
+asianb1,corrupt_gov4a,q115,c(1:4),,How widespread corruption in national government,1 almost everyone is corrupt / 2 most officials are corrupt / 3 not a lot of officials are corrupt / 4 hardly anyone is involved,corrupt
 asianb1,right4,q131,c(4:1),,You can generally trust the people who run our government to do what is right.,1 Strongly agree / 4 Strongly disagree,trust_eff
 asianb1,say4,q129,c(1:4),,People like me don't have any influence over what the government does,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
 asianb1,trust_parl4,q010,c(1:4),,How much trust do you have in Parliament?,1 none at all / 2 not very much trust / 3 quite a lot of trust / 4 a great deal of trust,trust
 asianb1,trust_parties4,q009,c(1:4),,How much trust do you have in political parties?,1 none at all / 2 not very much trust / 3 quite a lot of trust / 4 a great deal of trust,trust
-asianb2,corrupt_gov4b,q118,c(1:4),,How widespread corruption in national government,1 almost everyone is corrupt / 2 most officials are corrupt / 3 not a lot of officials are corrupt / 4 hardly anyone is involved,corrupt
+asianb2,corrupt_gov4a,q118,c(1:4),,How widespread corruption in national government,1 almost everyone is corrupt / 2 most officials are corrupt / 3 not a lot of officials are corrupt / 4 hardly anyone is involved,corrupt
 asianb2,resp_gov4,q116,c(4:1),c(7:9),How well do you think the government responds to what people want?,1 very responsive / 2 somewhat responsive / 3 not very responsive / 4 not responsive,eff
 asianb2,right4,q130,c(4:1),,You can generally trust the people who run our government to do what is right.,1 Strongly agree / 4 Strongly disagree,trust_eff
 asianb2,trust_parl4,q10,c(1:4),,How much trust do you have in Parliament?,1 none at all / 2 not very much trust / 3 quite a lot of trust / 4 a great deal of trust,trust
 asianb2,trust_parties4,q9,c(1:4),,How much trust do you have in political parties?,1 none at all / 2 not very much trust / 3 quite a lot of trust / 4 a great deal of trust,trust
-asianb3,corrupt_gov4b,q117,c(1:4),,How widespread corruption in national government,1 almost everyone is corrupt / 2 most officials are corrupt / 3 not a lot of officials are corrupt / 4 hardly anyone is involved,corrupt
+asianb3,corrupt_gov4a,q117,c(1:4),,How widespread corruption in national government,1 almost everyone is corrupt / 2 most officials are corrupt / 3 not a lot of officials are corrupt / 4 hardly anyone is involved,corrupt
 asianb3,resp_gov4,q113,c(4:1),"c(-1, 7:9)",How well do you think the government responds to what people want?,1 very responsive / 2 somewhat responsive / 3 not very responsive / 4 not responsive,eff
 asianb3,right4,q136,c(4:1),,You can generally trust the people who run our government to do what is right.,1 Strongly agree / 4 Strongly disagree,trust_eff
 asianb3,say4,q135,c(1:4),,People like me don't have any influence over what the government does,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
 asianb3,trust_parl4,q10,c(1:4),,How much trust do you have in Parliament?,1 none at all / 2 not very much trust / 3 quite a lot of trust / 4 a great deal of trust,trust
 asianb3,trust_parties4,q9,c(1:4),,How much trust do you have in political parties?,1 none at all / 2 not very much trust / 3 quite a lot of trust / 4 a great deal of trust,trust
-asianb4,corrupt_gov4b,q118,c(1:4),,How widespread corruption in national government,1 almost everyone is corrupt / 2 most officials are corrupt / 3 not a lot of officials are corrupt / 4 hardly anyone is involved,corrupt
+asianb4,corrupt_gov4a,q118,c(1:4),,How widespread corruption in national government,1 almost everyone is corrupt / 2 most officials are corrupt / 3 not a lot of officials are corrupt / 4 hardly anyone is involved,corrupt
 asianb4,resp_gov4,q115,c(4:1),"c(-1, 7:9)",How well do you think the government responds to what people want?,1 very responsive / 2 somewhat responsive / 3 not very responsive / 4 not responsive,eff
 asianb4,right4,q137,c(4:1),,You can generally trust the people who run our government to do what is right.,1 Strongly agree / 4 Strongly disagree,trust_eff
 asianb4,say4,q136,c(1:4),,People like me don't have any influence over what the government does,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
 asianb4,trust_parl4,q10,c(1:4),,How much trust do you have in Parliament?,1 none at all / 2 not very much trust / 3 quite a lot of trust / 4 a great deal of trust,trust
 asianb4,trust_parties4,q9,c(1:4),,How much trust do you have in political parties?,1 none at all / 2 not very much trust / 3 quite a lot of trust / 4 a great deal of trust,trust
-asianb5_australia,corrupt_gov4b,q118,c(1:4),,How widespread corruption in national government,1 almost everyone is corrupt / 2 most officials are corrupt / 3 not a lot of officials are corrupt / 4 hardly anyone is involved,corrupt
+asianb5_australia,corrupt_gov4a,q118,c(1:4),,How widespread corruption in national government,1 almost everyone is corrupt / 2 most officials are corrupt / 3 not a lot of officials are corrupt / 4 hardly anyone is involved,corrupt
 asianb5_australia,resp_gov4,q115,c(4:1),-1,How well do you think the government responds to what people want?,1 very responsive / 2 somewhat responsive / 3 not very responsive / 4 not responsive,eff
 asianb5_australia,right4,q137,c(4:1),,You can generally trust the people who run our government to do what is right.,1 Strongly agree / 4 Strongly disagree,trust_eff
 asianb5_australia,say4,q136,c(1:4),,People like me don't have any influence over what the government does,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
@@ -578,8 +578,7 @@ ess9_ro,trust_pol11,trstplt,c(0:10),,"Using this card, please tell me on a score
 eurasiab2001,say4d,q040a4,c(4:1),,I can have influence on the national government,1 agree / 2 quite agree / 3 rather disagree / 4 disagree,eff
 eurasiab2010,say4d,v137_4,c(4:1),,I can have influence on the national government,1 agree / 2 quite agree / 3 rather disagree / 4 disagree,eff
 evs_combo,big2,e128,c(1:2),,"Generally speaking, would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?",1 run by a few big interests / 2 run for all the people,eff
-evs_combo,corrupt_gov4b,e196,c(4:1),,How widespread do you think bribe taking and corruption is in this country?,1 almost no public officials engaged in it / 2 a few are / 3 most are / 4 almost all public officials are engaged in it,corrupt
-evs_combo,satis_gov4,e125,c(4:1),,How satisfied are you with the way the people now in national office are handling the country's affairs? ,1 very satisfied / 2 fairly satisfied / 3 fairly dissatisfied / 4 very dissatisfied,sat
+evs_combo,corrupt_officials4a,e196,c(4:1),,How widespread do you think bribe taking and corruption is in this country?,1 almost no public officials engaged in it / 2 a few are / 3 most are / 4 almost all public officials are engaged in it,corrupt
 feb450,care4c,q7_4,c(4:1),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
 fnes1995,care4a,q28,c(4:1),,In your opinion are politicians concerned with what people like yourself think?,1 a lot / 2 some / 3 a little / 4 not at all,eff
 fsdelection_combo,care4,fnes170,c(1:4),5,Politicians are not interested in the opinions of ordinary people,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
@@ -711,12 +710,12 @@ lb2005,care4f,p35st,c(4:1),,Do you think that the political leaders are concerne
 lb2005,rigged2,p51st,c(2:1),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
 lb2005,right4,p40std,c(4:1),,You can generally trust the people who run our government to do what is right,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,trust_eff
 lb2006,big2,p20stm,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
-lb2006,parties4,p34n_b,c(4:1),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
+lb2006,sat_parties4,p34n_b,c(4:1),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
 lb2006,rigged2,p39st,c(2:1),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
 lb2007,big2,p16st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
-lb2007,parties4,p30st_b,c(4:1),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
+lb2007,sat_parties4,p30st_b,c(4:1),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
 lb2008,big2,p25st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
-lb2008,parties4,p62st_b,c(4:1),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
+lb2008,sat_parties4,p62st_b,c(4:1),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
 lb2008,right4,p57st_a,c(4:1),,You can generally trust the people who run our government to do what is right,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,trust_eff
 lb2009,big2,p22st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2009,rigged2,p39st,c(2:1),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
@@ -724,7 +723,7 @@ lb2010,big2,p17st,c(1:2),,"In general, would you say that the country is governe
 lb2011,big2,p19st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2013,big2,p14st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2015,big2,p14st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
-lb2015,parties4,p49st_b,c(4:1),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
+lb2015,sat_parties4,p49st_b,c(4:1),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
 lb2016,big2,p10st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2016,cred2,p35stm,c(1:2),,Some people say politics and politicians have lost credibility and it seems like they cannot recover it. Other people say that politics depends on the people that are in charge and each one has the opportunity to recover that credibility,1 politics and politicians have lost credibility and it seems like they cannot recover it 2 politics depends on the people that are in charge and each one has the opportunity to recover that credibility,eff
 lb2017,big2,p10st,c(1:2),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
@@ -828,7 +827,6 @@ som_combo,trust_parties5,aa10q,c(5:1),c(97:99),How much confidence do you have i
 som_combo,trust_pol4,ab12,c(4:1),c(97:99),"In general, how much trust do you have in Swedish politicians?",1 very high trust / 2 quite high trust / 3 quite low trust / 4 very low trust,trust
 som_combo,trust_mp4,ab13a,c(4:1),c(97:99),"In general, how much confidence do you have in the way the following groups do their job? - Parliamentarians",1 very high trust / 2 quite high trust / 3 quite low trust / 4 very low trust,trust
 som_combo,corrupt_pol7,ab100a,c(1:7),"c(8,97:99)","n your opinion, to what extent are the following occupational groups in Sweden involved in some kind of corruption? - Politicians",1 not at all / 23456 / 7 to a very great extent,corrupt
-som_combo,satis_gov5,ca200a,c(5:1),c(98:99),How well do you think the government is doing its job?,1 very good / 2 rather good / 3 neither good nor bad / 4 rather bad / 5 very bad,sat
 usgss,right5,govdook,c(5:1),,Most of the time we can trust people in government to do what is right ,1 Strongly agree / 5 Strongly disagree,trust_eff
 uspew_valcombo,care4a,q2c,c(4:1),,Most elected officials care what people like me think ,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew_valcombo,say4,q2a,c(1:4),,People like me don’t have any say about what the government does ,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
@@ -848,5 +846,5 @@ uspew2011_09wk,say4f,pew5d,c(4:1),,Voting gives people like me some say about ho
 uspew2011_09wk,touch4,pew5b,c(1:4),,"Generally speaking, elected officials in Washington lose touch with the people pretty quickly ",1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 wvs_combo,big2,e128,c(1:2),c(-2:-1),"Generally speaking, would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?",1 run by a few big interests / 2 run for all the people,eff
 wvs_combo,corrupt_gov4b,e196,c(4:1),c(-2:-1),How widespread do you think bribe taking and corruption is in this country?,1 almost no public officials engaged in it / 2 a few are / 3 most are / 4 almost all public officials are engaged in it,corrupt
-wvs_combo,satis_gov4,e125,c(4:1),c(-2:-1),How satisfied are you with the way the people now in national office are handling the country's affairs? ,1 very satisfied / 2 fairly satisfied / 3 fairly dissatisfied / 4 very dissatisfied,sat
+wvs_combo,sat_officials4,e125,c(4:1),c(-2:-1),How satisfied are you with the way the people now in national office are handling the country's affairs? ,1 very satisfied / 2 fairly satisfied / 3 fairly dissatisfied / 4 very dissatisfied,sat
 wvs_combo,say5a,e291,c(5:1),c(-2:-1),How much would you say the political system in your country allows people like you to have a say in what the government does?,1 a great deal / 2 a lot / 3 some / 3 a little / 4 not at all,eff
