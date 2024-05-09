@@ -138,7 +138,6 @@ conflicted::conflicts_prefer(dplyr::filter,
                              DCPOtools::extract_dcpo_results)
 ```
 
-
 ```{r define_funs}
 # define functions
 validation_plot <- function(v_data_raw,
@@ -400,7 +399,7 @@ dcpo_input_raw <- read_csv(here::here("data", "dcpo_input_raw.csv"),
 
 process_dcpo_input_raw <- function(dcpo_input_raw_df) {
     dcpo_input_raw_df %>% 
-        filter(year >= 1968) %>% 
+        filter(year >= 1968 & !country == "Northern Cyprus") %>% 
         with_min_yrs(3) %>% 
         with_min_cy(5) %>% 
         group_by(country) %>% 
@@ -638,7 +637,7 @@ cby_map <- world_map %>%
 cby_map + (countries_plot/ ybc_plot) + plot_layout(widths = c(4, 1))
 ```
 
-# Estimates
+# Estimates {.unlisted .unnumbered}
 
 ```{r dcpo_input, eval=FALSE, include=FALSE, results=FALSE}
 dcpo_input <- DCPOtools::format_dcpo(dcpo_input_raw1,
@@ -686,7 +685,7 @@ dcpo_output$save_output_files(dir = results_path,
 
 ```{r dcpo_output, eval=FALSE}
 if (!exists("results_path")) {
-    latest <- "202405080606"
+    latest <- "202405090425"
     results_path <- here::here("data", "1000", latest)
     
     # Define OSF_PAT in .Renviron: https://docs.ropensci.org/osfr/articles/auth
@@ -694,7 +693,7 @@ if (!exists("results_path")) {
         dir.create(results_path,
                    showWarnings = FALSE,
                    recursive = TRUE)
-        osf_retrieve_node("9uvdk") %>%
+        osf_retrieve_node("hdsfr") %>%
             osf_ls_files() %>%
             filter(str_detect(name, str_extract(latest, "\\d{12}"))) %>%
             osf_download(path = here::here("data", "1000"))
@@ -818,7 +817,7 @@ bottom5 <- p1_data %>%
 
 ```
 
-```{r ts, fig.cap="Macrointerest Scores Over Time Within OECD Democracies \\label{ts}", fig.height=9}
+```{r ts, fig.cap="Political Discontent Scores Over Time Within OECD Democracies \\label{ts}", fig.height=9}
 
 load(here::here("data", "theta_summary.rda"))
 
@@ -838,13 +837,16 @@ oecd_countries <- c("Australia", "Austria", "Belgium",
 
 c_res <- theta_summary %>% 
     filter(country %in% oecd_countries) %>%
-    mutate(country = fct_reorder(country, mean, .desc = TRUE))
+    group_by(country) %>% 
+    mutate(last_mean = last(mean)) %>% 
+    ungroup() %>% 
+    mutate(country = fct_reorder(country, last_mean, .desc = TRUE))
 
 ggplot(data = c_res, aes(x = year, y = mean)) +
     theme_bw() +
     theme(legend.position = "none") +
-    coord_cartesian(xlim = c(1982, 2022), ylim = c(0, 1)) +
-    labs(x = NULL, y = "Macrointerest") +
+    coord_cartesian(xlim = c(1968, 2024), ylim = c(0, 1)) +
+    labs(x = NULL, y = "Political Discontent") +
     geom_ribbon(data = c_res, aes(ymin = q10, ymax = q90, linetype=NA), alpha = .25) +
     geom_line(data = c_res) +
     facet_wrap(~country, ncol = 5) +
@@ -853,16 +855,16 @@ ggplot(data = c_res, aes(x = year, y = mean)) +
                                       vjust = .45,
                                       hjust = .95),
           strip.background = element_rect(fill = "white", colour = "white")) +
-    plot_annotation(caption = "Note: Countries are ordered by their median macrointerest score; gray shading represents 80% credible intervals.")
+    plot_annotation(caption = "Note: Countries are ordered by their most recent political discontent score; gray shading represents 80% credible intervals.")
 ```
 
-# Literature {.unnumbered}
+# Literature {.unlisted .unnumbered}
 
 A test of citation [@Claassen2019;@HuEtAl2022a].
 
-# Theory {.unnumbered}
+# Theory {.unlisted .unnumbered}
 
-# Research Design and Results {.unnumbered}
+# Research Design and Results {.unlisted .unnumbered}
 
 ```{r data}
 # load(here("data", "correct_cls_ajps.rda")) # https://osf.io/52u7n/download
@@ -875,9 +877,9 @@ See the descriptive statistics in @sec-app-descriptive.
 
 See the full, numeric results in @sec-app-numeric.
 
-# Summary and Discussion {.unnumbered}
+# Summary and Discussion {.unlisted .unnumbered}
 
-# Reference {.unnumbered}
+# Reference {.unlisted .unnumbered}
 
 ::: {#refs-main}
 :::
@@ -893,10 +895,13 @@ See the full, numeric results in @sec-app-numeric.
 ```{=tex}
 \pagenumbering{arabic}
 \renewcommand*{\thepage}{A\arabic{page}}
-```
-```{=tex}
-\setcounter{figure}{0}
+\setcounter{page}{1}
 \renewcommand*{\thefigure}{A\arabic{figure}}
+\setcounter{figure}{0}
+\renewcommand{\thetable}{A.\arabic{table}}
+\setcounter{table}{0}
+\renewcommand*{\thesection}{A\arabic{section}}
+\setcounter{section}{0}
 ```
 ```{=tex}
 \vspace{-.5in}
@@ -910,12 +915,6 @@ Online Supplementary Materials
 \newpage
 ```
 
-\setcounter{page}{1}
-\renewcommand{\thepage}{A\arabic{page}}
-\setcounter{figure}{0}
-\renewcommand{\thefigure}{A.\arabic{figure}}
-\setcounter{table}{0}
-\renewcommand{\thetable}{A.\arabic{table}}
 
 \noindent Table A1: Indicators Used in the Support for Political Dissatisfaction Latent Variable Model
 ```{r dcpo_items}
@@ -1045,7 +1044,7 @@ dcpo_input_plot %>%
 ```
 
 
-# Technical Details of DCPO 
+# Technical Details of DCPO {.unnumbered}
 
 Another test of citation [@Rubin1987;@Claassen2020].
 
