@@ -138,12 +138,12 @@ amb_us2023,corrupt_pol5,exc7new,c(1:5),,"Thinking about politicians of [COUNTRY]
 anes_combo,big2,vcf0605,c(2:1),9,"Would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?",1 run by a few big interests / 2 run for all the people,eff
 anes_combo,care2,"if_else(vcf0004 < 1988, vcf0609, NA)",c(2:1),9,I don't think public officials care much what people like me think,1 agree / 2 disagree,eff
 anes_combo,care3,"if_else(vcf0004 < 1988, NA, vcf0609)","c(2,3,1)",9,Public officials don't care much what people like me think,1 agree / 2 disagree / 3 neither agree nor disagree,eff
+anes_combo,corrupt_gov3,vcf0608,c(3:1),9,"Do you think that quite a few of the people running the government are crooked, not very many are, or do you think  hardly any of them are crooked?",1 quite a few / 2 not many / 3 hardly any,corrupt
+anes_combo,right4,vcf0604,c(4:1),9,How much of the time do you think you can trust the government in  Washington to do what is right?,1 none of the time / 2 some of the time / 3 most of the time / 4 just about always,eff
 anes_combo,say2,"if_else(vcf0004 < 1988, vcf0613, NA)",c(2:1),9,People like me don't have any say about what the government does,1 agree / 2 disagree,eff
 anes_combo,say3,"if_else(vcf0004 < 1988, NA, vcf0613)","c(2,3,1)",9,People like me don't have any say about what the government does,1 agree / 2 disagree / 3 neither agree nor disagree,eff
 anes_combo,touch2,vcf0610,c(2:1),9,Generally speaking those we elect to Congress in Washington lose touch with people pretty quickly,1 agree / 2 disagree,eff
 anes_combo,vote2,vcf0611,c(2:1),9,"Parties are only interested in people's votes, not in their opinions",1 agree / 2 disagree,eff
-anes_combo,right4,vcf0604,c(4:1),9,How much of the time do you think you can trust the government in  Washington to do what is right?,1 none of the time / 2 some of the time / 3 most of the time / 4 just about always,eff
-anes_combo,corrupt_gov3,vcf0608,c(3:1),9,"Do you think that quite a few of the people running the government are crooked, not very many are, or do you think  hardly any of them are crooked?",1 quite a few / 2 not many / 3 hardly any,corrupt
 anpas1979,right2a,trusgv79,"c(1,5)",,"In general, do you feel that the people in government are too often interested in looking after themselves, or do you feel that they can be trusted to do the right thing nearly all the time?",1 Do right thing / 5 Look after self,trust_eff
 arabb1,care4b,q5073,c(1:4),,Government officials seriously consider citizens' opinions,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 arabb2,care4b,q2183,c(1:4),,Government officials seriously consider citizens' opinions,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
@@ -376,159 +376,159 @@ cnes2000,care4d,cpsb10d,"c(7,5,3,1)",,I don't think the government cares much wh
 cnes2000,say4,mbsc12,c(4:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 cses1,care5d,a3013,c(1:5),,Some people say that political parties in [country] care what ordinary people think.  Others say that political parties in [country] don't care what ordinary people think.  Where would you place yourself?,1 political parties care what ordinary people think / 234 / 5 political parties don't care what ordinary people think,eff
 dkes1981,care5e,v301,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes1984,care5e,v227,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes1990,care5e,v209,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes1994,care5e,v300,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes1998,care5e,v146,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes2001,care5e,v155,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes2005,care5e,v230,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes2007,care5e,v266,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes2011,care5e,v199,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 dkes1981,right5a,v300,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes1984,care5e,v227,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 dkes1984,right5a,v226,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
 dkes1987,right5a,v58,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes1990,care5e,v209,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 dkes1990,right5a,v210,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes1994,care5e,v300,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 dkes1994,right5a,v301,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
-dkes1998,right5a,v147,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
-dkes2001,right5a,v157,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
-dkes2005,right5a,v231,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
-dkes2007,right5a,v267,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
-dkes2011,right5a,v200,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
 dkes1994,trust_pol5,v310,c(1:5),8,Danish politicians in general are trustworthy,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust
+dkes1998,care5e,v146,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes1998,right5a,v147,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
 dkes1998,trust_pol5,v162,c(1:5),8,Danish politicians in general are trustworthy,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust
+dkes2001,care5e,v155,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2001,right5a,v157,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
 dkes2001,trust_pol4,v171,c(1:4),8,How much trust do you have in Danish politicians in general,1 great trust / 2 trust / 3 little trust / 4 hardly any trust,trust
+dkes2005,care5e,v230,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2005,right5a,v231,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
 dkes2005,trust_pol4,v243,c(1:4),8,How much trust do you have in Danish politicians in general,1 great trust / 2 trust / 3 little trust / 4 hardly any trust,trust
 dkes2005,trust_pol4,v243,c(1:4),8,How much trust do you have in Danish politicians in general,1 great trust / 2 trust / 3 little trust / 4 hardly any trust,trust
+dkes2007,care5e,v266,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2007,right5a,v267,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
 dkes2007,trust_pol4,v275,c(1:4),8,How much trust do you have in Danish politicians in general,1 a large amount of trust / 2 a fair amount of trust / 3 a rather small amount of trust / 4 very little trust,trust
+dkes2011,care5e,v199,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2011,right5a,v200,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
 dkes2011,trust_pol4,v206,c(1:4),8,How much trust do you have in Danish politicians in general,1 a large amount of trust / 2 a fair amount of trust / 3 a rather small amount of trust / 4 very little trust,trust
 eass2012,say7,v65,c(7:1),8,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 somewhat agree / 4 neither agree nor disagree / 5 somewhat disagree / 6 disagree / 7 strongly disagree,eff
 eb24,right4,v24,c(1:4),,How much do you trust the government to do what is right?,1 just about always / 2 most of the time / 3 only some of the time / 4 almost never,trust_eff
 eb26,care2a,v63,c(2:1),,Do you ever feel that the people running the country don't really care what happens to people like you,1 yes / 2 no,eff
 eb30,care2a,v59,c(2:1),,Do you ever feel that the people who run the country are not really concerned with what happens to you,1 yes / 2 no,eff
 eb471,right2,v256,c(2:1),,TheÂ peopleÂ whoÂ runÂ theÂ countryÂ are more concerned with themselves than with the good of theÂ country,1 tend to agree / 2 tend to disagree,trust_eff
-eb48,trust_parties2,v54,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb48,trust_parl2,v58,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb51,trust_parties2,v52,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb48,trust_parties2,v54,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb51,trust_parl2,v56,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb541,trust_parties2,v319,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb51,trust_parties2,v52,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb541,trust_parl2,v320,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb551,trust_parties2,v82,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb541,trust_parties2,v319,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb551,trust_parl2,v86,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb562,trust_parties2,v184,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb551,trust_parties2,v82,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb562,trust_parl2,v188,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb571,trust_parties2,v61,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb562,trust_parties2,v184,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb571,trust_parl2,v65,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb591,trust_parties2,v60,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb571,trust_parties2,v61,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb591,trust_parl2,v63,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb601,trust_parties2,v52,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb591,trust_parties2,v60,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb601,trust_parl2,v55,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb61,trust_parties2,v53,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb601,trust_parties2,v52,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb61,trust_parl2,v56,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb62,trust_parties2,v91,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb61,trust_parties2,v53,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb62,trust_parl2,v94,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb62,trust_parties2,v91,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb631,say4e,v320,c(4:1),,People like me have too little influence in what the Government does,1 strongly agree / 2 tend to agree / 3 tend to disagree / 4 strongly disagree,eff
-eb634,trust_parties2,v78,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb634,trust_parl2,v80,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb642,trust_parties2,v91,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb634,trust_parties2,v78,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb642,trust_parl2,v94,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb642,trust_parties2,v91,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb643,corrupt_pol2,v772,c(0:1),,"Do you think that the giving and taking ofÂ bribes, and the abuse of positions of power for personal gain, are widespread amongÂ any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
 eb643,corrupt4,v766,c(4:1),,There is corruption in national institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
-eb652,trust_parties2,v88,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb652,trust_parl2,v90,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb661,trust_parties2,v92,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb652,trust_parties2,v88,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb661,trust_parl2,v94,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb663,trust_parties2,v167,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb661,trust_parties2,v92,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb663,trust_parl2,v166,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb681,trust_parties2,v149,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb663,trust_parties2,v167,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb681,trust_parl2,v151,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb681,trust_parties2,v149,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb682,corrupt_pol2,v133,c(0:1),,"Do you think that the giving and taking ofÂ bribes, and the abuse of positions of power for personal gain, are widespread amongÂ any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
 eb682,corrupt4,v127,c(4:1),,There is corruption in national institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
-eb692,trust_parties2,v212,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb692,trust_parl2,v214,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb701,trust_parties2,v227,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb692,trust_parties2,v212,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb701,trust_parl2,v229,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb713,trust_parties2,v216,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb701,trust_parties2,v227,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb713,trust_parl2,v218,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb713,trust_parties2,v216,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb722,corrupt_pol2,v146,c(0:1),,"Do you think that the giving and taking ofÂ bribes, and the abuse of positions of power for personal gain, are widespread amongÂ any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
 eb722,corrupt4,v140,c(4:1),,There is corruption in national institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
-eb724,trust_parties2,v213,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb724,trust_parl2,v215,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb734,trust_parties2,v270,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb724,trust_parties2,v213,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb734,trust_parl2,v272,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb742,trust_parties2,v299,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb734,trust_parties2,v270,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb742,trust_parl2,v301,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb742,trust_parties2,v299,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb761,corrupt_pol2,qc4_4,c(0:1),,"Do you think that the giving and taking ofÂ bribes, and the abuse of positions of power for personal gain, are widespread amongÂ any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
 eb761,corrupt4,qc1_4,c(4:1),,There is corruption in national institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
-eb763,trust_parties2,qa10_5,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb763,trust_parl2,qa10_7,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb773,trust_parties2,qa13_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb763,trust_parties2,qa10_5,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb773,trust_parl2,qa13_3,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb781,trust_parties2,qa11_5,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb773,trust_parties2,qa13_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb781,trust_parl2,qa11_7,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb781,trust_parties2,qa11_5,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb791,corrupt_party2,qb7_7,c(0:1),,"Do you think that the giving and taking ofÂ bribes, and the abuse of positions of power for personal gain, are widespread amongÂ any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
 eb791,corrupt4,qb15_2,c(4:1),,There is corruption in national public institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb791,corrupt4a,qb5,c(4:1),,How widespread do you think the problem ofÂ corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
-eb793,trust_parties2,qa12_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb793,trust_parl2,qa12_3,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb801,trust_parties2,qa10_5,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb793,trust_parties2,qa12_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb801,trust_parl2,qa10_7,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb812,trust_parties2,qa7_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb801,trust_parties2,qa10_5,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb812,trust_parl2,qa7_3,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb814,trust_parties2,qa9_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb812,trust_parties2,qa7_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb814,trust_parl2,qa9_3,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb823,trust_parties2,qa8a_9,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb814,trust_parties2,qa9_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb823,trust_parl2,qa8a_12,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb833,trust_parties2,qa8a_4,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb823,trust_parties2,qa8a_9,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb833,trust_parl2,qa8a_7,c(1:2),,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb843,trust_parties2,qa8a_6,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb833,trust_parties2,qa8a_4,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb843,trust_parl2,qa8a_9,c(1:2),,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb852,trust_parties2,qa8a_5,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb843,trust_parties2,qa8a_6,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb852,trust_parl2,qa8a_8,c(1:2),,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb852,trust_parties2,qa8a_5,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb861,care4c,qb11_5,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
-eb862,trust_parties2,qa8a_10,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb862,trust_parl2,qa8a_13,c(1:2),,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb873,trust_parties2,qa8a_5,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb862,trust_parties2,qa8a_10,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb873,trust_parl2,qa8a_8,c(1:2),,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb873,trust_parties2,qa8a_5,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb881,care4c,qc8_5,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
 eb882,corrupt_party2,qb7_7,c(0:1),,"Do you think that the giving and taking ofÂ bribes, and the abuse of positions of power for personal gain, are widespread amongÂ any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
 eb882,corrupt4,qb15_2,c(4:1),,There is corruption in national public institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb882,corrupt4a,qb5,c(4:1),,How widespread do you think the problem ofÂ corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
-eb883,trust_parties2,qa8a_6,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb883,trust_parl2,qa8a_13,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb891,trust_parties2,qa8a_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb883,trust_parties2,qa8a_6,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb891,trust_parl2,qa8a_9,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb891,trust_parties2,qa8a_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb902,care4c,qc7_5,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
-eb903,trust_parties2,qa8a_6,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb903,trust_parl2,qa8a_13,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb903,trust_parties2,qa8a_6,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb912,care4c,qa8_5,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
-eb912,trust_parties2,qa3_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb912,trust_parl2,qa3_5,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb915,trust_parties2,qa6a_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb912,trust_parties2,qa3_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb915,trust_parl2,qa6a_9,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb923,trust_parties2,qa6a_6,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb915,trust_parties2,qa6a_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb923,trust_parl2,qa6a_13,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb923,trust_parties2,qa6a_6,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb924,corrupt_party2,qb7_7,c(0:1),,"Do you think that the giving and taking ofÂ bribes, and the abuse of positions of power for personal gain, are widespread amongÂ any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
 eb924,corrupt4,qb15_2,c(4:1),,There is corruption in national public institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb924,corrupt4a,qb5,c(4:1),,How widespread do you think the problem ofÂ corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
-eb931,trust_parties2,qa6a_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb931,trust_parl2,qa6a_10,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb931,trust_parties2,qa6a_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb941,care4c,qa15_5,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
-eb943,trust_parties2,qa6b_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb943,trust_parl2,qa6b_9,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb953,trust_parties2,qa6a_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb943,trust_parties2,qa6b_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb953,trust_parl2,qa6a_9,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb953,trust_parties2,qa6a_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb961,care4c,qa19_5,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
-eb963,trust_parties2,qa6b_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb963,trust_parl2,qa6b_9,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb963,trust_parties2,qa6b_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb972,corrupt_party2,qa7_7,c(0:1),,"Do you think that the giving and taking ofÂ bribes, and the abuse of positions of power for personal gain, are widespread amongÂ any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
 eb972,corrupt4,qa15_2,c(4:1),,There is corruption in national public institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb972,corrupt4a,qa5,c(4:1),,How widespread do you think the problem ofÂ corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
-eb975,trust_parties2,qa6a_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb975,trust_parl2,qa6a_9,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb982,trust_parties2,qa6_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb975,trust_parties2,qa6a_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb982,trust_parl2,qa6_10,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
-eb994,trust_parties2,qa6_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
+eb982,trust_parties2,qa6_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb994,trust_parl2,qa6_10,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
+eb994,trust_parties2,qa6_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 ess1,trust_parl11,trstprl,c(10:0),,"Using this card, please tell me on a score of 0-10 how much you personally trust each of the institutions I read out. 0 means you do not trust an institution at all, and 10 means you have complete trust. [Country's] parliament?",0 no trust / 123456789 / 10 complete trust,trust
 ess1,trust_pol11,trstplt,c(10:0),,"Using this card, please tell me on a score of 0-10 how much you personally trust each of the institutions I read out. 0 means you do not trust an institution at all, and 10 means you have complete trust. Politicians?",0 no trust / 123456789 / 10 complete trust,trust
 ess10,say5a,psppsgva,c(5:1),,And how much would you say that the political system in [country] allows people like you to have a say in what the government does?,1 not at all / 2 very little / 3 some / 4 a lot / 5 a great deal,eff
@@ -595,43 +595,43 @@ eurasiab2010,say4d,v137_4,c(1:4),,I can have influence on the national governmen
 evs_combo,big2,e128,c(2:1),,"Generally speaking, would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?",1 run by a few big interests / 2 run for all the people,eff
 evs_combo,corrupt_officials4a,e196,c(1:4),,How widespread do you think bribe taking and corruption is in this country?,1 almost no public officials engaged in it / 2 a few are / 3 most are / 4 almost all public officials are engaged in it,corrupt
 feb450,care4c,q7_4,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
-formpubop1999,trust_pol5,v69,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop1999,trust_pol5,v178,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop2000,trust_pol5,v293,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop2000,trust_pol5,v403,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop2000,trust_pol5,v514,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop2001,trust_pol5,v621,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop2001,trust_pol5,v733,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop2001,trust_pol5,v846,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop2002,trust_pol5,v960,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop2002,trust_pol5,v1070,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop2002,trust_pol5,v1183,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
-formpubop2003,trust_pol5,v1282,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+fnes1995,care4a,q28,c(1:4),,In your opinion are politicians concerned with what people like yourself think?,1 a lot / 2 some / 3 a little / 4 not at all,eff
 formpubop1999,say4h,v47,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 formpubop1999,say4h,v156,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop1999,trust_pol5,v69,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop1999,trust_pol5,v178,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
 formpubop2000,say4h,v271,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 formpubop2000,say4h,v382,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 formpubop2000,say4h,v494,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2000,trust_pol5,v293,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2000,trust_pol5,v403,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2000,trust_pol5,v514,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
 formpubop2001,say4h,v600,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 formpubop2001,say4h,v712,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 formpubop2001,say4h,v825,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2001,trust_pol5,v621,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2001,trust_pol5,v733,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2001,trust_pol5,v846,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
 formpubop2002,say4h,v939,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 formpubop2002,say4h,v1049,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 formpubop2002,say4h,v1162,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2002,trust_pol5,v960,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2002,trust_pol5,v1070,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2002,trust_pol5,v1183,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
 formpubop2003,say4h,v1261,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
-fnes1995,care4a,q28,c(1:4),,In your opinion are politicians concerned with what people like yourself think?,1 a lot / 2 some / 3 a little / 4 not at all,eff
+formpubop2003,trust_pol5,v1282,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
 fsdelection_combo,care4,fnes170,c(4:1),5,Politicians are not interested in the opinions of ordinary people,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
 fsdelection_combo,touch4,fnes169,c(4:1),5,Those elected to parliament soon lose touch with the problems of ordinary people,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
-fsdelection_combo,vote4,fnes171,c(4:1),5,"Political parties are only interested in people's votes, not their opinions",1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
-fsdelection_combo,trust_parties11,fnes295,c(10:0),98,"How much do you trust the following organisations, institutions, and groups: political parties",0 don't trust at all / 123456789 / 10 completely trust,trust
 fsdelection_combo,trust_parl11,fnes296,c(10:0),98,"How much do you trust the following organisations, institutions, and groups: parliament",0 don't trust at all / 123456789 / 10 completely trust,trust
+fsdelection_combo,trust_parties11,fnes295,c(10:0),98,"How much do you trust the following organisations, institutions, and groups: political parties",0 don't trust at all / 123456789 / 10 completely trust,trust
 fsdelection_combo,trust_pol11,fnes299,c(10:0),98,"How much do you trust the following organisations, institutions, and groups: politicians",0 don't trust at all / 123456789 / 10 completely trust,trust
-fsdelection2019,trust_parl11,k32_3,c(10:0),,"How much do you trust the following organisations, institutions, and groups: parliament",0 don't trust at all / 123456789 / 10 completely trust,trust
-fsdelection2019,trust_pol5,q04c,c(1:5),c(7:8),Most politicians are trustworthy,1 strongly agree / 2 agree to some extent / 3 neither agree nor disagree / 4 disagree to some extent / 5 strongly disagree,trust
+fsdelection_combo,vote4,fnes171,c(4:1),5,"Political parties are only interested in people's votes, not their opinions",1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
+fsdelection2019,care4b,k10_7,c(1:4),96,Political decision-makers take citizens' views into consideration when making decisions,1 strongly agree / 2 agree to some extent / 3 disagree to some extent / 4 strongly disagree,eff
 fsdelection2019,say4d,k10_3,c(4:1),96,I have no say in what the Government and Parliament decide,1 strongly agree / 2 agree to some extent / 3 disagree to some extent / 4 strongly disagree,eff
 fsdelection2019,touch4,k10_2,c(4:1),96,Those elected to parliament soon lose touch with the problems of ordinary people,1 strongly agree / 2 agree to some extent / 3 disagree to some extent / 4 strongly disagree,eff
+fsdelection2019,trust_parl11,k32_3,c(10:0),,"How much do you trust the following organisations, institutions, and groups: parliament",0 don't trust at all / 123456789 / 10 completely trust,trust
+fsdelection2019,trust_pol5,q04c,c(1:5),c(7:8),Most politicians are trustworthy,1 strongly agree / 2 agree to some extent / 3 neither agree nor disagree / 4 disagree to some extent / 5 strongly disagree,trust
 fsdelection2019,vote4,k10_4,c(4:1),96,"Political parties are only interested in people's votes, not their opinions",1 strongly agree / 2 agree to some extent / 3 disagree to some extent / 4 strongly disagree,eff
-fsdelection2019,care4b,k10_7,c(1:4),96,Political decision-makers take citizens' views into consideration when making decisions,1 strongly agree / 2 agree to some extent / 3 disagree to some extent / 4 strongly disagree,eff
 gallup_vop2000,will2,q5,c(1:2),3,Would you say that your country is governed by the will of the people?,1 yes / 2 no,eff
 gallup_vop2000,will2a,q7_5,c(1:0),,Which of the following words describes your perception of the government of [this country]? READ OUT. Responds to the will of the people,0 not mentioned / 1 mentioned,eff
 gallup_vop2004,will2,q8,c(1:2),9,Would you say that your country is governed by the will of the people?,1 yes / 2 no,eff
@@ -668,20 +668,20 @@ icenes1987,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are 
 icenes1991,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
 icenes1995,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
 icenes1999,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
-icenes2003,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
 icenes2003,corrupt_pol4b,pltscrp,c(4:1),c(7:9),How widespread do you think corruption is among Icelandic politicians?,1 very widespread / 2 quite widespread / 3 not very widespread / 4 hardly happens at all,corrupt
+icenes2003,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
 icenes2007,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
-icenes2009,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
 icenes2009,corrupt_pol4b,pltscrp,c(4:1),c(7:9),How widespread do you think corruption is among Icelandic politicians?,1 very widespread / 2 quite widespread / 3 not very widespread / 4 hardly happens at all,corrupt
-icenes2013,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
+icenes2009,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
 icenes2013,corrupt_pol4b,pltscrp,c(4:1),c(7:9),How widespread do you think corruption is among Icelandic politicians?,1 very widespread / 2 quite widespread / 3 not very widespread / 4 hardly happens at all,corrupt
-icenes2016,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
+icenes2013,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
 icenes2016,corrupt_pol4b,pltscrp,c(4:1),c(7:9),How widespread do you think corruption is among Icelandic politicians?,1 very widespread / 2 quite widespread / 3 not very widespread / 4 hardly happens at all,corrupt
-icenes2017,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
+icenes2016,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
 icenes2017,corrupt_pol4b,pltscrp,c(4:1),c(7:9),How widespread do you think corruption is among Icelandic politicians?,1 very widespread / 2 quite widespread / 3 not very widespread / 4 hardly happens at all,corrupt
-icenes2021,trust_pol5a,pltrust,c(1:5),c(997:999),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
-icenes2021,trust_parties4,trustprt,c(1:4),c(997:999),"What about political parties?  Do you trust them completely, trust them somewhat, trust them not very much, or do you not trust them at all?",1 trust completely / 2 trust somewhat / 3 trust not very much / 4 trust not at all,trust
+icenes2017,trust_pol5a,pltrust,c(1:5),c(7:9),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
 icenes2021,corrupt_pol4b,pltscrp,c(4:1),c(7:9),How widespread do you think corruption is among Icelandic politicians?,1 very widespread / 2 quite widespread / 3 not very widespread / 4 hardly happens at all,corrupt
+icenes2021,trust_parties4,trustprt,c(1:4),c(997:999),"What about political parties?  Do you trust them completely, trust them somewhat, trust them not very much, or do you not trust them at all?",1 trust completely / 2 trust somewhat / 3 trust not very much / 4 trust not at all,trust
+icenes2021,trust_pol5a,pltrust,c(1:5),c(997:999),"Do you think that politicians are in general trustworthy, that many of them are trustworthy, some are trustworthy, few, or perhaps none?",1 in general / 2 many / 3 some / 4 few / 5 none,trust
 icnl1985,care5,v0747,c(5:1),,I do not think that public officials care much about what people like me think,"1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all",eff
 icnl1985,say5,v0744,c(5:1),,People like me have no say at all in what the government does,"1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all",eff
 icnl1985,touch5,v0748,c(5:1),,"Once they are elected, members of Parliament lose touch with the people pretty soon","1 agree entirely / 2 agree / 3 don't agree, don't disagree / 4 don't agree / 5 don't agree at all",eff
@@ -737,50 +737,96 @@ kobar2004,say4,q16a6,c(1:4),8,People like me don't have any influence over what 
 kobar2010,say4,q12_6,c(1:4),c(8:9),People like me don't have any influence over what the government does,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
 lb1995,care2,p26,c(1:2),,Some people say that the deputies and senators are concerned about what people think. Others say that they aren't. Which statement is closest to your way of thinking?,1 the deputies and senators are concerned about what people think / 2 the deputies and senators aren't concerned about what people think,eff
 lb1995,rigged2,p23,c(1:2),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
+lb1995,trust_parl4x,p27i,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb1995,trust_parties4x,p27j,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb1996,care4f,p26,c(1:4),,Do you think that the political leaders are concerned about the issues that interest you?,1 a lot / 2 fairly / 3 a little / 4 not at all,eff
 lb1996,rigged2,p29,c(1:2),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
+lb1996,trust_parl4x,p33i,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb1996,trust_parties4x,p33j,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb1997,rigged2,sp35,c(1:2),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
+lb1997,trust_parl4x,sp63f,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb1997,trust_parties4x,sp63g,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb1998,rigged2,sp32,c(1:2),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
+lb1998,trust_parl4x,sp38f,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb1998,trust_parties4x,sp38g,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2000,trust_parl4x,p35st.f,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2000,trust_parties4x,p35st.g,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2001,right4,p43nas,c(1:4),,You can generally trust the people who run our government to do what is right,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,trust_eff
+lb2001,trust_parl4x,p61stf,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2001,trust_parties4x,p61stg,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2002,right4,p17st,c(1:4),,You can generally trust the people who run our government to do what is right,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,trust_eff
+lb2002,trust_parl4x,p36std,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2002,trust_parties4x,p34stf,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2003,trust_parl4x,p21stf,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2003,trust_parties4x,p21std,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2004,big2,p24wvs,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
+lb2004,trust_parl4x,p34stf,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2004,trust_parties4x,p34std,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2005,big2,p22st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2005,care4f,p35st,c(1:4),,Do you think that the political leaders are concerned about the issues that interest you?,1 a lot / 2 fairly / 3 a little / 4 not at all,eff
 lb2005,rigged2,p51st,c(1:2),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
 lb2005,right4,p40std,c(1:4),,You can generally trust the people who run our government to do what is right,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,trust_eff
+lb2005,trust_parl4x,p45sta,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2005,trust_parties4x,p47stb,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2006,big2,p20stm,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
-lb2006,sat_parties4,p34n_b,c(1:4),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
 lb2006,rigged2,p39st,c(1:2),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
+lb2006,sat_parties4,p34n_b,c(1:4),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
+lb2006,trust_parl4x,p24st.f,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2006,trust_parties4x,p24st.c,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2007,big2,p16st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2007,sat_parties4,p30st_b,c(1:4),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
+lb2007,trust_parl4x,p24st.f,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2007,trust_parties4x,p27st.e,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2008,big2,p25st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
-lb2008,sat_parties4,p62st_b,c(1:4),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
 lb2008,right4,p57st_a,c(1:4),,You can generally trust the people who run our government to do what is right,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,trust_eff
+lb2008,sat_parties4,p62st_b,c(1:4),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
+lb2008,trust_parl4x,p28st.a,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2008,trust_parties4x,p28st.c,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2009,big2,p22st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2009,rigged2,p39st,c(1:2),,"Speaking generally, do you think that the elections in this country are clean or rigged?",1 are clean / 2 are rigged,eff
+lb2009,trust_parl4x,p26st.a,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2009,trust_parties4x,p26st.c,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2010,big2,p17st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
+lb2010,trust_parl4x,p20st.a,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2010,trust_parties4x,p20st.c,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2011,big2,p19st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
+lb2011,trust_parl4x,p22st.a,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2011,trust_parties4x,p22st.c,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2013,big2,p14st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
+lb2013,trust_parl4x,p26tgb.c,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2013,trust_parties4x,p26tgb.g,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2015,big2,p14st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
 lb2015,sat_parties4,p49st_b,c(1:4),,"In your opinion, how is the work the political parties are doing",1 very good / 2 good / 3 bad / 4 very bad,sat
+lb2015,trust_parl4x,p16st.F,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2015,trust_parties4x,p19st.c,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2016,big2,p10st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
+lb2016,trust_parl4x,p13std,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2016,trust_parties4x,p13stg,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2017,big2,p10st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
+lb2017,trust_parl4x,p14st.d,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2017,trust_parties4x,p14st.g,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2018,big2,p14st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
+lb2018,trust_parl4x,p15stgbsc.d,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2018,trust_parties4x,p15stgbSc.g,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lb2020,big2,p12st,c(2:1),,"In general, would you say that the country is governed for the benefit of a few powerful interests or is it governed for the good of everyone?",1 benefit of powerful interests / 2 benefit of everyone,eff
+lb2020,trust_parl4x,p13st.d,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2020,trust_parties4x,p13st.g,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2023,trust_parl4x,p13st_d,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: National Congress",1 a lot / 2 some / 3 a little / 4 no confidence,trust
+lb2023,trust_parties4x,p13st_g,c(1:4),c(-2:-1),"Please look at this card and tell me how much confidence you have in each of the following groups, institutions or persons mentioned on the list: Political parties",1 a lot / 2 some / 3 a little / 4 no confidence,trust
 lits_wave1,trust_parl5,q303_3,c(5:1),6,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
 lits_wave1,trust_parties5,q303_5,c(5:1),6,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
 lits_wave2,trust_parl5,q303e,c(5:1),"c(-97,-1)",To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
 lits_wave2,trust_parties5,q303g,c(5:1),"c(-97,-1)",To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
-lits_wave3,trust_parl5,q404e,c(5:1),-97,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
-lits_wave3,trust_parties5,q404g,c(5:1),-97,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
 lits_wave3,corrupt_mps4,q814b,c(1:4),"c(-97,-94)",How many are corrupt? Government officials,1 none / 2 some of them / 3 most of them / 4 all of them,corrupt
 lits_wave3,corrupt_officials4b,q814c,c(1:4),"c(-97,-94)",How many are corrupt? Government officials,1 none / 2 some of them / 3 most of them / 4 all of them,corrupt
+lits_wave3,trust_parl5,q404e,c(5:1),-97,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
+lits_wave3,trust_parties5,q404g,c(5:1),-97,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
 neb_combo,equal4,a12f1,c(1:4),98,Under our present system of government do you think people like yourself are treated equally and fairly by government,1 definitely agree / 2 somewhat agree / 3 disagree somewhat / 4 definitely disagree,eff
 neb_combo,satis_gov21,a1b21p,"seq(100, -100, -10)",998,Here is a scale for ranking how our system of government works. Where on this scale would you put our current system of governing with free elections and many parties?,minus-100 the worst / -90 to 90 / 100 the best,eff
 neb_combo,say2c,"if_else(y_dcpo == 1992, a12e1, NA)","c(2,3)",98,Under our present system of government how much influence do you think people like yourself can have on government?,2 some influence / 3 not much influence,eff
 neb_combo,say4b,"if_else(y_dcpo == 1992, NA, a12e1)",c(1:4),98,Under our present system of government how much influence do you think people like yourself can have on government?,1 a lot of influence / 2 some influence / 3 not much influence / 4 no influence,eff
-neb_combo,trust_parties7,a4a,c(7:1),"c(8,98)",To what extent do you trust each of these political institutions to look after your interests? Political parties,1 no trust / 23456 / 7 great trust,trust
 neb_combo,trust_mp7,a4e,c(7:1),"c(8,98)",To what extent do you trust each of these political institutions to look after your interests? Members of Parliament,1 no trust / 23456 / 7 great trust,trust
+neb_combo,trust_parties7,a4a,c(7:1),"c(8,98)",To what extent do you trust each of these political institutions to look after your interests? Political parties,1 no trust / 23456 / 7 great trust,trust
 norcs2013_1,say7,w01_k14_2,c(7:1),,"People like me can probably vote, but we cannot do anything else to influence politics",1 strongly agree / 2 agree / 3 somewhat agree / 4 neither agree nor disagree / 5 somewhat disagree / 6 disagree / 7 strongly disagree,eff
 norcs2014_3,say7,w01_k14_2,c(7:1),,"People like me can probably vote, but we cannot do anything else to influence politics",1 strongly agree / 2 agree / 3 somewhat agree / 4 neither agree nor disagree / 5 somewhat disagree / 6 disagree / 7 strongly disagree,eff
 norcs2015_4,say7,w03_r3k14_2,c(7:1),,"People like me can probably vote, but we cannot do anything else to influence politics",1 strongly agree / 2 agree / 3 somewhat agree / 4 neither agree nor disagree / 5 somewhat disagree / 6 disagree / 7 strongly disagree,eff
@@ -806,8 +852,8 @@ nzes1993,big5a,govbig,c(5:1),,The New Zealand government is largely run by a few
 nzes1993,care5f,mpcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes1993,right5b,trsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
 nzes1996,big5a,pgovbig,c(5:1),,The New Zealand government is largely run by a few big interests,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
-nzes1996,care5f,pmpcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes1996,care5d,ptcare,c(1:5),,"Where would you place your view on this scale from 1 to 5, where ONE means that political parties in New Zealand care about what ordinary people think, and FIVE means that they don't care what ordinary people think?",1 political parties care what ordinary people think / 234 / 5 political parties don't care what ordinary people think,eff
+nzes1996,care5f,pmpcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes1996,right5b,ptrsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
 nzes1999,big5a,sgovbig,c(5:1),,The New Zealand government is largely run by a few big interests,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes1999,care5f,smpcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
@@ -863,18 +909,18 @@ pew2019,big4a,state_benefit,c(1:4),,Generally the state/government is run for th
 pew2019,care4a,most_elected,c(1:4),,Most elected officials care what people like me think,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 pewrel2009_afr,say4,q11b,c(4:1),,People like me don't have any say about what the government doesÂ ,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 pewrel2015_ee,say4f,q67a,c(1:4),,Voting gives people like me some say about how government runs things,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
-pgss,trust_parl5,q61m,c(1:5),8,"I am going to name some institutions in this country. Using the answers from the card, would you say you have definitely a great deal of confidence, only some confidence, neither confidence nor lack thereof, not much confidence or definitely no confidence?",1 definitely a great deal of confidence / 2 only some confidence / 3 neither confidence nor lack thereof / 4 not much confidence / 5 definitely no confidence,trust
 pgss,trust_parl3,q60m,c(1:3),8,"I am going to name some institutions in this country. Would you say you have a great deal of confidence, only some confidence, or hardly any confidence at all in them?",1 a great deal of confidence / 2 only some confidence / 3 hardly any confidence at all,trust
+pgss,trust_parl5,q61m,c(1:5),8,"I am going to name some institutions in this country. Using the answers from the card, would you say you have definitely a great deal of confidence, only some confidence, neither confidence nor lack thereof, not much confidence or definitely no confidence?",1 definitely a great deal of confidence / 2 only some confidence / 3 neither confidence nor lack thereof / 4 not much confidence / 5 definitely no confidence,trust
 ress2014,trust_parl11,trstprl,c(10:0),,"Using this card, please tell me on a score of 0-10 how much you personally trust each of the institutions I read out. 0 means you do not trust an institution at all, and 10 means you have complete trust. [Country's] parliament?",0 no trust / 123456789 / 10 complete trust,trust
 ress2014,trust_parties11,trstprt,c(10:0),,"Using this card, please tell me on a score of 0-10 how much you personally trust each of the institutions I read out. 0 means you do not trust an institution at all, and 10 means you have complete trust. Political parties?",0 no trust / 123456789 / 10 complete trust,trust
 ress2014,trust_pol11,trstplt,c(10:0),,"Using this card, please tell me on a score of 0-10 how much you personally trust each of the institutions I read out. 0 means you do not trust an institution at all, and 10 means you have complete trust. Politicians?",0 no trust / 123456789 / 10 complete trust,trust
-sasianb1,trust_parties4,c13i,c(1:4),8,"I am going to name a number of institutions. For each one, could you tell me how much trust you have in them: Political parties",1 great deal / 2 some / 3 not much / 4 none at all,trust
 sasianb1,change4,c20c,c(1:4),8,People have the power to change the government they do not like,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+sasianb1,trust_parties4,c13i,c(1:4),8,"I am going to name a number of institutions. For each one, could you tell me how much trust you have in them: Political parties",1 great deal / 2 some / 3 not much / 4 none at all,trust
+som_combo,corrupt_pol7,ab100a,c(7:1),"c(8,97:99)","n your opinion, to what extent are the following occupational groups in Sweden involved in some kind of corruption? - Politicians",1 not at all / 23456 / 7 to a very great extent,corrupt
+som_combo,trust_mp4,ab13a,c(1:4),c(97:99),"In general, how much confidence do you have in the way the following groups do their job? - Parliamentarians",1 very high trust / 2 quite high trust / 3 quite low trust / 4 very low trust,trust
 som_combo,trust_parl5,aa10e,c(1:5),c(97:99),How much confidence do you have in the way the following institutions and groups do their job? - The National Parliament,1 very high trust / 2 quite high trust / 3 neither high nor low trust / 4 quite low trust / 5 very low trust,trust
 som_combo,trust_parties5,aa10q,c(1:5),c(97:99),How much confidence do you have in the way the following institutions and groups do their job? - The political parties,1 very high trust / 2 quite high trust / 3 neither high nor low trust / 4 quite low trust / 5 very low trust,trust
 som_combo,trust_pol4,ab12,c(1:4),c(97:99),"In general, how much trust do you have in Swedish politicians?",1 very high trust / 2 quite high trust / 3 quite low trust / 4 very low trust,trust
-som_combo,trust_mp4,ab13a,c(1:4),c(97:99),"In general, how much confidence do you have in the way the following groups do their job? - Parliamentarians",1 very high trust / 2 quite high trust / 3 quite low trust / 4 very low trust,trust
-som_combo,corrupt_pol7,ab100a,c(7:1),"c(8,97:99)","n your opinion, to what extent are the following occupational groups in Sweden involved in some kind of corruption? - Politicians",1 not at all / 23456 / 7 to a very great extent,corrupt
 usgss,right5,govdook,c(1:5),,Most of the time we can trust people in government to do what is right,1 Strongly agree / 5 Strongly disagree,trust_eff
 uspew_valcombo,care4a,q2c,c(1:4),,Most elected officials care what people like me think,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew_valcombo,say4,q2a,c(4:1),,People like me don't have any say about what the government doesÂ ,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
