@@ -817,7 +817,7 @@ lits_wave1,trust_parl5,q303_3,c(5:1),6,To what extent do you trust the following
 lits_wave1,trust_parties5,q303_5,c(5:1),6,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
 lits_wave2,trust_parl5,q303e,c(5:1),"c(-97,-1)",To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
 lits_wave2,trust_parties5,q303g,c(5:1),"c(-97,-1)",To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
-lits_wave3,corrupt_mps4,q814b,c(1:4),"c(-97,-94)",How many are corrupt? Government officials,1 none / 2 some of them / 3 most of them / 4 all of them,corrupt
+lits_wave3,corrupt_mp4,q814b,c(1:4),"c(-97,-94)",How many are corrupt? Members of Parliament,1 none / 2 some of them / 3 most of them / 4 all of them,corrupt
 lits_wave3,corrupt_officials4b,q814c,c(1:4),"c(-97,-94)",How many are corrupt? Government officials,1 none / 2 some of them / 3 most of them / 4 all of them,corrupt
 lits_wave3,trust_parl5,q404e,c(5:1),-97,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
 lits_wave3,trust_parties5,q404g,c(5:1),-97,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
