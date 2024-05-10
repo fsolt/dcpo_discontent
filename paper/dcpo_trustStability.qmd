@@ -1071,7 +1071,7 @@ dcpo_input_plot %>%
 ```
 
 
-# Technical Details of DCPO {.unnumbered}
+# Technical Details of DCPO {}
 
 Another test of citation [@Rubin1987;@Claassen2020].
 
@@ -1081,7 +1081,7 @@ Here's the appendix references list:
 
 # Numeric Results {#sec-app-numeric}
 
-# Reference {.unnumbered}
+# References {.unlisted .unnumbered}
 
 ::: {#refs-appendix}
 :::
