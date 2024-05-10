@@ -685,7 +685,7 @@ dcpo_output$save_output_files(dir = results_path,
 
 ```{r dcpo_output, eval=FALSE}
 if (!exists("results_path")) {
-    latest <- "202405090425"
+    latest <- "202405100649"
     results_path <- here::here("data", "1000", latest)
     
     # Define OSF_PAT in .Renviron: https://docs.ropensci.org/osfr/articles/auth
