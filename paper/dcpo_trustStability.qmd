@@ -506,7 +506,7 @@ countries_plot <- dcpo_input_raw1 %>%
           axis.text.x  = element_text(angle = 90,
                                       vjust = .45,
                                       hjust = .95,
-                                      size = 7),
+                                      size = 6),
           axis.title.y = element_text(size = 9),
           plot.title = element_text(hjust = 0.5, 
                                     size = 11)) +
@@ -878,6 +878,12 @@ ggplot(data = c_res, aes(x = year, y = mean)) +
           strip.background = element_rect(fill = "white", colour = "white")) +
     plot_annotation(caption = "Note: Countries are ordered by their most recent political discontent score; gray shading represents 80% credible intervals.")
 ```
+
+Consider validation tests with:
+    democratic satisfaction
+    trust in government
+    incumbent vote share
+    populist vote share
 
 # Literature {.unlisted .unnumbered}
 
