@@ -474,9 +474,22 @@ items_plot <- dcpo_input_raw1 %>%
     ylab("Country-Years\nObserved") +
     ggtitle("Items")
 
-just10_cy <- dcpo_input_raw1 %>% filter(item == "just10") %>% distinct(country, year) %>% nrow()
+most_common_item <- dcpo_input_raw1 %>% 
+    distinct(country, year, item) %>% 
+    count(item) %>% 
+    arrange(-n) %>% 
+    slice(1) %>% 
+    pull(item)
 
-just10_surveys <- dcpo_input_raw1 %>% filter(item == "just10") %>% distinct(survey) %>% pull(survey)
+most_common_item_cy <- dcpo_input_raw1 %>%
+    filter(item == most_common_item) %>%
+    distinct(country, year) %>%
+    nrow()
+
+most_common_item_surveys <- dcpo_input_raw1 %>%
+    filter(item == most_common_item) %>%
+    distinct(survey) %>%
+    pull(survey)
 
 countries_plot <- dcpo_input_raw1 %>%
     mutate(country = if_else(stringr::str_detect(country, "United"),
@@ -490,9 +503,13 @@ countries_plot <- dcpo_input_raw1 %>%
     geom_bar(stat = "identity") +
     theme_bw() +
     theme(axis.title.x = element_blank(),
-          axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
+          axis.text.x  = element_text(angle = 90,
+                                      vjust = .45,
+                                      hjust = .95,
+                                      size = 7),
           axis.title.y = element_text(size = 9),
-          plot.title = element_text(hjust = 0.5, size = 11)) +
+          plot.title = element_text(hjust = 0.5, 
+                                    size = 11)) +
     ylab("Year-Items\nObserved") +
     ggtitle("Countries")
 
@@ -509,9 +526,13 @@ cby_plot <- dcpo_input_raw1 %>%
     geom_bar(stat = "identity") +
     theme_bw() +
     theme(axis.title.x = element_blank(),
-          axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
+          axis.text.x  = element_text(angle = 90,
+                                      vjust = .45,
+                                      hjust = .95,
+                                      size = 7),
           axis.title.y = element_text(size = 9),
-          plot.title = element_text(hjust = 0.5, size = 11)) +
+          plot.title = element_text(hjust = 0.5,
+                                    size = 11)) +
     ylab("Years\nObserved") +
     ggtitle("Countries")
 
