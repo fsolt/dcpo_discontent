@@ -375,14 +375,32 @@ cnes1997,say4,cpsb10b,"c(7,5,3,1)",,People like me don't have any say about what
 cnes2000,care4d,cpsb10d,"c(7,5,3,1)",,I don't think the government cares much what people like me think,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
 cnes2000,say4,mbsc12,c(4:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 cses1,care5d,a3013,c(1:5),,Some people say that political parties in [country] care what ordinary people think.  Others say that political parties in [country] don't care what ordinary people think.  Where would you place yourself?,1 political parties care what ordinary people think / 234 / 5 political parties don't care what ordinary people think,eff
-dkes1984,care5e,v227,c(5:1),,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes1990,care5e,v209,c(5:1),,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes1994,care5e,v300,c(5:1),,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes1998,care5e,v146,c(5:1),,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes2001,care5e,v155,c(5:1),,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes2005,care5e,v230,c(5:1),,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes2007,care5e,v266,c(5:1),,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-dkes2011,care5e,v199,c(5:1),,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes1981,care5e,v301,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes1984,care5e,v227,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes1990,care5e,v209,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes1994,care5e,v300,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes1998,care5e,v146,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2001,care5e,v155,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2005,care5e,v230,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2007,care5e,v266,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes2011,care5e,v199,c(5:1),8,Generally politicians pay too little attention to what voters think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+dkes1981,right5a,v300,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes1984,right5a,v226,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes1987,right5a,v58,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes1990,right5a,v210,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes1994,right5a,v301,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes1998,right5a,v147,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes2001,right5a,v157,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes2005,right5a,v231,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes2007,right5a,v267,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes2011,right5a,v200,c(1:5),8,You can generally trust that our political leaders make the right decisions for the country,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust_eff
+dkes1994,trust_pol5,v310,c(1:5),8,Danish politicians in general are trustworthy,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust
+dkes1998,trust_pol5,v162,c(1:5),8,Danish politicians in general are trustworthy,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,trust
+dkes2001,trust_pol4,v171,c(1:4),8,How much trust do you have in Danish politicians in general,1 great trust / 2 trust / 3 little trust / 4 hardly any trust,trust
+dkes2005,trust_pol4,v243,c(1:4),8,How much trust do you have in Danish politicians in general,1 great trust / 2 trust / 3 little trust / 4 hardly any trust,trust
+dkes2005,trust_pol4,v243,c(1:4),8,How much trust do you have in Danish politicians in general,1 great trust / 2 trust / 3 little trust / 4 hardly any trust,trust
+dkes2007,trust_pol4,v275,c(1:4),8,How much trust do you have in Danish politicians in general,1 a large amount of trust / 2 a fair amount of trust / 3 a rather small amount of trust / 4 very little trust,trust
+dkes2011,trust_pol4,v206,c(1:4),8,How much trust do you have in Danish politicians in general,1 a large amount of trust / 2 a fair amount of trust / 3 a rather small amount of trust / 4 very little trust,trust
 eass2012,say7,v65,c(7:1),8,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 somewhat agree / 4 neither agree nor disagree / 5 somewhat disagree / 6 disagree / 7 strongly disagree,eff
 eb24,right4,v24,c(1:4),,How much do you trust the government to do what is right?,1 just about always / 2 most of the time / 3 only some of the time / 4 almost never,trust_eff
 eb26,care2a,v63,c(2:1),,Do you ever feel that the people running the country don't really care what happens to people like you,1 yes / 2 no,eff
@@ -577,6 +595,30 @@ eurasiab2010,say4d,v137_4,c(1:4),,I can have influence on the national governmen
 evs_combo,big2,e128,c(2:1),,"Generally speaking, would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?",1 run by a few big interests / 2 run for all the people,eff
 evs_combo,corrupt_officials4a,e196,c(1:4),,How widespread do you think bribe taking and corruption is in this country?,1 almost no public officials engaged in it / 2 a few are / 3 most are / 4 almost all public officials are engaged in it,corrupt
 feb450,care4c,q7_4,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
+formpubop1999,trust_pol5,v69,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop1999,trust_pol5,v178,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2000,trust_pol5,v293,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2000,trust_pol5,v403,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2000,trust_pol5,v514,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2001,trust_pol5,v621,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2001,trust_pol5,v733,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2001,trust_pol5,v846,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2002,trust_pol5,v960,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2002,trust_pol5,v1070,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2002,trust_pol5,v1183,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop2003,trust_pol5,v1282,c(5:1),8,"In general, how much do you trust Danish politicians?Ê",1 very little trust / 234 / 5 trust very much,
+formpubop1999,say4h,v47,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop1999,say4h,v156,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2000,say4h,v271,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2000,say4h,v382,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2000,say4h,v494,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2001,say4h,v600,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2001,say4h,v712,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2001,say4h,v825,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2002,say4h,v939,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2002,say4h,v1049,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2002,say4h,v1162,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
+formpubop2003,say4h,v1261,c(4:1),8,People like me have no influence on what the different governments do,1 strongly agree / 2 agree / 3 disagree / 4 strongly disagree,eff
 fnes1995,care4a,q28,c(1:4),,In your opinion are politicians concerned with what people like yourself think?,1 a lot / 2 some / 3 a little / 4 not at all,eff
 fsdelection_combo,care4,fnes170,c(4:1),5,Politicians are not interested in the opinions of ordinary people,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
 fsdelection_combo,touch4,fnes169,c(4:1),5,Those elected to parliament soon lose touch with the problems of ordinary people,1 strongly agree / 2 somewhat agree / 3 somewhat disagree / 4 strongly disagree,eff
@@ -731,6 +773,8 @@ lits_wave2,trust_parl5,q303e,c(5:1),"c(-97,-1)",To what extent do you trust the 
 lits_wave2,trust_parties5,q303g,c(5:1),"c(-97,-1)",To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
 lits_wave3,trust_parl5,q404e,c(5:1),-97,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
 lits_wave3,trust_parties5,q404g,c(5:1),-97,To what extent do you trust the following institutions? Parliament,1complete distrust / 2 some distrust / 3 neither trust nor distrust / 4 some trust / 5 complete trust,trust
+lits_wave3,corrupt_mps4,q814b,c(1:4),"c(-97,-94)",How many are corrupt? Government officials,1 none / 2 some of them / 3 most of them / 4 all of them,corrupt
+lits_wave3,corrupt_officials4b,q814c,c(1:4),"c(-97,-94)",How many are corrupt? Government officials,1 none / 2 some of them / 3 most of them / 4 all of them,corrupt
 neb_combo,equal4,a12f1,c(1:4),98,Under our present system of government do you think people like yourself are treated equally and fairly by government,1 definitely agree / 2 somewhat agree / 3 disagree somewhat / 4 definitely disagree,eff
 neb_combo,satis_gov21,a1b21p,"seq(100, -100, -10)",998,Here is a scale for ranking how our system of government works. Where on this scale would you put our current system of governing with free elections and many parties?,minus-100 the worst / -90 to 90 / 100 the best,eff
 neb_combo,say2c,"if_else(y_dcpo == 1992, a12e1, NA)","c(2,3)",98,Under our present system of government how much influence do you think people like yourself can have on government?,2 some influence / 3 not much influence,eff
@@ -760,30 +804,30 @@ nsss1994,big4,p2q3a,c(4:1),,"Would you say the government is run by a few big in
 nsss1995,big4,p40q3a,c(4:1),,"Would you say the government is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?",1 entirely run for the big interests / 2 mostly run for the big interests / 3 mostly run for the benefit of all / 4 entirely run for the benefit of all,eff
 nzes1993,big5a,govbig,c(5:1),,The New Zealand government is largely run by a few big interests,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes1993,care5f,mpcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
-nzes1993,right5,trsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
+nzes1993,right5b,trsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
 nzes1996,big5a,pgovbig,c(5:1),,The New Zealand government is largely run by a few big interests,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes1996,care5f,pmpcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes1996,care5d,ptcare,c(1:5),,"Where would you place your view on this scale from 1 to 5, where ONE means that political parties in New Zealand care about what ordinary people think, and FIVE means that they don't care what ordinary people think?",1 political parties care what ordinary people think / 234 / 5 political parties don't care what ordinary people think,eff
-nzes1996,right5,ptrsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
+nzes1996,right5b,ptrsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
 nzes1999,big5a,sgovbig,c(5:1),,The New Zealand government is largely run by a few big interests,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes1999,care5f,smpcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
-nzes1999,right5,strsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
+nzes1999,right5b,strsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
 nzes1999,say5,snosay,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes2002,big5a,wgovbig,c(5:1),,The New Zealand government is largely run by a few big interests,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes2002,care5f,wmpcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
-nzes2002,right5,wtrsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
+nzes2002,right5b,wtrsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
 nzes2002,say5,wnosay,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes2005,big5a,ygovbig,c(5:1),,The New Zealand government is largely run by a few big interests,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes2005,care5f,ympcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
-nzes2005,right5,ytrsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
+nzes2005,right5b,ytrsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
 nzes2005,say5,ynosay,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes2008,big5a,zbig,c(5:1),,The New Zealand government is largely run by a few big interests,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes2008,care5f,zmpcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
-nzes2008,right5,ztrsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
+nzes2008,right5b,ztrsgov,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
 nzes2008,say5,znosay,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes2011,big5a,jrun,c(5:1),,The New Zealand government is largely run by a few big interests,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes2011,care5f,jcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
-nzes2011,right5,jtrust,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
+nzes2011,right5b,jtrust,c(1:5),,You can trust the government to do what is right most of the time,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,trust_eff
 nzes2011,say5,jsay,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes2014,big5a,drun,c(5:1),,The New Zealand government is largely run by a few big interests,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 nzes2014,care5f,dcare,c(5:1),,I don't think politicians and public servants care much about what people like me think,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
