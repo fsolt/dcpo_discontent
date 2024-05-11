@@ -260,28 +260,30 @@ belgiumes2003,care5e,q61_c,c(1:5),,"If people like me let the politicians know w
 belgiumes2003,vote5,q61_b,c(5:1),,Political parties are only interested in my vote and not in my opinions,1 completely agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 completely disagree,eff
 belgiumes2007,vote5,q102_2,c(1:5),,Political parties are only interested in my vote and not in my opinions,1 completely disagree / 2 disagree / 3 neither agree nor disagree / 4 agree / 5 completely agree,eff
 belgiumes2014,care4d,q32a,c(4:1),,How much does the government care about what people like me think,1 none / 2 a little / 3 reasonably well / 4 a lot,eff
-bes1987,say5,v109d,c(5:1),,People llke me have no say In what the government does,1 agree strongly / 2 agree / 3 neutral / 4 disagree / 5 disagree strongly,eff
+bes1987,say5,v109d,c(5:1),,People llke me have no say in what the government does,1 agree strongly / 2 agree / 3 neutral / 4 disagree / 5 disagree strongly,eff
 bes1987,vote5,v109h,c(5:1),,"Parties are only interested in people's votes, not in their opinions",1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes1992,care5b,v220c,c(5:1),,Councillors and MPs don't care what people like me think,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
-bes1992,say5,v220b,c(5:1),,People llke me have no say In what the government does,1 agree strongly / 2 agree / 3 neutral / 4 disagree / 5 disagree strongly,eff
-bes1997,say5,govnosay,c(5:1),,People llke me have no say In what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
+bes1992,say5,v220b,c(5:1),,People llke me have no say in what the government does,1 agree strongly / 2 agree / 3 neutral / 4 disagree / 5 disagree strongly,eff
+bes1997,say5,govnosay,c(5:1),,People llke me have no say in what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2001,care5b,bq65e,c(5:1),,Politicians don't care what people like me think,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
-bes2001,say5,bq65a,c(5:1),,People llke me have no say In what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
+bes2001,say5,bq65a,c(5:1),,People llke me have no say in what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2001,touch5,bq65c,c(5:1),,Those elected to Parliament soon lose touch with the people,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2001,vote5,bq65d,c(5:1),,"Parties are only interested in people's votes, not in their opinions",1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2005_post,care5b,dq59,c(5:1),,Politicians don't care what people like me think,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
-bes2005_post,say5,dq60,c(5:1),,People llke me have no say In what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
+bes2005_post,say5,dq60,c(5:1),,People llke me have no say in what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2005_post,touch5,dq57,c(5:1),,Those elected to Parliament soon lose touch with the people,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2005_post,vote5,dq58,c(5:1),,"Parties are only interested in people's votes, not in their opinions",1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2015,care5b,m02_1,c(5:1),,Politicians don't care what people like me think,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2015,care5c,m02_7,c(5:1),,Politicians ignore the issues I really care about,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
-bes2015,say5,m02_3,c(5:1),,People llke me have no say In what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
+bes2015,say5,m02_3,c(5:1),,People llke me have no say in what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2017,care5b,m02_1,c(5:1),,Politicians don't care what people like me think,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2017,care5c,m02_6,c(5:1),,Politicians ignore the issues I really care about,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
-bes2017,say5,m02_3,c(5:1),,People llke me have no say In what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
+bes2017,say5,m02_3,c(5:1),,People llke me have no say in what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2019,care5b,m02_1,c(5:1),,Politicians don't care what people like me think,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bes2019,care5c,m02_6,c(5:1),,Politicians ignore the issues I really care about,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
-bes2019,say5,m02_3,c(5:1),,People llke me have no say In what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
+bes2019,say5,m02_3,c(5:1),,People llke me have no say in what the government does,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
+besip_long,trust_mp7,trustmps,c(7:1),,How much trust do you have in Members of Parliament in general?,1 no trust / 23456 / 7 a great deal of trust,trust
+besip_long,care5b,efficacypolcare,c(1:5),,Politicians don't care what people like me think  ,1 strongly disagree / 2 disagree / 3 neither agree nor disagree / 4 agree / 5 strongly agree,eff
 bsa_combo,right4b,govtrust,c(1:4),,How much do you trust British governments of any party to place the needs of the nation above the interests of their own political party?,1 almost always / 2 most of time / 3 some of time / 4 almost never,trust_eff
 bsa_combo,touch5,losetch,c(5:1),,Generally speaking those we elect as MPs lose touch with people pretty quickly,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
 bsa_combo,vote5,voteintr,c(5:1),,"Parties are only interested in people's votes, not in their opinions",1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,eff
@@ -693,23 +695,31 @@ icnl1990,vote5,w0747,c(5:1),,"Political parties are only interested in people's 
 ines_long,say5e,v0311b,c(1:5),,The ordinary person has no influence on politics,1 strongly disagree / 2 disagree / 3 neither agree nor disagree / 4 agree / 5 strongly agree,eff
 issp1985,say2,v68,c(1:2),,People like me have much to say about government,1 agree / 2 disagree,eff
 issp1985,say2a,v66,c(1:2),,The average person has considerable influence on politics,1 agree / 2 disagree,eff
+issp1991,trust_parl5,v20,c(1:5),,How much confidence do you have in: Parliament,1 complete confidence / 2 a great deal of confidence / 3 some confidence / 4 very little confidence / 5 no confidence at all,trust
 issp1996,say5,v47,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp1996,say5e,v48,c(1:5),,The average citizen has considerable influence on politics,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+issp1998,trust_parl5,v20,c(1:5),,How much confidence do you have in: Parliament,1 complete confidence / 2 a great deal of confidence / 3 some confidence / 4 very little confidence / 5 no confidence at all,trust
 issp2001,say5,v64,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2004,care5a,v37,c(5:1),,I don't think the government cares much what people like me think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2004,get5,v44,c(5:1),,Most politicians are in politics only for what they can get out of it personally,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,corrupt
 issp2004,right5,v43,c(1:5),,Most of the time we can trust people in government to do what is right,1 Strongly agree / 5 Strongly disagree,trust_eff
 issp2004,say5,v36,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+issp2006,corrupt_pol5a,v60,c(1:5),,"In your opinion, about how many politicians in [COUNTRY] are involved in corruption? ",1 almost none / 2 a few / 3 some / 4 quite a lot / 5 almost all,corrupt
+issp2006,corrupt_officials5,v61,c(1:5),,"And in your opinion, about how many public officials in [COUNTRY] are involved in corruption? ",1 almost none / 2 a few / 3 some / 4 quite a lot / 5 almost all,corrupt
 issp2006,say5,v45,c(5:1),,People like me have no say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2006,say5e,v46,c(1:5),,The average citizen has considerable influence on politics,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+issp2008,trust_parl5,v14,c(1:5),,How much confidence do you have in: Parliament,1 complete confidence / 2 a great deal of confidence / 3 some confidence / 4 very little confidence / 5 no confidence at all,trust
 issp2010,get5,v14,c(5:1),,Most politicians are in politics only for what they can get out of it personally,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,corrupt
 issp2010,right5,v13,c(1:5),,Most of the time we can trust people in government to do what is right,1 strongly agree / 5 strongly disagree,trust_eff
 issp2014,care5a,v42,c(5:1),,I don't think the government cares much what people like me think,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
 issp2014,get5,v44,c(5:1),,Most politicians are in politics only for what they can get out of it personally,1 agree strongly / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 disagree strongly,corrupt
 issp2014,right5,v49,c(1:5),,Most of the time we can trust people in government to do what is right,1 Strongly agree / 5 Strongly disagree,trust_eff
 issp2014,say5,v41,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
-issp2016,say5,v47,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+issp2016,say5,v47,c(5:1),c(8:9),People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+issp2016,corrupt_pol5a,v58,c(1:5),c(8:9),"In your opinion, about how many politicians in [COUNTRY] are involved in corruption? ",1 almost none / 2 a few / 3 some / 4 quite a lot / 5 almost all,corrupt
+issp2016,corrupt_officials5,v59,c(1:5),c(8:9),"And in your opinion, about how many public officials in [COUNTRY] are involved in corruption? ",1 almost none / 2 a few / 3 some / 4 quite a lot / 5 almost all,corrupt
 issp2017,say5,v20,c(5:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 neither agree nor disagree / 4 disagree / 5 strongly disagree,eff
+issp2020,trust_parl11,v14,c(10:0),,How much do you personally trust each of the following institutions? The [COUNTRY NATIONALITY PARLIAMENT],0 don't trust at all / 123456789 / 10 complete trust,trust
 itanes2001,say4,c4_1,c(4:1),,People like me don't have any say about what the government does,1 true / 2 somewhat true / 3 somewhat false / 4 false,eff
 itanes2001,touch4,c4_2,c(4:1),,People we elect in Parliament lose touch with their voters pretty quickly,1 true / 2 somewhat true / 3 somewhat false / 4 false,eff
 itanes2001,vote4,c4_3,c(4:1),,"Parties are only interested in people's votes, not in their opinions",1 true / 2 somewhat true / 3 somewhat false / 4 false,eff
@@ -720,8 +730,6 @@ jgss,say4,q4nopwr,c(4:1),,People like me don't have any say about what the gover
 jgss2008,say4,q4nopwr,c(4:1),,People like me don't have any say about what the government does,1 agree / 2 somewhat agree / 3 somewhat disagree / 4 disagree,eff
 jgss2010,say4,q4nopwr,c(4:1),,People like me don't have any say about what the government does,1 agree / 2 somewhat agree / 3 somewhat disagree / 4 disagree,eff
 jgss2012,say7,q7nopwr,c(7:1),,People like me don't have any say about what the government does,1 strongly agree / 2 agree / 3 somewhat agree / 4 neither agree nor disagree / 5 somewhat disagree / 6 disagree / 7 strongly disagree,eff
-kgss,say5,poleff1,c(5:1),-8,People like me don't have any say about what the government does ,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
-kgss,say5e,poleff2,c(1:5),-8,The average citizen has considerable influence on politics,1 strongly agree / 2 agree / 3 neither / 4 disagree / 5 strongly disagree,eff
 kobar1994,say4c,q5,c(1:4),c(8:9),"In general, how much influence do you think ordinary people like you have on government policy",1 a great deal / 2 some / 3 a little / 4 none,eff
 kobar1996,say4c,q4,c(1:4),8,How much influence do you think you have on what the government does these days? Or do you think you have no influence at all?,1 can influence a lot / 2 an influence to some extent / 3 cannot influence much / 4 cannot influence at all,eff
 kobar1996,trust_parties4,q50_10,c(1:4),8,How much do you and the people around you trust each of the following institutions? Political parties,1 trust much / 2 trust somewhat / 3 do not trust much / 4 do not trust at all,trust
