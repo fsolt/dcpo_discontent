@@ -706,7 +706,7 @@ dcpo_output$save_output_files(dir = results_path,
 
 ```{r dcpo_output, eval=FALSE}
 if (!exists("results_path")) {
-    latest <- "202405100649"
+    latest <- "202405120647"
     results_path <- here::here("data", "1000", latest)
     
     # Define OSF_PAT in .Renviron: https://docs.ropensci.org/osfr/articles/auth
@@ -882,6 +882,7 @@ ggplot(data = c_res, aes(x = year, y = mean)) +
 Consider validation tests with:
     democratic satisfaction
     trust in government
+    Proud of: way democracy works (ISSP National Identity)
     incumbent vote share
     populist vote share
 
@@ -972,8 +973,7 @@ items_summary <- dcpo_input_raw1 %>%
 
 ```{r dcpo_items_table}
 items_summary %>% 
-    transmute(`Survey\nItem\nCode` = item %>%
-                  str_replace_all(fixed("_"), "\\_"),
+    transmute(`Survey\nItem\nCode` = item,
               `Country-Years` = as.character(n_cy),
               `Question Text` = str_replace(question_text, "([^(]*)\\(.*", "\\1"),
               `Response Categories` = response_categories,
