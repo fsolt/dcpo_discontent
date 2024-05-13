@@ -16,3 +16,8 @@ dev/*
 framed.sty
 paper/*cache/*
 data/1000/
+data-raw/Disproportionality.csv
+data-raw/ElectionIndices.pdf
+data-raw/es_data-v41/*
+data-raw/swiid9_6/*
+data-raw/swiid9_6.zip
