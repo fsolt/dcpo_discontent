@@ -111,23 +111,32 @@ p_install(janitor, force = FALSE)
 #p_install_gh(c("fsolt/DCPOtools"), force = FALSE)
 if (!require(posterior))
     install.packages("posterior")
-
 p_load(
     DCPOtools,
     cmdstanr,
     tidyverse,
     here,
+    rio,
     countrycode,
     patchwork,
     ggthemes,
+    ggdist,
+    imputeTS,
     rsdmx,
     osfr,
+    tabulapdf,
+    brms,
+    bayestestR,
+    tidybayes,
+    repmis,
+    rvest,
+    vroom,
+    modelsummary,
     kableExtra,
     rnaturalearth, # maps
     rnaturalearthdata, # maps
-    sf, # maps
-    tabulapdf # scrape pdfs
-)
+    sf
+) 
 
 theme_set(theme_minimal())
 set.seed(313)
@@ -285,29 +294,44 @@ covered_share_of_spanned <- function(dcpo_input_raw) {
     {(n_cy/spanned_cy) * 100}
 }
 
-get_coef <- function(iv, results_df = coef_data, type = "both", width = .95) {
-    result_var <- results_df %>% 
-        filter(.width == width) %>% 
-        pull(.variable) %>% 
-        str_subset(iv)
+get_coef <- function(iv, 
+                     results_df = coef_data,
+                     type = "both",
+                     width = .95,
+                     abs = FALSE) {
+  result_var <- results_df %>% 
+    filter(.width == width) %>% 
+    pull(.variable) %>% 
+    str_subset(iv)
+  
+  if (!type=="both") {
+    res <- results_df %>% 
+      filter(.variable == result_var & .width == width) %>% 
+      pull({{type}})
     
-    if (!type=="both") {
-        res <- results_df %>% 
-            filter(.variable == result_var & .width == width) %>% 
-            pull({{type}})
-    } else {
-        sc <- results_df %>% 
-            filter(.variable == result_var & .width == width) %>% 
-            pull(std_coef)
-        
-        ci <- results_df %>% 
-            filter(.variable == result_var & .width == width) %>% 
-            pull(ci)
-        
-        res <- paste0(sc, " (95% c.i.: ", ci, ")")
+    if (abs) {
+      res <- as.character(res) %>% 
+        str_remove_all("-")
+    }
+  } else {
+    sc <- results_df %>% 
+      filter(.variable == result_var & .width == width) %>% 
+      pull(std_coef)
+    
+    ci <- results_df %>% 
+      filter(.variable == result_var & .width == width) %>% 
+      pull(ci)
+    
+    if (abs) {
+      sc <- str_remove_all(sc, "-")
+      ci <- str_remove_all(ci, "-") %>% 
+        str_replace("(\\d+\\.?\\d?) to (\\d+\\.?\\d?)", "\\2 to \\1")
     }
     
-    return(res)
+    res <- paste0(sc, " (95% c.i.: ", ci, ")")
+  }
+  
+  return(res)
 }
 
 by2sd <- function(var) {
@@ -922,8 +946,7 @@ des_data <- vroom::vroom(here("data-raw",
                                                       "Serbia",
                                                   "The Co-operative Republic of Guyana" = "Guyana"))) %>% 
     filter(country %in% oecd_countries &
-               country!="Turkey" &
-               year > 1976) %>% 
+               year >= 1968) %>% 
     arrange(country, year) %>% 
     fill() %>% 
     group_by(country, year) %>% 
@@ -1081,8 +1104,7 @@ swiid_summary <- read_csv(here("data-raw",
 ```{r data_combo}
 if (!file.exists(here::here("data", "data_combo.rda"))) {
     data_combo <- theta_summary %>% 
-        filter(country %in% oecd_countries &
-                   country!="Turkey") %>% 
+        filter(country %in% oecd_countries) %>% 
         group_by(country) %>% 
         group_modify(~ add_row(.x, year = 0:4, .before = 0)) %>%
         mutate(year = case_when(year == 0 ~ lead(year, 5) - 5,
@@ -1139,7 +1161,8 @@ if (!file.exists(here::here("data", "data_combo.rda"))) {
 if (!file.exists(here::here("data", "results.rda"))) {
     m1 <- brm(
         formula = bf(
-            mean * 100 | mi(sd * 100) ~ election +
+            mean * 100 | mi(sd * 100) ~ year +
+                election +
                 parl +
                 federal +
                 lsq_mean + lsq_diff +
@@ -1161,7 +1184,7 @@ if (!file.exists(here::here("data", "results.rda"))) {
     
     doubled_sd <- m1$data %>% 
         select(-`mean * 100`, -mean, -sd,
-               -country, -year, -ends_with("_se")) %>% 
+               -country, -ends_with("_se")) %>% 
         summarize(across(everything(), by2sd)) %>% 
         pivot_longer(everything()) %>% 
         transmute(`.variable` = case_when(name == "gini_mean" ~ 
@@ -1169,7 +1192,8 @@ if (!file.exists(here::here("data", "results.rda"))) {
                                           name == "gini_diff" ~
                                               "bsp_megini_diffgini_diff_se",
                                           TRUE ~ paste0("b_", name)),
-                  var_names = c("Election Year",
+                  var_names = c("Time Trend",
+                                "Election Year",
                                 "Parliamentarism",
                                 "Federalism",
                                 "Disproportionality, Mean",
@@ -1194,12 +1218,13 @@ if (!file.exists(here::here("data", "results.rda"))) {
         pull(n) %>%
         summary()
     
-    save(m1, doubled_sd, coef_data0, cy_summary, file = here::here("data", "results.rda"))
+    save(m1, doubled_sd, coef_data0, cy_summary, 
+         file = here::here("data", "results.rda"))
 } else {
     load(file = here::here("data", "results.rda"))
 }
 
-ess_perc <- {{dcpo_input_raw1 %>% 
+eb_trust_parl2_parties2_perc <- {{dcpo_input_raw1 %>% 
         filter(country %in% oecd_countries & r==1) %>%
         count(item) %>%
         arrange(desc(n)) %>%
@@ -1208,15 +1233,17 @@ ess_perc <- {{dcpo_input_raw1 %>%
     round()
 ```
 
-The resulting dataset comprises the thirty-seven OECD democracies, each observed in twenty-one (Mexico) to forty (Ireland, Italy, the United Kingdom, and the United States) consecutive years (mean: `r cy_summary %>% nth(4) %>% round(1)` years, median: `r cy_summary %>% nth(3)` years).
-Even among these relatively data-rich countries, our measure of macrointerest provides much more data than would otherwise be available: the richest single survey for these cases, the European Social Survey, covers only `r ess_perc`% of these country-years, does not provide annual data, and of course excludes entirely the nine OECD members in the Americas and around the Pacific Rim (see Appendix\nobreakspace{}\@ref(ESScomparison)).
+The resulting dataset comprises the thirty-eight OECD countries, each observed in sixteen (Turkey) to forty-three (the United States) consecutive years (mean: `r cy_summary %>% nth(4) %>% round(1)` years, median: `r cy_summary %>% nth(3)` years).
+This is much more data than is available from any single source, even for this set of relatively data-rich countries.
+The two richest single items available for these cases, the Eurobarometer's questions on trust in national parliaments and in political parties, each cover only `r eb_trust_parl2_parties2_perc`% of these country-years; these data exclude entirely the nine OECD members outside Europe.
 
-@Shor2007 demonstrates that such pooled time series are best analyzed using a Bayesian multilevel model including varying intercepts for each country and each year. 
-The former help account for heteroskedasticity across space due to, e.g., omitted variable bias, while permitting the inclusion of time-invariant predictors such as parliamentarism and federalism.
-The latter take into account 'time shocks' that operate on all countries simultaneously [@Shor2007, 171-172].
-Further, the 'within-between random effects' specification is employed, meaning each of the time-varying predictors is decomposed into its time-invariant country mean and the difference between each country-year value and this country mean; this specification is superior to fixed effects and other commonly used TSCS specifications for addressing omitted variable bias and endogeneity [@Bell2015].
-The time-varying difference variables capture the short-term effects of the predictors, while the time-invariant country-mean variables reflect their---often different---long-run, "historical" effects [@Bell2015, 137].
-Moreover, as we employ a Bayesian analysis, it is straightforward to incorporate the measurement uncertainty in the data for both macrointerest and income inequality directly into the model, with the estimated values of these variables treated as random draws from distributions with unknown true means but known standard deviations [@McElreath2016, 425-431; see also @Kurz2023, 15.1.2].
+<!-- Revise these lines!!! -->
+<!-- @Shor2007 demonstrates that such pooled time series are best analyzed using a Bayesian multilevel model including varying intercepts for each country and each year.  -->
+<!-- The former help account for heteroskedasticity across space due to, e.g., omitted variable bias, while permitting the inclusion of time-invariant predictors such as parliamentarism and federalism. -->
+<!-- The latter take into account 'time shocks' that operate on all countries simultaneously [@Shor2007, 171-172]. -->
+<!-- Further, the 'within-between random effects' specification is employed, meaning each of the time-varying predictors is decomposed into its time-invariant country mean and the difference between each country-year value and this country mean; this specification is superior to fixed effects and other commonly used TSCS specifications for addressing omitted variable bias and endogeneity [@Bell2015]. -->
+<!-- The time-varying difference variables capture the short-term effects of the predictors, while the time-invariant country-mean variables reflect their---often different---long-run, "historical" effects [@Bell2015, 137]. -->
+Finally, Bayesian analysis allows us to incorporate directly into our model the quantified measurement uncertainty in the data for political discontent and for income inequality, with the estimated values of these two variables treated as random draws from distributions with unknown true means but known standard deviations [@McElreath2016, 425-431; see also @Kurz2023, 15.1.2].
 The model was estimated using the `brms` R package [@Burkner2017].
 
 ```{r resplot, fig.cap="Predicting Macrointerest in OECD Democracies \\label{model}", fig.height = 5, fig.width = 7.5}
