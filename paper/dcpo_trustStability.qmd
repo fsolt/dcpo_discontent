@@ -907,6 +907,7 @@ ggplot(data = c_res, aes(x = year, y = mean)) +
 Consider validation tests with:
     democratic satisfaction
     trust in government
+    CPI from Transparency International
     Proud of: way democracy works (ISSP National Identity)
     incumbent vote share
     populist vote share
@@ -1078,79 +1079,6 @@ if (!file.exists(here::here("data-raw", "oecd_data.rda"))) {
 } else {
     oecd <- rio::import(here::here("data-raw", "oecd_data.rda"))
 }
-
-```
-
-```{r cpi}
-if (!file.exists(here::here("data", "cpi.rda"))) {
-    cpi_trend_link <- "https://images.transparencycdn.org/images/CPI2023_Global_Results__Trends.xlsx"
-    download.file(cpi_trend_link, here("data-raw", "cpi_trend.xlsx"))
-    
-    cpi_trend <- readxl::read_excel(here("data-raw", "cpi_trend.xlsx"),
-                                    sheet = "CPI Timeseries 2012 - 2023",
-                                    skip = 3) %>% 
-        select(matches("ISO3|CPI|Standard")) %>% 
-        pivot_longer(cols = -ISO3,
-                     names_to = c("var", "year"),
-                     names_pattern = "(.*) (\\d{4})$") %>% 
-        mutate(country = countrycode(ISO3, "iso3c", "country.name",
-                                     custom_match = c("KSV" = "Kosovo")), 
-               year = as.numeric(year),
-               var = if_else(str_detect(var, "CPI"), "cpi", "se")) %>% 
-        pivot_wider(names_from = "var",
-                    values_from = "value") %>% 
-        select(country, year, cpi, se)
-    
-    cpi_links <- c(
-        "https://images.transparencycdn.org/images/CPI-2011-new_200601_104308.csv",
-        "https://images.transparencycdn.org/images/CPI-2010-new_200601_105629.csv",
-        "https://images.transparencycdn.org/images/CPI-2009-new_200601_120052.csv",
-        "https://images.transparencycdn.org/images/CPI-Archive-2008-2.csv",
-        "https://images.transparencycdn.org/images/CPI-2007-new_200602_092501.csv",
-        "https://images.transparencycdn.org/images/CPI-2006-new_200602_095933.csv",
-        "https://images.transparencycdn.org/images/CPI-2005_200602_104136.csv",
-        "https://images.transparencycdn.org/images/CPI-2004_200602_110140.csv",
-        "https://images.transparencycdn.org/images/CPI-2003_200602_113929.csv",
-        "https://images.transparencycdn.org/images/CPI-2002_200602_115328.csv",
-        "https://images.transparencycdn.org/images/CPI-2001_200603_082938.csv",
-        "https://images.transparencycdn.org/images/CPI-2000_200603_083012.csv",
-        "https://images.transparencycdn.org/images/CPI-1999_200603_083052.csv",
-        "https://images.transparencycdn.org/images/CPI-1998_200603_083119.csv",
-        "https://images.transparencycdn.org/images/CPI-Archive-1997.csv",
-        "https://images.transparencycdn.org/images/CPI-Archive-1996.csv",
-        "https://images.transparencycdn.org/images/CPI-Archive-1995.csv")
-    
-    cpi_older <- map(cpi_links, \(link) {
-        read_csv(link, 
-                 col_types = "ccccdc") %>% 
-            {`if`(!"interval" %in% names(.) & "range" %in% names(.), 
-                  mutate(., interval = range),
-                  `if`(!"interval" %in% names(.),
-                       mutate(., interval = NA_character_),
-                       .))} %>%
-            mutate(interval = if_else(str_detect(interval, "-"),
-                                      as.numeric(str_extract(interval, "\\d.\\d$")) - as.numeric(str_extract(interval, "^\\d.\\d")), 
-                                      as.numeric(interval))) %>% 
-            transmute(country = countrycode(iso, "iso3c", "country.name",
-                                            custom_match = c("KSV" = "Kosovo")),
-                      year = as.numeric(str_extract(link, "\\d{4}")),
-                      cpi = as.numeric(str_replace(score, ",",".")) * 10,
-                      se = interval*10/qnorm(.95))
-    }) %>% 
-        list_rbind() %>% 
-        group_by(country) %>% 
-        mutate(se = ifelse(is.na(se), max(se, na.rm = TRUE), se)) %>% 
-        ungroup()
-    
-    cpi <- bind_rows(cpi_trend, cpi_older) %>% 
-        arrange(country, year) %>% 
-        rename(cpi_se = se)
-    
-    rio::export(cpi, here("data", "cpi.rda"))
-} else {
-    cpi <- rio::import(here("data", "cpi.rda"))
-}
-
 ```
 
 ```{r swiid_data}
@@ -1223,9 +1151,6 @@ if (!file.exists(here::here("data", "data_combo.rda"))) {
                unemploy_diff = unemployment - unemploy_mean,
                inflation_mean = mean(inflation),
                inflation_diff = inflation - inflation_mean,
-               corrupt_mean = mean(100 - cpi),
-               corrupt_mean_se = sqrt(sum(cpi_se^2))/
-                   length(cpi),
                corrupt_diff = (100 - cpi) - corrupt_mean,
                corrupt_diff_se = sqrt(cpi_se^2 + corrupt_mean_se^2)/2) %>% 
         ungroup()
@@ -1285,8 +1210,7 @@ if (!file.exists(here::here("data", "results_m1.rda"))) {
                                 "Unemployment, Difference",
                                 "Income Inequality, Mean",
                                 "Income Inequality, Difference"),
-                  sd2 = value) %>% 
-        mutate(model = "Without Corruption")
+                  sd2 = value)
     
     coef_data0_m1 <- m1 %>% 
         tidybayes::gather_draws(`bs?p?_.*`, regex = TRUE) %>% 
@@ -1304,90 +1228,8 @@ if (!file.exists(here::here("data", "results_m1.rda"))) {
 } else {
     load(file = here::here("data", "results_m1.rda"))
 }
-```
 
-```{r m2, include=FALSE}
-if (!file.exists(here::here("data", "results_m2.rda"))) {
-    m2 <- brm(
-        formula = bf(
-            mean * 100 | mi(sd * 100) ~ year +
-                election +
-                parl +
-                federal +
-                lsq_mean + lsq_diff +
-                gdppc_mean + gdppc_diff +
-                growth_mean + growth_diff +
-                unemploy_mean + unemploy_diff +
-                me(gini_mean, gini_mean_se) +
-                me(gini_diff, gini_diff_se) +
-                me(corrupt_mean, corrupt_mean_se) +
-                me(corrupt_diff, corrupt_diff_se) +
-                (1 | country) + (1 | year)
-        ),
-        data = data_combo,
-        backend = "cmdstanr",
-        warmup = 1000,
-        iter = 2000,
-        chains = 4,
-        cores = parallel::detectCores(),
-        seed = 324,
-        control = list(max_treedepth = 14,
-                               adapt_delta = .9)
-    )
-    
-    doubled_sd_m2 <- m2$data %>% 
-        select(-`mean * 100`, -mean, -sd,
-               -country, -ends_with("_se")) %>% 
-        summarize(across(everything(), by2sd)) %>% 
-        pivot_longer(everything()) %>% 
-        transmute(`.variable` = case_when(name == "corrupt_mean" ~ 
-                                              "bsp_mecorrupt_meancorrupt_mean_se",
-                                          name == "corrupt_diff" ~
-                                              "bsp_mecorrupt_diffcorrupt_diff_se",
-                                          name == "gini_mean" ~ 
-                                              "bsp_megini_meangini_mean_se",
-                                          name == "gini_diff" ~
-                                              "bsp_megini_diffgini_diff_se",
-                                          TRUE ~ paste0("b_", name)),
-                  var_names = c("Time Trend",
-                                "Election Year",
-                                "Parliamentarism",
-                                "Federalism",
-                                "Disproportionality, Mean",
-                                "Disproportionality, Difference",
-                                "GDPpc, Mean",
-                                "GDPpc, Difference",
-                                "GDP Growth, Mean",
-                                "GDP Growth, Difference",
-                                "Unemployment, Mean",
-                                "Unemployment, Difference",
-                                "Income Inequality, Mean",
-                                "Income Inequality, Difference",
-                                "Corruption, Mean",
-                                "Corruption, Diff"),
-                  sd2 = value) %>% 
-        mutate(model = "With Corruption")
-    
-    coef_data0_m2 <- m2 %>% 
-        tidybayes::gather_draws(`bs?p?_.*`, regex = TRUE) %>% 
-        filter(!`.variable`=="b_Intercept") %>% 
-        left_join(doubled_sd_m2, by = join_by(.variable)) %>% 
-        mutate(model = "With Corruption")
-    
-    cy_summary_m2 <- m2$data %>%
-        count(country) %>%
-        pull(n) %>%
-        summary()  
-    
-    save(m2, doubled_sd_m2, coef_data0_m2, cy_summary_m2,
-         file = here::here("data", "results_m2.rda"))
-} else {
-    load(file = here::here("data", "results_m2.rda"))
-}
-
-eb_corruption_obs <- dcpo_input_raw1 %>% 
-    filter(country %in% oecd_countries & r==1 & item == "trust_parl2") %>% 
-    inner_join(cpi) %>% 
+m1_obs <- m1$data %>% 
     nrow()
 
 eb_obs <- dcpo_input_raw1 %>% 
@@ -1395,12 +1237,9 @@ eb_obs <- dcpo_input_raw1 %>%
     nrow()
 ```
 
-The resulting dataset comprises the thirty-eight OECD countries.
-When corruption is included in the model, the number of country-years observed ranges from sixteen (Turkey) to twenty-eight (the United States) consecutive years (mean: `r cy_summary_m2 %>% nth(4) %>% round(1)` years, median: `r cy_summary_m2 %>% nth(3)` years).
-Excluding corruption permits analysis of even more country-years in many countries, up to forty-three in the United States (mean: `r cy_summary_m1 %>% nth(4) %>% round(1)` years, median: `r cy_summary_m1 %>% nth(3)` years).
-The advantage over pooling a single question is clear: even for this set of relatively data-rich countries, the two richest single items available for these cases, the Eurobarometer's questions on trust in national parliaments and in political parties, each provide only provide about half as many country-years for analysis (), 
-
-and these Eurobarometer data naturally entirely exclude the nine OECD members outside Europe.
+The resulting dataset comprises the thirty-eight OECD countries and a total of `r m1_obs` country-years.
+The number of country-years observed per country ranges from sixteen (Turkey) to forty-three (the United States) consecutive years (mean: `r cy_summary_m1 %>% nth(4) %>% round(1)` years, median: `r cy_summary_m1 %>% nth(3)` years).
+The advantage in data availability over pooling responses to a single question is clear: even among these relatively data-rich countries, the two richest single items available---the Eurobarometer's questions on trust in national parliaments and in political parties---each provide only fewer than half as many country-years for analysis, `r eb_obs` observations, and these Eurobarometer data naturally entirely exclude the nine OECD members outside Europe.
 
 <!-- Revise these lines!!! -->
 <!-- @Shor2007 demonstrates that such pooled time series are best analyzed using a Bayesian multilevel model including varying intercepts for each country and each year.  -->
@@ -1413,54 +1252,27 @@ The model was estimated using the `brms` R package [@Burkner2017].
 
 ```{r resplot, fig.cap="Predicting Macrointerest in OECD Democracies \\label{model}", fig.height = 5, fig.width = 7.5}
 
-ordered <- doubled_sd_m2 %>%
+ordered <- doubled_sd_m1 %>%
     pull(var_names) %>% 
     rev()
 
-coef_data_m1 <- coef_data0_m1 %>% 
+coef_data <- coef_data0_m1 %>% 
     mutate(std_coef = round(.value * sd2, 1),
            term = factor(var_names, levels = ordered)) %>%
     ggdist::median_qi(std_coef, .width = c(.8, .9, .95)) %>%
     mutate(ci = paste0(round(.lower, 1), " to ", round(.upper, 1))) %>%
-    left_join(doubled_sd_m1, ., by = join_by(.variable)) %>% 
-    mutate(model = "Without Corruption")
+    left_join(doubled_sd_m1, ., by = join_by(.variable))
 
-coef_data_m2 <- coef_data0_m2 %>% 
-    mutate(std_coef = round(.value * sd2, 1),
-           term = factor(var_names, levels = ordered)) %>%
-    ggdist::median_qi(std_coef, .width = c(.8, .9, .95)) %>%
-    mutate(ci = paste0(round(.lower, 1), " to ", round(.upper, 1))) %>%
-    left_join(doubled_sd_m2, ., by = join_by(.variable)) %>% 
-    mutate(model = "With Corruption")
-
-plot_notes <- paste0("Notes: Dots indicate posterior means; whiskers, from thickest to thinnest, describe 80%,\n90%, and 95% credible intervals; shading depicts the posterior probability density function. Number of country-year observations: ",
-                     nrow(m2$data), " (with corruption) and ",
-                     nrow(m1$data), " (without corruption).")
+plot_notes <- paste0("Notes: Dots indicate posterior means; whiskers, from thickest to thinnest, describe 80%,\n90%, and 95% credible intervals; shading depicts the posterior probability density function. Number of country-year observations: ", nrow(m1$data), ".")
 
 coef_data0_m1 %>% 
     mutate(std_coef = .value * sd2,
-           term = factor(var_names, levels = ordered),
-           model = "Without Corruption") %>% 
-    bind_rows(coef_data0_m2 %>% 
-                  mutate(std_coef = .value * sd2,
-                         term = factor(var_names, levels = ordered),
-                         model = "With Corruption")) %>% 
+           term = factor(var_names, levels = ordered)) %>% 
     ggplot(aes(y = term, x = std_coef, group = model)) +
-    stat_halfeye(.width = c(.8, .9, .95), 
-                 aes(fill = model,
-                     color = model),
-                 alpha = .3,
-                 point_alpha = .2,
-                 interval_alpha = .1) +
+    stat_halfeye(.width = c(.8, .9, .95)) +
     geom_vline(xintercept = 0, linetype = "dashed") +
     coord_cartesian(xlim = c(-15, 15)) +
     theme_light() +
-    scale_color_manual(values = c("With Corruption" = "blue",
-                                  "Without Corruption" = "darkgreen"),
-                       name = NULL) +
-    scale_fill_manual(values = c("With Corruption" = "blue",
-                                 "Without Corruption" = "darkgreen"),
-                      name = NULL) +
     xlab(NULL) +
     ylab(NULL) +
     plot_annotation(caption = str_wrap(plot_notes, 80))
