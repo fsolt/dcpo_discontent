@@ -754,14 +754,16 @@ load(file = here::here("data", "dcpo_input.rda"))
 
 theta_summary <- DCPOtools::summarize_dcpo_results(dcpo_input,
                                                    dcpo_output,
-                                                   "theta")
+                                                   "theta") %>% 
+    mutate(across(mean:q90, ~ .x*100))
 
 save(theta_summary, file = here::here("data",
                                       "theta_summary.rda"))
 
 theta_results <- extract_dcpo_results(dcpo_input,
                                       dcpo_output,
-                                      par = "theta")
+                                      par = "theta") %>% 
+    mutate(theta = theta*100)
 
 save(theta_results, file = here::here("data",
                                       "theta_results.rda"))
@@ -1150,9 +1152,7 @@ if (!file.exists(here::here("data", "data_combo.rda"))) {
                unemploy_mean = mean(unemployment),
                unemploy_diff = unemployment - unemploy_mean,
                inflation_mean = mean(inflation),
-               inflation_diff = inflation - inflation_mean,
-               corrupt_diff = (100 - cpi) - corrupt_mean,
-               corrupt_diff_se = sqrt(cpi_se^2 + corrupt_mean_se^2)/2) %>% 
+               inflation_diff = inflation - inflation_mean) %>% 
         ungroup()
     
     rio::export(data_combo, here::here("data", "data_combo.rda"))
@@ -1165,7 +1165,7 @@ if (!file.exists(here::here("data", "data_combo.rda"))) {
 if (!file.exists(here::here("data", "results_m1.rda"))) {
     m1 <- brm(
         formula = bf(
-            mean * 100 | mi(sd * 100) ~ year +
+            mean | mi(sd) ~ year +
                 election +
                 parl +
                 federal +
@@ -1187,7 +1187,7 @@ if (!file.exists(here::here("data", "results_m1.rda"))) {
     )
     
     doubled_sd_m1 <- m1$data %>% 
-        select(-`mean * 100`, -mean, -sd,
+        select(-mean, -sd,
                -country, -ends_with("_se")) %>% 
         summarize(across(everything(), by2sd)) %>% 
         pivot_longer(everything()) %>% 
@@ -1215,8 +1215,7 @@ if (!file.exists(here::here("data", "results_m1.rda"))) {
     coef_data0_m1 <- m1 %>% 
         tidybayes::gather_draws(`bs?p?_.*`, regex = TRUE) %>% 
         filter(!`.variable`=="b_Intercept") %>% 
-        left_join(doubled_sd_m1, by = join_by(.variable)) %>% 
-        mutate(model = "Without Corruption")
+        left_join(doubled_sd_m1, by = join_by(.variable))
     
     cy_summary_m1 <- m1$data %>%
         count(country) %>%
@@ -1250,7 +1249,7 @@ The advantage in data availability over pooling responses to a single question i
 Finally, Bayesian analysis allows us to incorporate directly into our model the quantified measurement uncertainty in the data for political discontent and for income inequality, with the estimated values of these two variables treated as random draws from distributions with unknown true means but known standard deviations [@McElreath2016, 425-431; see also @Kurz2023, 15.1.2].
 The model was estimated using the `brms` R package [@Burkner2017].
 
-```{r resplot, fig.cap="Predicting Macrointerest in OECD Democracies \\label{model}", fig.height = 5, fig.width = 7.5}
+```{r resplot, fig.cap="Predicting Public Political Discontent in OECD Countries \\label{model}", fig.height = 5, fig.width = 7.5}
 
 ordered <- doubled_sd_m1 %>%
     pull(var_names) %>% 
@@ -1279,8 +1278,9 @@ coef_data0_m1 %>%
 ```
 
 
-Figure\nobreakspace{}\@ref(fig:resplot) displays the results.^[
+The results of this analysis are displayed in Figure\nobreakspace{}\@ref(fig:resplot).^[
 Appendix\nobreakspace{}\@ref(resultstable) provides a tabular version.]
+The time trend indicates that discontent has been, on average and net of the other included variables, rising over time in these countries by 
 Consistent with the argument that campaigns bring attention-grabbing information to the public, macrointerest in election years is found to be `r get_coef("election", type = "std_coef")` points (95% credible interval: `r get_coef("election", type = "ci")` points) higher than in years without elections.
 This accords with previous research finding small but well-estimated increases in political interest in election years [see, e.g., @Larsen2022].
 
