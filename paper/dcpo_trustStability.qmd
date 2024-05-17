@@ -40,7 +40,8 @@ crossref:
 #     name: Department of Political Science, University of Iowa, IA, U.S.
 citeproc: false # to make multibib and wordcount work
 filters:
-  - multibib # separate bib for main and appendix
+  - at: pre-render
+    path: "_extensions/pandoc-ext/multibib/multibib.lua"
   - at: pre-render
     path: "_extensions/andrewheiss/wordcount/wordcount.lua"
 validate-yaml: false # for multibib to work
@@ -55,7 +56,8 @@ fontsize: 12pt
 indent: true
 geometry: margin=1in
 linestretch: 1.5 # double spacing using linestretch 1.5
-colorlinks: true
+citecolor: black
+linkcolor: black
 link-citations: true
 execute:
   echo: false
@@ -298,39 +300,65 @@ get_coef <- function(iv,
                      results_df = coef_data,
                      type = "both",
                      width = .95,
-                     abs = FALSE) {
+                     abs = FALSE,
+                     unstd = FALSE) {
   result_var <- results_df %>% 
     filter(.width == width) %>% 
     pull(.variable) %>% 
     str_subset(iv)
   
-  if (!type=="both") {
-    res <- results_df %>% 
-      filter(.variable == result_var & .width == width) %>% 
-      pull({{type}})
+  result_all <- results_df %>% 
+            filter(.variable == result_var & .width == width)
+  
+  sd2 <- result_all %>% 
+            pull(sd2)
+  
+  if (type=="std_coef") {
+    res <- result_all %>% 
+      pull(std_coef)
     
-    if (abs) {
-      res <- as.character(res) %>% 
-        str_remove_all("-")
+    if (unstd) {
+            res <- {as.numeric(res)/sd2} %>% 
+            round(2) %>% 
+            as.character()
+    }
+  } else if (type == "ci") {
+      res <- result_all %>%
+          mutate(ci = paste0(round(.lower, 1), " to ", round(.upper, 1))) %>%
+          pull(ci)
+      
+      if (unstd) {
+          res <- list(result_all$.lower, result_all$.upper) %>% 
+              map(~ {as.numeric(.x)/sd2} %>%
+                      round(2)) %>% 
+              unlist() %>% 
+              {paste(pluck(., 1), "to", pluck(., 2))}
     }
   } else {
     sc <- results_df %>% 
       filter(.variable == result_var & .width == width) %>% 
       pull(std_coef)
     
-    ci <- results_df %>% 
-      filter(.variable == result_var & .width == width) %>% 
-      pull(ci)
+    ci <- result_all %>%
+        mutate(ci = paste0(round(.lower, 1), " to ", round(.upper, 1))) %>%
+        pull(ci)
     
-    if (abs) {
-      sc <- str_remove_all(sc, "-")
-      ci <- str_remove_all(ci, "-") %>% 
-        str_replace("(\\d+\\.?\\d?) to (\\d+\\.?\\d?)", "\\2 to \\1")
+    if (unstd) {
+        sc <- {as.numeric(sc)/sd2} %>% 
+            round(2)
+        ci <- list(result_all$.lower, result_all$.upper) %>% 
+            map(~ {as.numeric(.x)/sd2} %>%
+                    round(3)) %>% 
+            unlist() %>% 
+            {paste(pluck(., 1), "to", pluck(., 2))}
     }
-    
     res <- paste0(sc, " (95% c.i.: ", ci, ")")
   }
   
+  if (abs) {
+      res <- as.character(res) %>% 
+          str_remove_all("-")
+  }
   return(res)
 }
 
@@ -383,20 +411,20 @@ surveys_pd <- read_csv(here::here("data-raw",
                                   "surveys_pd.csv"),
                        col_types = "cccc")
 
-item_groups <- c("eff",
-                 "trust_eff",
-                 "corrupt",
-                 "sat",
-                 "trust")
-
-items_by_group <- map(item_groups, \(g) {
-    surveys_pd %>% 
-        filter(group == g) %>% 
-        pull(item) %>% 
-        unique() %>% 
-        sort()
-}) %>% 
-    set_names(item_groups)
+# item_groups <- c("eff",
+#                  "trust_eff",
+#                  "corrupt",
+#                  "sat",
+#                  "trust")
+# 
+# items_by_group <- map(item_groups, \(g) {
+#     surveys_pd %>% 
+#         filter(group == g) %>% 
+#         pull(item) %>% 
+#         unique() %>% 
+#         sort()
+# }) %>% 
+#     set_names(item_groups)
 
 dcpo_input_raw <- DCPOtools::dcpo_setup(vars = surveys_pd,
                                         datapath = here::here("..",
@@ -404,14 +432,7 @@ dcpo_input_raw <- DCPOtools::dcpo_setup(vars = surveys_pd,
                                         file = here::here("data",
                                                           "dcpo_input_raw.csv"))
 
-dcpo_input_raw %>% 
-    group_by(country, year, item) %>% 
-    summarize(avg = sum(r*n)/sum(n)) %>%
-    pivot_wider(names_from = item, values_from = avg) %>%
-    ungroup() %>%
-    select(unname(unlist(items_by_group))) %>%
-    long_corr() %>%
-    View("long_corr")
+
 ```
 
 ```{r pd_summary_stats}
@@ -654,7 +675,8 @@ cby_map <- world_map %>%
     distinct(region) %>% 
     mutate(country = countrycode::countrycode(region,
                                               "country.name",
-                                              "country.name")) %>% 
+                                              "country.name",
+                                              warn = FALSE)) %>% 
     filter(!region=="Antarctica") %>% 
     left_join(dcpo_input_raw1 %>% 
                   count(country, year) %>% 
@@ -837,19 +859,20 @@ p_theta <- ggplot(p1_data,
                  na.rm = TRUE,
                  alpha = .4) +
     geom_point(fill = "black", shape = 21, size = .5, na.rm = TRUE) +
-    theme_bw() + theme(legend.position="none",
-                       axis.text.x  = element_text(size = axis_text_size,
-                                                   angle = 90,
-                                                   vjust = .45,
-                                                   hjust = .95),
-                       axis.text.y  = element_text(size = axis_text_size),
-                       axis.title = element_blank(),
-                       strip.background = element_blank(), 
-                       strip.text = element_blank(),
-                       panel.grid.major = element_line(size = .3),
-                       panel.grid.minor = element_line(size = .15)) +
+    theme_bw() + 
+    theme(legend.position="none",
+          axis.text.x  = element_text(size = axis_text_size,
+                                      angle = 90,
+                                      vjust = .45,
+                                      hjust = .95),
+          axis.text.y  = element_text(size = axis_text_size),
+          axis.title = element_blank(),
+          strip.background = element_blank(), 
+          strip.text = element_blank(),
+          panel.grid.major = element_line(linewidth = .3),
+          panel.grid.minor = element_line(linewidth = .15)) +
     scale_y_discrete(breaks = p1_data$ranked, labels=p1_data$country_year) +
-    coord_cartesian(xlim=c(0, 1)) +
+    coord_cartesian(xlim=c(0, 100)) +
     facet_wrap(vars(pane), scales = "free", nrow = 1)
 
 
@@ -893,7 +916,7 @@ c_res <- theta_summary %>%
 ggplot(data = c_res, aes(x = year, y = mean)) +
     theme_bw() +
     theme(legend.position = "none") +
-    coord_cartesian(xlim = c(1968, 2024), ylim = c(0, 1)) +
+    coord_cartesian(xlim = c(1968, 2024), ylim = c(0, 100)) +
     labs(x = NULL, y = "Political Discontent") +
     geom_ribbon(data = c_res, aes(ymin = q10, ymax = q90, linetype=NA), alpha = .25) +
     geom_line(data = c_res) +
@@ -914,7 +937,7 @@ Consider validation tests with:
     incumbent vote share
     populist vote share
 
-# Explaining Political Dissatisfaction
+# Explaining Political Dissatisfaction {.unlisted .unnumbered}
 
 Data to test these hypotheses are drawn from several sources.
 The Democratic Electoral Systems (DES) dataset updated in @Bormann2022 provides information about the timing of elections, yielding a dichotomous variable coded one in election years and zero when no election was held.
@@ -1124,8 +1147,6 @@ if (!file.exists(here::here("data", "data_combo.rda"))) {
         fill(parl, .direction = "downup") %>% 
         left_join(oecd,
                   by = c("country", "year")) %>% 
-        left_join(cpi,
-                  by = c("country", "year")) %>% 
         left_join(swiid_summary,
                   by = c("country", "year")) %>% 
         fill(lsq) %>% 
@@ -1236,7 +1257,7 @@ eb_obs <- dcpo_input_raw1 %>%
     nrow()
 ```
 
-The resulting dataset comprises the thirty-eight OECD countries and a total of `r m1_obs` country-years.
+The resulting dataset comprises all thirty-eight OECD countries and a total of `r m1_obs` country-years.
 The number of country-years observed per country ranges from sixteen (Turkey) to forty-three (the United States) consecutive years (mean: `r cy_summary_m1 %>% nth(4) %>% round(1)` years, median: `r cy_summary_m1 %>% nth(3)` years).
 The advantage in data availability over pooling responses to a single question is clear: even among these relatively data-rich countries, the two richest single items available---the Eurobarometer's questions on trust in national parliaments and in political parties---each provide only fewer than half as many country-years for analysis, `r eb_obs` observations, and these Eurobarometer data naturally entirely exclude the nine OECD members outside Europe.
 
@@ -1249,17 +1270,17 @@ The advantage in data availability over pooling responses to a single question i
 Finally, Bayesian analysis allows us to incorporate directly into our model the quantified measurement uncertainty in the data for political discontent and for income inequality, with the estimated values of these two variables treated as random draws from distributions with unknown true means but known standard deviations [@McElreath2016, 425-431; see also @Kurz2023, 15.1.2].
 The model was estimated using the `brms` R package [@Burkner2017].
 
-```{r resplot, fig.cap="Predicting Public Political Discontent in OECD Countries \\label{model}", fig.height = 5, fig.width = 7.5}
+```{r m1plot, fig.cap="Predicting Public Political Discontent in OECD Countries", fig.height = 5, fig.width = 7.5}
+#| label: fig-m1plot
 
 ordered <- doubled_sd_m1 %>%
     pull(var_names) %>% 
     rev()
 
 coef_data <- coef_data0_m1 %>% 
-    mutate(std_coef = round(.value * sd2, 1),
+    mutate(std_coef = round(.value * sd2, 3),
            term = factor(var_names, levels = ordered)) %>%
     ggdist::median_qi(std_coef, .width = c(.8, .9, .95)) %>%
-    mutate(ci = paste0(round(.lower, 1), " to ", round(.upper, 1))) %>%
     left_join(doubled_sd_m1, ., by = join_by(.variable))
 
 plot_notes <- paste0("Notes: Dots indicate posterior means; whiskers, from thickest to thinnest, describe 80%,\n90%, and 95% credible intervals; shading depicts the posterior probability density function. Number of country-year observations: ", nrow(m1$data), ".")
@@ -1267,7 +1288,7 @@ plot_notes <- paste0("Notes: Dots indicate posterior means; whiskers, from thick
 coef_data0_m1 %>% 
     mutate(std_coef = .value * sd2,
            term = factor(var_names, levels = ordered)) %>% 
-    ggplot(aes(y = term, x = std_coef, group = model)) +
+    ggplot(aes(y = term, x = std_coef)) +
     stat_halfeye(.width = c(.8, .9, .95)) +
     geom_vline(xintercept = 0, linetype = "dashed") +
     coord_cartesian(xlim = c(-15, 15)) +
@@ -1278,7 +1299,7 @@ coef_data0_m1 %>%
 ```
 
 
-The results of this analysis are displayed in Figure\nobreakspace{}\@ref(fig:resplot).^[
+The results of this analysis are displayed in @fig-m1plot.^[
 Appendix\nobreakspace{}\@ref(resultstable) provides a tabular version.]
 The time trend indicates that discontent has been, on average and net of the other included variables, rising over time in these countries by 
 Consistent with the argument that campaigns bring attention-grabbing information to the public, macrointerest in election years is found to be `r get_coef("election", type = "std_coef")` points (95% credible interval: `r get_coef("election", type = "ci")` points) higher than in years without elections.
@@ -1332,17 +1353,19 @@ See the full, numeric results in @sec-app-numeric.
 \selectfont
 \maketitle
 \selectfont
-
+```
+```{=tex}
 \pagenumbering{arabic}
 \renewcommand*{\thepage}{A\arabic{page}}
 \setcounter{page}{1}
 \renewcommand*{\thefigure}{A\arabic{figure}}
 \setcounter{figure}{0}
-\renewcommand{\thetable}{A.\arabic{table}}
+\renewcommand{\thetable}{A\arabic{table}}
 \setcounter{table}{0}
 \renewcommand*{\thesection}{A\arabic{section}}
 \setcounter{section}{0}
-
+```
+```{=tex}
 \vspace{-.5in}
 \begin{center}
 \begin{Large}
@@ -1354,8 +1377,26 @@ Online Supplementary Materials
 \newpage
 ```
 
+# Survey Items Used to Estimate Public Political Discontent {#sec-surveys}
 
-\noindent Table A1: Indicators Used in the Support for Political Dissatisfaction Latent Variable Model
+Following @Jennings2017, we conceptualize political discontent as the lack of diffuse political support among the public.
+This lack is in turn understood as encompassing low external efficacy, that is, perceptions of government unresponsiveness; a lack of trust in the political system; and perceptions of pervasive corruption.
+National and cross-national surveys have often included questions tapping such political discontent for over a half century, but the resulting data are both sparse, that is, unavailable for many countries and years, and incomparable, generated by many different survey items.
+We identified `r n_items` such survey items that were asked in no fewer than five country-years in countries surveyed at least twice; these items were drawn from `r n_surveys` different survey datasets.
+These items are listed in @tbl-items below, along with the dispersion ($\alpha$) and difficulty ($\beta$) scores estimated for each from the DCPO model.
+Lower values of dispersion indicate questions that better identify publics with a higher level of trust from those with lower. 
+Items have one less difficulty score than the number of response categories. 
+
+In accordance with the advice offered by @Hu2022 to avoid data-entry errors by automating data collection, the `DCPOtools` R package [@Solt2019] was used to compile the responses to these questions.
+The current version of the software facilitates the entire practical data generation process: from facilitating the acquisition of original survey datasets and converting them into R standard format for quicker loading; through standardizing country names, identifying survey years, and extracting the desired survey items; to restructuring the resulting data for analysis with the DCPO model. 
+The primary objective is to limit manual interventions, thereby maximizing reproducibility and reducing the error potential inherent in human-operated data preparation tasks.
+The survey dataset codes listed in @tbl-items correspond to those used in that package.
+
+The survey items in these source data were asked in a total of `r n_countries` different countries in at least two time points over `r n_years` years, `r year_range`, resulting in `r n_cyi` country-year-item observations.
+The number of items observed for each country-year in the source data is displayed in @fig-obs1 and @fig-obs2 below.
+The macrointerest scores of country-years with more observed items are likely to be estimated more precisely.
+The estimates for country-years with fewer (or no) observed items rely more heavily (or entirely) on the random-walk prior and are therefore less certain.
+
 ```{r dcpo_items}
 load(here::here("data", "dcpo_input.rda"))
 load(here::here("data", "item_results.rda"))
@@ -1383,6 +1424,8 @@ arrange(-n_cy)
 ```
 
 ```{r dcpo_items_table}
+#| label: tbl-items
+
 items_summary %>% 
 transmute(`Survey\nItem\nCode` = item,
 `Country-Years` = as.character(n_cy),
@@ -1406,9 +1449,14 @@ kableExtra::kable_styling(latex_options = "striped") %>%
 kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package (Solt, Hu, and Tai 2019).")
 ```
 
-```{r obs, fig.cap = "Source Data Observations by Country and Year", fig.height = 9}
+```{r obs1, fig.cap = "Source Data Observations by Country and Year", fig.height = 9}
+#| label: fig-obs1
+
 dcpo_input_plot <- dcpo_input_raw1 %>% 
-mutate(country = str_replace(country, "’", "'")) %>% 
+mutate(country = str_replace(country, "’", "'"),
+         country = if_else(country %in% oecd_countries,
+                           paste0(country, "*"),
+                           country)) %>% 
 distinct(country, year, item, cc_rank) %>% 
 group_by(country, year) %>% 
 summarize(n = n(),
@@ -1450,10 +1498,13 @@ legend.position = c(0.13, 0.12),
 legend.background = element_rect(fill = "white", colour = NA)) +
 facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
 ncol = 1,
-scales = "free_y")
+scales = "free_y") +
+  plot_annotation(caption = "Starred countries are OECD democracies, the sample employed in the analysis of macrointerest presented in the main text.")
 ```
 
 ```{r obs2, fig.cap = "Source Data Observations by Country and Year, cont.", fig.height = 9}
+#| label: fig-obs2
+
 dcpo_input_plot %>%
 filter(!continent %in% c("Europe", "Asia-Oceania")) %>%
 ggplot(aes(x = year, 
@@ -1478,19 +1529,117 @@ legend.position = c(0.13, 0.12),
 legend.background = element_rect(fill = "white", colour = NA)) +
 facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
 ncol = 1,
-scales = "free_y")
+scales = "free_y") +
+  plot_annotation(caption = "Starred countries are OECD democracies, the sample employed in the analysis of macrointerest presented in the main text.")
 ```
 
 
-# Technical Details of DCPO {}
+# The DCPO Model {#sec-app-dcpo}
 
-Another test of citation [@Rubin1987;@Claassen2020].
+<!-- [Revise the following text!] -->
+A number of recent studies have developed latent variable models of aggregate survey responses based on cross-national survey data [see @Claassen2019; @Caughey2019; @McGann2019; @Kolczynska2024].
+To estimate macrointerest across countries and over time, we employ the latest of these methods that is appropriate for data that is not only incomparable but also sparse, the Dynamic Comparative Public Opinion (DCPO) model elaborated in @Solt2020c.
+The DCPO model is a population-level two-parameter ordinal logistic item response theory (IRT) model with country-specific item-bias terms.
 
-# Descriptive Statistics {#sec-app-descriptive}
+DCPO models the total number of survey responses expressing at least as much macrointerest as response category $r$ to each question $q$ in country $k$ at time $t$, $y_{ktqr}$, out of the total number of respondents surveyed, $n_{ktqr}$, using the beta-binomial distribution:
 
-Here's the appendix references list:
+\begin{equation}
+a_{ktqr} = \phi\eta_{ktqr} \label{eq:bb_a}
+\end{equation}
+\begin{equation}
+b_{ktqr} = \phi(1 - \eta_{ktqr}) \label{eq:bb_b}
+\end{equation}
+\begin{equation}
+y_{ktqr} \sim \textrm{BetaBinomial}(n_{ktqr}, a_{ktqr}, b_{ktqr}) \label{eq:betabinomial}
+\end{equation}
 
+where $\phi$ represents an overall dispersion parameter to account for additional sources of survey error beyond sampling error and $\eta_{ktqr}$ is the expected probability that a random person in country $k$ at time $t$ answers question $q$ with a response at least as interested as response $r$.^[
+The ordinal responses to question $q$ are coded to range from 1 (expressing the least political interest) to $R$ (expressing the most political interest), and $r$ takes on all values greater than 1 and less than or equal to $R$.]
+
+This expected probability, $\eta_{ktqr}$, is in turn estimated as follows:
+
+\begin{equation}
+\eta_{ktqr} = \textrm{logit}^{-1}(\frac{\bar{\theta'}_{kt} - (\beta_{qr} + \delta_{kq})}{\sqrt{\alpha_{q}^2 + (1.7*\sigma_{kt})^2}}) \label{eq:dcpo}
+\end{equation}
+
+In this equation, $\beta_{qr}$ represents the difficulty of response $r$ to question $q$, that is, the degree of political the response expresses.  The $\delta_{kq}$ term represents country-specific item bias: the extent to which all responses to a particular question $q$ may be more (or less) difficult in a given country $k$ due to translation issues, cultural differences in response styles, or other idiosyncrasies that render the same survey item not equivalent across countries.^[
+Estimating $\delta_{kq}$ requires repeated administrations of question $q$ in country $k$, so
+when responses to question $q$ are observed in country $k$ in only a single year, the DCPO model sets $\delta_{kq}$ to zero by assumption, increasing the error of the model by any country-item bias that is present.
+Questions that are asked repeatedly over time in only a single country pose no risk of country-specific item bias, so $\delta_{kq}$ in such cases are also set to zero.]
+The dispersion of question $q$, its noisiness in relation to the latent variable, is $\alpha_{q}$. The mean and standard deviation of the unbounded latent trait of macrointerest are $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, respectively.
+
+Random-walk priors are used to account for the dynamics in $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, and weakly informative priors are placed on the other parameters.^[
+The dispersion parameters $\alpha_{q}$ are drawn from standard half-normal prior distributions, that is, the positive half of N(0, 1).
+The first difficulty parameters for each question, $\beta_{q1}$, are drawn from standard normal prior distributions, and the differences between $\beta$s for each $r$ for the same question $q$ are drawn from standard half-normal prior distributions.
+The item-bias parameters $\delta_{kq}$ receive normally-distributed hierarchical priors with mean 0 and standard deviations drawn from standard half-normal prior distributions.
+The initial value of the mean unbounded latent trait for each country, $\bar{\theta'}_{k1}$, is assigned a standard normal prior, as are the transition variances $\sigma_{\bar{\theta'}}^2$ and $\sigma_{\sigma}^2$; the initial value of the standard deviation of the unbounded latent trait for each country, $\sigma_{k1}$, is drawn from a standard lognormal prior distribution.
+The overall dispersion, $\phi$, receives a somewhat more informative prior drawn from a gamma(4, 0.1) distribution that yields values that are well scaled for that parameter.]
+The dispersion parameters $\alpha_q$ are constrained to be positive and all survey responses are coded with high values indicating more political interest to fix direction.
+The difficulty $\beta$ of "to some extent" (the third response on the four-point, "not at all" to "a great deal" scale) to the European Social Survey's question "To what extent would you say you are interested in politics?" is set to 1 to identify location, and for each question $q$ the difficulties for increasing response categories $r$ are constrained to be increasing.
+The sum of $\delta_{kq}$ across all countries $k$ is set to zero for each question $q$:
+
+\begin{equation}
+\sum_{k = 1}^K \delta_{kq} = 0
+\end{equation}
+
+Finally, the logistic function is used to transform $\bar{\theta'}_{kt}$ to the unit interval and so give the bounded mean of macrointerest, $\bar{\theta}_{kt}$, which is our parameter of interest here [see @Solt2020c, 3-8].
+
+The DCPO model accounts for the incomparability of different survey questions with two parameters.
+First, it incorporates the _difficulty_ of each question's responses, that is, how much political discontent is indicated by a given response. 
+That each response evinces more or less of our latent trait is most easily seen with regard to the ordinal responses to the same question: responding "strongly agree" to the statement "people like me don't have any say about what the government does" exhibits more political discontent than choosing "agree," which is a more discontented response that "disagree," which in turn is more discontented than "strongly disagree."
+But this is also true across questions.
+For example, strongly agreeing that "there is widespread corruption among those who govern the country" likely expresses even more discontent than strongly agreeing that "people like me can probably vote, but we cannot do anything else to influence politics."
+Second, the DCPO model accounts for each question's _dispersion_, its noisiness with regard to our latent trait.
+The lower a question's dispersion, the better that changes in responses to the question map onto changes in public political discontent.
+Together, the model's difficulty and dispersion estimates work to generate comparable estimates of the latent variable of public political discontent from the available but incomparable source data.
+
+To address the sparsity of the source data---the fact that there are gaps in the time series of each country, and even many observed country-years have only one or few observed items---DCPO uses simple local-level dynamic linear models, i.e., random-walk priors, for each country.
+That is, within each country, each year's value of public political discontent is modeled as the previous year's estimate plus a random shock.
+These dynamic models smooth the estimates of discontent over time and allow estimation even in years for which little or no survey data is available, albeit at the expense of greater measurement uncertainty.
+
+It is worth noting that not all sources of incomparability are likely to be fully addressed by the DCPO model.
+To the extent that survey sample representation issues---such as from variations in population definitions (such as age range, minority inclusion, and territorial exclusions) and sample designs (like probability versus non-probability samples, and older surveys' reliance on quota or random route samples without enumeration)---vary across years for a single country and item (as is typically the case, as more recent surveys are more likely to be fully representative), the country-specific item bias terms will not remedy this problem.
+And although survey weights are easily incorporated in the source data (and indeed the `DCPOtools` package does so automatically), not all available weights yield fully representative samples, and some surveys lack weights entirely.
+Unlike the model employed by @Caughey2019, the DCPO model does not incorporate poststratification to correct for these issues.
+While this does increase computational tractability and decrease data demands, the downside is clearly greater measurement uncertainty in the estimates in country-years where the data are relatively rich (via $\phi$) and potential bias in the estimates where data are more sparse.
+
+
+\pagebreak
 # Numeric Results {#sec-app-numeric}
+## Tabular Version of Results Presented in @fig-m1plot {#sec-m1table}
+<!-- \FloatBarrier -->
+```{r modelTB}
+#| label: tbl-m1
+
+vec_coefName <- c("b_year" = "Time Trend",
+  "b_election" = "Election Year",
+  "b_parl" = "Parliamentarism",
+  "b_federal" = "Federalism",
+  "b_lsq_mean" = "Disproportionality, Mean",
+  "b_lsq_diff" = "Disproportionality, Difference",
+  "b_gdppc_mean" = "GDPpc, Mean",
+  "b_gdppc_diff" = "GDPpc, Difference",
+  "b_growth_mean" = "GDP Growth, Mean",
+  "b_growth_diff" = "GDP Growth, Difference",
+  "b_unemploy_mean" = "Unemployment, Mean",
+  "b_unemploy_diff" = "Unemployment, Difference",
+  "bsp_megini_meangini_mean_se" = "Income Inequality, Mean",
+  "bsp_megini_diffgini_diff_se" = "Income Inequality, Difference")
+
+# Create a modelsummary table with the number of observations included
+modelsummary(m1,
+    coef_map = vec_coefName,
+    metrics = c("R2", "RMSE"),
+    gof_omit = "[Mm]arg",
+    statistic = "conf.int",
+    notes = "95-percent credible intervals are in brackets.") %>% 
+tinytable::style_tt(fontsize = .8)
+
+```
+<!-- \FloatBarrier -->
+
+\pagebreak
+
 
 # References {.unlisted .unnumbered}
 
