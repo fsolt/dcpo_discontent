@@ -6,7 +6,7 @@ format:
     keep-tex: false
     # thanks: "Yue Hu appreciates the funding support from the National Natural Science Foundation of China (72374116)."
 crossref:
-  sec-prefix: OSM
+#  sec-prefix: OSM
   sec-labels: alpha A
 # author:
 #   - name: Yuehong 'Cassandra' Tai
@@ -1298,9 +1298,9 @@ coef_data0_m1 %>%
     plot_annotation(caption = str_wrap(plot_notes, 80))
 ```
 
-
+<!-- Revise below, obv -->
 The results of this analysis are displayed in @fig-m1plot.^[
-Appendix\nobreakspace{}\@ref(resultstable) provides a tabular version.]
+@tbl-m1 in Appendix\nobreakspace{}@sec-app-numeric, provides a tabular version.]
 The time trend indicates that discontent has been, on average and net of the other included variables, rising over time in these countries by 
 Consistent with the argument that campaigns bring attention-grabbing information to the public, macrointerest in election years is found to be `r get_coef("election", type = "std_coef")` points (95% credible interval: `r get_coef("election", type = "ci")` points) higher than in years without elections.
 This accords with previous research finding small but well-estimated increases in political interest in election years [see, e.g., @Larsen2022].
@@ -1499,7 +1499,7 @@ legend.background = element_rect(fill = "white", colour = NA)) +
 facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
 ncol = 1,
 scales = "free_y") +
-  plot_annotation(caption = "Starred countries are OECD democracies, the sample employed in the analysis of macrointerest presented in the main text.")
+  plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of macrointerest presented in the main text.", 80))
 ```
 
 ```{r obs2, fig.cap = "Source Data Observations by Country and Year, cont.", fig.height = 9}
@@ -1530,9 +1530,10 @@ legend.background = element_rect(fill = "white", colour = NA)) +
 facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
 ncol = 1,
 scales = "free_y") +
-  plot_annotation(caption = "Starred countries are OECD democracies, the sample employed in the analysis of macrointerest presented in the main text.")
+  plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of macrointerest presented in the main text.", 80))
 ```
 
+\pagebreak
 
 # The DCPO Model {#sec-app-dcpo}
 
@@ -1554,7 +1555,7 @@ y_{ktqr} \sim \textrm{BetaBinomial}(n_{ktqr}, a_{ktqr}, b_{ktqr}) \label{eq:beta
 \end{equation}
 
 where $\phi$ represents an overall dispersion parameter to account for additional sources of survey error beyond sampling error and $\eta_{ktqr}$ is the expected probability that a random person in country $k$ at time $t$ answers question $q$ with a response at least as interested as response $r$.^[
-The ordinal responses to question $q$ are coded to range from 1 (expressing the least political interest) to $R$ (expressing the most political interest), and $r$ takes on all values greater than 1 and less than or equal to $R$.]
+The ordinal responses to question $q$ are coded to range from 1 (expressing the least political discontent) to $R$ (expressing the most political discontent), and $r$ takes on all values greater than 1 and less than or equal to $R$.]
 
 This expected probability, $\eta_{ktqr}$, is in turn estimated as follows:
 
@@ -1574,15 +1575,15 @@ The first difficulty parameters for each question, $\beta_{q1}$, are drawn from 
 The item-bias parameters $\delta_{kq}$ receive normally-distributed hierarchical priors with mean 0 and standard deviations drawn from standard half-normal prior distributions.
 The initial value of the mean unbounded latent trait for each country, $\bar{\theta'}_{k1}$, is assigned a standard normal prior, as are the transition variances $\sigma_{\bar{\theta'}}^2$ and $\sigma_{\sigma}^2$; the initial value of the standard deviation of the unbounded latent trait for each country, $\sigma_{k1}$, is drawn from a standard lognormal prior distribution.
 The overall dispersion, $\phi$, receives a somewhat more informative prior drawn from a gamma(4, 0.1) distribution that yields values that are well scaled for that parameter.]
-The dispersion parameters $\alpha_q$ are constrained to be positive and all survey responses are coded with high values indicating more political interest to fix direction.
-The difficulty $\beta$ of "to some extent" (the third response on the four-point, "not at all" to "a great deal" scale) to the European Social Survey's question "To what extent would you say you are interested in politics?" is set to 1 to identify location, and for each question $q$ the difficulties for increasing response categories $r$ are constrained to be increasing.
+The dispersion parameters $\alpha_q$ are constrained to be positive and all survey responses are coded with high values indicating more political discontent to fix direction.
+The difficulty $\beta$ of "run by a few big interests" to the oft-asked question "would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?" is set to 1 to identify location, and for each question $q$ the difficulties for increasing response categories $r$ are constrained to be increasing.
 The sum of $\delta_{kq}$ across all countries $k$ is set to zero for each question $q$:
 
 \begin{equation}
 \sum_{k = 1}^K \delta_{kq} = 0
 \end{equation}
 
-Finally, the logistic function is used to transform $\bar{\theta'}_{kt}$ to the unit interval and so give the bounded mean of macrointerest, $\bar{\theta}_{kt}$, which is our parameter of interest here [see @Solt2020c, 3-8].
+Finally, the logistic function is used to transform $\bar{\theta'}_{kt}$ to the unit interval and so give the bounded mean of political discontent, $\bar{\theta}_{kt}$, which is our parameter of interest here [see @Solt2020c, 3-8].
 
 The DCPO model accounts for the incomparability of different survey questions with two parameters.
 First, it incorporates the _difficulty_ of each question's responses, that is, how much political discontent is indicated by a given response. 
@@ -1632,8 +1633,9 @@ modelsummary(m1,
     metrics = c("R2", "RMSE"),
     gof_omit = "[Mm]arg",
     statistic = "conf.int",
-    notes = "95-percent credible intervals are in brackets.") %>% 
-tinytable::style_tt(fontsize = .8)
+    notes = str_wrap("Unstandardized coefficients with associated 95-percent credible intervals in brackets below.", 80)) %>% 
+tinytable::style_tt(fontsize = .6,
+                    tabularray_inner = "rowsep = 0pt")
 
 ```
 <!-- \FloatBarrier -->
