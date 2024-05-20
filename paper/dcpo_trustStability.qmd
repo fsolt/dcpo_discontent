@@ -153,7 +153,7 @@ conflicted::conflicts_prefer(dplyr::filter,
 ```{r define_funs}
 # define functions
 validation_plot <- function(v_data_raw,
-                            lab_x = .38, lab_y = 92,
+                            lab_x = 38, lab_y = 92,
                             theta_summary, theta_results,
                             survey = TRUE) {
     
@@ -259,17 +259,17 @@ validation_plot <- function(v_data_raw,
                             ymax = q90,
                             linetype = NA),
                         alpha = .2) +
-            geom_point(aes(y = prop),
+            geom_point(aes(y = prop*100),
                        fill = "black",
                        shape = 21,
                        size = .5,
                        na.rm = TRUE) +
-            geom_path(aes(y = prop),
+            geom_path(aes(y = prop*100),
                       linetype = 3,
                       na.rm = TRUE,
                       alpha = .7) +
             geom_segment(aes(x = year, xend = year,
-                             y = prop_90, yend = prop_10),
+                             y = prop_90*100, yend = prop_10*100),
                          na.rm = TRUE,
                          alpha = .2) +
             facet_wrap(~ title, ncol = 4) +
@@ -929,13 +929,183 @@ ggplot(data = c_res, aes(x = year, y = mean)) +
     plot_annotation(caption = "Note: Countries are ordered by their most recent political discontent score; gray shading represents 80% credible intervals.")
 ```
 
-Consider validation tests with:
-    democratic satisfaction
-    trust in government
-    CPI from Transparency International
-    Proud of: way democracy works (ISSP National Identity)
-    incumbent vote share
-    populist vote share
+# Validating Cross-National Macrointerest {.unnumbered}
+
+That we can generate estimates of political discontent does not automatically mean that they are suitable for analysis. 
+Validation tests of a novel latent variable, like any new measure, are crucial [see, e.g., @Hu2023].
+@fig-convergent and @fig-construct provide evidence of this measure's validity with tests of convergent validation and construct validation.
+Convergent validation refers to tests of whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
+Here, @fig-convergent offers an 'internal' convergent validation test  the PPD scores are compared to responses to individual source-data survey items that were used to generate them; this provides an .
+
+<!-- Consider validation tests with: -->
+<!--     democratic satisfaction -->
+<!--     trust in government -->
+<!--     CPI from Transparency International -->
+<!--     Proud of: way democracy works (ISSP National Identity) -->
+<!--     incumbent vote share -->
+<!--     populist vote share -->
+
+```{r internal_val_dat}
+internal_tscs_dat <- dcpo_input_raw1 %>% 
+  filter(item == "trust_parties2") %>%  
+  mutate(title = "Eurobarometer",
+         neg = FALSE)
+
+internal_cs_dat <- dcpo_input_raw1 %>% 
+  filter(survey == "gallup_vop2005") %>%  
+  mutate(title = "Gallup Voice of\nthe People, 2005",
+         neg = FALSE)
+
+internal_ts_dat <- dcpo_input_raw1 %>% 
+  filter(item == "trust_parl5" & country == "Sweden") %>%  
+  mutate(title = "Sweden",
+         neg = FALSE)
+```
+
+```{r internalval, fig.height = 3.5, fig.cap = "Internal Convergent Validation: Correlations Between Macrointerest and Individual Source-Data Survey Items"}
+#| label: fig-convergent
+
+load(here("data", "theta_summary.rda"))
+load(here("data", "theta_results.rda"))
+
+internal_tscs_plot <- validation_plot(internal_tscs_dat,
+                                lab_x = 15,
+                                lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 8),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  labs(x = "Public Political Discontent",
+       y = "% Who 'Tend Not to Trust' Political Parties")
+
+internal_cs_plot <- validation_plot(internal_cs_dat,
+                                lab_x = 15,
+                                lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 8),
+        # strip.text.x = element_text(size=5),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  labs(x = "Public Political Discontent",
+       y = "% Disagreeing that Their 'Country\nis Governed by the Will of the People'")
+
+internal_ts_plot <- validation_plot(internal_ts_dat,
+                                    lab_x = 1992,
+                                    lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(ylim = c(0,100),
+                  xlim = c(1985, 2020)) +
+  labs(x = "Year",
+       y = "Score") +
+  annotate("text", x = 2010, y = 10, size = 2,
+           label = 'SOM') +
+  annotate("text", x = 2000, y = 58, size = 2,
+           label = "Public Political Discontent")
+
+internal_tscs_plot + internal_cs_plot + internal_ts_plot  +
+  patchwork::plot_annotation(caption = "Note: Gray whiskers and shading represent 80% credible intervals.")
+```
+
+```{r ext_val_dat, eval=FALSE}
+ext_dat <- read_csv(here("data-raw",
+                         "surveys_ext.csv"),
+                    col_types = "cccccc") %>% 
+  DCPOtools::dcpo_setup(datapath = here("..",
+                                        "data",
+                                        "dcpo_surveys"),
+                        file = here("data",
+                                    "ext_dat.csv"))
+```
+
+```{r ext_dat, include=FALSE, eval=FALSE}
+ext_dat <- read_csv(here("data",
+                         "ext_dat.csv"),
+                    col_types = "cdcddcd")
+
+ext_wvs_disc_dat <- ext_dat %>%
+  filter(str_detect(item, "disc3")) %>% 
+  mutate(title = "",
+         neg = FALSE)
+
+ext_wvs_news_dat <- ext_dat %>%
+  filter(str_detect(item, "news5")) %>% 
+  mutate(title = "",
+         neg = FALSE)
+
+ext_wvs_imp_dat <- ext_dat %>%
+  filter(str_detect(item, "imp4")) %>%
+    mutate(title = "",
+           neg = FALSE)
+```
+
+```{r extval1, fig.cap="Construct Validation: Correlations Between Macrointerest and Other Aspects of Political Engagement", fig.height=3.5, eval=FALSE}
+ext_wvs_news_plot <- validation_plot(ext_wvs_news_dat,
+                                     lab_x = .15,
+                                     lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,1), ylim = c(0,100)) +
+  labs(x = "Macrointerest",
+       y = "% Who Follow Politics in Traditional Media\nAt Least Several Times a Week")
+
+ext_wvs_disc_plot <- validation_plot(ext_wvs_disc_dat,
+                                    lab_x = .15,
+                                    lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,1), ylim = c(0,100)) +
+  labs(x = "Macrointerest",
+       y = "% Who Discuss Politics with Friends")
+
+ext_wvs_imp_plot <- validation_plot(ext_wvs_imp_dat,
+                                       lab_x = .13,
+                                       lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,1), ylim = c(0,100)) +
+  labs(x = "Macrointerest",
+       y = "% Saying Politics is 'Rather' or 'Very'\nImportant in Their Lives")
+
+ext_wvs_news_plot + ext_wvs_disc_plot + ext_wvs_imp_plot +
+  plot_annotation(
+    caption = "Note: Gray whiskers and shading represent 80% credible intervals. Survey\nitems sourced from World Values Study and European Values Study.")
+```
+
+On the left, PPD scores are plotted against the percentage of respondents across all country-years who responded "tend not to trust" rather than "tend to trust" on the Eurobarometer's dichotomous question, "How much trust do you have in certain institutions: Political parties?"
+The middle panel shows responses to the question with the most data-rich cross-section, "Would you say your country is governed by the will of the people?" in the Gallup's 2005 Voice of the People survey.
+Finally, the right panel evaluates how well the macrointerest scores capture change over time by focusing on the item with the largest number of observations for a single country in the source data, which asked respondents to Sweden's SOM surveys, "How much confidence do you have in the way the following institutions and groups do their job: The National Parliament?"
+In all three cases, the correlations, estimated taking into account the uncertainty in the measures, are strong.
+
+Construct validation refers to demonstrating, for some _other_ concept believed causally related to the concept a measure seeks to represent, that the measure is empirically associated with measures of that other concept [@Adcock2001, 542].
+Figure\nobreakspace{}\@ref(fig:extval1) depicts the relationships between macrointerest and three survey items from the WVS and EVS on other aspects of political engagement that are expected to have causal relationships with political interest [see @Kittilson2010, 995]: in the left panel, following political news on television, radio, and newspapers; in the center panel, discussing politics with friends; and on the right, feeling politics is important to one's life.
+These relationships are all positive and are moderate to strong.
+This cross-national latent variable of macrointerest performs well in validation tests.
+
+
+
 
 # Explaining Political Dissatisfaction {.unlisted .unnumbered}
 
@@ -1633,9 +1803,11 @@ modelsummary(m1,
     metrics = c("R2", "RMSE"),
     gof_omit = "[Mm]arg",
     statistic = "conf.int",
-    notes = str_wrap("Unstandardized coefficients with associated 95-percent credible intervals in brackets below.", 80)) %>% 
-tinytable::style_tt(fontsize = .6,
-                    tabularray_inner = "rowsep = 0pt")
+    notes = str_wrap("Unstandardized coefficients with associated 95-percent credible intervals in brackets below.", 80),
+    output = "kableExtra") %>% 
+    kableExtra::kable_styling(font_size = 10)
+# tinytable::style_tt(fontsize = .6,
+#                     tabularray_inner = "rowsep = 0pt")
 
 ```
 <!-- \FloatBarrier -->
