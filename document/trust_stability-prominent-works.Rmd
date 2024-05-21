@@ -11,20 +11,21 @@ nocite: '@*'
 ```
 
 # Prominent Works on Political Discontent/Dissatisfaction
-##1) Discussions on "Critical Citizens"
+## 1) Discussions on "Critical Citizens"
 
-- Critical citizens (@norris1999critical)
-In the United States, public support for institutions (day-to-day operations of government) had dropped significantly from 1960s to 1990s. However, the support for the underlying constitutional framework – democracy – remained robust. The phenomenon is not just American, but a global trend.
+-- Critical citizens (@norris1999critical)
 
-Declining confidence in government could be a sign of health as democracy needs critical citizens. But there is still a concern of the declining confidence in government: loss of confidence can harden into cynicism and hatred; over a long run, may weaken support for democracy as a form of governance. The mechanism is that the well performance of government requires trustful citizens who 1) have voluntary compliance with the law, 2) have willingness to pay taxes, and 3) are eager to enter government services. Without these, government performance worsens, and citizens will become more disaffected and distrustful – it is a cumulative downward spiral that could erode democratic support over a long run.
+- In the United States, public support for institutions (day-to-day operations of government) had dropped significantly from 1960s to 1990s. However, the support for the underlying constitutional framework – democracy – remained robust. The phenomenon is not just American, but a global trend.
 
-- @bertsou2019rethinking disagrees that political distrust is the “guardian of democracy”. Political distrust observed in established democracies should not be conflated with the thought of vigilant citizenry in the liberal democratic traditions (Madison, Hume, etc.). The "liberal distrust" does benefit democracy, but its emphasis of the need of vigilance is onlyb to justify an institutional design controlling power abuse. She argues that after democracy is established, what is needed for the system to function healthily is political trust.
+- Declining confidence in government could be a sign of health as democracy needs critical citizens. But there is still a concern of the declining confidence in government: loss of confidence can harden into cynicism and hatred; over a long run, may weaken support for democracy as a form of governance. The mechanism is that the well performance of government requires trustful citizens who 1) have voluntary compliance with the law, 2) have willingness to pay taxes, and 3) are eager to enter government services. Without these, government performance worsens, and citizens will become more disaffected and distrustful – it is a cumulative downward spiral that could erode democratic support over a long run.
+
+-- @bertsou2019rethinking disagrees that political distrust is the “guardian of democracy”. Political distrust observed in established democracies should not be conflated with the thought of vigilant citizenry in the liberal democratic traditions (Madison, Hume, etc.). The "liberal distrust" does benefit democracy, but its emphasis of the need of vigilance is onlyb to justify an institutional design controlling power abuse. She argues that after democracy is established, what is needed for the system to function healthily is political trust.
 
 Then, she argues that conflating “political distrust” with the “lack of political trust” is problematic. She defines political distrust as a relational attitude that reflects perceptions of untrustworthiness specific to the political system in its entirety or its components. It entails three evaluative components: 1) judgements of government’s capacity, 2) moral judgements, and 3) perceptions of incongruent interests between the citizen and the system or agents. 
 
-- @saikkonen2023guardians, using a conjoint experiment conducted in Finland, find that citizens with higher levels of political trust and democratic satisfaction are more likely to condemn democratic transgressions by politicians. They thus conclude that citizens with high political satisfaction rather than the “critical citizens” (who are disaffected) are the true guardians of democracy.
+-- @saikkonen2023guardians, using a conjoint experiment conducted in Finland, find that citizens with higher levels of political trust and democratic satisfaction are more likely to condemn democratic transgressions by politicians. They thus conclude that citizens with high political satisfaction rather than the “critical citizens” (who are disaffected) are the true guardians of democracy.
 
-- In general, studies, both theoretical and empirical, reject the need of "critical citizens" for a healthy functioning democracy (even Pippa himself is concerned with the hazard of disaffection to the democratic system). More pieces of empirical evidence (such as @Marien2011 and @Dalton2004 presented below) clearly show that distrustful and disaffected citizens compromise  effective governance and collobration.
+-- In general, studies, both theoretical and empirical, reject the need of "critical citizens" for a healthy functioning democracy (even Pippa himself is concerned with the hazard of disaffection to the democratic system). More pieces of empirical evidence (such as @Marien2011 and @Dalton2004 presented below) clearly show that distrustful and disaffected citizens compromise  effective governance and collobration.
 
 
 # Prominent Works on Political Trust
