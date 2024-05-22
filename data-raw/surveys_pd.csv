@@ -407,7 +407,7 @@ eass2012,say7,v65,c(7:1),8,People like me don't have any say about what the gove
 eb24,right4,v24,c(1:4),,How much do you trust the government to do what is right?,1 just about always / 2 most of the time / 3 only some of the time / 4 almost never,trust_eff
 eb26,care2a,v63,c(2:1),,Do you ever feel that the people running the country don't really care what happens to people like you,1 yes / 2 no,eff
 eb30,care2a,v59,c(2:1),,Do you ever feel that the people who run the country are not really concerned with what happens to you,1 yes / 2 no,eff
-eb471,right2,v256,c(2:1),,The people who run the country are more concerned with themselves than with the good of the country,1 tend to agree / 2 tend to disagree,trust_eff
+eb471,right2,v256,c(2:1),,The people who run the country are more concerned with themselves than with the good of the country,1 tend to agree / 2 tend to disagree,trust_eff
 eb48,trust_parl2,v58,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb48,trust_parties2,v54,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb51,trust_parl2,v56,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
@@ -433,7 +433,7 @@ eb634,trust_parl2,v80,c(1:2),3,How much trust do you have in certain institution
 eb634,trust_parties2,v78,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb642,trust_parl2,v94,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb642,trust_parties2,v91,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
-eb643,corrupt_pol2,v772,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
+eb643,corrupt_pol2,v772,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
 eb643,corrupt4,v766,c(4:1),,There is corruption in national institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb652,trust_parl2,v90,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb652,trust_parties2,v88,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
@@ -443,7 +443,7 @@ eb663,trust_parl2,v166,c(1:2),3,How much trust do you have in certain institutio
 eb663,trust_parties2,v167,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb681,trust_parl2,v151,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb681,trust_parties2,v149,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
-eb682,corrupt_pol2,v133,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
+eb682,corrupt_pol2,v133,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
 eb682,corrupt4,v127,c(4:1),,There is corruption in national institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb692,trust_parl2,v214,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb692,trust_parties2,v212,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
@@ -451,7 +451,7 @@ eb701,trust_parl2,v229,c(1:2),3,How much trust do you have in certain institutio
 eb701,trust_parties2,v227,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb713,trust_parl2,v218,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb713,trust_parties2,v216,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
-eb722,corrupt_pol2,v146,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
+eb722,corrupt_pol2,v146,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
 eb722,corrupt4,v140,c(4:1),,There is corruption in national institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb724,trust_parl2,v215,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb724,trust_parties2,v213,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
@@ -459,7 +459,7 @@ eb734,trust_parl2,v272,c(1:2),3,How much trust do you have in certain institutio
 eb734,trust_parties2,v270,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb742,trust_parl2,v301,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb742,trust_parties2,v299,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
-eb761,corrupt_pol2,qc4_4,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
+eb761,corrupt_pol2,qc4_4,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Politicians at the national level",0 not mentioned / 1 mentioned,corrupt
 eb761,corrupt4,qc1_4,c(4:1),,There is corruption in national institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
 eb763,trust_parl2,qa10_7,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb763,trust_parties2,qa10_5,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
@@ -467,9 +467,9 @@ eb773,trust_parl2,qa13_3,c(1:2),3,How much trust do you have in certain institut
 eb773,trust_parties2,qa13_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb781,trust_parl2,qa11_7,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb781,trust_parties2,qa11_5,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
-eb791,corrupt_party2,qb7_7,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
+eb791,corrupt_party2,qb7_7,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
 eb791,corrupt4,qb15_2,c(4:1),,There is corruption in national public institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
-eb791,corrupt4a,qb5,c(4:1),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
+eb791,corrupt4a,qb5,c(4:1),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
 eb793,trust_parl2,qa12_3,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb793,trust_parties2,qa12_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb801,trust_parl2,qa10_7,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
@@ -492,9 +492,9 @@ eb862,trust_parties2,qa8a_10,c(1:2),,How much trust do you have in certain insti
 eb873,trust_parl2,qa8a_8,c(1:2),,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb873,trust_parties2,qa8a_5,c(1:2),,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb881,care4c,qc8_5,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
-eb882,corrupt_party2,qb7_7,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
+eb882,corrupt_party2,qb7_7,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
 eb882,corrupt4,qb15_2,c(4:1),,There is corruption in national public institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
-eb882,corrupt4a,qb5,c(4:1),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
+eb882,corrupt4a,qb5,c(4:1),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
 eb883,trust_parl2,qa8a_13,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb883,trust_parties2,qa8a_6,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb891,trust_parl2,qa8a_9,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
@@ -509,9 +509,9 @@ eb915,trust_parl2,qa6a_9,c(1:2),3,How much trust do you have in certain institut
 eb915,trust_parties2,qa6a_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb923,trust_parl2,qa6a_13,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb923,trust_parties2,qa6a_6,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
-eb924,corrupt_party2,qb7_7,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
+eb924,corrupt_party2,qb7_7,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
 eb924,corrupt4,qb15_2,c(4:1),,There is corruption in national public institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
-eb924,corrupt4a,qb5,c(4:1),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
+eb924,corrupt4a,qb5,c(4:1),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
 eb931,trust_parl2,qa6a_10,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb931,trust_parties2,qa6a_2,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb941,care4c,qa15_5,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
@@ -522,9 +522,9 @@ eb953,trust_parties2,qa6a_1,c(1:2),3,How much trust do you have in certain insti
 eb961,care4c,qa19_5,c(1:4),,The interests of people like you are well taken into account by the political system in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,eff
 eb963,trust_parl2,qa6b_9,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb963,trust_parties2,qa6b_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
-eb972,corrupt_party2,qa7_7,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
+eb972,corrupt_party2,qa7_7,c(0:1),,"Do you think that the giving and taking of bribes, and the abuse of positions of power for personal gain, are widespread among any of the following? Political parties",0 not mentioned / 1 mentioned,corrupt
 eb972,corrupt4,qa15_2,c(4:1),,There is corruption in national public institutions in (OUR COUNTRY),1 totally agree / 2 tend to agree / 3 tend to disagree / 4 totally disagree,corrupt
-eb972,corrupt4a,qa5,c(4:1),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
+eb972,corrupt4a,qa5,c(4:1),,How widespread do you think the problem of corruption is in (OUR COUNTRY)?,1 very widespread / 2 fairly widespread / 3 fairly rare / 4 very rare,corrupt
 eb975,trust_parl2,qa6a_9,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
 eb975,trust_parties2,qa6a_1,c(1:2),3,How much trust do you have in certain institutions? Political parties,1 tend to trust / 2 tend not to trust,trust
 eb982,trust_parl2,qa6_10,c(1:2),3,How much trust do you have in certain institutions? National parliament,1 tend to trust / 2 tend not to trust,trust
@@ -915,7 +915,7 @@ pew2018,care4,describecountry_officials,c(1:4),,"Elected officials care what ord
 pew2018,corrupt_pol4a,describecountry_corrupt,c(4:1),,"Most politicians are corrupt. Does this statement describe (survey country) very well, somewhat well, not too well or not well at all?",1 very well / 2 somewhat well / 3 not too well / 4 not well at all,corrupt
 pew2019,big4a,state_benefit,c(1:4),,Generally the state/government is run for the benefit of all the people,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 pew2019,care4a,most_elected,c(1:4),,Most elected officials care what people like me think,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
-pewrel2009_afr,say4,q11b,c(4:1),,People like me don't have any say about what the government does ,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
+pewrel2009_afr,say4,q11b,c(4:1),,People like me don't have any say about what the government does,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 pewrel2015_ee,say4f,q67a,c(1:4),,Voting gives people like me some say about how government runs things,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 pgss,trust_parl3,q60m,c(1:3),8,"I am going to name some institutions in this country. Would you say you have a great deal of confidence, only some confidence, or hardly any confidence at all in them?",1 a great deal of confidence / 2 only some confidence / 3 hardly any confidence at all,trust
 pgss,trust_parl5,q61m,c(1:5),8,"I am going to name some institutions in this country. Using the answers from the card, would you say you have definitely a great deal of confidence, only some confidence, neither confidence nor lack thereof, not much confidence or definitely no confidence?",1 definitely a great deal of confidence / 2 only some confidence / 3 neither confidence nor lack thereof / 4 not much confidence / 5 definitely no confidence,trust
@@ -932,19 +932,19 @@ som_combo,trust_parl5,aa10e,c(1:5),c(97:99),How much confidence do you have in t
 som_combo,trust_pol4,ab12,c(1:4),c(97:99),"In general, how much trust do you have in Swedish politicians?",1 very high trust / 2 quite high trust / 3 quite low trust / 4 very low trust,trust
 usgss,right5,govdook,c(1:5),,Most of the time we can trust people in government to do what is right,1 Strongly agree / 5 Strongly disagree,trust_eff
 uspew_valcombo,care4a,q2c,c(1:4),,Most elected officials care what people like me think,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
-uspew_valcombo,say4,q2a,c(4:1),,People like me don't have any say about what the government does ,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
+uspew_valcombo,say4,q2a,c(4:1),,People like me don't have any say about what the government does,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew_valcombo,say4f,q2d,c(1:4),,Voting gives people like me some say about how government runs things,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew_valcombo,touch4,q2b,c(4:1),,"Generally speaking, elected officials in Washington lose touch with the people pretty quickly",1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew2006_12val,care4a,q13c,c(1:4),,Most elected officials care what people like me think,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
-uspew2006_12val,say4,q13a,c(4:1),,People like me don't have any say about what the government does ,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
+uspew2006_12val,say4,q13a,c(4:1),,People like me don't have any say about what the government does,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew2006_12val,say4f,q13d,c(1:4),,Voting gives people like me some say about how government runs things,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew2006_12val,touch4,q13b,c(4:1),,"Generally speaking, elected officials in Washington lose touch with the people pretty quickly",1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew2009_val,care4a,q20c,c(1:4),,Most elected officials care what people like me think,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
-uspew2009_val,say4,q20a,c(4:1),,People like me don't have any say about what the government does ,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
+uspew2009_val,say4,q20a,c(4:1),,People like me don't have any say about what the government does,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew2009_val,say4f,q20d,c(1:4),,Voting gives people like me some say about how government runs things,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew2009_val,touch4,q20b,c(4:1),,"Generally speaking, elected officials in Washington lose touch with the people pretty quickly",1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew2011_09wk,care4a,pew5c,c(1:4),,Most elected officials care what people like me think,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
-uspew2011_09wk,say4,pew5a,c(4:1),,People like me don't have any say about what the government does ,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
+uspew2011_09wk,say4,pew5a,c(4:1),,People like me don't have any say about what the government does,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew2011_09wk,say4f,pew5d,c(1:4),,Voting gives people like me some say about how government runs things,1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 uspew2011_09wk,touch4,pew5b,c(4:1),,"Generally speaking, elected officials in Washington lose touch with the people pretty quickly",1 completely agree / 2 mostly agree / 3 mostly disagree / 4 completely disagree,eff
 wvs_combo,big2,e128,c(2:1),c(-2:-1),"Generally speaking, would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?",1 run by a few big interests / 2 run for all the people,eff
