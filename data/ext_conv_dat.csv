@@ -1,0 +1,1588 @@
+country,year,item,r,n,survey,cc_rank
+Germany,1995,pride_dem4,1,143,issp1995,44
+Germany,1995,pride_dem4,2,618,issp1995,44
+Germany,1995,pride_dem4,3,766,issp1995,44
+Germany,1995,pride_dem4,4,231,issp1995,44
+Germany,1997,dem_sat4,1,99,wvs_combo,44
+Germany,1997,dem_sat4,2,706,wvs_combo,44
+Germany,1997,dem_sat4,3,1139,wvs_combo,44
+Germany,1997,dem_sat4,4,54,wvs_combo,44
+Germany,1998,dem_sat4a,1,127.698704079763,cses1,44
+Germany,1998,dem_sat4a,2,513.179473444831,cses1,44
+Germany,1998,dem_sat4a,3,1212.72689614347,cses1,44
+Germany,1998,dem_sat4a,4,137.185533514182,cses1,44
+Germany,1999,dem_sat4,1,96.9956419468463,evs_combo,44
+Germany,1999,dem_sat4,2,387.857932893843,evs_combo,44
+Germany,1999,dem_sat4,3,1286.718087184,evs_combo,44
+Germany,1999,dem_sat4,4,195.830337699096,evs_combo,44
+Germany,2002,dem_sat4a,1,237.116337064842,cses2,44
+Germany,2002,dem_sat4a,2,810.368982670838,cses2,44
+Germany,2002,dem_sat4a,3,1294.43235468874,cses2,44
+Germany,2002,dem_sat4a,4,169.21784232873,cses2,44
+Germany,2004,pride_dem4,1,127,issp2003,44
+Germany,2004,pride_dem4,2,468,issp2003,44
+Germany,2004,pride_dem4,3,489,issp2003,44
+Germany,2004,pride_dem4,4,96,issp2003,44
+Germany,2008,dem_sat4,1,128.74940802236,evs_combo,44
+Germany,2008,dem_sat4,2,568.332103734736,evs_combo,44
+Germany,2008,dem_sat4,3,1161.10458282101,evs_combo,44
+Germany,2008,dem_sat4,4,134.064385935565,evs_combo,44
+Germany,2009,dem_sat4a,1,428.347730824398,cses3,44
+Germany,2009,dem_sat4a,2,1358.93474279783,cses3,44
+Germany,2009,dem_sat4a,3,1984.27330756856,cses3,44
+Germany,2009,dem_sat4a,4,276.899212797143,cses3,44
+Germany,2013,dem_sat4a,1,114.114975610236,cses4,44
+Germany,2013,dem_sat4a,2,496.963554897111,cses4,44
+Germany,2013,dem_sat4a,3,1099.74851799617,cses4,44
+Germany,2013,dem_sat4a,4,145.989366024958,cses4,44
+Germany,2014,pride_dem4,1,58.9109720750125,issp2013,44
+Germany,2014,pride_dem4,2,351.930309479251,issp2013,44
+Germany,2014,pride_dem4,3,919.56386566459,issp2013,44
+Germany,2014,pride_dem4,4,256.874858186019,issp2013,44
+Germany,2017,dem_sat4a,1,90.0344426571176,cses5,44
+Germany,2017,dem_sat4a,2,418.333541986044,cses5,44
+Germany,2017,dem_sat4a,3,1264.39923373277,cses5,44
+Germany,2017,dem_sat4a,4,247.737061366731,cses5,44
+Sweden,1995,pride_dem4,1,63.6849622526015,issp1995,40
+Sweden,1995,pride_dem4,2,372.369720465211,issp1995,40
+Sweden,1995,pride_dem4,3,635.39522546419,issp1995,40
+Sweden,1995,pride_dem4,4,151.565802897368,issp1995,40
+Sweden,1998,dem_sat4a,1,47,cses1,40
+Sweden,1998,dem_sat4a,2,246,cses1,40
+Sweden,1998,dem_sat4a,3,633,cses1,40
+Sweden,1998,dem_sat4a,4,83,cses1,40
+Sweden,1999,dem_sat4,1,54.015302371556,evs_combo,40
+Sweden,1999,dem_sat4,2,328.068191479268,evs_combo,40
+Sweden,1999,dem_sat4,3,544.762381840881,evs_combo,40
+Sweden,1999,dem_sat4,4,27.7370357592532,evs_combo,40
+Sweden,2002,dem_sat4a,1,31,cses2,40
+Sweden,2002,dem_sat4a,2,212,cses2,40
+Sweden,2002,dem_sat4a,3,702,cses2,40
+Sweden,2002,dem_sat4a,4,97,cses2,40
+Sweden,2003,pride_dem4,1,50,issp2003,40
+Sweden,2003,pride_dem4,2,320,issp2003,40
+Sweden,2003,pride_dem4,3,613,issp2003,40
+Sweden,2003,pride_dem4,4,145,issp2003,40
+Sweden,2006,dem_sat4a,1,23,cses3,40
+Sweden,2006,dem_sat4a,2,181,cses3,40
+Sweden,2006,dem_sat4a,3,746,cses3,40
+Sweden,2006,dem_sat4a,4,167,cses3,40
+Sweden,2009,dem_sat4,1,55.4994707015033,evs_combo,40
+Sweden,2009,dem_sat4,2,258.096770413787,evs_combo,40
+Sweden,2009,dem_sat4,3,666.589178186846,evs_combo,40
+Sweden,2009,dem_sat4,4,57.5709564104458,evs_combo,40
+Sweden,2013,pride_dem4,1,29,issp2013,40
+Sweden,2013,pride_dem4,2,169,issp2013,40
+Sweden,2013,pride_dem4,3,591,issp2013,40
+Sweden,2013,pride_dem4,4,247,issp2013,40
+Sweden,2014,dem_sat4a,1,33,cses4,40
+Sweden,2014,dem_sat4a,2,129,cses4,40
+Sweden,2014,dem_sat4a,3,497,cses4,40
+Sweden,2014,dem_sat4a,4,162,cses4,40
+Sweden,2018,dem_sat4a,1,188,cses5,40
+Sweden,2018,dem_sat4a,2,654,cses5,40
+Sweden,2018,dem_sat4a,3,2329,cses5,40
+Sweden,2018,dem_sat4a,4,553,cses5,40
+Czechia,1995,pride_dem4,1,211.640950409504,issp1995,36
+Czechia,1995,pride_dem4,2,481.556655566556,issp1995,36
+Czechia,1995,pride_dem4,3,306.00245702457,issp1995,36
+Czechia,1995,pride_dem4,4,50.8054270542705,issp1995,36
+Czechia,1996,dem_sat4a,1,70,cses1,36
+Czechia,1996,dem_sat4a,2,388,cses1,36
+Czechia,1996,dem_sat4a,3,675,cses1,36
+Czechia,1996,dem_sat4a,4,43,cses1,36
+Czechia,1999,dem_sat4,1,243.763869062701,evs_combo,36
+Czechia,1999,dem_sat4,2,931.763382110285,evs_combo,36
+Czechia,1999,dem_sat4,3,684.933975716959,evs_combo,36
+Czechia,1999,dem_sat4,4,14.1190893079469,evs_combo,36
+Czechia,2002,dem_sat4a,1,83,cses2,36
+Czechia,2002,dem_sat4a,2,382,cses2,36
+Czechia,2002,dem_sat4a,3,378,cses2,36
+Czechia,2002,dem_sat4a,4,17,cses2,36
+Czechia,2003,pride_dem4,1,282.37327374518,issp2003,36
+Czechia,2003,pride_dem4,2,570.672408561212,issp2003,36
+Czechia,2003,pride_dem4,3,318.101836729992,issp2003,36
+Czechia,2003,pride_dem4,4,30.6959502270999,issp2003,36
+Czechia,2008,dem_sat4,1,249.710416946858,evs_combo,36
+Czechia,2008,dem_sat4,2,772.853553223998,evs_combo,36
+Czechia,2008,dem_sat4,3,655.091918926079,evs_combo,36
+Czechia,2008,dem_sat4,4,44.2029688178794,evs_combo,36
+Czechia,2008,dem_sat4a,1,523,cses3,36
+Czechia,2008,dem_sat4a,2,1407,cses3,36
+Czechia,2008,dem_sat4a,3,1589,cses3,36
+Czechia,2008,dem_sat4a,4,94,cses3,36
+Czechia,2013,dem_sat4a,1,298,cses4,36
+Czechia,2013,dem_sat4a,2,731,cses4,36
+Czechia,2013,dem_sat4a,3,504,cses4,36
+Czechia,2013,dem_sat4a,4,42,cses4,36
+Czechia,2013,pride_dem4,1,445,issp2013,36
+Czechia,2013,pride_dem4,2,916,issp2013,36
+Czechia,2013,pride_dem4,3,434,issp2013,36
+Czechia,2013,pride_dem4,4,90,issp2013,36
+Ireland,1995,pride_dem4,1,32.3702303127829,issp1995,36
+Ireland,1995,pride_dem4,2,205.587951322538,issp1995,36
+Ireland,1995,pride_dem4,3,539.407201045962,issp1995,36
+Ireland,1995,pride_dem4,4,172.088061953133,issp1995,36
+Ireland,1999,dem_sat4,1,62.2946271039078,evs_combo,36
+Ireland,1999,dem_sat4,2,275.274313265016,evs_combo,36
+Ireland,1999,dem_sat4,3,503.159973132058,evs_combo,36
+Ireland,1999,dem_sat4,4,97.0406439301715,evs_combo,36
+Ireland,2002,dem_sat4a,1,82.7651209797518,cses2,36
+Ireland,2002,dem_sat4a,2,383.211597138554,cses2,36
+Ireland,2002,dem_sat4a,3,1622.20881120629,cses2,36
+Ireland,2002,dem_sat4a,4,252.550864017963,cses2,36
+Ireland,2003,pride_dem4,1,67.9972845655918,issp2003,36
+Ireland,2003,pride_dem4,2,289.298170141483,issp2003,36
+Ireland,2003,pride_dem4,3,483.120937506781,issp2003,36
+Ireland,2003,pride_dem4,4,153.702530266416,issp2003,36
+Ireland,2007,dem_sat4a,1,49,cses3,36
+Ireland,2007,dem_sat4a,2,173,cses3,36
+Ireland,2007,dem_sat4a,3,800,cses3,36
+Ireland,2007,dem_sat4a,4,140,cses3,36
+Ireland,2008,dem_sat4,1,52.1920352766186,evs_combo,36
+Ireland,2008,dem_sat4,2,258.279561915159,evs_combo,36
+Ireland,2008,dem_sat4,3,459.765254026073,evs_combo,36
+Ireland,2008,dem_sat4,4,90.0777016091572,evs_combo,36
+Ireland,2011,dem_sat4a,1,188,cses4,36
+Ireland,2011,dem_sat4a,2,516,cses4,36
+Ireland,2011,dem_sat4a,3,698,cses4,36
+Ireland,2011,dem_sat4a,4,124,cses4,36
+Ireland,2013,pride_dem4,1,188.84710881351,issp2013,36
+Ireland,2013,pride_dem4,2,339.354394921903,issp2013,36
+Ireland,2013,pride_dem4,3,486.015311741857,issp2013,36
+Ireland,2013,pride_dem4,4,130.347464173809,issp2013,36
+Ireland,2016,dem_sat4a,1,106,cses5,36
+Ireland,2016,dem_sat4a,2,245,cses5,36
+Ireland,2016,dem_sat4a,3,514,cses5,36
+Ireland,2016,dem_sat4a,4,134,cses5,36
+Japan,1995,pride_dem4,1,42,issp1995,36
+Japan,1995,pride_dem4,2,331,issp1995,36
+Japan,1995,pride_dem4,3,548,issp1995,36
+Japan,1995,pride_dem4,4,187,issp1995,36
+Japan,1996,dem_sat4a,1,90.7192605862372,cses1,36
+Japan,1996,dem_sat4a,2,333.585761343815,cses1,36
+Japan,1996,dem_sat4a,3,670.204441429103,cses1,36
+Japan,1996,dem_sat4a,4,60.5923744216053,cses1,36
+Japan,2000,dem_sat4,1,77,wvs_combo,36
+Japan,2000,dem_sat4,2,638,wvs_combo,36
+Japan,2000,dem_sat4,3,489,wvs_combo,36
+Japan,2000,dem_sat4,4,15,wvs_combo,36
+Japan,2003,pride_dem4,1,50,issp2003,36
+Japan,2003,pride_dem4,2,285,issp2003,36
+Japan,2003,pride_dem4,3,515,issp2003,36
+Japan,2003,pride_dem4,4,89,issp2003,36
+Japan,2004,dem_sat4a,1,117.051253936905,cses2,36
+Japan,2004,dem_sat4a,2,300.942895777202,cses2,36
+Japan,2004,dem_sat4a,3,920.993911221128,cses2,36
+Japan,2004,dem_sat4a,4,76.8118010170373,cses2,36
+Japan,2007,dem_sat4a,1,124.854336374169,cses3,36
+Japan,2007,dem_sat4a,2,550.39746034886,cses3,36
+Japan,2007,dem_sat4a,3,602.30767547201,cses3,36
+Japan,2007,dem_sat4a,4,48.7539142036167,cses3,36
+Japan,2013,dem_sat4a,1,61,cses4,36
+Japan,2013,dem_sat4a,2,431,cses4,36
+Japan,2013,dem_sat4a,3,1228,cses4,36
+Japan,2013,dem_sat4a,4,190,cses4,36
+Japan,2013,pride_dem4,1,32,issp2013,36
+Japan,2013,pride_dem4,2,264,issp2013,36
+Japan,2013,pride_dem4,3,596,issp2013,36
+Japan,2013,pride_dem4,4,148,issp2013,36
+Japan,2018,dem_sat4a,1,52,cses5,36
+Japan,2018,dem_sat4a,2,449,cses5,36
+Japan,2018,dem_sat4a,3,1113,cses5,36
+Japan,2018,dem_sat4a,4,49,cses5,36
+Norway,1995,pride_dem4,1,41,issp1995,36
+Norway,1995,pride_dem4,2,247,issp1995,36
+Norway,1995,pride_dem4,3,865,issp1995,36
+Norway,1995,pride_dem4,4,277,issp1995,36
+Norway,1997,dem_sat4a,1,26,cses1,36
+Norway,1997,dem_sat4a,2,173,cses1,36
+Norway,1997,dem_sat4a,3,1268,cses1,36
+Norway,1997,dem_sat4a,4,575,cses1,36
+Norway,2001,dem_sat4a,1,52,cses2,36
+Norway,2001,dem_sat4a,2,387,cses2,36
+Norway,2001,dem_sat4a,3,1305,cses2,36
+Norway,2001,dem_sat4a,4,273,cses2,36
+Norway,2003,pride_dem4,1,66,issp2003,36
+Norway,2003,pride_dem4,2,389,issp2003,36
+Norway,2003,pride_dem4,3,757,issp2003,36
+Norway,2003,pride_dem4,4,176,issp2003,36
+Norway,2007,dem_sat4a,1,51,cses3,36
+Norway,2007,dem_sat4a,2,385,cses3,36
+Norway,2007,dem_sat4a,3,2565,cses3,36
+Norway,2007,dem_sat4a,4,753,cses3,36
+Norway,2008,dem_sat4,1,19.1120977233946,evs_combo,36
+Norway,2008,dem_sat4,2,298.333553985735,evs_combo,36
+Norway,2008,dem_sat4,3,694.188415886958,evs_combo,36
+Norway,2008,dem_sat4,4,64.4065449536569,evs_combo,36
+Norway,2013,dem_sat4a,1,22,cses4,36
+Norway,2013,dem_sat4a,2,104,cses4,36
+Norway,2013,dem_sat4a,3,1069,cses4,36
+Norway,2013,dem_sat4a,4,506,cses4,36
+Norway,2014,pride_dem4,1,19,issp2013,36
+Norway,2014,pride_dem4,2,145,issp2013,36
+Norway,2014,pride_dem4,3,827,issp2013,36
+Norway,2014,pride_dem4,4,525,issp2013,36
+Norway,2017,dem_sat4a,1,32,cses5,36
+Norway,2017,dem_sat4a,2,177,cses5,36
+Norway,2017,dem_sat4a,3,1115,cses5,36
+Norway,2017,dem_sat4a,4,466,cses5,36
+Portugal,1999,dem_sat4,1,29.745049433416,evs_combo,36
+Portugal,1999,dem_sat4,2,191.135275070032,evs_combo,36
+Portugal,1999,dem_sat4,3,628.016432372065,evs_combo,36
+Portugal,1999,dem_sat4,4,94.6212391438935,evs_combo,36
+Portugal,2002,dem_sat4a,1,188,cses1,36
+Portugal,2002,dem_sat4a,2,390,cses1,36
+Portugal,2002,dem_sat4a,3,581,cses1,36
+Portugal,2002,dem_sat4a,4,70,cses1,36
+Portugal,2004,dem_sat4a,1,654,cses2,36
+Portugal,2004,dem_sat4a,2,1340,cses2,36
+Portugal,2004,dem_sat4a,3,1799,cses2,36
+Portugal,2004,dem_sat4a,4,136,cses2,36
+Portugal,2004,pride_dem4,1,296.844179400914,issp2003,36
+Portugal,2004,pride_dem4,2,589.355723165341,issp2003,36
+Portugal,2004,pride_dem4,3,488.146814405815,issp2003,36
+Portugal,2004,pride_dem4,4,71.2448866006508,issp2003,36
+Portugal,2008,dem_sat4,1,262.60914691807,evs_combo,36
+Portugal,2008,dem_sat4,2,598.490255161965,evs_combo,36
+Portugal,2008,dem_sat4,3,592.330030965122,evs_combo,36
+Portugal,2008,dem_sat4,4,40.1949711125377,evs_combo,36
+Portugal,2009,dem_sat4a,1,330,cses3,36
+Portugal,2009,dem_sat4a,2,420,cses3,36
+Portugal,2009,dem_sat4a,3,509,cses3,36
+Portugal,2009,dem_sat4a,4,30,cses3,36
+Portugal,2014,pride_dem4,1,267.64000599604,issp2013,36
+Portugal,2014,pride_dem4,2,464.832953770271,issp2013,36
+Portugal,2014,pride_dem4,3,213.541321520009,issp2013,36
+Portugal,2014,pride_dem4,4,19.7911251544271,issp2013,36
+Portugal,2015,dem_sat4a,1,268,cses4,36
+Portugal,2015,dem_sat4a,2,607,cses4,36
+Portugal,2015,dem_sat4a,3,552,cses4,36
+Portugal,2015,dem_sat4a,4,41,cses4,36
+Portugal,2019,dem_sat4a,1,213,cses5,36
+Portugal,2019,dem_sat4a,2,526,cses5,36
+Portugal,2019,dem_sat4a,3,672,cses5,36
+Portugal,2019,dem_sat4a,4,65,cses5,36
+Slovenia,1994,pride_dem4,1,193,issp1995,36
+Slovenia,1994,pride_dem4,2,527,issp1995,36
+Slovenia,1994,pride_dem4,3,158,issp1995,36
+Slovenia,1994,pride_dem4,4,36,issp1995,36
+Slovenia,1997,dem_sat4a,1,334,cses1,36
+Slovenia,1997,dem_sat4a,2,924,cses1,36
+Slovenia,1997,dem_sat4a,3,471,cses1,36
+Slovenia,1997,dem_sat4a,4,127,cses1,36
+Slovenia,1999,dem_sat4,1,102,evs_combo,36
+Slovenia,1999,dem_sat4,2,428,evs_combo,36
+Slovenia,1999,dem_sat4,3,426,evs_combo,36
+Slovenia,1999,dem_sat4,4,9,evs_combo,36
+Slovenia,2003,pride_dem4,1,147,issp2003,36
+Slovenia,2003,pride_dem4,2,602,issp2003,36
+Slovenia,2003,pride_dem4,3,242,issp2003,36
+Slovenia,2003,pride_dem4,4,46,issp2003,36
+Slovenia,2005,dem_sat4a,1,88,cses2,36
+Slovenia,2005,dem_sat4a,2,475,cses2,36
+Slovenia,2005,dem_sat4a,3,306,cses2,36
+Slovenia,2005,dem_sat4a,4,41,cses2,36
+Slovenia,2008,dem_sat4,1,84.2630902391504,evs_combo,36
+Slovenia,2008,dem_sat4,2,582.694672092536,evs_combo,36
+Slovenia,2008,dem_sat4,3,637.830645893429,evs_combo,36
+Slovenia,2008,dem_sat4,4,25.9728243245918,evs_combo,36
+Slovenia,2009,dem_sat4a,1,114,cses3,36
+Slovenia,2009,dem_sat4a,2,591,cses3,36
+Slovenia,2009,dem_sat4a,3,245,cses3,36
+Slovenia,2009,dem_sat4a,4,14,cses3,36
+Slovenia,2012,dem_sat4a,1,238,cses4,36
+Slovenia,2012,dem_sat4a,2,579,cses4,36
+Slovenia,2012,dem_sat4a,3,147,cses4,36
+Slovenia,2012,dem_sat4a,4,11,cses4,36
+Slovenia,2013,pride_dem4,1,353,issp2013,36
+Slovenia,2013,pride_dem4,2,542,issp2013,36
+Slovenia,2013,pride_dem4,3,68,issp2013,36
+Slovenia,2013,pride_dem4,4,4,issp2013,36
+Spain,1995,pride_dem4,1,132.928635901164,issp1995,36
+Spain,1995,pride_dem4,2,413.388874748455,issp1995,36
+Spain,1995,pride_dem4,3,518.991887165838,issp1995,36
+Spain,1995,pride_dem4,4,115.789661525852,issp1995,36
+Spain,1998,dem_sat4a,1,121,cses1,36
+Spain,1998,dem_sat4a,2,486,cses1,36
+Spain,1998,dem_sat4a,3,1296,cses1,36
+Spain,1998,dem_sat4a,4,471,cses1,36
+Spain,1999,dem_sat4,1,70,evs_combo,36
+Spain,1999,dem_sat4,2,376,evs_combo,36
+Spain,1999,dem_sat4,3,608,evs_combo,36
+Spain,1999,dem_sat4,4,75,evs_combo,36
+Spain,2000,dem_sat4,1,58.7278441695609,wvs_combo,36
+Spain,2000,dem_sat4,2,272.821500988615,wvs_combo,36
+Spain,2000,dem_sat4,3,752.192026084052,wvs_combo,36
+Spain,2000,dem_sat4,4,86.1171234087437,wvs_combo,36
+Spain,2003,pride_dem4,1,114.701281300939,issp2003,36
+Spain,2003,pride_dem4,2,285.481608462314,issp2003,36
+Spain,2003,pride_dem4,3,625.864708694295,issp2003,36
+Spain,2003,pride_dem4,4,155.091496584349,issp2003,36
+Spain,2004,dem_sat4a,1,28,cses2,36
+Spain,2004,dem_sat4a,2,207,cses2,36
+Spain,2004,dem_sat4a,3,745,cses2,36
+Spain,2004,dem_sat4a,4,74,cses2,36
+Spain,2008,dem_sat4,1,107.507512665101,evs_combo,36
+Spain,2008,dem_sat4,2,511.234632127201,evs_combo,36
+Spain,2008,dem_sat4,3,674.258496614969,evs_combo,36
+Spain,2008,dem_sat4,4,166.729139362973,evs_combo,36
+Spain,2008,dem_sat4a,1,27,cses3,36
+Spain,2008,dem_sat4a,2,164,cses3,36
+Spain,2008,dem_sat4a,3,764,cses3,36
+Spain,2008,dem_sat4a,4,75,cses3,36
+Spain,2014,pride_dem4,1,471.9613440454,issp2013,36
+Spain,2014,pride_dem4,2,402.022170134052,issp2013,36
+Spain,2014,pride_dem4,3,245.662725854009,issp2013,36
+Spain,2014,pride_dem4,4,69.9938635219097,issp2013,36
+United Kingdom,1995,pride_dem4,1,58.3617328787429,issp1995,36
+United Kingdom,1995,pride_dem4,2,261.578972724577,issp1995,36
+United Kingdom,1995,pride_dem4,3,497.515638897124,issp1995,36
+United Kingdom,1995,pride_dem4,4,135.935591461607,issp1995,36
+United Kingdom,1997,dem_sat4a,1,95.6999780979002,cses1,36
+United Kingdom,1997,dem_sat4a,2,604.752053144954,cses1,36
+United Kingdom,1997,dem_sat4a,3,1685.54398191912,cses1,36
+United Kingdom,1997,dem_sat4a,4,471.293846959725,cses1,36
+United Kingdom,1999,dem_sat4,1,93.3047217637871,evs_combo,36
+United Kingdom,1999,dem_sat4,2,289.464312789066,evs_combo,36
+United Kingdom,1999,dem_sat4,3,399.582279590177,evs_combo,36
+United Kingdom,1999,dem_sat4,4,45.7331106778511,evs_combo,36
+United Kingdom,2003,pride_dem4,1,37.0826953521751,issp2003,36
+United Kingdom,2003,pride_dem4,2,206.680412155395,issp2003,36
+United Kingdom,2003,pride_dem4,3,414.330745570048,issp2003,36
+United Kingdom,2003,pride_dem4,4,128.198752960164,issp2003,36
+United Kingdom,2005,dem_sat4a,1,35.8802998689306,cses2,36
+United Kingdom,2005,dem_sat4a,2,195.020855755751,cses2,36
+United Kingdom,2005,dem_sat4a,3,532.173114865726,cses2,36
+United Kingdom,2005,dem_sat4a,4,79.0833793021973,cses2,36
+United Kingdom,2009,dem_sat4,1,229.5758276674,evs_combo,36
+United Kingdom,2009,dem_sat4,2,742.074185309537,evs_combo,36
+United Kingdom,2009,dem_sat4,3,420.048203108592,evs_combo,36
+United Kingdom,2009,dem_sat4,4,39.0710654536844,evs_combo,36
+United Kingdom,2013,pride_dem4,1,19.2401203215122,issp2013,36
+United Kingdom,2013,pride_dem4,2,184.570019870996,issp2013,36
+United Kingdom,2013,pride_dem4,3,470.984456002712,issp2013,36
+United Kingdom,2013,pride_dem4,4,154.872355520725,issp2013,36
+United Kingdom,2015,dem_sat4a,1,173.777655640675,cses4,36
+United Kingdom,2015,dem_sat4a,2,383.94520199229,cses4,36
+United Kingdom,2015,dem_sat4a,3,796.545796669867,cses4,36
+United Kingdom,2015,dem_sat4a,4,146.0698627135,cses4,36
+United Kingdom,2017,dem_sat4a,1,137,cses5,36
+United Kingdom,2017,dem_sat4a,2,308,cses5,36
+United Kingdom,2017,dem_sat4a,3,409,cses5,36
+United Kingdom,2017,dem_sat4a,4,91,cses5,36
+United States,1996,dem_sat4a,1,43.044042090002,cses1,36
+United States,1996,dem_sat4a,2,260.13455436886,cses1,36
+United States,1996,dem_sat4a,3,808.225390311659,cses1,36
+United States,1996,dem_sat4a,4,396.696287903802,cses1,36
+United States,1996,pride_dem4,1,34,issp1995,36
+United States,1996,pride_dem4,2,180,issp1995,36
+United States,1996,pride_dem4,3,694,issp1995,36
+United States,1996,pride_dem4,4,369,issp1995,36
+United States,1999,dem_sat4,1,80.574144409139,wvs_combo,36
+United States,1999,dem_sat4,2,335.795672241844,wvs_combo,36
+United States,1999,dem_sat4,3,638.929370632585,wvs_combo,36
+United States,1999,dem_sat4,4,119.669761152614,wvs_combo,36
+United States,2004,dem_sat4a,1,60.9294682395779,cses2,36
+United States,2004,dem_sat4a,2,166.567359268789,cses2,36
+United States,2004,dem_sat4a,3,578.581953696509,cses2,36
+United States,2004,dem_sat4a,4,245.876925767007,cses2,36
+United States,2004,pride_dem4,1,22.4251780036147,issp2003,36
+United States,2004,pride_dem4,2,102.100316041974,issp2003,36
+United States,2004,pride_dem4,3,636.423868320935,issp2003,36
+United States,2004,pride_dem4,4,389.201120632611,issp2003,36
+United States,2008,dem_sat4a,1,88.3060176293289,cses3,36
+United States,2008,dem_sat4a,2,286.005680978072,cses3,36
+United States,2008,dem_sat4a,3,1213.2126160777,cses3,36
+United States,2008,dem_sat4a,4,479.195738319728,cses3,36
+United States,2012,dem_sat4a,1,134.490393230829,cses4,36
+United States,2012,dem_sat4a,2,313.017886014153,cses4,36
+United States,2012,dem_sat4a,3,1129.29592410468,cses4,36
+United States,2012,dem_sat4a,4,308.566796166976,cses4,36
+United States,2014,pride_dem4,1,42.871446668,issp2013,36
+United States,2014,pride_dem4,2,182.589550589935,issp2013,36
+United States,2014,pride_dem4,3,628.092723004445,issp2013,36
+United States,2014,pride_dem4,4,313.829193591032,issp2013,36
+United States,2019,dem_sat4a,1,774.130867394504,cses5,36
+United States,2019,dem_sat4a,2,3245.07495926847,cses5,36
+United States,2019,dem_sat4a,3,5947.38609083417,cses5,36
+United States,2019,dem_sat4a,4,974.953488644532,cses5,36
+Canada,1995,pride_dem4,1,46.6035089840664,issp1995,32
+Canada,1995,pride_dem4,2,182.892408723436,issp1995,32
+Canada,1995,pride_dem4,3,744.02461533002,issp1995,32
+Canada,1995,pride_dem4,4,473.346040662577,issp1995,32
+Canada,1997,dem_sat4a,1,63.7668994295246,cses1,32
+Canada,1997,dem_sat4a,2,394.323406767843,cses1,32
+Canada,1997,dem_sat4a,3,1054.03380825946,cses1,32
+Canada,1997,dem_sat4a,4,259.857842747955,cses1,32
+Canada,2000,dem_sat4,1,111.096548009901,wvs_combo,32
+Canada,2000,dem_sat4,2,490.154769919112,wvs_combo,32
+Canada,2000,dem_sat4,3,996.939023127194,wvs_combo,32
+Canada,2000,dem_sat4,4,246.572338508384,wvs_combo,32
+Canada,2004,dem_sat4a,1,86.1853528735402,cses2,32
+Canada,2004,dem_sat4a,2,400.16825256415,cses2,32
+Canada,2004,dem_sat4a,3,998.172637856236,cses2,32
+Canada,2004,dem_sat4a,4,179.431785500257,cses2,32
+Canada,2004,pride_dem4,1,34.8917116529477,issp2003,32
+Canada,2004,pride_dem4,2,183.844091785119,issp2003,32
+Canada,2004,pride_dem4,3,743.814187594009,issp2003,32
+Canada,2004,pride_dem4,4,190.10081183122,issp2003,32
+Canada,2008,dem_sat4a,1,274.490732050007,cses3,32
+Canada,2008,dem_sat4a,2,803.390179173011,cses3,32
+Canada,2008,dem_sat4a,3,2498.58941226691,cses3,32
+Canada,2008,dem_sat4a,4,793.395470723647,cses3,32
+Canada,2013,dem_sat4a,1,758.655200291524,cses4,32
+Canada,2013,dem_sat4a,2,1535.94187741181,cses4,32
+Canada,2013,dem_sat4a,3,3956.88585425609,cses4,32
+Canada,2013,dem_sat4a,4,1208.60717072341,cses4,32
+Canada,2019,dem_sat4a,1,263,cses5,32
+Canada,2019,dem_sat4a,2,693,cses5,32
+Canada,2019,dem_sat4a,3,1473,cses5,32
+Canada,2019,dem_sat4a,4,424,cses5,32
+Denmark,1998,dem_sat4a,1,55,cses1,32
+Denmark,1998,dem_sat4a,2,159,cses1,32
+Denmark,1998,dem_sat4a,3,1269,cses1,32
+Denmark,1998,dem_sat4a,4,496,cses1,32
+Denmark,1999,dem_sat4,1,28,evs_combo,32
+Denmark,1999,dem_sat4,2,285,evs_combo,32
+Denmark,1999,dem_sat4,3,519,evs_combo,32
+Denmark,1999,dem_sat4,4,117,evs_combo,32
+Denmark,2001,dem_sat4a,1,17,cses2,32
+Denmark,2001,dem_sat4a,2,115,cses2,32
+Denmark,2001,dem_sat4a,3,1179,cses2,32
+Denmark,2001,dem_sat4a,4,695,cses2,32
+Denmark,2003,pride_dem4,1,15,issp2003,32
+Denmark,2003,pride_dem4,2,213,issp2003,32
+Denmark,2003,pride_dem4,3,713,issp2003,32
+Denmark,2003,pride_dem4,4,311,issp2003,32
+Denmark,2008,dem_sat4,1,37.4600830367415,evs_combo,32
+Denmark,2008,dem_sat4,2,307.214384916701,evs_combo,32
+Denmark,2008,dem_sat4,3,823.696410545418,evs_combo,32
+Denmark,2008,dem_sat4,4,292.686342020287,evs_combo,32
+Denmark,2008,dem_sat4a,1,19.9650944618323,cses3,32
+Denmark,2008,dem_sat4a,2,80.4581776815041,cses3,32
+Denmark,2008,dem_sat4a,3,838.862467305834,cses3,32
+Denmark,2008,dem_sat4a,4,450.904374922504,cses3,32
+Denmark,2013,pride_dem4,1,29,issp2013,32
+Denmark,2013,pride_dem4,2,164,issp2013,32
+Denmark,2013,pride_dem4,3,762,issp2013,32
+Denmark,2013,pride_dem4,4,347,issp2013,32
+Denmark,2019,dem_sat4a,1,29,cses5,32
+Denmark,2019,dem_sat4a,2,120,cses5,32
+Denmark,2019,dem_sat4a,3,831,cses5,32
+Denmark,2019,dem_sat4a,4,378,cses5,32
+Finland,2000,dem_sat4,1,42.3850449167143,evs_combo,32
+Finland,2000,dem_sat4,2,383.972006906751,evs_combo,32
+Finland,2000,dem_sat4,3,515.195245967987,evs_combo,32
+Finland,2000,dem_sat4,4,38.5229408239257,evs_combo,32
+Finland,2003,dem_sat4a,1,40,cses2,32
+Finland,2003,dem_sat4a,2,318,cses2,32
+Finland,2003,dem_sat4a,3,730,cses2,32
+Finland,2003,dem_sat4a,4,86,cses2,32
+Finland,2003,pride_dem4,1,72.5724550338348,issp2003,32
+Finland,2003,pride_dem4,2,359.029739018426,issp2003,32
+Finland,2003,pride_dem4,3,645.355967616845,issp2003,32
+Finland,2003,pride_dem4,4,164.676715280469,issp2003,32
+Finland,2009,dem_sat4,1,103.375660114922,evs_combo,32
+Finland,2009,dem_sat4,2,353.890599840468,evs_combo,32
+Finland,2009,dem_sat4,3,512.323202361428,evs_combo,32
+Finland,2009,dem_sat4,4,28.0007742027073,evs_combo,32
+Finland,2009,dem_sat4a,1,84,cses3,32
+Finland,2009,dem_sat4a,2,507,cses3,32
+Finland,2009,dem_sat4a,3,1789,cses3,32
+Finland,2009,dem_sat4a,4,162,cses3,32
+Finland,2013,pride_dem4,1,58.4546701106835,issp2013,32
+Finland,2013,pride_dem4,2,289.57172602792,issp2013,32
+Finland,2013,pride_dem4,3,596.165311186444,issp2013,32
+Finland,2013,pride_dem4,4,190.595653902303,issp2013,32
+Finland,2015,dem_sat4a,1,28,cses4,32
+Finland,2015,dem_sat4a,2,356,cses4,32
+Finland,2015,dem_sat4a,3,1087,cses4,32
+Finland,2015,dem_sat4a,4,97,cses4,32
+Finland,2019,dem_sat4a,1,52,cses5,32
+Finland,2019,dem_sat4a,2,337,cses5,32
+Finland,2019,dem_sat4a,3,1066,cses5,32
+Finland,2019,dem_sat4a,4,83,cses5,32
+France,1999,dem_sat4,1,169.00721859373,evs_combo,32
+France,1999,dem_sat4,2,584.907048686189,evs_combo,32
+France,1999,dem_sat4,3,669.91525923284,evs_combo,32
+France,1999,dem_sat4,4,64.9894609646092,evs_combo,32
+France,2002,dem_sat4a,1,120,cses2,32
+France,2002,dem_sat4a,2,314,cses2,32
+France,2002,dem_sat4a,3,481,cses2,32
+France,2002,dem_sat4a,4,73,cses2,32
+France,2003,pride_dem4,1,230.266114504565,issp2003,32
+France,2003,pride_dem4,2,431.804189021666,issp2003,32
+France,2003,pride_dem4,3,752.162479691341,issp2003,32
+France,2003,pride_dem4,4,99.5930590129496,issp2003,32
+France,2007,dem_sat4a,1,137.626469696473,cses3,32
+France,2007,dem_sat4a,2,519.994652012835,cses3,32
+France,2007,dem_sat4a,3,1145.77905013028,cses3,32
+France,2007,dem_sat4a,4,189.109146138049,cses3,32
+France,2008,dem_sat4,1,264.006082858736,evs_combo,32
+France,2008,dem_sat4,2,639.700767603125,evs_combo,32
+France,2008,dem_sat4,3,553.084686186056,evs_combo,32
+France,2008,dem_sat4,4,31.6152852543895,evs_combo,32
+France,2012,dem_sat4a,1,132,cses4,32
+France,2012,dem_sat4a,2,556,cses4,32
+France,2012,dem_sat4a,3,1142,cses4,32
+France,2012,dem_sat4a,4,136,cses4,32
+France,2013,pride_dem4,1,261.525017543676,issp2013,32
+France,2013,pride_dem4,2,507.356728801979,issp2013,32
+France,2013,pride_dem4,3,894.746449964919,issp2013,32
+France,2013,pride_dem4,4,150.427241309978,issp2013,32
+France,2017,dem_sat4a,1,214,cses5,32
+France,2017,dem_sat4a,2,631,cses5,32
+France,2017,dem_sat4a,3,845,cses5,32
+France,2017,dem_sat4a,4,91,cses5,32
+Hungary,1995,pride_dem4,1,276.024157020634,issp1995,32
+Hungary,1995,pride_dem4,2,468.142929038752,issp1995,32
+Hungary,1995,pride_dem4,3,156.436839456467,issp1995,32
+Hungary,1995,pride_dem4,4,29.1092098641168,issp1995,32
+Hungary,1998,dem_sat4a,1,239,cses1,32
+Hungary,1998,dem_sat4a,2,612,cses1,32
+Hungary,1998,dem_sat4a,3,601,cses1,32
+Hungary,1998,dem_sat4a,4,20,cses1,32
+Hungary,1999,dem_sat4,1,114.248410132355,evs_combo,32
+Hungary,1999,dem_sat4,2,529.84766971343,evs_combo,32
+Hungary,1999,dem_sat4,3,297.714355802871,evs_combo,32
+Hungary,1999,dem_sat4,4,18.2879666465122,evs_combo,32
+Hungary,2002,dem_sat4a,1,164,cses2,32
+Hungary,2002,dem_sat4a,2,455,cses2,32
+Hungary,2002,dem_sat4a,3,482,cses2,32
+Hungary,2002,dem_sat4a,4,76,cses2,32
+Hungary,2003,pride_dem4,1,112.671680760711,issp2003,32
+Hungary,2003,pride_dem4,2,495.135413744717,issp2003,32
+Hungary,2003,pride_dem4,3,319.958164317765,issp2003,32
+Hungary,2003,pride_dem4,4,17.8271323030493,issp2003,32
+Hungary,2008,dem_sat4,1,321.807773565718,evs_combo,32
+Hungary,2008,dem_sat4,2,851.90421330387,evs_combo,32
+Hungary,2008,dem_sat4,3,292.807343446718,evs_combo,32
+Hungary,2008,dem_sat4,4,11.9338341226585,evs_combo,32
+Hungary,2013,pride_dem4,1,175.335100367635,issp2013,32
+Hungary,2013,pride_dem4,2,453.753342078116,issp2013,32
+Hungary,2013,pride_dem4,3,300.648739175838,issp2013,32
+Hungary,2013,pride_dem4,4,46.1799071092547,issp2013,32
+Hungary,2018,dem_sat4a,1,337,cses5,32
+Hungary,2018,dem_sat4a,2,347,cses5,32
+Hungary,2018,dem_sat4a,3,390,cses5,32
+Hungary,2018,dem_sat4a,4,53,cses5,32
+Iceland,1999,dem_sat4,1,40,evs_combo,32
+Iceland,1999,dem_sat4,2,269,evs_combo,32
+Iceland,1999,dem_sat4,3,539,evs_combo,32
+Iceland,1999,dem_sat4,4,37,evs_combo,32
+Iceland,1999,dem_sat4a,1,89,cses1,32
+Iceland,1999,dem_sat4a,2,235,cses1,32
+Iceland,1999,dem_sat4a,3,989,cses1,32
+Iceland,1999,dem_sat4a,4,260,cses1,32
+Iceland,2003,dem_sat4a,1,132,cses2,32
+Iceland,2003,dem_sat4a,2,297,cses2,32
+Iceland,2003,dem_sat4a,3,818,cses2,32
+Iceland,2003,dem_sat4a,4,153,cses2,32
+Iceland,2008,dem_sat4a,1,364,cses3,32
+Iceland,2008,dem_sat4a,2,843,cses3,32
+Iceland,2008,dem_sat4a,3,1450,cses3,32
+Iceland,2008,dem_sat4a,4,200,cses3,32
+Iceland,2009,dem_sat4,1,101.590975587589,evs_combo,32
+Iceland,2009,dem_sat4,2,317.37694870619,evs_combo,32
+Iceland,2009,dem_sat4,3,337.114111877912,evs_combo,32
+Iceland,2009,dem_sat4,4,16.3989788539604,evs_combo,32
+Iceland,2013,dem_sat4a,1,139,cses4,32
+Iceland,2013,dem_sat4a,2,321,cses4,32
+Iceland,2013,dem_sat4a,3,830,cses4,32
+Iceland,2013,dem_sat4a,4,98,cses4,32
+Iceland,2013,pride_dem4,1,59,issp2013,32
+Iceland,2013,pride_dem4,2,285,issp2013,32
+Iceland,2013,pride_dem4,3,558,issp2013,32
+Iceland,2013,pride_dem4,4,117,issp2013,32
+Iceland,2017,dem_sat4a,1,318,cses5,32
+Iceland,2017,dem_sat4a,2,743,cses5,32
+Iceland,2017,dem_sat4a,3,1864,cses5,32
+Iceland,2017,dem_sat4a,4,249,cses5,32
+Latvia,1995,pride_dem4,1,194.601418398956,issp1995,32
+Latvia,1995,pride_dem4,2,363.235487560273,issp1995,32
+Latvia,1995,pride_dem4,3,226.187599928735,issp1995,32
+Latvia,1995,pride_dem4,4,118.367880275174,issp1995,32
+Latvia,1996,dem_sat4,1,221,wvs_combo,32
+Latvia,1996,dem_sat4,2,780,wvs_combo,32
+Latvia,1996,dem_sat4,3,151,wvs_combo,32
+Latvia,1996,dem_sat4,4,6,wvs_combo,32
+Latvia,1999,dem_sat4,1,97,evs_combo,32
+Latvia,1999,dem_sat4,2,563,evs_combo,32
+Latvia,1999,dem_sat4,3,274,evs_combo,32
+Latvia,1999,dem_sat4,4,12,evs_combo,32
+Latvia,2003,pride_dem4,1,218,issp2003,32
+Latvia,2003,pride_dem4,2,406,issp2003,32
+Latvia,2003,pride_dem4,3,252,issp2003,32
+Latvia,2003,pride_dem4,4,78,issp2003,32
+Latvia,2008,dem_sat4,1,161.111434489113,evs_combo,32
+Latvia,2008,dem_sat4,2,846.126947334826,evs_combo,32
+Latvia,2008,dem_sat4,3,406.354910716297,evs_combo,32
+Latvia,2008,dem_sat4,4,7.03644846701918,evs_combo,32
+Latvia,2010,dem_sat4a,1,129,cses3,32
+Latvia,2010,dem_sat4a,2,309,cses3,32
+Latvia,2010,dem_sat4a,3,176,cses3,32
+Latvia,2010,dem_sat4a,4,7,cses3,32
+Latvia,2013,dem_sat4a,1,229.24386969867,cses4,32
+Latvia,2013,dem_sat4a,2,485.896271642673,cses4,32
+Latvia,2013,dem_sat4a,3,560.770359729835,cses4,32
+Latvia,2013,dem_sat4a,4,26.1601307766244,cses4,32
+Latvia,2013,pride_dem4,1,228.261490198581,issp2013,32
+Latvia,2013,pride_dem4,2,373.182644739964,issp2013,32
+Latvia,2013,pride_dem4,3,263.654269306224,issp2013,32
+Latvia,2013,pride_dem4,4,74.3822493464491,issp2013,32
+Netherlands,1995,pride_dem4,1,43,issp1995,32
+Netherlands,1995,pride_dem4,2,272,issp1995,32
+Netherlands,1995,pride_dem4,3,1242,issp1995,32
+Netherlands,1995,pride_dem4,4,369,issp1995,32
+Netherlands,1998,dem_sat4a,1,33.0411770593849,cses1,32
+Netherlands,1998,dem_sat4a,2,175.245008710396,cses1,32
+Netherlands,1998,dem_sat4a,3,1345.82013875235,cses1,32
+Netherlands,1998,dem_sat4a,4,232.643942577496,cses1,32
+Netherlands,1999,dem_sat4,1,19.7362870248475,evs_combo,32
+Netherlands,1999,dem_sat4,2,239.416753400725,evs_combo,32
+Netherlands,1999,dem_sat4,3,667.757222547818,evs_combo,32
+Netherlands,1999,dem_sat4,4,63.4576565256956,evs_combo,32
+Netherlands,2002,dem_sat4a,1,41,cses2,32
+Netherlands,2002,dem_sat4a,2,356,cses2,32
+Netherlands,2002,dem_sat4a,3,701,cses2,32
+Netherlands,2002,dem_sat4a,4,66,cses2,32
+Netherlands,2005,pride_dem4,1,101.679798606007,issp2003,32
+Netherlands,2005,pride_dem4,2,445.518572672086,issp2003,32
+Netherlands,2005,pride_dem4,3,861.744350205605,issp2003,32
+Netherlands,2005,pride_dem4,4,262.535078753061,issp2003,32
+Netherlands,2008,dem_sat4,1,54.8725289364565,evs_combo,32
+Netherlands,2008,dem_sat4,2,606.128783123729,evs_combo,32
+Netherlands,2008,dem_sat4,3,785.287894571454,evs_combo,32
+Netherlands,2008,dem_sat4,4,59.332265938412,evs_combo,32
+Netherlands,2008,dem_sat4a,1,147,cses3,32
+Netherlands,2008,dem_sat4a,2,858,cses3,32
+Netherlands,2008,dem_sat4a,3,3107,cses3,32
+Netherlands,2008,dem_sat4a,4,345,cses3,32
+Netherlands,2017,dem_sat4a,1,43,cses5,32
+Netherlands,2017,dem_sat4a,2,234,cses5,32
+Netherlands,2017,dem_sat4a,3,1224,cses5,32
+Netherlands,2017,dem_sat4a,4,371,cses5,32
+Poland,1995,pride_dem4,1,338.808993641956,issp1995,32
+Poland,1995,pride_dem4,2,703.585817541637,issp1995,32
+Poland,1995,pride_dem4,3,287.85084197301,issp1995,32
+Poland,1995,pride_dem4,4,55.2090382347243,issp1995,32
+Poland,1997,dem_sat4a,1,131.732398651322,cses1,32
+Poland,1997,dem_sat4a,2,511.56868310186,cses1,32
+Poland,1997,dem_sat4a,3,1012.53935826712,cses1,32
+Poland,1997,dem_sat4a,4,88.0701659536939,cses1,32
+Poland,1999,dem_sat4,1,129.275271109431,evs_combo,32
+Poland,1999,dem_sat4,2,408.556698143934,evs_combo,32
+Poland,1999,dem_sat4,3,423.991794568889,evs_combo,32
+Poland,1999,dem_sat4,4,20.4459082479403,evs_combo,32
+Poland,2001,dem_sat4a,1,278.733300836202,cses2,32
+Poland,2001,dem_sat4a,2,709.252320938994,cses2,32
+Poland,2001,dem_sat4a,3,577.592451189504,cses2,32
+Poland,2001,dem_sat4a,4,53.4809658504201,cses2,32
+Poland,2005,pride_dem4,1,223.731945755452,issp2003,32
+Poland,2005,pride_dem4,2,659.755431640185,issp2003,32
+Poland,2005,pride_dem4,3,235.604222882194,issp2003,32
+Poland,2005,pride_dem4,4,23.8070437094589,issp2003,32
+Poland,2006,dem_sat4a,1,493,cses3,32
+Poland,2006,dem_sat4a,2,1580,cses3,32
+Poland,2006,dem_sat4a,3,1607,cses3,32
+Poland,2006,dem_sat4a,4,150,cses3,32
+Poland,2008,dem_sat4,1,105.65794437092,evs_combo,32
+Poland,2008,dem_sat4,2,522.967087633765,evs_combo,32
+Poland,2008,dem_sat4,3,677.855596689081,evs_combo,32
+Poland,2008,dem_sat4,4,44.5375498444931,evs_combo,32
+Poland,2011,dem_sat4a,1,204,cses4,32
+Poland,2011,dem_sat4a,2,618,cses4,32
+Poland,2011,dem_sat4a,3,936,cses4,32
+Poland,2011,dem_sat4a,4,52,cses4,32
+Slovakia,1996,pride_dem4,1,424,issp1995,32
+Slovakia,1996,pride_dem4,2,619,issp1995,32
+Slovakia,1996,pride_dem4,3,227,issp1995,32
+Slovakia,1996,pride_dem4,4,59,issp1995,32
+Slovakia,1999,dem_sat4,1,301.119796157665,evs_combo,32
+Slovakia,1999,dem_sat4,2,670.492574550673,evs_combo,32
+Slovakia,1999,dem_sat4,3,286.603914795242,evs_combo,32
+Slovakia,1999,dem_sat4,4,10.502300185018,evs_combo,32
+Slovakia,2004,pride_dem4,1,326.086203991476,issp2003,32
+Slovakia,2004,pride_dem4,2,604.751961141396,issp2003,32
+Slovakia,2004,pride_dem4,3,180.171971828944,issp2003,32
+Slovakia,2004,pride_dem4,4,5.39160208489003,issp2003,32
+Slovakia,2008,dem_sat4,1,120.638549303559,evs_combo,32
+Slovakia,2008,dem_sat4,2,628.638616318155,evs_combo,32
+Slovakia,2008,dem_sat4,3,628.114850361914,evs_combo,32
+Slovakia,2008,dem_sat4,4,37.5125483494937,evs_combo,32
+Slovakia,2010,dem_sat4a,1,199,cses3,32
+Slovakia,2010,dem_sat4a,2,533,cses3,32
+Slovakia,2010,dem_sat4a,3,405,cses3,32
+Slovakia,2010,dem_sat4a,4,33,cses3,32
+Slovakia,2014,pride_dem4,1,213.798622853783,issp2013,32
+Slovakia,2014,pride_dem4,2,483.212958043406,issp2013,32
+Slovakia,2014,pride_dem4,3,393.96991417533,issp2013,32
+Slovakia,2014,pride_dem4,4,27.8704894142278,issp2013,32
+Slovakia,2016,dem_sat4a,1,258,cses4,32
+Slovakia,2016,dem_sat4a,2,528,cses4,32
+Slovakia,2016,dem_sat4a,3,306,cses4,32
+Slovakia,2016,dem_sat4a,4,18,cses4,32
+Slovakia,2020,dem_sat4a,1,180,cses5,32
+Slovakia,2020,dem_sat4a,2,476,cses5,32
+Slovakia,2020,dem_sat4a,3,308,cses5,32
+Slovakia,2020,dem_sat4a,4,20,cses5,32
+South Korea,2000,dem_sat4a,1,63,cses1,32
+South Korea,2000,dem_sat4a,2,525,cses1,32
+South Korea,2000,dem_sat4a,3,391,cses1,32
+South Korea,2000,dem_sat4a,4,21,cses1,32
+South Korea,2001,dem_sat4,1,91,wvs_combo,32
+South Korea,2001,dem_sat4,2,639,wvs_combo,32
+South Korea,2001,dem_sat4,3,338,wvs_combo,32
+South Korea,2001,dem_sat4,4,15,wvs_combo,32
+South Korea,2003,pride_dem4,1,142,issp2003,32
+South Korea,2003,pride_dem4,2,708,issp2003,32
+South Korea,2003,pride_dem4,3,370,issp2003,32
+South Korea,2003,pride_dem4,4,53,issp2003,32
+South Korea,2004,dem_sat4a,1,171,cses2,32
+South Korea,2004,dem_sat4a,2,934,cses2,32
+South Korea,2004,dem_sat4a,3,303,cses2,32
+South Korea,2004,dem_sat4a,4,27,cses2,32
+South Korea,2009,dem_sat4a,1,100,cses3,32
+South Korea,2009,dem_sat4a,2,445,cses3,32
+South Korea,2009,dem_sat4a,3,392,cses3,32
+South Korea,2009,dem_sat4a,4,14,cses3,32
+South Korea,2012,dem_sat4a,1,80,cses4,32
+South Korea,2012,dem_sat4a,2,451,cses4,32
+South Korea,2012,dem_sat4a,3,417,cses4,32
+South Korea,2012,dem_sat4a,4,17,cses4,32
+South Korea,2013,pride_dem4,1,82,issp2013,32
+South Korea,2013,pride_dem4,2,491,issp2013,32
+South Korea,2013,pride_dem4,3,549,issp2013,32
+South Korea,2013,pride_dem4,4,150,issp2013,32
+South Korea,2016,dem_sat4a,1,80,cses5,32
+South Korea,2016,dem_sat4a,2,595,cses5,32
+South Korea,2016,dem_sat4a,3,511,cses5,32
+South Korea,2016,dem_sat4a,4,13,cses5,32
+Switzerland,1999,dem_sat4a,1,70.5445302461139,cses1,32
+Switzerland,1999,dem_sat4a,2,423.556184468316,cses1,32
+Switzerland,1999,dem_sat4a,3,1362.64080546146,cses1,32
+Switzerland,1999,dem_sat4a,4,169.040549833817,cses1,32
+Switzerland,2003,dem_sat4a,1,37.2358886397404,cses2,32
+Switzerland,2003,dem_sat4a,2,291.683344367769,cses2,32
+Switzerland,2003,dem_sat4a,3,933.675944995759,cses2,32
+Switzerland,2003,dem_sat4a,4,129.982856661692,cses2,32
+Switzerland,2003,pride_dem4,1,17.3084839456978,issp2003,32
+Switzerland,2003,pride_dem4,2,136.313478071689,issp2003,32
+Switzerland,2003,pride_dem4,3,625.731247060726,issp2003,32
+Switzerland,2003,pride_dem4,4,209.861552387816,issp2003,32
+Switzerland,2007,dem_sat4a,1,81.9692072546329,cses3,32
+Switzerland,2007,dem_sat4a,2,490.834241047386,cses3,32
+Switzerland,2007,dem_sat4a,3,2137.51740459521,cses3,32
+Switzerland,2007,dem_sat4a,4,419.175059861087,cses3,32
+Switzerland,2008,dem_sat4,1,35.9475268393794,evs_combo,32
+Switzerland,2008,dem_sat4,2,221.1688974221,evs_combo,32
+Switzerland,2008,dem_sat4,3,802.086850669706,evs_combo,32
+Switzerland,2008,dem_sat4,4,128.794273932859,evs_combo,32
+Switzerland,2011,dem_sat4a,1,90.4540908544227,cses4,32
+Switzerland,2011,dem_sat4a,2,590.948173378989,cses4,32
+Switzerland,2011,dem_sat4a,3,2927.48806836167,cses4,32
+Switzerland,2011,dem_sat4a,4,751.370730683704,cses4,32
+Switzerland,2013,pride_dem4,1,9,issp2013,32
+Switzerland,2013,pride_dem4,2,88,issp2013,32
+Switzerland,2013,pride_dem4,3,599,issp2013,32
+Switzerland,2013,pride_dem4,4,493,issp2013,32
+Switzerland,2019,dem_sat4a,1,73,cses5,32
+Switzerland,2019,dem_sat4a,2,531,cses5,32
+Switzerland,2019,dem_sat4a,3,3137,cses5,32
+Switzerland,2019,dem_sat4a,4,878,cses5,32
+Austria,1995,pride_dem4,1,50.3144502693199,issp1995,28
+Austria,1995,pride_dem4,2,223.328846334629,issp1995,28
+Austria,1995,pride_dem4,3,469.915071715307,issp1995,28
+Austria,1995,pride_dem4,4,207.1089040589,issp1995,28
+Austria,1999,dem_sat4,1,41.8365185714286,evs_combo,28
+Austria,1999,dem_sat4,2,293.597061428571,evs_combo,28
+Austria,1999,dem_sat4,3,1007.97602714286,evs_combo,28
+Austria,1999,dem_sat4,4,113.034591428571,evs_combo,28
+Austria,2004,pride_dem4,1,44.7856752225928,issp2003,28
+Austria,2004,pride_dem4,2,216.354875075323,issp2003,28
+Austria,2004,pride_dem4,3,517.073241569947,issp2003,28
+Austria,2004,pride_dem4,4,155.625304773486,issp2003,28
+Austria,2008,dem_sat4,1,158.609596706975,evs_combo,28
+Austria,2008,dem_sat4,2,521.411960129054,evs_combo,28
+Austria,2008,dem_sat4,3,717.193618373216,evs_combo,28
+Austria,2008,dem_sat4,4,61.7864647475167,evs_combo,28
+Austria,2009,dem_sat4a,1,52,cses3,28
+Austria,2009,dem_sat4a,2,252,cses3,28
+Austria,2009,dem_sat4a,3,709,cses3,28
+Austria,2009,dem_sat4a,4,129,cses3,28
+Austria,2013,dem_sat4a,1,92,cses4,28
+Austria,2013,dem_sat4a,2,241,cses4,28
+Austria,2013,dem_sat4a,3,520,cses4,28
+Austria,2013,dem_sat4a,4,145,cses4,28
+Austria,2017,dem_sat4a,1,66,cses5,28
+Austria,2017,dem_sat4a,2,207,cses5,28
+Austria,2017,dem_sat4a,3,517,cses5,28
+Austria,2017,dem_sat4a,4,390,cses5,28
+Israel,1996,dem_sat4a,1,144,cses1,28
+Israel,1996,dem_sat4a,2,349,cses1,28
+Israel,1996,dem_sat4a,3,282,cses1,28
+Israel,1996,dem_sat4a,4,284,cses1,28
+Israel,2003,dem_sat4a,1,294,cses2,28
+Israel,2003,dem_sat4a,2,468,cses2,28
+Israel,2003,dem_sat4a,3,238,cses2,28
+Israel,2003,dem_sat4a,4,184,cses2,28
+Israel,2004,pride_dem4,1,234,issp2003,28
+Israel,2004,pride_dem4,2,444,issp2003,28
+Israel,2004,pride_dem4,3,371,issp2003,28
+Israel,2004,pride_dem4,4,157,issp2003,28
+Israel,2006,dem_sat4a,1,318,cses3,28
+Israel,2006,dem_sat4a,2,456,cses3,28
+Israel,2006,dem_sat4a,3,370,cses3,28
+Israel,2006,dem_sat4a,4,46,cses3,28
+Israel,2013,dem_sat4a,1,132,cses4,28
+Israel,2013,dem_sat4a,2,326,cses4,28
+Israel,2013,dem_sat4a,3,478,cses4,28
+Israel,2013,dem_sat4a,4,57,cses4,28
+Israel,2014,pride_dem4,1,146,issp2013,28
+Israel,2014,pride_dem4,2,363,issp2013,28
+Israel,2014,pride_dem4,3,485,issp2013,28
+Israel,2014,pride_dem4,4,181,issp2013,28
+Israel,2020,dem_sat4a,1,318,cses5,28
+Israel,2020,dem_sat4a,2,488,cses5,28
+Israel,2020,dem_sat4a,3,326,cses5,28
+Israel,2020,dem_sat4a,4,51,cses5,28
+New Zealand,1996,dem_sat4a,1,302.484835505126,cses1,28
+New Zealand,1996,dem_sat4a,2,923.733911552183,cses1,28
+New Zealand,1996,dem_sat4a,3,2002.42621918039,cses1,28
+New Zealand,1996,dem_sat4a,4,747.173341488841,cses1,28
+New Zealand,1996,pride_dem4,1,48,issp1995,28
+New Zealand,1996,pride_dem4,2,200,issp1995,28
+New Zealand,1996,pride_dem4,3,551,issp1995,28
+New Zealand,1996,pride_dem4,4,123,issp1995,28
+New Zealand,2002,dem_sat4a,1,98.8695997429507,cses2,28
+New Zealand,2002,dem_sat4a,2,391.34987810392,cses2,28
+New Zealand,2002,dem_sat4a,3,970.472705318668,cses2,28
+New Zealand,2002,dem_sat4a,4,139.16900343896,cses2,28
+New Zealand,2003,pride_dem4,1,55,issp2003,28
+New Zealand,2003,pride_dem4,2,212,issp2003,28
+New Zealand,2003,pride_dem4,3,547,issp2003,28
+New Zealand,2003,pride_dem4,4,121,issp2003,28
+New Zealand,2008,dem_sat4a,1,77,cses3,28
+New Zealand,2008,dem_sat4a,2,249,cses3,28
+New Zealand,2008,dem_sat4a,3,671,cses3,28
+New Zealand,2008,dem_sat4a,4,90,cses3,28
+New Zealand,2013,dem_sat4a,1,166,cses4,28
+New Zealand,2013,dem_sat4a,2,508,cses4,28
+New Zealand,2013,dem_sat4a,3,1500,cses4,28
+New Zealand,2013,dem_sat4a,4,255,cses4,28
+New Zealand,2019,dem_sat4a,1,156,cses5,28
+New Zealand,2019,dem_sat4a,2,590,cses5,28
+New Zealand,2019,dem_sat4a,3,2018,cses5,28
+New Zealand,2019,dem_sat4a,4,528,cses5,28
+Philippines,1995,pride_dem4,1,148.459705665904,issp1995,28
+Philippines,1995,pride_dem4,2,405.866433776673,issp1995,28
+Philippines,1995,pride_dem4,3,463.152086142246,issp1995,28
+Philippines,1995,pride_dem4,4,157.798776405317,issp1995,28
+Philippines,2001,dem_sat4,1,117.990305497576,wvs_combo,28
+Philippines,2001,dem_sat4,2,536.192190048048,wvs_combo,28
+Philippines,2001,dem_sat4,3,463.877187969297,wvs_combo,28
+Philippines,2001,dem_sat4,4,74.4024756006189,wvs_combo,28
+Philippines,2003,pride_dem4,1,141.901114847662,issp2003,28
+Philippines,2003,pride_dem4,2,388.793114948046,issp2003,28
+Philippines,2003,pride_dem4,3,429.017605595361,issp2003,28
+Philippines,2003,pride_dem4,4,215.023443845254,issp2003,28
+Philippines,2004,dem_sat4a,1,134,cses2,28
+Philippines,2004,dem_sat4a,2,395,cses2,28
+Philippines,2004,dem_sat4a,3,568,cses2,28
+Philippines,2004,dem_sat4a,4,78,cses2,28
+Philippines,2010,dem_sat4a,1,123.5244,cses3,28
+Philippines,2010,dem_sat4a,2,241.9679,cses3,28
+Philippines,2010,dem_sat4a,3,569.616700000001,cses3,28
+Philippines,2010,dem_sat4a,4,245.1671,cses3,28
+Philippines,2014,pride_dem4,1,72.7576548570045,issp2013,28
+Philippines,2014,pride_dem4,2,340.078027845592,issp2013,28
+Philippines,2014,pride_dem4,3,454.980988964155,issp2013,28
+Philippines,2014,pride_dem4,4,311.112646387706,issp2013,28
+Philippines,2016,dem_sat4a,1,49.4904,cses4,28
+Philippines,2016,dem_sat4a,2,192.491,cses4,28
+Philippines,2016,dem_sat4a,3,702.501400000001,cses4,28
+Philippines,2016,dem_sat4a,4,250.7422,cses4,28
+Russia,1996,pride_dem4,1,576.485152717306,issp1995,28
+Russia,1996,pride_dem4,2,477.905390802712,issp1995,28
+Russia,1996,pride_dem4,3,230.445031099146,issp1995,28
+Russia,1996,pride_dem4,4,48.7576260009518,issp1995,28
+Russia,1998,dem_sat4a,1,684.875865587948,cses1,28
+Russia,1998,dem_sat4a,2,1914.6372132316,cses1,28
+Russia,1998,dem_sat4a,3,579.273000831535,cses1,28
+Russia,1998,dem_sat4a,4,19.4672672407002,cses1,28
+Russia,1999,dem_sat4,1,1133.57851970381,evs_combo,28
+Russia,1999,dem_sat4,2,974.088249474229,evs_combo,28
+Russia,1999,dem_sat4,3,150.870906152444,evs_combo,28
+Russia,1999,dem_sat4,4,10.4683728402537,evs_combo,28
+Russia,2003,pride_dem4,1,812.261655325107,issp2003,28
+Russia,2003,pride_dem4,2,776.662021718083,issp2003,28
+Russia,2003,pride_dem4,3,252.863025339345,issp2003,28
+Russia,2003,pride_dem4,4,57.0444960322734,issp2003,28
+Russia,2004,dem_sat4a,1,224.545963546219,cses2,28
+Russia,2004,dem_sat4a,2,665.861668089001,cses2,28
+Russia,2004,dem_sat4a,3,397.08604506546,cses2,28
+Russia,2004,dem_sat4a,4,17.9830208910352,cses2,28
+Russia,2008,dem_sat4,1,181.164239668641,evs_combo,28
+Russia,2008,dem_sat4,2,618.606112227248,evs_combo,28
+Russia,2008,dem_sat4,3,443.722849595528,evs_combo,28
+Russia,2008,dem_sat4,4,49.2886185026003,evs_combo,28
+Russia,2012,pride_dem4,1,295.013580218865,issp2013,28
+Russia,2012,pride_dem4,2,623.659849292659,issp2013,28
+Russia,2012,pride_dem4,3,388.506560134303,issp2013,28
+Russia,2012,pride_dem4,4,76.9323102556258,issp2013,28
+Taiwan,1996,dem_sat4a,1,73,cses1,28
+Taiwan,1996,dem_sat4a,2,486,cses1,28
+Taiwan,1996,dem_sat4a,3,108,cses1,28
+Taiwan,1996,dem_sat4a,4,387,cses1,28
+Taiwan,2003,dem_sat4a,1,187,cses2,28
+Taiwan,2003,dem_sat4a,2,1112,cses2,28
+Taiwan,2003,dem_sat4a,3,1890,cses2,28
+Taiwan,2003,dem_sat4a,4,164,cses2,28
+Taiwan,2003,pride_dem4,1,503,issp2003,28
+Taiwan,2003,pride_dem4,2,547,issp2003,28
+Taiwan,2003,pride_dem4,3,563,issp2003,28
+Taiwan,2003,pride_dem4,4,161,issp2003,28
+Taiwan,2008,dem_sat4a,1,115,cses3,28
+Taiwan,2008,dem_sat4a,2,682,cses3,28
+Taiwan,2008,dem_sat4a,3,832,cses3,28
+Taiwan,2008,dem_sat4a,4,92,cses3,28
+Taiwan,2012,dem_sat4a,1,66,cses4,28
+Taiwan,2012,dem_sat4a,2,434,cses4,28
+Taiwan,2012,dem_sat4a,3,1135,cses4,28
+Taiwan,2012,dem_sat4a,4,99,cses4,28
+Taiwan,2013,pride_dem4,1,212.382772389317,issp2013,28
+Taiwan,2013,pride_dem4,2,739.156898420414,issp2013,28
+Taiwan,2013,pride_dem4,3,691.584304283687,issp2013,28
+Taiwan,2013,pride_dem4,4,170.201926830029,issp2013,28
+Taiwan,2018,dem_sat4a,1,134,cses5,28
+Taiwan,2018,dem_sat4a,2,908,cses5,28
+Taiwan,2018,dem_sat4a,3,2005,cses5,28
+Taiwan,2018,dem_sat4a,4,208,cses5,28
+Australia,1995,pride_dem4,1,46,issp1995,27
+Australia,1995,pride_dem4,2,439,issp1995,27
+Australia,1995,pride_dem4,3,1484,issp1995,27
+Australia,1995,pride_dem4,4,364,issp1995,27
+Australia,1996,dem_sat4a,1,86,cses1,27
+Australia,1996,dem_sat4a,2,303,cses1,27
+Australia,1996,dem_sat4a,3,832,cses1,27
+Australia,1996,dem_sat4a,4,545,cses1,27
+Australia,2003,pride_dem4,1,58,issp2003,27
+Australia,2003,pride_dem4,2,277,issp2003,27
+Australia,2003,pride_dem4,3,1130,issp2003,27
+Australia,2003,pride_dem4,4,521,issp2003,27
+Australia,2004,dem_sat4a,1,69,cses2,27
+Australia,2004,dem_sat4a,2,250,cses2,27
+Australia,2004,dem_sat4a,3,1049,cses2,27
+Australia,2004,dem_sat4a,4,361,cses2,27
+Australia,2007,dem_sat4a,1,47,cses3,27
+Australia,2007,dem_sat4a,2,221,cses3,27
+Australia,2007,dem_sat4a,3,1164,cses3,27
+Australia,2007,dem_sat4a,4,425,cses3,27
+Australia,2013,dem_sat4a,1,176,cses4,27
+Australia,2013,dem_sat4a,2,801,cses4,27
+Australia,2013,dem_sat4a,3,2301,cses4,27
+Australia,2013,dem_sat4a,4,574,cses4,27
+Australia,2019,dem_sat4a,2,102,cses5,27
+Australia,2019,dem_sat4a,3,1183,cses5,27
+Australia,2019,dem_sat4a,4,239,cses5,27
+Belgium,1999,dem_sat4,1,284.285820350566,evs_combo,24
+Belgium,1999,dem_sat4,2,635.158653475586,evs_combo,24
+Belgium,1999,dem_sat4,3,849.928776860559,evs_combo,24
+Belgium,1999,dem_sat4,4,43.1415406110424,evs_combo,24
+Belgium,1999,dem_sat4a,1,252,cses1,24
+Belgium,1999,dem_sat4a,2,1252,cses1,24
+Belgium,1999,dem_sat4a,3,2329,cses1,24
+Belgium,1999,dem_sat4a,4,84,cses1,24
+Belgium,2004,dem_sat4a,1,118,cses2,24
+Belgium,2004,dem_sat4a,2,519,cses2,24
+Belgium,2004,dem_sat4a,3,1405,cses2,24
+Belgium,2004,dem_sat4a,4,91,cses2,24
+Belgium,2009,dem_sat4,1,104.306804608531,evs_combo,24
+Belgium,2009,dem_sat4,2,481.497958262787,evs_combo,24
+Belgium,2009,dem_sat4,3,865.315652574109,evs_combo,24
+Belgium,2009,dem_sat4,4,42.2762230437003,evs_combo,24
+Belgium,2013,pride_dem4,1,157.214101448594,issp2013,24
+Belgium,2013,pride_dem4,2,654.346952668462,issp2013,24
+Belgium,2013,pride_dem4,3,919.32579011626,issp2013,24
+Belgium,2013,pride_dem4,4,195.116710829209,issp2013,24
+Belgium,2019,dem_sat4a,1,185,cses5,24
+Belgium,2019,dem_sat4a,2,731,cses5,24
+Belgium,2019,dem_sat4a,3,828,cses5,24
+Belgium,2019,dem_sat4a,4,54,cses5,24
+Bulgaria,1995,pride_dem4,1,360.460391366698,issp1995,24
+Bulgaria,1995,pride_dem4,2,293.4852239104,issp1995,24
+Bulgaria,1995,pride_dem4,3,200.042930530596,issp1995,24
+Bulgaria,1995,pride_dem4,4,98.2563215887019,issp1995,24
+Bulgaria,1999,dem_sat4,1,213.109502703382,evs_combo,24
+Bulgaria,1999,dem_sat4,2,466.882009478318,evs_combo,24
+Bulgaria,1999,dem_sat4,3,230.08204799831,evs_combo,24
+Bulgaria,1999,dem_sat4,4,27.3308590108815,evs_combo,24
+Bulgaria,2001,dem_sat4a,1,537,cses2,24
+Bulgaria,2001,dem_sat4a,2,504,cses2,24
+Bulgaria,2001,dem_sat4a,3,232,cses2,24
+Bulgaria,2001,dem_sat4a,4,49,cses2,24
+Bulgaria,2003,pride_dem4,1,550,issp2003,24
+Bulgaria,2003,pride_dem4,2,325,issp2003,24
+Bulgaria,2003,pride_dem4,3,82,issp2003,24
+Bulgaria,2003,pride_dem4,4,8,issp2003,24
+Bulgaria,2008,dem_sat4,1,524.092040064513,evs_combo,24
+Bulgaria,2008,dem_sat4,2,780.009053093146,evs_combo,24
+Bulgaria,2008,dem_sat4,3,134.288512117609,evs_combo,24
+Bulgaria,2008,dem_sat4,4,11.0925395086519,evs_combo,24
+Bulgaria,2015,dem_sat4a,1,422,cses4,24
+Bulgaria,2015,dem_sat4a,2,345,cses4,24
+Bulgaria,2015,dem_sat4a,3,180,cses4,24
+Bulgaria,2015,dem_sat4a,4,4,cses4,24
+Lithuania,1997,dem_sat4,1,113,wvs_combo,24
+Lithuania,1997,dem_sat4,2,543,wvs_combo,24
+Lithuania,1997,dem_sat4,3,230,wvs_combo,24
+Lithuania,1997,dem_sat4,4,2,wvs_combo,24
+Lithuania,1998,dem_sat4a,1,111,cses1,24
+Lithuania,1998,dem_sat4a,2,484,cses1,24
+Lithuania,1998,dem_sat4a,3,207,cses1,24
+Lithuania,1998,dem_sat4a,4,124,cses1,24
+Lithuania,1999,dem_sat4,1,190.63855191628,evs_combo,24
+Lithuania,1999,dem_sat4,2,455.196097436709,evs_combo,24
+Lithuania,1999,dem_sat4,3,207.351478725962,evs_combo,24
+Lithuania,1999,dem_sat4,4,13.712066177286,evs_combo,24
+Lithuania,2008,dem_sat4,1,249.734598031639,evs_combo,24
+Lithuania,2008,dem_sat4,2,668.481482734964,evs_combo,24
+Lithuania,2008,dem_sat4,3,420.85456938197,evs_combo,24
+Lithuania,2008,dem_sat4,4,12.9473502213513,evs_combo,24
+Lithuania,2013,pride_dem4,1,248.797531793252,issp2013,24
+Lithuania,2013,pride_dem4,2,602.711219190867,issp2013,24
+Lithuania,2013,pride_dem4,3,235.869341276011,issp2013,24
+Lithuania,2013,pride_dem4,4,31.1806843340843,issp2013,24
+Lithuania,2016,dem_sat4a,1,235,cses5,24
+Lithuania,2016,dem_sat4a,2,624,cses5,24
+Lithuania,2016,dem_sat4a,3,510,cses5,24
+Lithuania,2016,dem_sat4a,4,10,cses5,24
+Mexico,1998,dem_sat4a,1,682.680604981879,cses1,24
+Mexico,1998,dem_sat4a,2,1033.08746331841,cses1,24
+Mexico,1998,dem_sat4a,3,1177.3858521266,cses1,24
+Mexico,1998,dem_sat4a,4,666.354004417927,cses1,24
+Mexico,2000,dem_sat4,1,286.907537690021,wvs_combo,24
+Mexico,2000,dem_sat4,2,530.056216300919,wvs_combo,24
+Mexico,2000,dem_sat4,3,487.283467401953,wvs_combo,24
+Mexico,2000,dem_sat4,4,83.3294741430436,wvs_combo,24
+Mexico,2003,dem_sat4a,1,473.329848304012,cses2,24
+Mexico,2003,dem_sat4a,2,785.40925048841,cses2,24
+Mexico,2003,dem_sat4a,3,555.955469454851,cses2,24
+Mexico,2003,dem_sat4a,4,89.389614695998,cses2,24
+Mexico,2008,dem_sat4a,1,789.287511960672,cses3,24
+Mexico,2008,dem_sat4a,2,1311.80468328661,cses3,24
+Mexico,2008,dem_sat4a,3,1422.24568290766,cses3,24
+Mexico,2008,dem_sat4a,4,322.261290689212,cses3,24
+Mexico,2013,dem_sat4a,1,927.490047936997,cses4,24
+Mexico,2013,dem_sat4a,2,1545.65991379514,cses4,24
+Mexico,2013,dem_sat4a,3,887.240193404917,cses4,24
+Mexico,2013,dem_sat4a,4,124.623649594817,cses4,24
+Mexico,2015,pride_dem4,1,429,issp2013,24
+Mexico,2015,pride_dem4,2,462,issp2013,24
+Mexico,2015,pride_dem4,3,94,issp2013,24
+Mexico,2015,pride_dem4,4,64,issp2013,24
+Romania,1996,dem_sat4a,1,201,cses1,24
+Romania,1996,dem_sat4a,2,442,cses1,24
+Romania,1996,dem_sat4a,3,269,cses1,24
+Romania,1996,dem_sat4a,4,234,cses1,24
+Romania,1999,dem_sat4,1,289,evs_combo,24
+Romania,1999,dem_sat4,2,562,evs_combo,24
+Romania,1999,dem_sat4,3,207,evs_combo,24
+Romania,1999,dem_sat4,4,18,evs_combo,24
+Romania,2004,dem_sat4a,1,181,cses2,24
+Romania,2004,dem_sat4a,2,791,cses2,24
+Romania,2004,dem_sat4a,3,651,cses2,24
+Romania,2004,dem_sat4a,4,125,cses2,24
+Romania,2008,dem_sat4,1,168.823290432105,evs_combo,24
+Romania,2008,dem_sat4,2,634.829907535927,evs_combo,24
+Romania,2008,dem_sat4,3,520.372939570698,evs_combo,24
+Romania,2008,dem_sat4,4,33.9261149741952,evs_combo,24
+Romania,2009,dem_sat4a,1,314,cses3,24
+Romania,2009,dem_sat4a,2,752,cses3,24
+Romania,2009,dem_sat4a,3,265,cses3,24
+Romania,2009,dem_sat4a,4,9,cses3,24
+Romania,2013,dem_sat4a,1,628.1547995299,cses4,24
+Romania,2013,dem_sat4a,2,1909.27175244918,cses4,24
+Romania,2013,dem_sat4a,3,723.294939057796,cses4,24
+Romania,2013,dem_sat4a,4,29.3160272988083,cses4,24
+Turkey,2001,dem_sat4,1,597,evs_combo,24
+Turkey,2001,dem_sat4,2,303,evs_combo,24
+Turkey,2001,dem_sat4,3,244,evs_combo,24
+Turkey,2001,dem_sat4,4,37,evs_combo,24
+Turkey,2009,dem_sat4,1,392.527459164728,evs_combo,24
+Turkey,2009,dem_sat4,2,566.561192354496,evs_combo,24
+Turkey,2009,dem_sat4,3,1056.73539831364,evs_combo,24
+Turkey,2009,dem_sat4,4,236.255413303447,evs_combo,24
+Turkey,2011,dem_sat4a,1,164,cses3,24
+Turkey,2011,dem_sat4a,2,284,cses3,24
+Turkey,2011,dem_sat4a,3,452,cses3,24
+Turkey,2011,dem_sat4a,4,132,cses3,24
+Turkey,2014,pride_dem4,1,309,issp2013,24
+Turkey,2014,pride_dem4,2,393,issp2013,24
+Turkey,2014,pride_dem4,3,557,issp2013,24
+Turkey,2014,pride_dem4,4,363,issp2013,24
+Turkey,2015,dem_sat4a,1,420,cses4,24
+Turkey,2015,dem_sat4a,2,289,cses4,24
+Turkey,2015,dem_sat4a,3,278,cses4,24
+Turkey,2015,dem_sat4a,4,67,cses4,24
+Turkey,2018,dem_sat4a,1,310,cses5,24
+Turkey,2018,dem_sat4a,2,250,cses5,24
+Turkey,2018,dem_sat4a,3,327,cses5,24
+Turkey,2018,dem_sat4a,4,136,cses5,24
+Belarus,1996,dem_sat4,1,521,wvs_combo,20
+Belarus,1996,dem_sat4,2,974,wvs_combo,20
+Belarus,1996,dem_sat4,3,265,wvs_combo,20
+Belarus,1996,dem_sat4,4,22,wvs_combo,20
+Belarus,2000,dem_sat4,1,214,evs_combo,20
+Belarus,2000,dem_sat4,2,302,evs_combo,20
+Belarus,2000,dem_sat4,3,209,evs_combo,20
+Belarus,2000,dem_sat4,4,45,evs_combo,20
+Belarus,2001,dem_sat4a,1,136,cses1,20
+Belarus,2001,dem_sat4a,2,291,cses1,20
+Belarus,2001,dem_sat4a,3,303,cses1,20
+Belarus,2001,dem_sat4a,4,79,cses1,20
+Belarus,2008,dem_sat4,1,92.7794009631178,evs_combo,20
+Belarus,2008,dem_sat4,2,350.844625261525,evs_combo,20
+Belarus,2008,dem_sat4,3,605.611126918666,evs_combo,20
+Belarus,2008,dem_sat4,4,165.855344688338,evs_combo,20
+Belarus,2009,dem_sat4a,1,100,cses3,20
+Belarus,2009,dem_sat4a,2,269,cses3,20
+Belarus,2009,dem_sat4a,3,468,cses3,20
+Belarus,2009,dem_sat4a,4,58,cses3,20
+Estonia,1996,dem_sat4,1,118,wvs_combo,20
+Estonia,1996,dem_sat4,2,446,wvs_combo,20
+Estonia,1996,dem_sat4,3,368,wvs_combo,20
+Estonia,1996,dem_sat4,4,17,wvs_combo,20
+Estonia,1999,dem_sat4,1,110.859949380652,evs_combo,20
+Estonia,1999,dem_sat4,2,466.077705977528,evs_combo,20
+Estonia,1999,dem_sat4,3,303.968467525207,evs_combo,20
+Estonia,1999,dem_sat4,4,17.5237160576211,evs_combo,20
+Estonia,2008,dem_sat4,1,181.350245388715,evs_combo,20
+Estonia,2008,dem_sat4,2,605.529634558884,evs_combo,20
+Estonia,2008,dem_sat4,3,592.953718841601,evs_combo,20
+Estonia,2008,dem_sat4,4,50.9445045974011,evs_combo,20
+Estonia,2011,dem_sat4a,1,113,cses3,20
+Estonia,2011,dem_sat4a,2,354,cses3,20
+Estonia,2011,dem_sat4a,3,452,cses3,20
+Estonia,2011,dem_sat4a,4,34,cses3,20
+Estonia,2013,pride_dem4,1,166.309189346113,issp2013,20
+Estonia,2013,pride_dem4,2,275.696059467189,issp2013,20
+Estonia,2013,pride_dem4,3,308.430344929289,issp2013,20
+Estonia,2013,pride_dem4,4,49.0719742967503,issp2013,20
+Greece,1999,dem_sat4,1,100,evs_combo,20
+Greece,1999,dem_sat4,2,399,evs_combo,20
+Greece,1999,dem_sat4,3,532,evs_combo,20
+Greece,1999,dem_sat4,4,83,evs_combo,20
+Greece,2008,dem_sat4,1,293.98453282611,evs_combo,20
+Greece,2008,dem_sat4,2,559.684249943664,evs_combo,20
+Greece,2008,dem_sat4,3,520.373540338716,evs_combo,20
+Greece,2008,dem_sat4,4,113.493604724668,evs_combo,20
+Greece,2009,dem_sat4a,1,294,cses3,20
+Greece,2009,dem_sat4a,2,463,cses3,20
+Greece,2009,dem_sat4a,3,232,cses3,20
+Greece,2009,dem_sat4a,4,28,cses3,20
+Greece,2014,dem_sat4a,1,768,cses4,20
+Greece,2014,dem_sat4a,2,975,cses4,20
+Greece,2014,dem_sat4a,3,236,cses4,20
+Greece,2014,dem_sat4a,4,17,cses4,20
+Greece,2016,dem_sat4a,1,500,cses5,20
+Greece,2016,dem_sat4a,2,460,cses5,20
+Greece,2016,dem_sat4a,3,102,cses5,20
+Greece,2016,dem_sat4a,4,8,cses5,20
+Hong Kong SAR China,1999,dem_sat4a,1,62,cses1,20
+Hong Kong SAR China,1999,dem_sat4a,2,457,cses1,20
+Hong Kong SAR China,1999,dem_sat4a,3,837,cses1,20
+Hong Kong SAR China,1999,dem_sat4a,4,24,cses1,20
+Hong Kong SAR China,2004,dem_sat4a,1,61,cses2,20
+Hong Kong SAR China,2004,dem_sat4a,2,229,cses2,20
+Hong Kong SAR China,2004,dem_sat4a,3,229,cses2,20
+Hong Kong SAR China,2004,dem_sat4a,4,19,cses2,20
+Hong Kong SAR China,2008,dem_sat4a,1,92,cses3,20
+Hong Kong SAR China,2008,dem_sat4a,2,262,cses3,20
+Hong Kong SAR China,2008,dem_sat4a,3,379,cses3,20
+Hong Kong SAR China,2008,dem_sat4a,4,34,cses3,20
+Hong Kong SAR China,2012,dem_sat4a,1,265,cses4,20
+Hong Kong SAR China,2012,dem_sat4a,2,315,cses4,20
+Hong Kong SAR China,2012,dem_sat4a,3,339,cses4,20
+Hong Kong SAR China,2012,dem_sat4a,4,69,cses4,20
+Hong Kong SAR China,2016,dem_sat4a,1,337,cses5,20
+Hong Kong SAR China,2016,dem_sat4a,2,296,cses5,20
+Hong Kong SAR China,2016,dem_sat4a,3,270,cses5,20
+Hong Kong SAR China,2016,dem_sat4a,4,70,cses5,20
+Italy,1995,pride_dem4,1,361.430558750141,issp1995,20
+Italy,1995,pride_dem4,2,437.101349752883,issp1995,20
+Italy,1995,pride_dem4,3,240.795295119566,issp1995,20
+Italy,1995,pride_dem4,4,43.0728141032665,issp1995,20
+Italy,1999,dem_sat4,1,220,evs_combo,20
+Italy,1999,dem_sat4,2,1015,evs_combo,20
+Italy,1999,dem_sat4,3,661,evs_combo,20
+Italy,1999,dem_sat4,4,30,evs_combo,20
+Italy,2006,dem_sat4a,1,189,cses2,20
+Italy,2006,dem_sat4a,2,570,cses2,20
+Italy,2006,dem_sat4a,3,457,cses2,20
+Italy,2006,dem_sat4a,4,26,cses2,20
+Italy,2009,dem_sat4,1,266.766511807131,evs_combo,20
+Italy,2009,dem_sat4,2,700.90698978837,evs_combo,20
+Italy,2009,dem_sat4,3,425.740420639655,evs_combo,20
+Italy,2009,dem_sat4,4,30.1111167625361,evs_combo,20
+Italy,2018,dem_sat4a,1,420.240803883004,cses5,20
+Italy,2018,dem_sat4a,2,1003.24738956514,cses5,20
+Italy,2018,dem_sat4a,3,495.58291772605,cses5,20
+Italy,2018,dem_sat4a,4,56.3275860621419,cses5,20
+Peru,2001,dem_sat4,1,154,wvs_combo,20
+Peru,2001,dem_sat4,2,806,wvs_combo,20
+Peru,2001,dem_sat4,3,355,wvs_combo,20
+Peru,2001,dem_sat4,4,158,wvs_combo,20
+Peru,2001,dem_sat4a,1,200,cses1,20
+Peru,2001,dem_sat4a,2,514,cses1,20
+Peru,2001,dem_sat4a,3,323,cses1,20
+Peru,2001,dem_sat4a,4,66,cses1,20
+Peru,2006,dem_sat4a,1,245,cses2,20
+Peru,2006,dem_sat4a,2,1038,cses2,20
+Peru,2006,dem_sat4a,3,588,cses2,20
+Peru,2006,dem_sat4a,4,55,cses2,20
+Peru,2011,dem_sat4a,1,133.091674261619,cses3,20
+Peru,2011,dem_sat4a,2,791.763797871367,cses3,20
+Peru,2011,dem_sat4a,3,556.092214193763,cses3,20
+Peru,2011,dem_sat4a,4,27.2256901714324,cses3,20
+Peru,2016,dem_sat4a,1,443.788385073309,cses4,20
+Peru,2016,dem_sat4a,2,881.406602331972,cses4,20
+Peru,2016,dem_sat4a,3,211.266597973217,cses4,20
+Peru,2016,dem_sat4a,4,20.8154914204646,cses4,20
+South Africa,2001,dem_sat4,1,287.511395566265,wvs_combo,20
+South Africa,2001,dem_sat4,2,844.240411112237,wvs_combo,20
+South Africa,2001,dem_sat4,3,1358.94761035153,wvs_combo,20
+South Africa,2001,dem_sat4,4,415.072520760556,wvs_combo,20
+South Africa,2003,pride_dem4,1,336,issp2003,20
+South Africa,2003,pride_dem4,2,534,issp2003,20
+South Africa,2003,pride_dem4,3,793,issp2003,20
+South Africa,2003,pride_dem4,4,595,issp2003,20
+South Africa,2009,dem_sat4a,1,127.031831757958,cses3,20
+South Africa,2009,dem_sat4a,2,306.533376633344,cses3,20
+South Africa,2009,dem_sat4a,3,537.787334446834,cses3,20
+South Africa,2009,dem_sat4a,4,195.675648918912,cses3,20
+South Africa,2013,pride_dem4,1,438.80976134952,issp2013,20
+South Africa,2013,pride_dem4,2,877.488161049888,issp2013,20
+South Africa,2013,pride_dem4,3,745.04253463854,issp2013,20
+South Africa,2013,pride_dem4,4,615.758328375837,issp2013,20
+South Africa,2015,dem_sat4a,1,222,cses4,20
+South Africa,2015,dem_sat4a,2,376,cses4,20
+South Africa,2015,dem_sat4a,3,438,cses4,20
+South Africa,2015,dem_sat4a,4,195,cses4,20
+Brazil,2002,dem_sat4a,1,661.78364329403,cses2,16
+Brazil,2002,dem_sat4a,2,919.886242219227,cses2,16
+Brazil,2002,dem_sat4a,3,634.430384440578,cses2,16
+Brazil,2002,dem_sat4a,4,123.217715584188,cses2,16
+Brazil,2009,dem_sat4a,1,325,cses3,16
+Brazil,2009,dem_sat4a,2,699,cses3,16
+Brazil,2009,dem_sat4a,3,1182,cses3,16
+Brazil,2009,dem_sat4a,4,201,cses3,16
+Brazil,2014,dem_sat4a,1,447.568204048086,cses4,16
+Brazil,2014,dem_sat4a,2,684.064586894496,cses4,16
+Brazil,2014,dem_sat4a,3,1087.98820011062,cses4,16
+Brazil,2014,dem_sat4a,4,130.82167354681,cses4,16
+Brazil,2018,dem_sat4a,1,958,cses5,16
+Brazil,2018,dem_sat4a,2,1053,cses5,16
+Brazil,2018,dem_sat4a,3,225,cses5,16
+Brazil,2018,dem_sat4a,4,83,cses5,16
+Chile,2000,dem_sat4,1,133.746669,wvs_combo,16
+Chile,2000,dem_sat4,2,336.213334,wvs_combo,16
+Chile,2000,dem_sat4,3,556.959978,wvs_combo,16
+Chile,2000,dem_sat4,4,133.20001,wvs_combo,16
+Chile,2003,pride_dem4,1,103.974734725598,issp2003,16
+Chile,2003,pride_dem4,2,552.267447927522,issp2003,16
+Chile,2003,pride_dem4,3,584.011604155981,issp2003,16
+Chile,2003,pride_dem4,4,181.267284782152,issp2003,16
+Chile,2006,dem_sat4a,1,78,cses2,16
+Chile,2006,dem_sat4a,2,385,cses2,16
+Chile,2006,dem_sat4a,3,530,cses2,16
+Chile,2006,dem_sat4a,4,183,cses2,16
+Chile,2018,dem_sat4a,1,466,cses5,16
+Chile,2018,dem_sat4a,2,947,cses5,16
+Chile,2018,dem_sat4a,3,425,cses5,16
+Chile,2018,dem_sat4a,4,76,cses5,16
+Croatia,1999,dem_sat4,1,240.773851169386,evs_combo,16
+Croatia,1999,dem_sat4,2,571.865835006492,evs_combo,16
+Croatia,1999,dem_sat4,3,144.419436267797,evs_combo,16
+Croatia,1999,dem_sat4,4,22.4027938805985,evs_combo,16
+Croatia,2008,dem_sat4,1,277.464848761751,evs_combo,16
+Croatia,2008,dem_sat4,2,815.661431817981,evs_combo,16
+Croatia,2008,dem_sat4,3,356.723855175956,evs_combo,16
+Croatia,2008,dem_sat4,4,14.6994688925062,evs_combo,16
+Croatia,2008,dem_sat4a,1,315,cses3,16
+Croatia,2008,dem_sat4a,2,412,cses3,16
+Croatia,2008,dem_sat4a,3,226,cses3,16
+Croatia,2008,dem_sat4a,4,23,cses3,16
+Croatia,2014,pride_dem4,1,337.385661175547,issp2013,16
+Croatia,2014,pride_dem4,2,390.131275484906,issp2013,16
+Croatia,2014,pride_dem4,3,222.413945185316,issp2013,16
+Croatia,2014,pride_dem4,4,39.510191186574,issp2013,16
+Montenegro,2001,dem_sat4,1,225,wvs_combo,16
+Montenegro,2001,dem_sat4,2,405,wvs_combo,16
+Montenegro,2001,dem_sat4,3,283,wvs_combo,16
+Montenegro,2001,dem_sat4,4,23,wvs_combo,16
+Montenegro,2008,dem_sat4,1,224.426865958785,evs_combo,16
+Montenegro,2008,dem_sat4,2,662.150363151284,evs_combo,16
+Montenegro,2008,dem_sat4,3,445.374032992033,evs_combo,16
+Montenegro,2008,dem_sat4,4,88.7567342427272,evs_combo,16
+Montenegro,2013,dem_sat4a,1,341,cses4,16
+Montenegro,2013,dem_sat4a,2,137,cses4,16
+Montenegro,2013,dem_sat4a,3,335,cses4,16
+Montenegro,2013,dem_sat4a,4,84,cses4,16
+Montenegro,2016,dem_sat4a,1,278,cses5,16
+Montenegro,2016,dem_sat4a,2,408,cses5,16
+Montenegro,2016,dem_sat4a,3,404,cses5,16
+Montenegro,2016,dem_sat4a,4,99,cses5,16
+Thailand,2001,dem_sat4a,1,40,cses1,16
+Thailand,2001,dem_sat4a,2,198,cses1,16
+Thailand,2001,dem_sat4a,3,558,cses1,16
+Thailand,2001,dem_sat4a,4,236,cses1,16
+Thailand,2009,dem_sat4a,1,87,cses3,16
+Thailand,2009,dem_sat4a,2,257,cses3,16
+Thailand,2009,dem_sat4a,3,1140,cses3,16
+Thailand,2009,dem_sat4a,4,426,cses3,16
+Thailand,2011,dem_sat4a,1,71.4102378801246,cses4,16
+Thailand,2011,dem_sat4a,2,71.7422417756369,cses4,16
+Thailand,2011,dem_sat4a,3,817.444091344004,cses4,16
+Thailand,2011,dem_sat4a,4,388.146454251731,cses4,16
+Thailand,2019,dem_sat4a,1,359,cses5,16
+Thailand,2019,dem_sat4a,2,241,cses5,16
+Thailand,2019,dem_sat4a,3,537,cses5,16
+Thailand,2019,dem_sat4a,4,102,cses5,16
+Ukraine,1996,dem_sat4,1,789,wvs_combo,16
+Ukraine,1996,dem_sat4,2,1494,wvs_combo,16
+Ukraine,1996,dem_sat4,3,160,wvs_combo,16
+Ukraine,1996,dem_sat4,4,21,wvs_combo,16
+Ukraine,1998,dem_sat4a,1,538,cses1,16
+Ukraine,1998,dem_sat4a,2,378,cses1,16
+Ukraine,1998,dem_sat4a,3,71,cses1,16
+Ukraine,1998,dem_sat4a,4,22,cses1,16
+Ukraine,1999,dem_sat4,1,385.824898000065,evs_combo,16
+Ukraine,1999,dem_sat4,2,523.331323563777,evs_combo,16
+Ukraine,1999,dem_sat4,3,153.179783709967,evs_combo,16
+Ukraine,1999,dem_sat4,4,14.9635314836172,evs_combo,16
+Ukraine,2008,dem_sat4,1,499.552217085061,evs_combo,16
+Ukraine,2008,dem_sat4,2,654.35968504475,evs_combo,16
+Ukraine,2008,dem_sat4,3,191.748755063658,evs_combo,16
+Ukraine,2008,dem_sat4,4,34.4931992925482,evs_combo,16
+Albania,2002,dem_sat4,1,268,wvs_combo,12
+Albania,2002,dem_sat4,2,453,wvs_combo,12
+Albania,2002,dem_sat4,3,239,wvs_combo,12
+Albania,2002,dem_sat4,4,24,wvs_combo,12
+Albania,2005,dem_sat4a,1,233,cses2,12
+Albania,2005,dem_sat4a,2,460,cses2,12
+Albania,2005,dem_sat4a,3,361,cses2,12
+Albania,2005,dem_sat4a,4,37,cses2,12
+Albania,2008,dem_sat4,1,403.157281093291,evs_combo,12
+Albania,2008,dem_sat4,2,807.129471506911,evs_combo,12
+Albania,2008,dem_sat4,3,248.784446203465,evs_combo,12
+Albania,2008,dem_sat4,4,22.993631537744,evs_combo,12
+Georgia,1996,dem_sat4,1,442,wvs_combo,12
+Georgia,1996,dem_sat4,2,1212,wvs_combo,12
+Georgia,1996,dem_sat4,3,293,wvs_combo,12
+Georgia,1996,dem_sat4,4,20,wvs_combo,12
+Georgia,2008,dem_sat4,1,130.062629952716,evs_combo,12
+Georgia,2008,dem_sat4,2,672.92186734297,evs_combo,12
+Georgia,2008,dem_sat4,3,488.769306923208,evs_combo,12
+Georgia,2008,dem_sat4,4,60.4843792848431,evs_combo,12
+Georgia,2013,pride_dem4,1,253.912970212341,issp2013,12
+Georgia,2013,pride_dem4,2,730.378570502221,issp2013,12
+Georgia,2013,pride_dem4,3,360.070244092015,issp2013,12
+Georgia,2013,pride_dem4,4,54.5373069385237,issp2013,12
+Moldova,1996,dem_sat4,1,279,wvs_combo,12
+Moldova,1996,dem_sat4,2,612,wvs_combo,12
+Moldova,1996,dem_sat4,3,61,wvs_combo,12
+Moldova,1996,dem_sat4,4,1,wvs_combo,12
+Moldova,2002,dem_sat4,1,301.047672615853,wvs_combo,12
+Moldova,2002,dem_sat4,2,541.763388804702,wvs_combo,12
+Moldova,2002,dem_sat4,3,76.5795383818697,wvs_combo,12
+Moldova,2002,dem_sat4,4,21.1332800256646,wvs_combo,12
+Moldova,2008,dem_sat4,1,241.702326576179,evs_combo,12
+Moldova,2008,dem_sat4,2,799.800268843483,evs_combo,12
+Moldova,2008,dem_sat4,3,376.480902351808,evs_combo,12
+Moldova,2008,dem_sat4,4,18.6074139191608,evs_combo,12
+Serbia,2001,dem_sat4,1,154,wvs_combo,12
+Serbia,2001,dem_sat4,2,439,wvs_combo,12
+Serbia,2001,dem_sat4,3,474,wvs_combo,12
+Serbia,2001,dem_sat4,4,17,wvs_combo,12
+Serbia,2008,dem_sat4,1,344.272561606374,evs_combo,12
+Serbia,2008,dem_sat4,2,783.445422394028,evs_combo,12
+Serbia,2008,dem_sat4,3,268.749173960632,evs_combo,12
+Serbia,2008,dem_sat4,4,19.7814033298463,evs_combo,12
+Serbia,2013,dem_sat4a,1,390.55451310792,cses4,12
+Serbia,2013,dem_sat4a,2,472.179984644006,cses4,12
+Serbia,2013,dem_sat4a,3,623.810532114709,cses4,12
+Serbia,2013,dem_sat4a,4,25.9694136514261,cses4,12
+Uruguay,2004,pride_dem4,1,81.5913731871882,issp2003,12
+Uruguay,2004,pride_dem4,2,352.811969085178,issp2003,12
+Uruguay,2004,pride_dem4,3,435.860568397655,issp2003,12
+Uruguay,2004,pride_dem4,4,218.043423114001,issp2003,12
+Uruguay,2010,dem_sat4a,1,34,cses3,12
+Uruguay,2010,dem_sat4a,2,229,cses3,12
+Uruguay,2010,dem_sat4a,3,436,cses3,12
+Uruguay,2010,dem_sat4a,4,237,cses3,12
+Uruguay,2020,dem_sat4a,1,112,cses5,12
+Uruguay,2020,dem_sat4a,2,246,cses5,12
+Uruguay,2020,dem_sat4a,3,602,cses5,12
+Uruguay,2020,dem_sat4a,4,227,cses5,12
+Armenia,1997,dem_sat4,1,576,wvs_combo,8
+Armenia,1997,dem_sat4,2,1237,wvs_combo,8
+Armenia,1997,dem_sat4,3,67,wvs_combo,8
+Armenia,1997,dem_sat4,4,23,wvs_combo,8
+Armenia,2008,dem_sat4,1,326.960601463309,evs_combo,8
+Armenia,2008,dem_sat4,2,416.94211868398,evs_combo,8
+Armenia,2008,dem_sat4,3,662.363214807121,evs_combo,8
+Armenia,2008,dem_sat4,4,35.5578715394605,evs_combo,8
+Bosnia & Herzegovina,2001,dem_sat4,1,223,wvs_combo,8
+Bosnia & Herzegovina,2001,dem_sat4,2,549,wvs_combo,8
+Bosnia & Herzegovina,2001,dem_sat4,3,378,wvs_combo,8
+Bosnia & Herzegovina,2001,dem_sat4,4,20,wvs_combo,8
+Bosnia & Herzegovina,2008,dem_sat4,1,402.712265849967,evs_combo,8
+Bosnia & Herzegovina,2008,dem_sat4,2,683.173548907934,evs_combo,8
+Bosnia & Herzegovina,2008,dem_sat4,3,330.645853864703,evs_combo,8
+Bosnia & Herzegovina,2008,dem_sat4,4,44.1392408913319,evs_combo,8
+India,2001,dem_sat4,1,127,wvs_combo,8
+India,2001,dem_sat4,2,457,wvs_combo,8
+India,2001,dem_sat4,3,798,wvs_combo,8
+India,2001,dem_sat4,4,216,wvs_combo,8
+India,2015,pride_dem4,1,74.2481349452516,issp2013,8
+India,2015,pride_dem4,2,133.236403361533,issp2013,8
+India,2015,pride_dem4,3,427.24498795458,issp2013,8
+India,2015,pride_dem4,4,822.520772068874,issp2013,8
+Kyrgyzstan,2003,dem_sat4,1,169,wvs_combo,8
+Kyrgyzstan,2003,dem_sat4,2,532,wvs_combo,8
+Kyrgyzstan,2003,dem_sat4,3,278,wvs_combo,8
+Kyrgyzstan,2003,dem_sat4,4,26,wvs_combo,8
+Kyrgyzstan,2006,dem_sat4a,1,195,cses2,8
+Kyrgyzstan,2006,dem_sat4a,2,917,cses2,8
+Kyrgyzstan,2006,dem_sat4a,3,655,cses2,8
+Kyrgyzstan,2006,dem_sat4a,4,67,cses2,8
+Luxembourg,1999,dem_sat4,1,23.4907900007189,evs_combo,8
+Luxembourg,1999,dem_sat4,2,153.19562897348,evs_combo,8
+Luxembourg,1999,dem_sat4,3,754.663281303231,evs_combo,8
+Luxembourg,1999,dem_sat4,4,127.091385841822,evs_combo,8
+Luxembourg,2008,dem_sat4,1,74.6605641081213,evs_combo,8
+Luxembourg,2008,dem_sat4,2,304.529932801483,evs_combo,8
+Luxembourg,2008,dem_sat4,3,952.604254317648,evs_combo,8
+Luxembourg,2008,dem_sat4,4,185.676296485202,evs_combo,8
+Malta,1999,dem_sat4,1,36.5499735166845,evs_combo,8
+Malta,1999,dem_sat4,2,176.411200943406,evs_combo,8
+Malta,1999,dem_sat4,3,593.381309774842,evs_combo,8
+Malta,1999,dem_sat4,4,153.079300040974,evs_combo,8
+Malta,2008,dem_sat4,1,112.532398057914,evs_combo,8
+Malta,2008,dem_sat4,2,332.374550266611,evs_combo,8
+Malta,2008,dem_sat4,3,810.198452482145,evs_combo,8
+Malta,2008,dem_sat4,4,169.728820777795,evs_combo,8
+North Macedonia,2001,dem_sat4,1,391.375883889607,wvs_combo,8
+North Macedonia,2001,dem_sat4,2,458.536338526402,wvs_combo,8
+North Macedonia,2001,dem_sat4,3,166.334230651112,wvs_combo,8
+North Macedonia,2001,dem_sat4,4,15.0000568722535,wvs_combo,8
+North Macedonia,2008,dem_sat4,1,307.196040264471,evs_combo,8
+North Macedonia,2008,dem_sat4,2,544.287460750746,evs_combo,8
+North Macedonia,2008,dem_sat4,3,532.55832559738,evs_combo,8
+North Macedonia,2008,dem_sat4,4,87.1743660368532,evs_combo,8
+Northern Ireland,1999,dem_sat4,1,171.480144404332,evs_combo,8
+Northern Ireland,1999,dem_sat4,2,456.227436823105,evs_combo,8
+Northern Ireland,1999,dem_sat4,3,228.339350180505,evs_combo,8
+Northern Ireland,1999,dem_sat4,4,22.5631768953069,evs_combo,8
+Northern Ireland,2008,dem_sat4,1,55.7028454998183,evs_combo,8
+Northern Ireland,2008,dem_sat4,2,136.10911313046,evs_combo,8
+Northern Ireland,2008,dem_sat4,3,221.000210117386,evs_combo,8
+Northern Ireland,2008,dem_sat4,4,14.1553005080673,evs_combo,8
+Venezuela,2000,dem_sat4,1,137,wvs_combo,8
+Venezuela,2000,dem_sat4,2,312,wvs_combo,8
+Venezuela,2000,dem_sat4,3,511,wvs_combo,8
+Venezuela,2000,dem_sat4,4,231,wvs_combo,8
+Venezuela,2004,pride_dem4,1,226.236241144924,issp2003,8
+Venezuela,2004,pride_dem4,2,339.854828680878,issp2003,8
+Venezuela,2004,pride_dem4,3,351.0432874997,issp2003,8
+Venezuela,2004,pride_dem4,4,255.62643572015,issp2003,8
+Algeria,2002,dem_sat4,1,244,wvs_combo,4
+Algeria,2002,dem_sat4,2,449,wvs_combo,4
+Algeria,2002,dem_sat4,3,435,wvs_combo,4
+Algeria,2002,dem_sat4,4,46,wvs_combo,4
+Argentina,1999,dem_sat4,1,217.824911870191,wvs_combo,4
+Argentina,1999,dem_sat4,2,466.627726144069,wvs_combo,4
+Argentina,1999,dem_sat4,3,454.912682613231,wvs_combo,4
+Argentina,1999,dem_sat4,4,81.1174716756354,wvs_combo,4
+Azerbaijan,1997,dem_sat4,1,83,wvs_combo,4
+Azerbaijan,1997,dem_sat4,2,921,wvs_combo,4
+Azerbaijan,1997,dem_sat4,3,472,wvs_combo,4
+Azerbaijan,1997,dem_sat4,4,314,wvs_combo,4
+Bangladesh,2002,dem_sat4,1,49,wvs_combo,4
+Bangladesh,2002,dem_sat4,2,286,wvs_combo,4
+Bangladesh,2002,dem_sat4,3,949,wvs_combo,4
+Bangladesh,2002,dem_sat4,4,192,wvs_combo,4
+China,2001,dem_sat4,1,8,wvs_combo,4
+China,2001,dem_sat4,2,94,wvs_combo,4
+China,2001,dem_sat4,3,672,wvs_combo,4
+China,2001,dem_sat4,4,72,wvs_combo,4
+Costa Rica,2019,dem_sat4a,1,248,cses5,4
+Costa Rica,2019,dem_sat4a,2,586,cses5,4
+Costa Rica,2019,dem_sat4a,3,412,cses5,4
+Costa Rica,2019,dem_sat4a,4,189,cses5,4
+Cyprus,2008,dem_sat4,1,108.367844702764,evs_combo,4
+Cyprus,2008,dem_sat4,2,334.543316512904,evs_combo,4
+Cyprus,2008,dem_sat4,3,759.219321148646,evs_combo,4
+Cyprus,2008,dem_sat4,4,227.021439379298,evs_combo,4
+Egypt,2001,dem_sat4,1,4,wvs_combo,4
+Egypt,2001,dem_sat4,2,152,wvs_combo,4
+Egypt,2001,dem_sat4,3,1780,wvs_combo,4
+Egypt,2001,dem_sat4,4,1064,wvs_combo,4
+Indonesia,2001,dem_sat4,1,115,wvs_combo,4
+Indonesia,2001,dem_sat4,2,562,wvs_combo,4
+Indonesia,2001,dem_sat4,3,256,wvs_combo,4
+Indonesia,2001,dem_sat4,4,18,wvs_combo,4
+Iran,2000,dem_sat4,1,184,wvs_combo,4
+Iran,2000,dem_sat4,2,448,wvs_combo,4
+Iran,2000,dem_sat4,3,1117,wvs_combo,4
+Iran,2000,dem_sat4,4,143,wvs_combo,4
+Jordan,2001,dem_sat4,1,88.9894875343681,wvs_combo,4
+Jordan,2001,dem_sat4,2,224.22828579522,wvs_combo,4
+Jordan,2001,dem_sat4,3,693.605076385061,wvs_combo,4
+Jordan,2001,dem_sat4,4,117.104093856905,wvs_combo,4
+Kenya,2013,dem_sat4a,1,158.473964123274,cses4,4
+Kenya,2013,dem_sat4a,2,311.769019615033,cses4,4
+Kenya,2013,dem_sat4a,3,371.091218485364,cses4,4
+Kenya,2013,dem_sat4a,4,201.073835123059,cses4,4
+Kosovo,2008,dem_sat4,1,125.050790603221,evs_combo,4
+Kosovo,2008,dem_sat4,2,333.189346945524,evs_combo,4
+Kosovo,2008,dem_sat4,3,618.183751751084,evs_combo,4
+Kosovo,2008,dem_sat4,4,444.772400411882,evs_combo,4
+Morocco,2001,dem_sat4,1,144.933824948017,wvs_combo,4
+Morocco,2001,dem_sat4,2,326.196319382798,wvs_combo,4
+Morocco,2001,dem_sat4,3,351.535075451588,wvs_combo,4
+Morocco,2001,dem_sat4,4,76.6130203964329,wvs_combo,4
+Nigeria,2000,dem_sat4,1,183,wvs_combo,4
+Nigeria,2000,dem_sat4,2,625,wvs_combo,4
+Nigeria,2000,dem_sat4,3,787,wvs_combo,4
+Nigeria,2000,dem_sat4,4,404,wvs_combo,4
+Pakistan,2001,dem_sat4,1,722,wvs_combo,4
+Pakistan,2001,dem_sat4,2,740,wvs_combo,4
+Pakistan,2001,dem_sat4,3,251,wvs_combo,4
+Pakistan,2001,dem_sat4,4,68,wvs_combo,4
+Puerto Rico,2001,dem_sat4,1,43,wvs_combo,4
+Puerto Rico,2001,dem_sat4,2,281,wvs_combo,4
+Puerto Rico,2001,dem_sat4,3,273,wvs_combo,4
+Puerto Rico,2001,dem_sat4,4,107,wvs_combo,4
+Tanzania,2001,dem_sat4,1,78,wvs_combo,4
+Tanzania,2001,dem_sat4,2,189,wvs_combo,4
+Tanzania,2001,dem_sat4,3,608,wvs_combo,4
+Tanzania,2001,dem_sat4,4,229,wvs_combo,4
+Tunisia,2020,dem_sat4a,1,730,cses5,4
+Tunisia,2020,dem_sat4a,2,324,cses5,4
+Tunisia,2020,dem_sat4a,3,305,cses5,4
+Tunisia,2020,dem_sat4a,4,76,cses5,4
+Uganda,2001,dem_sat4,1,48.5181454007537,wvs_combo,4
+Uganda,2001,dem_sat4,2,267.452584328583,wvs_combo,4
+Uganda,2001,dem_sat4,3,552.82865594178,wvs_combo,4
+Uganda,2001,dem_sat4,4,103.277707306842,wvs_combo,4
+Vietnam,2001,dem_sat4,1,1,wvs_combo,4
+Vietnam,2001,dem_sat4,2,32,wvs_combo,4
+Vietnam,2001,dem_sat4,3,321,wvs_combo,4
+Vietnam,2001,dem_sat4,4,592,wvs_combo,4
+Zimbabwe,2001,dem_sat4,1,228.059137316344,wvs_combo,4
+Zimbabwe,2001,dem_sat4,2,401.33254468178,wvs_combo,4
+Zimbabwe,2001,dem_sat4,3,233.537881600782,wvs_combo,4
+Zimbabwe,2001,dem_sat4,4,36.4412957660049,wvs_combo,4

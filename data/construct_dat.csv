@@ -1,0 +1,761 @@
+country,year,item,r,n,survey,cc_rank
+Australia,2007,env_success5,1,278,issp2006,25
+Australia,2007,env_success5,2,628,issp2006,25
+Australia,2007,env_success5,3,1080,issp2006,25
+Australia,2007,env_success5,4,611,issp2006,25
+Australia,2007,env_success5,5,43,issp2006,25
+Australia,2007,hc_success5,1,183,issp2006,25
+Australia,2007,hc_success5,2,575,issp2006,25
+Australia,2007,hc_success5,3,902,issp2006,25
+Australia,2007,hc_success5,4,934,issp2006,25
+Australia,2007,hc_success5,5,83,issp2006,25
+Australia,2007,old_success5,1,134,issp2006,25
+Australia,2007,old_success5,2,543,issp2006,25
+Australia,2007,old_success5,3,1038,issp2006,25
+Australia,2007,old_success5,4,867,issp2006,25
+Australia,2007,old_success5,5,53,issp2006,25
+Australia,2016,hc_success5,1,67.2712939818991,issp2016,25
+Australia,2016,hc_success5,2,185.686626954762,issp2016,25
+Australia,2016,hc_success5,3,254.435522339479,issp2016,25
+Australia,2016,hc_success5,4,643.498158351349,issp2016,25
+Australia,2016,hc_success5,5,90.4091120916442,issp2016,25
+Australia,2016,old_success5,1,101.116405034074,issp2016,25
+Australia,2016,old_success5,2,281.37645690068,issp2016,25
+Australia,2016,old_success5,3,384.487400281754,issp2016,25
+Australia,2016,old_success5,4,439.093748905971,issp2016,25
+Australia,2016,old_success5,5,28.5571653442304,issp2016,25
+Croatia,2006,env_success5,1,144,issp2006,25
+Croatia,2006,env_success5,2,233,issp2006,25
+Croatia,2006,env_success5,3,456,issp2006,25
+Croatia,2006,env_success5,4,183,issp2006,25
+Croatia,2006,env_success5,5,16,issp2006,25
+Croatia,2006,hc_success5,1,232,issp2006,25
+Croatia,2006,hc_success5,2,329,issp2006,25
+Croatia,2006,hc_success5,3,406,issp2006,25
+Croatia,2006,hc_success5,4,146,issp2006,25
+Croatia,2006,hc_success5,5,11,issp2006,25
+Croatia,2006,old_success5,1,287,issp2006,25
+Croatia,2006,old_success5,2,423,issp2006,25
+Croatia,2006,old_success5,3,322,issp2006,25
+Croatia,2006,old_success5,4,96,issp2006,25
+Croatia,2006,old_success5,5,2,issp2006,25
+Croatia,2017,hc_success5,1,142,issp2016,25
+Croatia,2017,hc_success5,2,255,issp2016,25
+Croatia,2017,hc_success5,3,363,issp2016,25
+Croatia,2017,hc_success5,4,247,issp2016,25
+Croatia,2017,hc_success5,5,12,issp2016,25
+Croatia,2017,old_success5,1,223,issp2016,25
+Croatia,2017,old_success5,2,328,issp2016,25
+Croatia,2017,old_success5,3,315,issp2016,25
+Croatia,2017,old_success5,4,140,issp2016,25
+Croatia,2017,old_success5,5,11,issp2016,25
+Czechia,2006,env_success5,1,82.8496653157422,issp2006,25
+Czechia,2006,env_success5,2,254.761736905648,issp2006,25
+Czechia,2006,env_success5,3,489.681649606632,issp2006,25
+Czechia,2006,env_success5,4,308.350215421463,issp2006,25
+Czechia,2006,env_success5,5,32.4166796727862,issp2006,25
+Czechia,2006,hc_success5,1,100.885412988643,issp2006,25
+Czechia,2006,hc_success5,2,278.650754160338,issp2006,25
+Czechia,2006,hc_success5,3,381.306115716709,issp2006,25
+Czechia,2006,hc_success5,4,368.993004757927,issp2006,25
+Czechia,2006,hc_success5,5,43.6325584065978,issp2006,25
+Czechia,2006,old_success5,1,74.7044879225207,issp2006,25
+Czechia,2006,old_success5,2,333.99863866326,issp2006,25
+Czechia,2006,old_success5,3,421.373399830801,issp2006,25
+Czechia,2006,old_success5,4,317.888530026473,issp2006,25
+Czechia,2006,old_success5,5,30.61212007331,issp2006,25
+Czechia,2016,hc_success5,1,39.1689456653546,issp2016,25
+Czechia,2016,hc_success5,2,174.250421555528,issp2016,25
+Czechia,2016,hc_success5,3,460.969813415737,issp2016,25
+Czechia,2016,hc_success5,4,646.378539974717,issp2016,25
+Czechia,2016,hc_success5,5,59.9689435572557,issp2016,25
+Czechia,2016,old_success5,1,105.023359652701,issp2016,25
+Czechia,2016,old_success5,2,422.51031465089,issp2016,25
+Czechia,2016,old_success5,3,498.645367144665,issp2016,25
+Czechia,2016,old_success5,4,318.74578038008,issp2016,25
+Czechia,2016,old_success5,5,30.7169231259331,issp2016,25
+Denmark,2008,env_success5,1,75,issp2006,25
+Denmark,2008,env_success5,2,215,issp2006,25
+Denmark,2008,env_success5,3,460,issp2006,25
+Denmark,2008,env_success5,4,506,issp2006,25
+Denmark,2008,env_success5,5,61,issp2006,25
+Denmark,2008,hc_success5,1,76,issp2006,25
+Denmark,2008,hc_success5,2,269,issp2006,25
+Denmark,2008,hc_success5,3,355,issp2006,25
+Denmark,2008,hc_success5,4,555,issp2006,25
+Denmark,2008,hc_success5,5,84,issp2006,25
+Denmark,2008,old_success5,1,74,issp2006,25
+Denmark,2008,old_success5,2,290,issp2006,25
+Denmark,2008,old_success5,3,393,issp2006,25
+Denmark,2008,old_success5,4,510,issp2006,25
+Denmark,2008,old_success5,5,69,issp2006,25
+Denmark,2016,hc_success5,1,50.5021590959061,issp2016,25
+Denmark,2016,hc_success5,2,174.635785585506,issp2016,25
+Denmark,2016,hc_success5,3,251.800202277824,issp2016,25
+Denmark,2016,hc_success5,4,509.23510839453,issp2016,25
+Denmark,2016,hc_success5,5,81.7882766808848,issp2016,25
+Denmark,2016,old_success5,1,85.6414933380239,issp2016,25
+Denmark,2016,old_success5,2,256.0337364232,issp2016,25
+Denmark,2016,old_success5,3,336.070550987204,issp2016,25
+Denmark,2016,old_success5,4,341.485071017106,issp2016,25
+Denmark,2016,old_success5,5,45.1977309704938,issp2016,25
+Finland,2006,env_success5,1,38.377589569643,issp2006,25
+Finland,2006,env_success5,2,143.060777428265,issp2006,25
+Finland,2006,env_success5,3,413.223614893182,issp2006,25
+Finland,2006,env_success5,4,450.964841485276,issp2006,25
+Finland,2006,env_success5,5,30.5932372080475,issp2006,25
+Finland,2006,hc_success5,1,57.4299859083548,issp2006,25
+Finland,2006,hc_success5,2,241.447504414604,issp2006,25
+Finland,2006,hc_success5,3,277.485926417829,issp2006,25
+Finland,2006,hc_success5,4,538.879879449049,issp2006,25
+Finland,2006,hc_success5,5,31.2684225350381,issp2006,25
+Finland,2006,old_success5,1,89.4285855877078,issp2006,25
+Finland,2006,old_success5,2,304.076477687192,issp2006,25
+Finland,2006,old_success5,3,327.250168549252,issp2006,25
+Finland,2006,old_success5,4,371.443137509742,issp2006,25
+Finland,2006,old_success5,5,26.7532431370599,issp2006,25
+Finland,2016,hc_success5,1,72.3414752809636,issp2016,25
+Finland,2016,hc_success5,2,244.633955908582,issp2016,25
+Finland,2016,hc_success5,3,260.257179174112,issp2016,25
+Finland,2016,hc_success5,4,507.358717016371,issp2016,25
+Finland,2016,hc_success5,5,53.1572078794451,issp2016,25
+Finland,2016,old_success5,1,154.885817253705,issp2016,25
+Finland,2016,old_success5,2,371.095630527826,issp2016,25
+Finland,2016,old_success5,3,298.798442878746,issp2016,25
+Finland,2016,old_success5,4,264.579041820602,issp2016,25
+Finland,2016,old_success5,5,30.6740845006183,issp2016,25
+France,2006,env_success5,1,211.695433113876,issp2006,25
+France,2006,env_success5,2,469.068491363937,issp2006,25
+France,2006,env_success5,3,779.25446742026,issp2006,25
+France,2006,env_success5,4,228.229932261861,issp2006,25
+France,2006,env_success5,5,22.0011026758161,issp2006,25
+France,2006,hc_success5,1,72.6697538579524,issp2006,25
+France,2006,hc_success5,2,323.597659355824,issp2006,25
+France,2006,hc_success5,3,652.38373301263,issp2006,25
+France,2006,hc_success5,4,605.093942684077,issp2006,25
+France,2006,hc_success5,5,109.403973722987,issp2006,25
+France,2006,old_success5,1,98.9848127682571,issp2006,25
+France,2006,old_success5,2,454.27848831509,issp2006,25
+France,2006,old_success5,3,746.20853165582,issp2006,25
+France,2006,old_success5,4,394.57134469488,issp2006,25
+France,2006,old_success5,5,50.6828958220536,issp2006,25
+France,2016,hc_success5,1,65.1382436583422,issp2016,25
+France,2016,hc_success5,2,307.372247350754,issp2016,25
+France,2016,hc_success5,3,449.146694094429,issp2016,25
+France,2016,hc_success5,4,538.670277736175,issp2016,25
+France,2016,hc_success5,5,97.0838295630709,issp2016,25
+France,2016,old_success5,1,142.357402124935,issp2016,25
+France,2016,old_success5,2,560.411113148475,issp2016,25
+France,2016,old_success5,3,485.496683975966,issp2016,25
+France,2016,old_success5,4,238.695344345336,issp2016,25
+France,2016,old_success5,5,22.1444558731134,issp2016,25
+Japan,2006,env_success5,1,125,issp2006,25
+Japan,2006,env_success5,2,354,issp2006,25
+Japan,2006,env_success5,3,421,issp2006,25
+Japan,2006,env_success5,4,174,issp2006,25
+Japan,2006,env_success5,5,17,issp2006,25
+Japan,2006,hc_success5,1,103,issp2006,25
+Japan,2006,hc_success5,2,315,issp2006,25
+Japan,2006,hc_success5,3,404,issp2006,25
+Japan,2006,hc_success5,4,282,issp2006,25
+Japan,2006,hc_success5,5,33,issp2006,25
+Japan,2006,old_success5,1,129,issp2006,25
+Japan,2006,old_success5,2,337,issp2006,25
+Japan,2006,old_success5,3,405,issp2006,25
+Japan,2006,old_success5,4,236,issp2006,25
+Japan,2006,old_success5,5,24,issp2006,25
+Japan,2016,hc_success5,1,61,issp2016,25
+Japan,2016,hc_success5,2,232,issp2016,25
+Japan,2016,hc_success5,3,584,issp2016,25
+Japan,2016,hc_success5,4,493,issp2016,25
+Japan,2016,hc_success5,5,47,issp2016,25
+Japan,2016,old_success5,1,121,issp2016,25
+Japan,2016,old_success5,2,410,issp2016,25
+Japan,2016,old_success5,3,538,issp2016,25
+Japan,2016,old_success5,4,330,issp2016,25
+Japan,2016,old_success5,5,32,issp2016,25
+Latvia,2007,env_success5,1,72,issp2006,25
+Latvia,2007,env_success5,2,232,issp2006,25
+Latvia,2007,env_success5,3,432,issp2006,25
+Latvia,2007,env_success5,4,235,issp2006,25
+Latvia,2007,env_success5,5,7,issp2006,25
+Latvia,2007,hc_success5,1,210,issp2006,25
+Latvia,2007,hc_success5,2,430,issp2006,25
+Latvia,2007,hc_success5,3,251,issp2006,25
+Latvia,2007,hc_success5,4,122,issp2006,25
+Latvia,2007,hc_success5,5,12,issp2006,25
+Latvia,2007,old_success5,1,356,issp2006,25
+Latvia,2007,old_success5,2,438,issp2006,25
+Latvia,2007,old_success5,3,167,issp2006,25
+Latvia,2007,old_success5,4,66,issp2006,25
+Latvia,2007,old_success5,5,7,issp2006,25
+Latvia,2016,hc_success5,1,260.782249238329,issp2016,25
+Latvia,2016,hc_success5,2,376.402664566598,issp2016,25
+Latvia,2016,hc_success5,3,239.192732648213,issp2016,25
+Latvia,2016,hc_success5,4,89.5841602693344,issp2016,25
+Latvia,2016,hc_success5,5,13.4081956364514,issp2016,25
+Latvia,2016,old_success5,1,299.87903814273,issp2016,25
+Latvia,2016,old_success5,2,403.570961218487,issp2016,25
+Latvia,2016,old_success5,3,202.11553488573,issp2016,25
+Latvia,2016,old_success5,4,52.1056837598679,issp2016,25
+Latvia,2016,old_success5,5,6.53316830773268,issp2016,25
+New Zealand,2006,env_success5,1,51,issp2006,25
+New Zealand,2006,env_success5,2,124,issp2006,25
+New Zealand,2006,env_success5,3,410,issp2006,25
+New Zealand,2006,env_success5,4,560,issp2006,25
+New Zealand,2006,env_success5,5,51,issp2006,25
+New Zealand,2006,hc_success5,1,118,issp2006,25
+New Zealand,2006,hc_success5,2,282,issp2006,25
+New Zealand,2006,hc_success5,3,364,issp2006,25
+New Zealand,2006,hc_success5,4,415,issp2006,25
+New Zealand,2006,hc_success5,5,33,issp2006,25
+New Zealand,2006,old_success5,1,73,issp2006,25
+New Zealand,2006,old_success5,2,203,issp2006,25
+New Zealand,2006,old_success5,3,440,issp2006,25
+New Zealand,2006,old_success5,4,440,issp2006,25
+New Zealand,2006,old_success5,5,37,issp2006,25
+New Zealand,2016,hc_success5,1,54.6566892190501,issp2016,25
+New Zealand,2016,hc_success5,2,155.609522288289,issp2016,25
+New Zealand,2016,hc_success5,3,331.086378166216,issp2016,25
+New Zealand,2016,hc_success5,4,687.814091743877,issp2016,25
+New Zealand,2016,hc_success5,5,81.0835903757672,issp2016,25
+New Zealand,2016,old_success5,1,51.9501094296624,issp2016,25
+New Zealand,2016,old_success5,2,195.857799184097,issp2016,25
+New Zealand,2016,old_success5,3,444.980460947299,issp2016,25
+New Zealand,2016,old_success5,4,541.935289561034,issp2016,25
+New Zealand,2016,old_success5,5,63.1039312686138,issp2016,25
+Philippines,2006,env_success5,1,127.402094112114,issp2006,25
+Philippines,2006,env_success5,2,265.051703487087,issp2006,25
+Philippines,2006,env_success5,3,306.494182028267,issp2006,25
+Philippines,2006,env_success5,4,355.802786529229,issp2006,25
+Philippines,2006,env_success5,5,117.833426350435,issp2006,25
+Philippines,2006,hc_success5,1,87.2893379153509,issp2006,25
+Philippines,2006,hc_success5,2,224.704254272862,issp2006,25
+Philippines,2006,hc_success5,3,270.047872506837,issp2006,25
+Philippines,2006,hc_success5,4,464.748767739627,issp2006,25
+Philippines,2006,hc_success5,5,129.938138819349,issp2006,25
+Philippines,2006,old_success5,1,110.83025071857,issp2006,25
+Philippines,2006,old_success5,2,283.435257340572,issp2006,25
+Philippines,2006,old_success5,3,319.855926015372,issp2006,25
+Philippines,2006,old_success5,4,351.432789435857,issp2006,25
+Philippines,2006,old_success5,5,106.516035565289,issp2006,25
+Philippines,2016,hc_success5,1,39.2900947443796,issp2016,25
+Philippines,2016,hc_success5,2,115.364083316363,issp2016,25
+Philippines,2016,hc_success5,3,159.989201068416,issp2016,25
+Philippines,2016,hc_success5,4,632.529596400209,issp2016,25
+Philippines,2016,hc_success5,5,250.940635856497,issp2016,25
+Philippines,2016,old_success5,1,61.4863453691753,issp2016,25
+Philippines,2016,old_success5,2,177.597611468413,issp2016,25
+Philippines,2016,old_success5,3,239.296485796237,issp2016,25
+Philippines,2016,old_success5,4,490.485092853822,issp2016,25
+Philippines,2016,old_success5,5,229.467408897748,issp2016,25
+Russia,2007,env_success5,1,436,issp2006,25
+Russia,2007,env_success5,2,715,issp2006,25
+Russia,2007,env_success5,3,801,issp2006,25
+Russia,2007,env_success5,4,152,issp2006,25
+Russia,2007,env_success5,5,48,issp2006,25
+Russia,2007,hc_success5,1,484,issp2006,25
+Russia,2007,hc_success5,2,847,issp2006,25
+Russia,2007,hc_success5,3,670,issp2006,25
+Russia,2007,hc_success5,4,242,issp2006,25
+Russia,2007,hc_success5,5,78,issp2006,25
+Russia,2007,old_success5,1,830,issp2006,25
+Russia,2007,old_success5,2,868,issp2006,25
+Russia,2007,old_success5,3,451,issp2006,25
+Russia,2007,old_success5,4,129,issp2006,25
+Russia,2007,old_success5,5,63,issp2006,25
+Russia,2016,hc_success5,1,188.995089420214,issp2016,25
+Russia,2016,hc_success5,2,567.181606537607,issp2016,25
+Russia,2016,hc_success5,3,517.039514301961,issp2016,25
+Russia,2016,hc_success5,4,244.026750669725,issp2016,25
+Russia,2016,hc_success5,5,32.5933138476297,issp2016,25
+Russia,2016,old_success5,1,414.303541098692,issp2016,25
+Russia,2016,old_success5,2,639.143504611105,issp2016,25
+Russia,2016,old_success5,3,353.587698751884,issp2016,25
+Russia,2016,old_success5,4,104.811413574756,issp2016,25
+Russia,2016,old_success5,5,36.4937722975409,issp2016,25
+South Korea,2006,env_success5,1,146,issp2006,25
+South Korea,2006,env_success5,2,524,issp2006,25
+South Korea,2006,env_success5,3,628,issp2006,25
+South Korea,2006,env_success5,4,250,issp2006,25
+South Korea,2006,env_success5,5,13,issp2006,25
+South Korea,2006,hc_success5,1,56,issp2006,25
+South Korea,2006,hc_success5,2,343,issp2006,25
+South Korea,2006,hc_success5,3,620,issp2006,25
+South Korea,2006,hc_success5,4,499,issp2006,25
+South Korea,2006,hc_success5,5,31,issp2006,25
+South Korea,2006,old_success5,1,117,issp2006,25
+South Korea,2006,old_success5,2,553,issp2006,25
+South Korea,2006,old_success5,3,584,issp2006,25
+South Korea,2006,old_success5,4,281,issp2006,25
+South Korea,2006,old_success5,5,24,issp2006,25
+South Korea,2016,hc_success5,1,28.366011663101,issp2016,25
+South Korea,2016,hc_success5,2,163.63712645453,issp2016,25
+South Korea,2016,hc_success5,3,370.242995711897,issp2016,25
+South Korea,2016,hc_success5,4,427.080345519668,issp2016,25
+South Korea,2016,hc_success5,5,53.1148593203138,issp2016,25
+South Korea,2016,old_success5,1,68.1043117604004,issp2016,25
+South Korea,2016,old_success5,2,281.394078381621,issp2016,25
+South Korea,2016,old_success5,3,356.234908143179,issp2016,25
+South Korea,2016,old_success5,4,302.279253285546,issp2016,25
+South Korea,2016,old_success5,5,38.2629313558093,issp2016,25
+Sweden,2006,env_success5,1,44,issp2006,25
+Sweden,2006,env_success5,2,171,issp2006,25
+Sweden,2006,env_success5,3,440,issp2006,25
+Sweden,2006,env_success5,4,416,issp2006,25
+Sweden,2006,env_success5,5,34,issp2006,25
+Sweden,2006,hc_success5,1,104,issp2006,25
+Sweden,2006,hc_success5,2,287,issp2006,25
+Sweden,2006,hc_success5,3,250,issp2006,25
+Sweden,2006,hc_success5,4,466,issp2006,25
+Sweden,2006,hc_success5,5,58,issp2006,25
+Sweden,2006,old_success5,1,120,issp2006,25
+Sweden,2006,old_success5,2,321,issp2006,25
+Sweden,2006,old_success5,3,329,issp2006,25
+Sweden,2006,old_success5,4,338,issp2006,25
+Sweden,2006,old_success5,5,29,issp2006,25
+Sweden,2016,hc_success5,1,92,issp2016,25
+Sweden,2016,hc_success5,2,276,issp2016,25
+Sweden,2016,hc_success5,3,243,issp2016,25
+Sweden,2016,hc_success5,4,425,issp2016,25
+Sweden,2016,hc_success5,5,78,issp2016,25
+Sweden,2016,old_success5,1,148,issp2016,25
+Sweden,2016,old_success5,2,387,issp2016,25
+Sweden,2016,old_success5,3,286,issp2016,25
+Sweden,2016,old_success5,4,257,issp2016,25
+Sweden,2016,old_success5,5,28,issp2016,25
+Switzerland,2006,env_success5,1,8.91398104819157,issp2006,25
+Switzerland,2006,env_success5,2,171.299123559868,issp2006,25
+Switzerland,2006,env_success5,3,285.985120204076,issp2006,25
+Switzerland,2006,env_success5,4,473.765041525108,issp2006,25
+Switzerland,2006,env_success5,5,41.140993243332,issp2006,25
+Switzerland,2006,hc_success5,1,13.3773242669696,issp2006,25
+Switzerland,2006,hc_success5,2,86.2979576740096,issp2006,25
+Switzerland,2006,hc_success5,3,154.524336031398,issp2006,25
+Switzerland,2006,hc_success5,4,549.021421578153,issp2006,25
+Switzerland,2006,hc_success5,5,178.731942582178,issp2006,25
+Switzerland,2006,old_success5,1,6.35226163234172,issp2006,25
+Switzerland,2006,old_success5,2,123.429789064577,issp2006,25
+Switzerland,2006,old_success5,3,180.391584768387,issp2006,25
+Switzerland,2006,old_success5,4,575.956125287743,issp2006,25
+Switzerland,2006,old_success5,5,91.126624629938,issp2006,25
+Switzerland,2017,hc_success5,1,13,issp2016,25
+Switzerland,2017,hc_success5,2,77,issp2016,25
+Switzerland,2017,hc_success5,3,256,issp2016,25
+Switzerland,2017,hc_success5,4,557,issp2016,25
+Switzerland,2017,hc_success5,5,100,issp2016,25
+Switzerland,2017,old_success5,1,7,issp2016,25
+Switzerland,2017,old_success5,2,106,issp2016,25
+Switzerland,2017,old_success5,3,316,issp2016,25
+Switzerland,2017,old_success5,4,519,issp2016,25
+Switzerland,2017,old_success5,5,54,issp2016,25
+United Kingdom,2006,env_success5,1,169.300546368369,issp2006,25
+United Kingdom,2006,env_success5,2,482.530627125981,issp2006,25
+United Kingdom,2006,env_success5,3,720.628396409775,issp2006,25
+United Kingdom,2006,env_success5,4,458.458254326039,issp2006,25
+United Kingdom,2006,env_success5,5,47.8054927322869,issp2006,25
+United Kingdom,2006,hc_success5,1,104.221188743243,issp2006,25
+United Kingdom,2006,hc_success5,2,369.023927625038,issp2006,25
+United Kingdom,2006,hc_success5,3,438.087877335119,issp2006,25
+United Kingdom,2006,hc_success5,4,875.284455867637,issp2006,25
+United Kingdom,2006,hc_success5,5,152.871178976654,issp2006,25
+United Kingdom,2006,old_success5,1,168.262089532961,issp2006,25
+United Kingdom,2006,old_success5,2,476.942249995827,issp2006,25
+United Kingdom,2006,old_success5,3,611.556706337696,issp2006,25
+United Kingdom,2006,old_success5,4,576.700649472972,issp2006,25
+United Kingdom,2006,old_success5,5,89.911599768037,issp2006,25
+United Kingdom,2016,hc_success5,1,62.2321713219432,issp2016,25
+United Kingdom,2016,hc_success5,2,239.028409095778,issp2016,25
+United Kingdom,2016,hc_success5,3,315.186487457472,issp2016,25
+United Kingdom,2016,hc_success5,4,799.122416326951,issp2016,25
+United Kingdom,2016,hc_success5,5,108.58221840589,issp2016,25
+United Kingdom,2016,old_success5,1,105.405410316007,issp2016,25
+United Kingdom,2016,old_success5,2,335.085914088549,issp2016,25
+United Kingdom,2016,old_success5,3,437.223222926611,issp2016,25
+United Kingdom,2016,old_success5,4,590.118684143669,issp2016,25
+United Kingdom,2016,old_success5,5,45.8511751458458,issp2016,25
+Venezuela,2006,env_success5,1,134.897625838148,issp2006,25
+Venezuela,2006,env_success5,2,275.042977600595,issp2006,25
+Venezuela,2006,env_success5,3,275.504172714626,issp2006,25
+Venezuela,2006,env_success5,4,313.534286808915,issp2006,25
+Venezuela,2006,env_success5,5,154.712814688379,issp2006,25
+Venezuela,2006,hc_success5,1,88.3327423310219,issp2006,25
+Venezuela,2006,hc_success5,2,202.367097700952,issp2006,25
+Venezuela,2006,hc_success5,3,194.774793716879,issp2006,25
+Venezuela,2006,hc_success5,4,388.946342623482,issp2006,25
+Venezuela,2006,hc_success5,5,305.653078472733,issp2006,25
+Venezuela,2006,old_success5,1,71.4309013612429,issp2006,25
+Venezuela,2006,old_success5,2,229.029795585694,issp2006,25
+Venezuela,2006,old_success5,3,204.652867026051,issp2006,25
+Venezuela,2006,old_success5,4,387.30551086239,issp2006,25
+Venezuela,2006,old_success5,5,263.915443241935,issp2006,25
+Venezuela,2016,hc_success5,1,330.22249826431,issp2016,25
+Venezuela,2016,hc_success5,2,231.801639351835,issp2016,25
+Venezuela,2016,hc_success5,3,242.179823174096,issp2016,25
+Venezuela,2016,hc_success5,4,141.105016648589,issp2016,25
+Venezuela,2016,hc_success5,5,94.0792541999554,issp2016,25
+Venezuela,2016,old_success5,1,318.209824361887,issp2016,25
+Venezuela,2016,old_success5,2,228.240972136033,issp2016,25
+Venezuela,2016,old_success5,3,258.928023626689,issp2016,25
+Venezuela,2016,old_success5,4,142.911519713777,issp2016,25
+Venezuela,2016,old_success5,5,91.1786252600371,issp2016,25
+Taiwan,2006,env_success5,1,256.777463265318,issp2006,20
+Taiwan,2006,env_success5,2,552.329419789445,issp2006,20
+Taiwan,2006,env_success5,3,503.049221970876,issp2006,20
+Taiwan,2006,env_success5,4,573.263354230094,issp2006,20
+Taiwan,2006,env_success5,5,29.2740606518429,issp2006,20
+Taiwan,2006,hc_success5,1,103.849544012679,issp2006,20
+Taiwan,2006,hc_success5,2,397.262670683022,issp2006,20
+Taiwan,2006,hc_success5,3,522.643298839669,issp2006,20
+Taiwan,2006,hc_success5,4,784.492525799843,issp2006,20
+Taiwan,2006,hc_success5,5,95.9654034250567,issp2006,20
+Taiwan,2006,old_success5,1,108.473686667833,issp2006,20
+Taiwan,2006,old_success5,2,550.184215448328,issp2006,20
+Taiwan,2006,old_success5,3,608.371183381182,issp2006,20
+Taiwan,2006,old_success5,4,583.291452269099,issp2006,20
+Taiwan,2006,old_success5,5,45.2347036615537,issp2006,20
+Taiwan,2016,old_success5,1,129.959959668575,issp2016,20
+Taiwan,2016,old_success5,2,695.646945929536,issp2016,20
+Taiwan,2016,old_success5,3,210.206195766631,issp2016,20
+Taiwan,2016,old_success5,4,791.069748738628,issp2016,20
+Taiwan,2016,old_success5,5,49.7464225892177,issp2016,20
+Argentina,2007,env_success5,1,498.47725751113,issp2006,15
+Argentina,2007,env_success5,2,613.887845063326,issp2006,15
+Argentina,2007,env_success5,3,252.158806163378,issp2006,15
+Argentina,2007,env_success5,4,158.430759364,issp2006,15
+Argentina,2007,env_success5,5,55.7660204975542,issp2006,15
+Argentina,2007,hc_success5,1,232.494403619098,issp2006,15
+Argentina,2007,hc_success5,2,755.249539579213,issp2006,15
+Argentina,2007,hc_success5,3,314.632730706453,issp2006,15
+Argentina,2007,hc_success5,4,260.278008956115,issp2006,15
+Argentina,2007,hc_success5,5,67.446940128622,issp2006,15
+Argentina,2007,old_success5,1,284.00736789201,issp2006,15
+Argentina,2007,old_success5,2,697.674000687933,issp2006,15
+Argentina,2007,old_success5,3,332.343374985047,issp2006,15
+Argentina,2007,old_success5,4,278.267972986763,issp2006,15
+Argentina,2007,old_success5,5,37.4410067643237,issp2006,15
+Canada,2006,env_success5,1,78.822416266634,issp2006,15
+Canada,2006,env_success5,2,214.017675976098,issp2006,15
+Canada,2006,env_success5,3,374.422258391679,issp2006,15
+Canada,2006,env_success5,4,197.352500375082,issp2006,15
+Canada,2006,env_success5,5,16.3365387931517,issp2006,15
+Canada,2006,hc_success5,1,54.1804967426621,issp2006,15
+Canada,2006,hc_success5,2,152.483277380387,issp2006,15
+Canada,2006,hc_success5,3,246.267634953212,issp2006,15
+Canada,2006,hc_success5,4,401.9911667348,issp2006,15
+Canada,2006,hc_success5,5,42.157226387238,issp2006,15
+Canada,2006,old_success5,1,31.5588686646002,issp2006,15
+Canada,2006,old_success5,2,183.205234036935,issp2006,15
+Canada,2006,old_success5,3,346.946704626657,issp2006,15
+Canada,2006,old_success5,4,289.8478269513,issp2006,15
+Canada,2006,old_success5,5,22.9674806588352,issp2006,15
+Chile,2007,env_success5,1,126.261009839017,issp2006,15
+Chile,2007,env_success5,2,363.921323127417,issp2006,15
+Chile,2007,env_success5,3,706.276523438893,issp2006,15
+Chile,2007,env_success5,4,220.113840589212,issp2006,15
+Chile,2007,env_success5,5,36.9817809877969,issp2006,15
+Chile,2007,hc_success5,1,101.129197392044,issp2006,15
+Chile,2007,hc_success5,2,372.149606911294,issp2006,15
+Chile,2007,hc_success5,3,674.441294478836,issp2006,15
+Chile,2007,hc_success5,4,281.557492337832,issp2006,15
+Chile,2007,hc_success5,5,56.3820923228222,issp2006,15
+Chile,2007,old_success5,1,129.922691114589,issp2006,15
+Chile,2007,old_success5,2,472.71185365259,issp2006,15
+Chile,2007,old_success5,3,621.372913719979,issp2006,15
+Chile,2007,old_success5,4,211.685574212338,issp2006,15
+Chile,2007,old_success5,5,38.3526616619942,issp2006,15
+Dominican Republic,2006,env_success5,1,321,issp2006,15
+Dominican Republic,2006,env_success5,2,327,issp2006,15
+Dominican Republic,2006,env_success5,3,765,issp2006,15
+Dominican Republic,2006,env_success5,4,383,issp2006,15
+Dominican Republic,2006,env_success5,5,232,issp2006,15
+Dominican Republic,2006,hc_success5,1,372,issp2006,15
+Dominican Republic,2006,hc_success5,2,353,issp2006,15
+Dominican Republic,2006,hc_success5,3,658,issp2006,15
+Dominican Republic,2006,hc_success5,4,363,issp2006,15
+Dominican Republic,2006,hc_success5,5,320,issp2006,15
+Dominican Republic,2006,old_success5,1,449,issp2006,15
+Dominican Republic,2006,old_success5,2,487,issp2006,15
+Dominican Republic,2006,old_success5,3,612,issp2006,15
+Dominican Republic,2006,old_success5,4,287,issp2006,15
+Dominican Republic,2006,old_success5,5,189,issp2006,15
+Germany,2006,env_success5,1,41.0347441219373,issp2006,15
+Germany,2006,env_success5,2,231.527060614657,issp2006,15
+Germany,2006,env_success5,3,578.19865398955,issp2006,15
+Germany,2006,env_success5,4,614.104405721272,issp2006,15
+Germany,2006,env_success5,5,90.0551258514246,issp2006,15
+Germany,2006,hc_success5,1,69.1900492640025,issp2006,15
+Germany,2006,hc_success5,2,392.871431889792,issp2006,15
+Germany,2006,hc_success5,3,463.615286272009,issp2006,15
+Germany,2006,hc_success5,4,543.944849383509,issp2006,15
+Germany,2006,hc_success5,5,106.287530086391,issp2006,15
+Germany,2006,old_success5,1,81.9324392334478,issp2006,15
+Germany,2006,old_success5,2,394.846548040059,issp2006,15
+Germany,2006,old_success5,3,534.121144636119,issp2006,15
+Germany,2006,old_success5,4,472.234292927746,issp2006,15
+Germany,2006,old_success5,5,89.0985877786508,issp2006,15
+Hungary,2006,env_success5,1,59.8195543599376,issp2006,15
+Hungary,2006,env_success5,2,206.39592863073,issp2006,15
+Hungary,2006,env_success5,3,531.26733040348,issp2006,15
+Hungary,2006,env_success5,4,157.850072194144,issp2006,15
+Hungary,2006,env_success5,5,7.57995150052073,issp2006,15
+Hungary,2006,hc_success5,1,95.4172273626034,issp2006,15
+Hungary,2006,hc_success5,2,231.977251280975,issp2006,15
+Hungary,2006,hc_success5,3,496.156620204774,issp2006,15
+Hungary,2006,hc_success5,4,153.381837131622,issp2006,15
+Hungary,2006,hc_success5,5,15.884858897737,issp2006,15
+Hungary,2006,old_success5,1,93.1892339833541,issp2006,15
+Hungary,2006,old_success5,2,279.793571686128,issp2006,15
+Hungary,2006,old_success5,3,477.631037559507,issp2006,15
+Hungary,2006,old_success5,4,129.168712522457,issp2006,15
+Hungary,2006,old_success5,5,13.8135516963359,issp2006,15
+Ireland,2006,env_success5,1,132.660087221751,issp2006,15
+Ireland,2006,env_success5,2,171.636749799983,issp2006,15
+Ireland,2006,env_success5,3,286.518635284085,issp2006,15
+Ireland,2006,env_success5,4,338.128924153897,issp2006,15
+Ireland,2006,env_success5,5,44.2667935446742,issp2006,15
+Ireland,2006,hc_success5,1,335.940807377239,issp2006,15
+Ireland,2006,hc_success5,2,312.41425066353,issp2006,15
+Ireland,2006,hc_success5,3,141.077571692417,issp2006,15
+Ireland,2006,hc_success5,4,170.63650200223,issp2006,15
+Ireland,2006,hc_success5,5,19.2649691182248,issp2006,15
+Ireland,2006,old_success5,1,153.186092317099,issp2006,15
+Ireland,2006,old_success5,2,266.152511293797,issp2006,15
+Ireland,2006,old_success5,3,170.700472256566,issp2006,15
+Ireland,2006,old_success5,4,352.389642117334,issp2006,15
+Ireland,2006,old_success5,5,32.6462347150385,issp2006,15
+Israel,2005,env_success5,1,218,issp2006,15
+Israel,2005,env_success5,2,402,issp2006,15
+Israel,2005,env_success5,3,406,issp2006,15
+Israel,2005,env_success5,4,254,issp2006,15
+Israel,2005,env_success5,5,32,issp2006,15
+Israel,2005,hc_success5,1,142,issp2006,15
+Israel,2005,hc_success5,2,326,issp2006,15
+Israel,2005,hc_success5,3,447,issp2006,15
+Israel,2005,hc_success5,4,322,issp2006,15
+Israel,2005,hc_success5,5,91,issp2006,15
+Israel,2005,old_success5,1,242,issp2006,15
+Israel,2005,old_success5,2,410,issp2006,15
+Israel,2005,old_success5,3,333,issp2006,15
+Israel,2005,old_success5,4,294,issp2006,15
+Israel,2005,old_success5,5,48,issp2006,15
+Netherlands,2006,env_success5,1,50.2763109313495,issp2006,15
+Netherlands,2006,env_success5,2,141.287442642172,issp2006,15
+Netherlands,2006,env_success5,3,444.078930475022,issp2006,15
+Netherlands,2006,env_success5,4,259.678673660176,issp2006,15
+Netherlands,2006,env_success5,5,29.5883701870811,issp2006,15
+Netherlands,2006,hc_success5,1,60.1811066253707,issp2006,15
+Netherlands,2006,hc_success5,2,235.672463730866,issp2006,15
+Netherlands,2006,hc_success5,3,338.442934009532,issp2006,15
+Netherlands,2006,hc_success5,4,301.627625510595,issp2006,15
+Netherlands,2006,hc_success5,5,24.0946041352585,issp2006,15
+Netherlands,2006,old_success5,1,38.1849252478603,issp2006,15
+Netherlands,2006,old_success5,2,245.346056893303,issp2006,15
+Netherlands,2006,old_success5,3,374.162648178872,issp2006,15
+Netherlands,2006,old_success5,4,265.314396763441,issp2006,15
+Netherlands,2006,old_success5,5,14.7067751637771,issp2006,15
+Norway,2006,env_success5,1,41,issp2006,15
+Norway,2006,env_success5,2,181,issp2006,15
+Norway,2006,env_success5,3,585,issp2006,15
+Norway,2006,env_success5,4,409,issp2006,15
+Norway,2006,env_success5,5,31,issp2006,15
+Norway,2006,hc_success5,1,131,issp2006,15
+Norway,2006,hc_success5,2,340,issp2006,15
+Norway,2006,hc_success5,3,395,issp2006,15
+Norway,2006,hc_success5,4,419,issp2006,15
+Norway,2006,hc_success5,5,31,issp2006,15
+Norway,2006,old_success5,1,168,issp2006,15
+Norway,2006,old_success5,2,358,issp2006,15
+Norway,2006,old_success5,3,413,issp2006,15
+Norway,2006,old_success5,4,336,issp2006,15
+Norway,2006,old_success5,5,29,issp2006,15
+Poland,2006,env_success5,1,43.4857224923715,issp2006,15
+Poland,2006,env_success5,2,237.974877654974,issp2006,15
+Poland,2006,env_success5,3,512.833290699018,issp2006,15
+Poland,2006,env_success5,4,327.299845030913,issp2006,15
+Poland,2006,env_success5,5,20.9738739447296,issp2006,15
+Poland,2006,hc_success5,1,165.354740720746,issp2006,15
+Poland,2006,hc_success5,2,520.272433581403,issp2006,15
+Poland,2006,hc_success5,3,380.476106610085,issp2006,15
+Poland,2006,hc_success5,4,148.982201325311,issp2006,15
+Poland,2006,hc_success5,5,24.2341540749098,issp2006,15
+Poland,2006,old_success5,1,207.993890322153,issp2006,15
+Poland,2006,old_success5,2,551.344250457522,issp2006,15
+Poland,2006,old_success5,3,335.148208230025,issp2006,15
+Poland,2006,old_success5,4,107.143021004105,issp2006,15
+Poland,2006,old_success5,5,16.5782206730754,issp2006,15
+Portugal,2006,env_success5,1,176.834105888686,issp2006,15
+Portugal,2006,env_success5,2,595.775256751651,issp2006,15
+Portugal,2006,env_success5,3,648.963888601131,issp2006,15
+Portugal,2006,env_success5,4,238.300142694696,issp2006,15
+Portugal,2006,env_success5,5,9.07020543126074,issp2006,15
+Portugal,2006,hc_success5,1,315.034188643227,issp2006,15
+Portugal,2006,hc_success5,2,819.825690913587,issp2006,15
+Portugal,2006,hc_success5,3,389.380133161756,issp2006,15
+Portugal,2006,hc_success5,4,255.589153047397,issp2006,15
+Portugal,2006,hc_success5,5,13.6092081492264,issp2006,15
+Portugal,2006,old_success5,1,390.495033829362,issp2006,15
+Portugal,2006,old_success5,2,858.666814171745,issp2006,15
+Portugal,2006,old_success5,3,378.599726706423,issp2006,15
+Portugal,2006,old_success5,4,159.94219577377,issp2006,15
+Portugal,2006,old_success5,5,9.0998054489853,issp2006,15
+Slovakia,2006,env_success5,1,78.370235304945,issp2006,15
+Slovakia,2006,env_success5,2,212.706656644932,issp2006,15
+Slovakia,2006,env_success5,3,515.585952976236,issp2006,15
+Slovakia,2006,env_success5,4,229.317959583293,issp2006,15
+Slovakia,2006,env_success5,5,18.1183776295601,issp2006,15
+Slovakia,2006,hc_success5,1,129.191417053769,issp2006,15
+Slovakia,2006,hc_success5,2,244.60184287191,issp2006,15
+Slovakia,2006,hc_success5,3,367.50042273014,issp2006,15
+Slovakia,2006,hc_success5,4,314.125253422107,issp2006,15
+Slovakia,2006,hc_success5,5,51.6375288818576,issp2006,15
+Slovakia,2006,old_success5,1,129.851555855281,issp2006,15
+Slovakia,2006,old_success5,2,270.183968330917,issp2006,15
+Slovakia,2006,old_success5,3,395.99722682018,issp2006,15
+Slovakia,2006,old_success5,4,264.754253033936,issp2006,15
+Slovakia,2006,old_success5,5,46.4525462875008,issp2006,15
+Slovenia,2006,env_success5,1,30,issp2006,15
+Slovenia,2006,env_success5,2,219,issp2006,15
+Slovenia,2006,env_success5,3,456,issp2006,15
+Slovenia,2006,env_success5,4,239,issp2006,15
+Slovenia,2006,env_success5,5,9,issp2006,15
+Slovenia,2006,hc_success5,1,28,issp2006,15
+Slovenia,2006,hc_success5,2,173,issp2006,15
+Slovenia,2006,hc_success5,3,414,issp2006,15
+Slovenia,2006,hc_success5,4,334,issp2006,15
+Slovenia,2006,hc_success5,5,21,issp2006,15
+Slovenia,2006,old_success5,1,26,issp2006,15
+Slovenia,2006,old_success5,2,186,issp2006,15
+Slovenia,2006,old_success5,3,423,issp2006,15
+Slovenia,2006,old_success5,4,303,issp2006,15
+Slovenia,2006,old_success5,5,15,issp2006,15
+South Africa,2006,env_success5,1,358.884703298866,issp2006,15
+South Africa,2006,env_success5,2,493.190069485806,issp2006,15
+South Africa,2006,env_success5,3,878.943484197584,issp2006,15
+South Africa,2006,env_success5,4,748.830493338651,issp2006,15
+South Africa,2006,env_success5,5,165.952649547865,issp2006,15
+South Africa,2006,hc_success5,1,403.664855881823,issp2006,15
+South Africa,2006,hc_success5,2,679.870595358978,issp2006,15
+South Africa,2006,hc_success5,3,308.103925517683,issp2006,15
+South Africa,2006,hc_success5,4,983.531491807265,issp2006,15
+South Africa,2006,hc_success5,5,494.377179232042,issp2006,15
+South Africa,2006,old_success5,1,349.313575745351,issp2006,15
+South Africa,2006,old_success5,2,675.788295348553,issp2006,15
+South Africa,2006,old_success5,3,466.329975624112,issp2006,15
+South Africa,2006,old_success5,4,1006.19944799097,issp2006,15
+South Africa,2006,old_success5,5,374.507021142295,issp2006,15
+Spain,2006,env_success5,1,79,issp2006,15
+Spain,2006,env_success5,2,696,issp2006,15
+Spain,2006,env_success5,3,881,issp2006,15
+Spain,2006,env_success5,4,605,issp2006,15
+Spain,2006,env_success5,5,68,issp2006,15
+Spain,2006,hc_success5,1,46,issp2006,15
+Spain,2006,hc_success5,2,425,issp2006,15
+Spain,2006,hc_success5,3,682,issp2006,15
+Spain,2006,hc_success5,4,1104,issp2006,15
+Spain,2006,hc_success5,5,178,issp2006,15
+Spain,2006,old_success5,1,62,issp2006,15
+Spain,2006,old_success5,2,686,issp2006,15
+Spain,2006,old_success5,3,781,issp2006,15
+Spain,2006,old_success5,4,749,issp2006,15
+Spain,2006,old_success5,5,104,issp2006,15
+United States,2006,env_success5,1,184.267510848991,issp2006,15
+United States,2006,env_success5,2,367.074297492609,issp2006,15
+United States,2006,env_success5,3,421.186494793008,issp2006,15
+United States,2006,env_success5,4,436.541740315217,issp2006,15
+United States,2006,env_success5,5,81.0316942872143,issp2006,15
+United States,2006,hc_success5,1,195.184372939889,issp2006,15
+United States,2006,hc_success5,2,490.723153623248,issp2006,15
+United States,2006,hc_success5,3,421.488981745943,issp2006,15
+United States,2006,hc_success5,4,316.097591409915,issp2006,15
+United States,2006,hc_success5,5,63.1836589958142,issp2006,15
+United States,2006,old_success5,1,169.909814266605,issp2006,15
+United States,2006,old_success5,2,497.667370091116,issp2006,15
+United States,2006,old_success5,3,459.469280577398,issp2006,15
+United States,2006,old_success5,4,295.140821654441,issp2006,15
+United States,2006,old_success5,5,64.442637693632,issp2006,15
+Uruguay,2005,env_success5,1,55.7077137425467,issp2006,15
+Uruguay,2005,env_success5,2,152.676934487622,issp2006,15
+Uruguay,2005,env_success5,3,305.386093508503,issp2006,15
+Uruguay,2005,env_success5,4,421.980925597746,issp2006,15
+Uruguay,2005,env_success5,5,64.1594457611429,issp2006,15
+Uruguay,2005,hc_success5,1,70.8835263010612,issp2006,15
+Uruguay,2005,hc_success5,2,228.150803053651,issp2006,15
+Uruguay,2005,hc_success5,3,319.038732764397,issp2006,15
+Uruguay,2005,hc_success5,4,331.371824986623,issp2006,15
+Uruguay,2005,hc_success5,5,55.7281841041031,issp2006,15
+Uruguay,2005,old_success5,1,91.4186487117582,issp2006,15
+Uruguay,2005,old_success5,2,288.976734292143,issp2006,15
+Uruguay,2005,old_success5,3,320.540271848414,issp2006,15
+Uruguay,2005,old_success5,4,242.439801313635,issp2006,15
+Uruguay,2005,old_success5,5,43.2240263569154,issp2006,15
+Georgia,2016,hc_success5,1,38.23123706955,issp2016,10
+Georgia,2016,hc_success5,2,103.485200367205,issp2016,10
+Georgia,2016,hc_success5,3,421.934003304866,issp2016,10
+Georgia,2016,hc_success5,4,626.853863403857,issp2016,10
+Georgia,2016,hc_success5,5,219.063086937853,issp2016,10
+Georgia,2016,old_success5,1,211.192806423116,issp2016,10
+Georgia,2016,old_success5,2,348.647722811048,issp2016,10
+Georgia,2016,old_success5,3,502.135559474147,issp2016,10
+Georgia,2016,old_success5,4,200.74083451355,issp2016,10
+Georgia,2016,old_success5,5,24.1929991042524,issp2016,10
+Iceland,2017,hc_success5,1,294,issp2016,10
+Iceland,2017,hc_success5,2,364,issp2016,10
+Iceland,2017,hc_success5,3,359,issp2016,10
+Iceland,2017,hc_success5,4,170,issp2016,10
+Iceland,2017,hc_success5,5,14,issp2016,10
+Iceland,2017,old_success5,1,377,issp2016,10
+Iceland,2017,old_success5,2,407,issp2016,10
+Iceland,2017,old_success5,3,298,issp2016,10
+Iceland,2017,old_success5,4,107,issp2016,10
+Iceland,2017,old_success5,5,12,issp2016,10
+India,2018,hc_success5,1,61.9447459824174,issp2016,10
+India,2018,hc_success5,2,155.245927104942,issp2016,10
+India,2018,hc_success5,3,268.385294161686,issp2016,10
+India,2018,hc_success5,4,591.26437011809,issp2016,10
+India,2018,hc_success5,5,374.239299957717,issp2016,10
+India,2018,old_success5,1,164.945107394272,issp2016,10
+India,2018,old_success5,2,257.646723340171,issp2016,10
+India,2018,old_success5,3,273.825679162261,issp2016,10
+India,2018,old_success5,4,408.407428928489,issp2016,10
+India,2018,old_success5,5,328.095856726437,issp2016,10
+Lithuania,2016,hc_success5,1,42,issp2016,10
+Lithuania,2016,hc_success5,2,217,issp2016,10
+Lithuania,2016,hc_success5,3,442,issp2016,10
+Lithuania,2016,hc_success5,4,268,issp2016,10
+Lithuania,2016,hc_success5,5,25,issp2016,10
+Lithuania,2016,old_success5,1,179,issp2016,10
+Lithuania,2016,old_success5,2,480,issp2016,10
+Lithuania,2016,old_success5,3,255,issp2016,10
+Lithuania,2016,old_success5,4,67,issp2016,10
+Lithuania,2016,old_success5,5,17,issp2016,10
+Suriname,2018,hc_success5,1,261.411232031792,issp2016,10
+Suriname,2018,hc_success5,2,402.603600629693,issp2016,10
+Suriname,2018,hc_success5,3,271.690693038674,issp2016,10
+Suriname,2018,hc_success5,4,128.043159212955,issp2016,10
+Suriname,2018,hc_success5,5,27.1717469277368,issp2016,10
+Suriname,2018,old_success5,1,220.882118224335,issp2016,10
+Suriname,2018,old_success5,2,426.868980919593,issp2016,10
+Suriname,2018,old_success5,3,289.74705709883,issp2016,10
+Suriname,2018,old_success5,4,124.678799357197,issp2016,10
+Suriname,2018,old_success5,5,18.650308348812,issp2016,10
+Thailand,2017,hc_success5,1,34,issp2016,10
+Thailand,2017,hc_success5,2,243,issp2016,10
+Thailand,2017,hc_success5,3,234,issp2016,10
+Thailand,2017,hc_success5,4,732,issp2016,10
+Thailand,2017,hc_success5,5,189,issp2016,10
+Thailand,2017,old_success5,1,62,issp2016,10
+Thailand,2017,old_success5,2,308,issp2016,10
+Thailand,2017,old_success5,3,398,issp2016,10
+Thailand,2017,old_success5,4,511,issp2016,10
+Thailand,2017,old_success5,5,117,issp2016,10
+Turkey,2017,hc_success5,1,65,issp2016,10
+Turkey,2017,hc_success5,2,190,issp2016,10
+Turkey,2017,hc_success5,3,363,issp2016,10
+Turkey,2017,hc_success5,4,595,issp2016,10
+Turkey,2017,hc_success5,5,314,issp2016,10
+Turkey,2017,old_success5,1,94,issp2016,10
+Turkey,2017,old_success5,2,294,issp2016,10
+Turkey,2017,old_success5,3,385,issp2016,10
+Turkey,2017,old_success5,4,484,issp2016,10
+Turkey,2017,old_success5,5,269,issp2016,10
