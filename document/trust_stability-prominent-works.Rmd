@@ -27,6 +27,58 @@ Then, she argues that conflating “political distrust” with the “lack of po
 
 -- In general, studies, both theoretical and empirical, reject the need of "critical citizens" for a healthy functioning democracy (even Pippa himself is concerned with the hazard of disaffection to the democratic system). More pieces of empirical evidence (such as @Marien2011 and @Dalton2004 presented below) clearly show that distrustful and disaffected citizens compromise  effective governance and collobration.
 
+## 2) Discussions on "Democratic Deficit"
+
+-- Democratic Deficit (@norris2011democratic)
+
+- Since the early 1990s, many scholars have diagnosed a rise in voter discontent, anger, and distrust in governments. This has been accompanied by phenomena such as declining voter turnout and weakened party loyalty, indicating a weakening link between citizens and the state. This book challenges challenges the conventional wisdom of declining political support in established democracies, arguing instead that declining political support should be understood as examining the gap between the desire for democracy (“How important is it for you to live in a country that is governed democratically?") and the evaluation of the functioning of democracy in practice (Democratic satisfaction - "how democratically is this country being governed today?"), known as 'democratic deficit.' 
+
+- With the concept of democratic deficit, the book examines a world value survey from 90 countries from 1981 to 2007. It produces the following main findings.
+    1. Contrary to the conventional wisdom of increasing political distrust in advanced democracies, the  analysis reveals diverse patterns across countries, with no consistent downward trend.
+    2. Countries with longer democratic experiences tend to have higher levels of democratic support and satisfaction, but there are significant variations within each regime type. The desire for democracy itself is universally high, regardless of economic development levels which suggest that economic development does not increase the desire for democracy.
+    3. Cultural factors such as education, self-expression values, social trust, and associational participation have a positive effect on democratic aspirations, but they do not exacerbate the deficit by negatively affecting satisfaction with democracy.
+    4.The use of news media, including newspapers, television, and the Internet, has a positive effect on both democratic aspirations and satisfaction. The impact of negative news coverage and scandals is limited.
+    5.The quality of democracy and governance, economic development, and subjective well-being contribute to higher satisfaction with democracy.
+    6. Democratic deficit have a significant impact on political participation, law-abiding behavior, and democratization. In particular, democratic aspirations increase political interest, participation in legal protests, and voluntary tax compliance, which contributes to the consolidation of democracy.
+    7. While the demand for democracy is nearly universal, the key to bridging the democratic deficit lies in improving the quality of democratic governance and its outcomes, so as to meet citizens' evolving expectations and aspirations.
+
+-  @singh2023satisfaction provides the following table by reviewing 305 articles that utilize satisfaction with democracy (SWD) as an outcome variable. Three notable findings emerge. Firstly, numerous studies indicate that SWD tends to be higher among election winners compared to losers. Secondly, SWD tends to increase when political elites better represent their constituents, particularly when their ideologies align more closely with those of the public. Lastly, SWD tends to be higher among individuals who perceive their representatives as responsive and accountable.
+
+![](SWD-1.png){style="display: block; margin: 0 auto; width: 100%;"}
+![](SWD-2.png){style="display: block; margin: 0 auto; width: 100%;"}
+
+- @van2020long analyzes the impact of citizens' perceived distance from their preferred policy party on their satisfaction with democracy using survey data from 31 European countries. Key findings are as follows:
+    1. As the policy distance between citizens and their preferred party increases, satisfaction with democracy decreases. This effect was observed across both left-right ideological scales and European integration policy scales. But, the impact of distance on satisfaction with democracy was more pronounced in the left-right ideological scale.
+    2. This "representation gap" effect was found to be significant regardless of the size or incumbency status of the preferred party. In other words, even small or opposition parties, if perceived as close to oneself, tend to contribute to democratic satisfaction.
+    3. The results of this study suggest that not only participation in government and policy implementation by parties, but also their representation and advocacy of voter preferences, contribute to satisfaction with democracy.
+  
+- @heyne2019democratic develops a spatial model to explain satisfaction with democracy based on the idea that satisfaction is a product of the gap between what "should be" and what "is" - between democratic expectations and evaluations (the idea of democratic deficit). One of main contribution of this paper to the literature is that it finds that "over"supply also can produce the democratic disatisfaction. Using data from 26 European countries, the study finds that the size and direction of the gap between expectations and evaluations in different dimensions of democracy (liberal, social, direct) affect levels of satisfaction. The main finding suggests that liberal criteria of democratic quality are generally agreed upon, and a perceived lack of their realization is the strongest predictor of dissatisfaction. On the other hand, social and direct democracy dimensions are more disputed, creating dissatisfaction among those wanting more of them (less supply) as well as those wanting less (over supply).
+
+- @dahlberg2014democracy tests the impact of various measures of electoral system design, ideological congruence between voters and representatives, and quality of government on citizens' satisfaction with democracy. The paper finds that the quality of government (output) matter more for citizens' evaluations of democratic performance than the representative features of democracy (input) in affecting citizens' satisfaction with democracy. Specifically, while electoral designs (proportional electoral system, number of effective parties and ideological congruence) is weakly or modestly, at best, related to the democratic satisfaction, the quality of government - measures of impartiality, professionalism, rule of law, and especially government effectiveness - are all positively related to satisfaction. The weak association between electoral system and democratic satisfaction is also mentioned in @singh2023satisfaction.
+
+- @camacho2019understanding finds that democratic experience or economic development does not directly increase public support for democracy but changes the importance of evaluations of the government in providing economic or political benefits in supporting democracy. Specifically, citizens of new democracies tend to place more emphasis on economic performance when supporting democracy. In contrast, citizens of established democracies place more emphasis on political benefits—such as the protection of rights and freedoms, opportunities for deliberation and accountability, and effective representation—when supporting democracy.
+
+- @norris2019perceptions examines the relationship between perceived electoral integrity and public satisfaction with democracy using 6th and 7th waves of World Value Survey. The main finding show that perceptions of electoral integrity and malpractice are significant predictors of democratic satisfaction, even after controlling for economic factors and voting for the winning party. Specific issues like the fairness of the vote count and media bias were seen as particularly important. The pocketbook economy was also associated with greater satisfaction, although the effects were usually weaker than for electoral integrity. Lastly, voting for the victorious party was linked with higher levels of democratic satisfaction, as the "winner-loser" thesis predicts. The paper concludes that public perceptions of electoral integrity are closely linked to broader evaluations of liberal democracy.
+
+- @quaranta2016does investigates the relationship between economic performance and satisfaction with democracy in 28 European Union member states from 1973 to 2013. The analysis tests several economic indicators, including objective measures like public debt, unemployment, GDP growth, and inflation, as well as subjective evaluations captured by the Consumer Confidence Indicator. The findings strongly support the importance of economic performance for satisfaction with democracy. Higher debt, unemployment and inflation are associated with increased probability of dissatisfaction, while growth and consumer confidence have a positive effect. These relationships hold even when controlling for various institutional (ex. electoral system and EU membership) and political factors. It challenged the previous literature that had downplayed the importance of economy.
+
+- General summary: Building on Norris' (2011) argument of democratic deficit, previous studies have examined various factors that can affect the demand for democracy or the evaluation of democracy. Notably, Norris uses democratic satisfaction as a variable to measure democratic deficit, which is considered distinct from democratic expectations. However, many other following studies often treat democratic satisfaction similar to democratic deficit, suggesting that it is influenced by democratic expectations. 
+    1. Democratic Expectations
+    - Values, education levels
+    - Social trust, associational involvement
+    - News media consumption
+    - Level of democratic experience (Camacho argues this impact is indirect)
+
+    2. the Democratic Satisfaction
+    - Ideological distance between voters and representatives
+    - Perceptions of government responsiveness and accountability
+    - Winner-loser gap
+    - Electoral integrity (fairness, media bias, etc.)
+    - Economic performance (growth, unemployment, inflation)
+    - Government effectiveness, impartiality, professionalism, rule of law
+    - News media consumption
+    
+    3. It is also notable that previous studies have indicated that as the demand for democracy is nearly universal, it is important to improve the quality of democracy or governance to decrease democratic deficit ot increase the democratic satisfaction.
 
 # Prominent Works on Political Trust
 ## 1) Theoretical Works
