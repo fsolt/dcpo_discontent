@@ -931,11 +931,9 @@ ggplot(data = c_res, aes(x = year, y = mean)) +
 
 # Validating Cross-National Macrointerest {.unnumbered}
 
-That we can generate estimates of political discontent does not automatically mean that they are suitable for analysis. 
-Validation tests of a novel latent variable, like any new measure, are crucial [see, e.g., @Hu2023].
-@fig-int-convergent and @fig-construct provide evidence of this measure's validity with tests of convergent validation and construct validation.
-Convergent validation refers to tests of whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
-Here, @fig-int-convergent offers an 'internal' convergent validation test: it compares PPD scores to responses to the individual source-data survey items that were used to generate them.
+That we can _generate_ estimates of political discontent does not automatically mean that they are suitable for analysis. 
+Validation tests of this novel latent variable, like for any new measure, are crucial [see, e.g., @Hu2023].
+@fig-int-convergent, @fig-ext-convergent, and @fig-construct provide evidence of this measure's validity with tests of convergent validation and construct validation.
 
 ```{r int_convergent_val_dat}
 internal_tscs_dat <- dcpo_input_raw1 %>% 
@@ -1041,7 +1039,7 @@ ext_cses_dat <- ext_dat %>%
          neg = FALSE)
 ```
 
-```{r ext_convergent, fig.cap="External Convergent Validation: Correlations Between PPD Scores and Attitudes Toward Democratic Performance", fig.height=3.5}
+```{r ext_convergent, fig.cap="External Convergent Validation: Correlations Between PPD Scores and Evaluations of Democratic Performance", fig.height=3.5}
 #| label: fig-ext-convergent
 
 ext_issp_dem_plot <- validation_plot(ext_issp_dem_dat,
@@ -1088,10 +1086,21 @@ ext_issp_dem_plot + ext_wvs_plot + ext_cses_plot +
     caption = "Note: Gray whiskers represent 80% credible intervals.")
 ```
 
-On the left, PPD scores are plotted against the percentage of respondents across all country-years who gave the "tend not to trust" response (rather than "tend to trust" response) to the Eurobarometer's dichotomous question, "How much trust do you have in certain institutions: Political parties?" which is the single most-asked item in the source data.
-The middle panel shows responses to the question with the most data-rich cross-section, "Would you say your country is governed by the will of the people?" in Gallup's 2005 Voice of the People survey.
+Convergent validation refers to tests of whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
+Here, @fig-int-convergent offers 'internal' convergent validation tests [@Caughey2019, 686]: it compares PPD scores to responses to the individual source-data survey items that were used to generate them.
+On the left, PPD scores are plotted against the percentage of respondents across all country-years who responded "tend not to trust" rather than "tend to trust" to the Eurobarometer's dichotomous question, "How much trust do you have in certain institutions: Political parties?"
+This is the single most-asked item in the source data.
+The middle panel compares PPD scores to responses to the question with the most data-rich cross-section, "Would you say your country is governed by the will of the people?" in Gallup's 2005 Voice of the People survey.
 Finally, the right panel evaluates how well the PPD scores capture change over time by focusing on the item with the largest number of observations for a single country in the source data: Sweden's SOM surveys' question, "How much confidence do you have in the way the following institutions and groups do their job: The National Parliament?"
 In all three cases, the correlations, estimated taking into account the uncertainty in the measures, are strong.
+
+In @fig-ext-convergent, we present three 'external' convergent validation tests, comparing PPD scores to responses to survey items that were _not_ included in the source data: items that asked respondents to evaluate "democracy" in their countries.
+We excluded these questions so as to avoid assuming that respondents conflate the current political system of their country with democracy.
+Nevertheless, evaluations of the democracy of respondents' countries provide good alternate indicators of the extent of political discontent.
+The left panel shows data from three rounds of the International Social Survey Program's National Identity module, which asked respondents how proud they were of how democracy works in their country.
+In the center, we plot how much satisfaction respondents reported with "the way democracy is developing" in their countries in the World Values Surveys and European Values Surveys.
+The right draws on data from the Comparative Study of Electoral Systems about how many respondents were at least fairly satisfied "with the way democracy works" in their country.
+Across countries and years and all three of these survey items, our latent-variable measure of political discontent is strongly negatively correlated with aggregate positive evaluations of democracy.
 
 ```{r construct_val_dat, results=FALSE}
 construct_dat <- read_csv(here("data-raw",
@@ -1173,13 +1182,13 @@ construct_hc_plot + construct_old_plot + construct_env_plot +
     caption = str_wrap("Note: Gray whiskers represent 80% credible intervals. Data from ISSP Role of Government surveys, 2006 and 2016.", 80))
 ```
 
-
+With the success of these tests of convergent validation, we turn to construct validation.
 Construct validation refers to demonstrating that the tested measure is empirically associated with measures of _other_ concepts believed causally related to the concept the measure seeks to represent [@Adcock2001, 542].
-Discontent with the political system should be closely tied to
+Discontent with the political system should be closely tied to evaluations of recent government policy performance.
 
 @fig-construct depicts the relationships between PPD and three survey items from the WVS and EVS on other aspects of political engagement that are expected to have causal relationships with political interest [see @Kittilson2010, 995]: in the left panel, following political news on television, radio, and newspapers; in the center panel, discussing politics with friends; and on the right, feeling politics is important to one's life.
 These relationships are all positive and are moderate to strong.
-This cross-national latent variable performs well in validation tests.
+The PPD scores perform very well in validation tests.
 
 
 
