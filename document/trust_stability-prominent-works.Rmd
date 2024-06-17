@@ -116,5 +116,14 @@ nocite: '@*'
 -- However, @Hooghe2018 challenged the finding. Using the Belgian Election Panel (2009–14), they find that voters who are becoming less trusting are more likely to vote for protest parties. And, having voted for a protest party further fuels more discontents, rather than stabilize them. Political trust is measured variously by trusts in political parties, in the fedearl and regional governments, and in politicians.
 - @Yap2019 investigates how political trust functions as a buffer for emergent democracies. Using waves of the Asian Barometer Surveys, she finds that political trust help emergent democracies to consolidate, as political trust supersedes public economic expectations in support for political system. But for the support for the incumbent government, both political trust and public pressure for economic performance matter. It is noteworthy that political trust is operationalized as an additive index comprising political trust and political efficacy, as the author argues that by doing so political trust is based on the real experience with the political system.
 
+## 3) Conceptualization of political discontent - The lack of diffuse support - discontent with political system, not incumbent government.              
+1. External efficacy or perceived government's responsiveness
+
+2. Trust in politicians, parties and parliament
+
+3. Satisfaction with parties and national office holders
+
+4. Perceptions of political corruption
+
 
 # Bibliography
