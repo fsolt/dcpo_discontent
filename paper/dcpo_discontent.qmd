@@ -75,6 +75,9 @@ keywords:
     - Political discontent
     - Regime stability
     - Cross-national panel
+editor: 
+  markdown: 
+    wrap: sentence
 ---
 
 \pagenumbering{gobble}
@@ -88,7 +91,8 @@ keywords:
 -   Frederick Solt, ORCID: <https://orcid.org/0000-0002-3154-6132>, Professor, Department of Political Science, University of Iowa, [frederick-solt\@uiowa.edu](mailto:frederick-solt@uiowa.edu){.email}
 
 # Data Availability Statement {.unlisted .unnumbered}
-Replication data is available on the Harvard Dataverse [link tbd], and the work's complete revision history is available at https://github.com/fsolt/trust_stability.
+
+Replication data is available on the Harvard Dataverse \[link tbd\], and the work's complete revision history is available at https://github.com/fsolt/trust_stability.
 
 \pagebreak
 
@@ -105,7 +109,6 @@ Replication data is available on the Harvard Dataverse [link tbd], and the work'
 abstract
 \end{abstract}
 ```
-
 ```{r setup, include=FALSE}
 if (!require(pacman)) install.packages("pacman")
 library(pacman)
@@ -401,9 +404,7 @@ long_corr <- function(x) {
 set.seed(324)
 ```
 
-
 Intro does not need a header.
-
 
 ```{r dcpo_input_raw, eval=FALSE, include=FALSE}
 # set eval to TRUE to run; running time is <5 minutes
@@ -705,6 +706,55 @@ cby_map <- world_map %>%
 cby_map + (countries_plot/ ybc_plot) + plot_layout(widths = c(4, 1))
 ```
 
+# Conceptualization of Political Discontent {.unlisted .unnumbered}
+
+The significance of public political discontent for the sustainability of a political system is frequently highlighted in the literature.
+@lipset1959some claims that the public's belief in the suitability of the existing political system is a key "requisite" for the survival of a democratic regime.
+Similarly, @miller1974political argues that a democratic political system cannot endure without majority public support, as growing political discontent increases the potential for revolutionary changes to the political and social system.
+Additionally, widespread political discontent can complicate effective governance [@hetherington1998political].
+These theoretical perspectives have prompted numerous analyses of the content, sources, and implications of political discontent.
+However, scholars have proposed various conceptualizations or dimensions of political discontent, ranging from the lack of diffuse support for the political system to perceptions of low responsiveness, democratic deficit, low political trust, and dissatisfaction with the current government [@easton1975re;; @muller1983discontent; @norris2011democratic; @jennings2016dimensions].
+These differences in conceptualization reflect varying analytical purposes, theoretical motivations, and the available opinion survey items at the time.
+
+This paper specifically defines political discontent as dissatisfaction with, or the lack of, diffuse support for the political system.
+The primary theoretical motivation for this approach lies in Easton's (1965) well-known distinction between diffuse and specific political support.
+Specific support, being object-specific, refers to individuals' satisfaction with the perceived outputs or performance of the incumbent political authorities.
+In contrast, diffuse support is a generalized attachment or support for the political system, serving as a "reservoir of favorable attitudes or goodwill" toward the political system and is not object-specific in nature.
+The theoretical and analytical importance of this distinction is frequently noted in previous research, which found that people with low political trust or negative attitudes toward the government often do not reject the political system and prefer the existing political system to remain unchanged [@citrin1974comment; @miller1974political; @jennings2017decline].
+Furthermore, the literature shows that specific support is variable and less likely to pose a systemic threat to the regime's survival [@craig1981political;@muller1983discontent].
+Democracy allows people to express their political dissatisfaction at the ballot box and change politicians in power without fundamentally altering the system.
+On the other hand, Muller and Jukam (1983) point out that diffuse political discontent provides the public with a normative incentive to participate in radical changes to the political system as a whole.
+
+Diffuse political discontent comprises several related yet distinct components: external efficacy (evaluation of the responsiveness of political authorities in general), evaluation of the trustworthiness and integrity of political authorities, and perceptions of political corruption [@craig1981political; @muller1983discontent; @park2011political].
+These components are interrelated and collectively contribute to the broader construct of diffuse political discontent.
+One of the main sources of this discontent is the perception that the political system is unresponsive to the public and prioritizes its own or special interests, which increases the likelihood of the public participating in or endorsing regime-challenging activities that threaten the social and political order [@craig1980mobilization; @jennings2016dimensions].
+Recent studies of populism have also highlighted that the feeling of being unheard by the political system is a significant source of support for anti-system populist messages [@mudde2004populist].
+Political trust, often used as a measure of political discontent, is conceptually associated with external efficacy but operates on a different dimension.
+While external efficacy focuses on whether the political system functions according to public demands, political trust concerns whether political authorities work for the public good [@craig1979efficacy].
+Additionally, the implications of political trust can vary depending on the specific referents of trust [@van2017political].
+For instance, trust in political institutions in general, such as the political party system or politicians or the parliament in general, differs from trust in the incumbent government, which is a measure of specific support, or trust in apolitical institutions such as the judiciary or the police.
+In this context, we consider only distrust in general political institutions as a component of political discontent.
+Similarly, dissatisfaction with political parties or national officeholders in general is also used as a component of political discontent.
+Lastly, recent literature emphasizes the perception of political corruption as a primary source of political discontent, as people perceive political authorities working for their own interests without addressing public demands [@park2011political; @busby2018activating; @hawkins2020activation].
+
+It is also worth discussing what is not considered a component of diffuse political discontent.
+Specifically, we exclude political trust in the incumbent government or apolitical institutions, as trust in the government is a type of specific support that fluctuates over time and does not pose a serious threat to the political system [@norris1999critical].
+Additionally, unlike previous studies that use support for democracy in the abstract as a predictor for the survival of democratic regimes [@claassen2020does], we do not include it as a component of political discontent.
+This is because support for democracy in the abstract is too prevalent in every country to be a meaningful or analytically useful measure of political discontent [@dalton2007understanding; @inglehart2003solid].
+Lastly, we exclude satisfaction with democracy (SWD) in the abstract because the literature shows that the SWD measure functions more as a type of specific support.
+People tend to have much higher democratic satisfaction when their preferred politicians or parties win elections, while electoral losers tend to have lower democratic satisfaction [@van2020long; @singh2023satisfaction; ].
+Moreover, @quaranta2016does indicate that various economic indicators, such as the unemployment rate, GDP growth, inflation, or subjective economic evaluation, are strongly associated with the public's satisfaction with democracy, suggesting that it is a product of the government's economic performance.
+
+The conceptualization of political discontent as a lack of diffuse support for the political system has important implications.
+First, by focusing on the systemic dimension of political discontent and excluding types of specific support or abstract support for democracy, this conceptualization aligns closely with discussions about the erosion of public confidence in the political system as a whole, beyond mere dissatisfaction with specific authorities or policies.
+This understanding is crucial for identifying the underlying causes of political disaffection and developing targeted interventions to address them.
+Moreover, this conceptualization of political discontent can contribute to recent discussions about democratic backsliding.
+The literature on democratic backsliding has yielded mixed findings regarding whether public opinion can influence the possibility of backsliding [@Tai2024].
+However, previous studies often use abstract public support for democracy as a measurement, which is less satisfying because abstract support for democracy is notoriously affirming.
+In this context, political discontent, defined as a lack of diffuse support for the system [@claassen2020does], can serve as a better conceptual tool for discussing how public opinion relates to democratic backsliding.
+Additionally, previous studies have shown that diffuse political discontent is strongly associated with citizens participating in or endorsing regime-challenging activities, which ultimately pose a threat to the social and political order [@craig1980mobilization].
+A clearer understanding of the nature and consequences of diffuse political discontent can thus inform efforts to strengthen democratic resilience and responsiveness in the face of growing public disaffection with political systems worldwide.
+
 # Estimates {.unlisted .unnumbered}
 
 ```{r dcpo_input, eval=FALSE, include=FALSE, results=FALSE}
@@ -931,7 +981,7 @@ ggplot(data = c_res, aes(x = year, y = mean)) +
 
 # Validating Cross-National Macrointerest {.unnumbered}
 
-That we can _generate_ estimates of political discontent does not automatically mean that they are suitable for analysis. 
+That we can *generate* estimates of political discontent does not automatically mean that they are suitable for analysis.
 Validation tests of this novel latent variable, like for any new measure, are crucial [see, e.g., @Hu2023].
 @fig-int-convergent, @fig-ext-convergent, and @fig-construct provide evidence of this measure's validity with tests of convergent validation and construct validation.
 
@@ -1088,13 +1138,11 @@ ext_issp_dem_plot + ext_wvs_plot + ext_cses_plot +
 
 Convergent validation refers to tests of whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
 Here, @fig-int-convergent offers 'internal' convergent validation tests [@Caughey2019, 686]: it compares PPD scores to responses to the individual source-data survey items that were used to generate them.
-On the left, PPD scores are plotted against the percentage of respondents across all country-years who responded "tend not to trust" rather than "tend to trust" to the Eurobarometer's dichotomous question, "How much trust do you have in certain institutions: Political parties?"
-This is the single most-asked item in the source data.
+On the left, PPD scores are plotted against the percentage of respondents across all country-years who responded "tend not to trust" rather than "tend to trust" to the Eurobarometer's dichotomous question, "How much trust do you have in certain institutions: Political parties?" This is the single most-asked item in the source data.
 The middle panel compares PPD scores to responses to the question with the most data-rich cross-section, "Would you say your country is governed by the will of the people?" in Gallup's 2005 Voice of the People survey.
-Finally, the right panel evaluates how well the PPD scores capture change over time by focusing on the item with the largest number of observations for a single country in the source data: Sweden's SOM surveys' question, "How much confidence do you have in the way the following institutions and groups do their job: The National Parliament?"
-In all three cases, the correlations, estimated taking into account the uncertainty in the measures, are strong.
+Finally, the right panel evaluates how well the PPD scores capture change over time by focusing on the item with the largest number of observations for a single country in the source data: Sweden's SOM surveys' question, "How much confidence do you have in the way the following institutions and groups do their job: The National Parliament?" In all three cases, the correlations, estimated taking into account the uncertainty in the measures, are strong.
 
-In @fig-ext-convergent, we present three 'external' convergent validation tests, comparing PPD scores to responses to survey items that were _not_ included in the source data: items that asked respondents to evaluate "democracy" in their countries.
+In @fig-ext-convergent, we present three 'external' convergent validation tests, comparing PPD scores to responses to survey items that were *not* included in the source data: items that asked respondents to evaluate "democracy" in their countries.
 We excluded these questions so as to avoid assuming that respondents conflate the current political system of their country with democracy.
 Nevertheless, evaluations of the democracy of respondents' countries provide good alternate indicators of the extent of political discontent.
 The left panel shows data from three rounds of the International Social Survey Program's National Identity module, which asked respondents how proud they were of how democracy works in their country.
@@ -1183,15 +1231,12 @@ construct_hc_plot + construct_old_plot + construct_env_plot +
 ```
 
 With the success of these tests of convergent validation, we turn to construct validation.
-Construct validation refers to demonstrating that the tested measure is empirically associated with measures of _other_ concepts believed causally related to the concept the measure seeks to represent [@Adcock2001, 542].
+Construct validation refers to demonstrating that the tested measure is empirically associated with measures of *other* concepts believed causally related to the concept the measure seeks to represent [@Adcock2001, 542].
 Discontent with the political system should be closely tied to evaluations of recent government policy performance.
 
 @fig-construct depicts the relationships between PPD and three survey items from the WVS and EVS on other aspects of political engagement that are expected to have causal relationships with political interest [see @Kittilson2010, 995]: in the left panel, following political news on television, radio, and newspapers; in the center panel, discussing politics with friends; and on the right, feeling politics is important to one's life.
 These relationships are all positive and are moderate to strong.
 The PPD scores perform very well in validation tests.
-
-
-
 
 # Explaining Political Dissatisfaction {.unlisted .unnumbered}
 
@@ -1518,11 +1563,17 @@ The number of country-years observed per country ranges from sixteen (Turkey) to
 The advantage in data availability over pooling responses to a single question is clear: even among these relatively data-rich countries, the two richest single items available---the Eurobarometer's questions on trust in national parliaments and in political parties---each provide only fewer than half as many country-years for analysis, `r eb_obs` observations, and these Eurobarometer data naturally entirely exclude the nine OECD members outside Europe.
 
 <!-- Revise these lines!!! -->
+
 <!-- @Shor2007 demonstrates that such pooled time series are best analyzed using a Bayesian multilevel model including varying intercepts for each country and each year.  -->
+
 <!-- The former help account for heteroskedasticity across space due to, e.g., omitted variable bias, while permitting the inclusion of time-invariant predictors such as parliamentarism and federalism. -->
+
 <!-- The latter take into account 'time shocks' that operate on all countries simultaneously [@Shor2007, 171-172]. -->
+
 <!-- Further, the 'within-between random effects' specification is employed, meaning each of the time-varying predictors is decomposed into its time-invariant country mean and the difference between each country-year value and this country mean; this specification is superior to fixed effects and other commonly used TSCS specifications for addressing omitted variable bias and endogeneity [@Bell2015]. -->
+
 <!-- The time-varying difference variables capture the short-term effects of the predictors, while the time-invariant country-mean variables reflect their---often different---long-run, "historical" effects [@Bell2015, 137]. -->
+
 Finally, Bayesian analysis allows us to incorporate directly into our model the quantified measurement uncertainty in the data for political discontent and for income inequality, with the estimated values of these two variables treated as random draws from distributions with unknown true means but known standard deviations [@McElreath2016, 425-431; see also @Kurz2023, 15.1.2].
 The model was estimated using the `brms` R package [@Burkner2017].
 
@@ -1555,16 +1606,17 @@ coef_data0_m1 %>%
 ```
 
 <!-- Revise below, obv -->
-The results of this analysis are displayed in @fig-m1plot.^[
-@tbl-m1 in Appendix\nobreakspace{}@sec-app-numeric, provides a tabular version.]
-The time trend indicates that discontent has been, on average and net of the other included variables, rising over time in these countries by 
-Consistent with the argument that campaigns bring attention-grabbing information to the public, macrointerest in election years is found to be `r get_coef("election", type = "std_coef")` points (95% credible interval: `r get_coef("election", type = "ci")` points) higher than in years without elections.
+
+The results of this analysis are displayed in @fig-m1plot.[^1]
+The time trend indicates that discontent has been, on average and net of the other included variables, rising over time in these countries by Consistent with the argument that campaigns bring attention-grabbing information to the public, macrointerest in election years is found to be `r get_coef("election", type = "std_coef")` points (95% credible interval: `r get_coef("election", type = "ci")` points) higher than in years without elections.
 This accords with previous research finding small but well-estimated increases in political interest in election years [see, e.g., @Larsen2022].
+
+[^1]:  @tbl-m1 in Appendix\nobreakspace{}@sec-app-numeric, provides a tabular version.
 
 The hypothesis that power-sharing institutions yield more public interest in politics is also supported.
 Macrointerest is estimated to be `r get_coef("parl")` points higher in countries with parliamentary systems.
 The point estimate for the difference in macrointerest between countries with and without federalism is estimated be `r get_coef("federal", type = "std_coef")` points, with `r round(p_direction(m1, parameters = "federal")[[2]]*100, 1)`% of the posterior distribution greater than zero.
-And although disproportionality is not estimated to have long-run effects that consistently distinguish countries with more or less proportional electoral results, _changes_ in disproportionality appear to have an immediate negative effect: a two-standard-deviation increase in the Gallagher index yields `r get_coef("lsq_diff", type = "std_coef", abs = TRUE)` points less macrointerest (95% c.i.: `r get_coef("lsq_diff", type = "ci")`).
+And although disproportionality is not estimated to have long-run effects that consistently distinguish countries with more or less proportional electoral results, *changes* in disproportionality appear to have an immediate negative effect: a two-standard-deviation increase in the Gallagher index yields `r get_coef("lsq_diff", type = "std_coef", abs = TRUE)` points less macrointerest (95% c.i.: `r get_coef("lsq_diff", type = "ci")`).
 
 Regarding the debate on whether macrointerest is invigorated or instead discouraged by bad times, the evidence of our cross-national analysis of the impact of economic conditions falls on the side of the latter.
 Supporting modernization theory, increases in per capita GDP have a positive short-term effect on aggregate political interest, with a two-standard-deviation increase associated with `r get_coef("gdppc_diff")` points more macrointerest.
@@ -1574,11 +1626,9 @@ Year-to-year changes in income inequality are found to make little difference---
 The results with regard to growth in the national economy and with regard to unemployment similarly do not provide strong evidence of either negative or positive effects.
 Still, taken as a whole, this evidence indicates that at least with regard to economic conditions, it is good times, not bad ones, that yield more macrointerest.
 
-
-
 # Literature {.unlisted .unnumbered}
 
-A test of citation [@Claassen2019;@HuEtAl2022a].
+A test of citation [@Claassen2019; @HuEtAl2022a].
 
 # Theory {.unlisted .unnumbered}
 
@@ -1589,7 +1639,6 @@ A test of citation [@Claassen2019;@HuEtAl2022a].
 # load(here("data", "expcor_cls_ajps.rda"))  # https://osf.io/cgxjd/download
 
 ```
-
 
 See the descriptive statistics in @sec-app-descriptive.
 
@@ -1632,7 +1681,6 @@ Online Supplementary Materials
 \tableofcontents
 \newpage
 ```
-
 # Survey Items Used to Estimate Public Political Discontent {#sec-surveys}
 
 Following @Jennings2017, we conceptualize political discontent as the lack of diffuse political support among the public.
@@ -1640,11 +1688,11 @@ This lack is in turn understood as encompassing low external efficacy, that is, 
 National and cross-national surveys have often included questions tapping such political discontent for over a half century, but the resulting data are both sparse, that is, unavailable for many countries and years, and incomparable, generated by many different survey items.
 We identified `r n_items` such survey items that were asked in no fewer than five country-years in countries surveyed at least twice; these items were drawn from `r n_surveys` different survey datasets.
 These items are listed in @tbl-items below, along with the dispersion ($\alpha$) and difficulty ($\beta$) scores estimated for each from the DCPO model.
-Lower values of dispersion indicate questions that better identify publics with a higher level of trust from those with lower. 
-Items have one less difficulty score than the number of response categories. 
+Lower values of dispersion indicate questions that better identify publics with a higher level of trust from those with lower.
+Items have one less difficulty score than the number of response categories.
 
 In accordance with the advice offered by @Hu2022 to avoid data-entry errors by automating data collection, the `DCPOtools` R package [@Solt2019] was used to compile the responses to these questions.
-The current version of the software facilitates the entire practical data generation process: from facilitating the acquisition of original survey datasets and converting them into R standard format for quicker loading; through standardizing country names, identifying survey years, and extracting the desired survey items; to restructuring the resulting data for analysis with the DCPO model. 
+The current version of the software facilitates the entire practical data generation process: from facilitating the acquisition of original survey datasets and converting them into R standard format for quicker loading; through standardizing country names, identifying survey years, and extracting the desired survey items; to restructuring the resulting data for analysis with the DCPO model.
 The primary objective is to limit manual interventions, thereby maximizing reproducibility and reducing the error potential inherent in human-operated data preparation tasks.
 The survey dataset codes listed in @tbl-items correspond to those used in that package.
 
@@ -1794,6 +1842,7 @@ scales = "free_y") +
 # The DCPO Model {#sec-app-dcpo}
 
 <!-- [Revise the following text!] -->
+
 A number of recent studies have developed latent variable models of aggregate survey responses based on cross-national survey data [see @Claassen2019; @Caughey2019; @McGann2019; @Kolczynska2024].
 To estimate macrointerest across countries and over time, we employ the latest of these methods that is appropriate for data that is not only incomparable but also sparse, the Dynamic Comparative Public Opinion (DCPO) model elaborated in @Solt2020c.
 The DCPO model is a population-level two-parameter ordinal logistic item response theory (IRT) model with country-specific item-bias terms.
@@ -1802,51 +1851,53 @@ DCPO models the total number of survey responses expressing at least as much mac
 
 \begin{equation}
 a_{ktqr} = \phi\eta_{ktqr} \label{eq:bb_a}
-\end{equation}
-\begin{equation}
+\end{equation} \begin{equation}
 b_{ktqr} = \phi(1 - \eta_{ktqr}) \label{eq:bb_b}
-\end{equation}
-\begin{equation}
+\end{equation} \begin{equation}
 y_{ktqr} \sim \textrm{BetaBinomial}(n_{ktqr}, a_{ktqr}, b_{ktqr}) \label{eq:betabinomial}
 \end{equation}
 
-where $\phi$ represents an overall dispersion parameter to account for additional sources of survey error beyond sampling error and $\eta_{ktqr}$ is the expected probability that a random person in country $k$ at time $t$ answers question $q$ with a response at least as interested as response $r$.^[
-The ordinal responses to question $q$ are coded to range from 1 (expressing the least political discontent) to $R$ (expressing the most political discontent), and $r$ takes on all values greater than 1 and less than or equal to $R$.]
+where $\phi$ represents an overall dispersion parameter to account for additional sources of survey error beyond sampling error and $\eta_{ktqr}$ is the expected probability that a random person in country $k$ at time $t$ answers question $q$ with a response at least as interested as response $r$.[^2]
+
+[^2]:  The ordinal responses to question $q$ are coded to range from 1 (expressing the least political discontent) to $R$ (expressing the most political discontent), and $r$ takes on all values greater than 1 and less than or equal to $R$.
 
 This expected probability, $\eta_{ktqr}$, is in turn estimated as follows:
 
+```{=tex}
 \begin{equation}
 \eta_{ktqr} = \textrm{logit}^{-1}(\frac{\bar{\theta'}_{kt} - (\beta_{qr} + \delta_{kq})}{\sqrt{\alpha_{q}^2 + (1.7*\sigma_{kt})^2}}) \label{eq:dcpo}
 \end{equation}
+```
+In this equation, $\beta_{qr}$ represents the difficulty of response $r$ to question $q$, that is, the degree of political the response expresses.
+The $\delta_{kq}$ term represents country-specific item bias: the extent to which all responses to a particular question $q$ may be more (or less) difficult in a given country $k$ due to translation issues, cultural differences in response styles, or other idiosyncrasies that render the same survey item not equivalent across countries.[^3]
+The dispersion of question $q$, its noisiness in relation to the latent variable, is $\alpha_{q}$.
+The mean and standard deviation of the unbounded latent trait of macrointerest are $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, respectively.
 
-In this equation, $\beta_{qr}$ represents the difficulty of response $r$ to question $q$, that is, the degree of political the response expresses.  The $\delta_{kq}$ term represents country-specific item bias: the extent to which all responses to a particular question $q$ may be more (or less) difficult in a given country $k$ due to translation issues, cultural differences in response styles, or other idiosyncrasies that render the same survey item not equivalent across countries.^[
-Estimating $\delta_{kq}$ requires repeated administrations of question $q$ in country $k$, so
-when responses to question $q$ are observed in country $k$ in only a single year, the DCPO model sets $\delta_{kq}$ to zero by assumption, increasing the error of the model by any country-item bias that is present.
-Questions that are asked repeatedly over time in only a single country pose no risk of country-specific item bias, so $\delta_{kq}$ in such cases are also set to zero.]
-The dispersion of question $q$, its noisiness in relation to the latent variable, is $\alpha_{q}$. The mean and standard deviation of the unbounded latent trait of macrointerest are $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, respectively.
+[^3]:  Estimating $\delta_{kq}$ requires repeated administrations of question $q$ in country $k$, so when responses to question $q$ are observed in country $k$ in only a single year, the DCPO model sets $\delta_{kq}$ to zero by assumption, increasing the error of the model by any country-item bias that is present.
+    Questions that are asked repeatedly over time in only a single country pose no risk of country-specific item bias, so $\delta_{kq}$ in such cases are also set to zero.
 
-Random-walk priors are used to account for the dynamics in $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, and weakly informative priors are placed on the other parameters.^[
-The dispersion parameters $\alpha_{q}$ are drawn from standard half-normal prior distributions, that is, the positive half of N(0, 1).
-The first difficulty parameters for each question, $\beta_{q1}$, are drawn from standard normal prior distributions, and the differences between $\beta$s for each $r$ for the same question $q$ are drawn from standard half-normal prior distributions.
-The item-bias parameters $\delta_{kq}$ receive normally-distributed hierarchical priors with mean 0 and standard deviations drawn from standard half-normal prior distributions.
-The initial value of the mean unbounded latent trait for each country, $\bar{\theta'}_{k1}$, is assigned a standard normal prior, as are the transition variances $\sigma_{\bar{\theta'}}^2$ and $\sigma_{\sigma}^2$; the initial value of the standard deviation of the unbounded latent trait for each country, $\sigma_{k1}$, is drawn from a standard lognormal prior distribution.
-The overall dispersion, $\phi$, receives a somewhat more informative prior drawn from a gamma(4, 0.1) distribution that yields values that are well scaled for that parameter.]
+Random-walk priors are used to account for the dynamics in $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, and weakly informative priors are placed on the other parameters.[^4]
 The dispersion parameters $\alpha_q$ are constrained to be positive and all survey responses are coded with high values indicating more political discontent to fix direction.
 The difficulty $\beta$ of "run by a few big interests" to the oft-asked question "would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?" is set to 1 to identify location, and for each question $q$ the difficulties for increasing response categories $r$ are constrained to be increasing.
 The sum of $\delta_{kq}$ across all countries $k$ is set to zero for each question $q$:
 
+[^4]:  The dispersion parameters $\alpha_{q}$ are drawn from standard half-normal prior distributions, that is, the positive half of N(0, 1).
+    The first difficulty parameters for each question, $\beta_{q1}$, are drawn from standard normal prior distributions, and the differences between $\beta$s for each $r$ for the same question $q$ are drawn from standard half-normal prior distributions.
+    The item-bias parameters $\delta_{kq}$ receive normally-distributed hierarchical priors with mean 0 and standard deviations drawn from standard half-normal prior distributions.
+    The initial value of the mean unbounded latent trait for each country, $\bar{\theta'}_{k1}$, is assigned a standard normal prior, as are the transition variances $\sigma_{\bar{\theta'}}^2$ and $\sigma_{\sigma}^2$; the initial value of the standard deviation of the unbounded latent trait for each country, $\sigma_{k1}$, is drawn from a standard lognormal prior distribution.
+    The overall dispersion, $\phi$, receives a somewhat more informative prior drawn from a gamma(4, 0.1) distribution that yields values that are well scaled for that parameter.
+
+```{=tex}
 \begin{equation}
 \sum_{k = 1}^K \delta_{kq} = 0
 \end{equation}
-
+```
 Finally, the logistic function is used to transform $\bar{\theta'}_{kt}$ to the unit interval and so give the bounded mean of political discontent, $\bar{\theta}_{kt}$, which is our parameter of interest here [see @Solt2020c, 3-8].
 
 The DCPO model accounts for the incomparability of different survey questions with two parameters.
-First, it incorporates the _difficulty_ of each question's responses, that is, how much political discontent is indicated by a given response. 
-That each response evinces more or less of our latent trait is most easily seen with regard to the ordinal responses to the same question: responding "strongly agree" to the statement "people like me don't have any say about what the government does" exhibits more political discontent than choosing "agree," which is a more discontented response that "disagree," which in turn is more discontented than "strongly disagree."
-But this is also true across questions.
-For example, strongly agreeing that "there is widespread corruption among those who govern the country" likely expresses even more discontent than strongly agreeing that "people like me can probably vote, but we cannot do anything else to influence politics."
-Second, the DCPO model accounts for each question's _dispersion_, its noisiness with regard to our latent trait.
+First, it incorporates the *difficulty* of each question's responses, that is, how much political discontent is indicated by a given response.
+That each response evinces more or less of our latent trait is most easily seen with regard to the ordinal responses to the same question: responding "strongly agree" to the statement "people like me don't have any say about what the government does" exhibits more political discontent than choosing "agree," which is a more discontented response that "disagree," which in turn is more discontented than "strongly disagree." But this is also true across questions.
+For example, strongly agreeing that "there is widespread corruption among those who govern the country" likely expresses even more discontent than strongly agreeing that "people like me can probably vote, but we cannot do anything else to influence politics." Second, the DCPO model accounts for each question's *dispersion*, its noisiness with regard to our latent trait.
 The lower a question's dispersion, the better that changes in responses to the question map onto changes in public political discontent.
 Together, the model's difficulty and dispersion estimates work to generate comparable estimates of the latent variable of public political discontent from the available but incomparable source data.
 
@@ -1860,11 +1911,14 @@ And although survey weights are easily incorporated in the source data (and inde
 Unlike the model employed by @Caughey2019, the DCPO model does not incorporate poststratification to correct for these issues.
 While this does increase computational tractability and decrease data demands, the downside is clearly greater measurement uncertainty in the estimates in country-years where the data are relatively rich (via $\phi$) and potential bias in the estimates where data are more sparse.
 
-
 \pagebreak
+
 # Numeric Results {#sec-app-numeric}
+
 ## Tabular Version of Results Presented in @fig-m1plot {#sec-m1table}
+
 <!-- \FloatBarrier -->
+
 ```{r modelTB}
 #| label: tbl-m1
 
@@ -1896,10 +1950,10 @@ modelsummary(m1,
 #                     tabularray_inner = "rowsep = 0pt")
 
 ```
+
 <!-- \FloatBarrier -->
 
 \pagebreak
-
 
 # References {.unlisted .unnumbered}
 
