@@ -66,7 +66,7 @@ execute:
   dpi: 300
 editor_options: 
   chunk_output_type: console
-title:  "Political Discontent and Regime Instability"
+title:  "Political Discontent"
 # subtitle: |
 abstract: |
     Put abstract here.
@@ -92,7 +92,7 @@ editor:
 
 # Data Availability Statement {.unlisted .unnumbered}
 
-Replication data is available on the Harvard Dataverse \[link tbd\], and the work's complete revision history is available at https://github.com/fsolt/trust_stability.
+Replication data is available on the Harvard Dataverse \[link tbd\], and the work's complete revision history is available at \url{https://github.com/fsolt/dcpo_discontent}.
 
 \pagebreak
 
@@ -706,14 +706,14 @@ cby_map <- world_map %>%
 cby_map + (countries_plot/ ybc_plot) + plot_layout(widths = c(4, 1))
 ```
 
-# Conceptualization of Political Discontent {.unlisted .unnumbered}
+# Conceptualizing Political Discontent {.unlisted .unnumbered}
 
 The significance of public political discontent for the sustainability of a political system is frequently highlighted in the literature.
 @lipset1959some claims that the public's belief in the suitability of the existing political system is a key "requisite" for the survival of a democratic regime.
 Similarly, @miller1974political argues that a democratic political system cannot endure without majority public support, as growing political discontent increases the potential for revolutionary changes to the political and social system.
 Additionally, widespread political discontent can complicate effective governance [@hetherington1998political].
 These theoretical perspectives have prompted numerous analyses of the content, sources, and implications of political discontent.
-However, scholars have proposed various conceptualizations or dimensions of political discontent, ranging from the lack of diffuse support for the political system to perceptions of low responsiveness, democratic deficit, low political trust, and dissatisfaction with the current government [@easton1975re;; @muller1983discontent; @norris2011democratic; @jennings2016dimensions].
+However, scholars have proposed various conceptualizations or dimensions of political discontent, ranging from the lack of diffuse support for the political system to perceptions of low responsiveness, democratic deficit, low political trust, and dissatisfaction with the current government [@easton1975re; @muller1983discontent; @norris2011democratic; @jennings2016dimensions].
 These differences in conceptualization reflect varying analytical purposes, theoretical motivations, and the available opinion survey items at the time.
 
 This paper specifically defines political discontent as dissatisfaction with, or the lack of, diffuse support for the political system.
@@ -721,9 +721,9 @@ The primary theoretical motivation for this approach lies in Easton's (1965) wel
 Specific support, being object-specific, refers to individuals' satisfaction with the perceived outputs or performance of the incumbent political authorities.
 In contrast, diffuse support is a generalized attachment or support for the political system, serving as a "reservoir of favorable attitudes or goodwill" toward the political system and is not object-specific in nature.
 The theoretical and analytical importance of this distinction is frequently noted in previous research, which found that people with low political trust or negative attitudes toward the government often do not reject the political system and prefer the existing political system to remain unchanged [@citrin1974comment; @miller1974political; @jennings2017decline].
-Furthermore, the literature shows that specific support is variable and less likely to pose a systemic threat to the regime's survival [@craig1981political;@muller1983discontent].
+Furthermore, the literature shows that specific support is variable and less likely to pose a systemic threat to the regime's survival [@craig1981political; @muller1983discontent].
 Democracy allows people to express their political dissatisfaction at the ballot box and change politicians in power without fundamentally altering the system.
-On the other hand, Muller and Jukam (1983) point out that diffuse political discontent provides the public with a normative incentive to participate in radical changes to the political system as a whole.
+On the other hand, @muller1983discontent point out that diffuse political discontent provides the public with a normative incentive to participate in radical changes to the political system as a whole.
 
 Diffuse political discontent comprises several related yet distinct components: external efficacy (evaluation of the responsiveness of political authorities in general), evaluation of the trustworthiness and integrity of political authorities, and perceptions of political corruption [@craig1981political; @muller1983discontent; @park2011political].
 These components are interrelated and collectively contribute to the broader construct of diffuse political discontent.
