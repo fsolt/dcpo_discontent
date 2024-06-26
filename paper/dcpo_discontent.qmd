@@ -979,7 +979,7 @@ ggplot(data = c_res, aes(x = year, y = mean)) +
     plot_annotation(caption = "Note: Countries are ordered by their most recent political discontent score; gray shading represents 80% credible intervals.")
 ```
 
-# Validating Cross-National Macrointerest {.unnumbered}
+# Validating Public Political Discontent {.unlisted .unnumbered}
 
 That we can *generate* estimates of political discontent does not automatically mean that they are suitable for analysis.
 Validation tests of this novel latent variable, like for any new measure, are crucial [see, e.g., @Hu2023].
@@ -1002,7 +1002,7 @@ internal_ts_dat <- dcpo_input_raw1 %>%
          neg = FALSE)
 ```
 
-```{r int_convergent, fig.height = 3.5, fig.cap = "Internal Convergent Validation: Correlations Between Macrointerest and Individual Source-Data Survey Items"}
+```{r int_convergent, fig.height = 3.5, fig.cap = "Internal Convergent Validation: Correlations Between Public Political Discontent and Individual Source-Data Survey Items"}
 #| label: fig-int-convergent
 
 load(here("data", "theta_summary.rda"))
@@ -1246,7 +1246,7 @@ The three institutional variables are measured as in @Kittilson2010.
 Data on parliamentarism, a dichotomous variable coded one in pure parliamentary systems and zero otherwise, is sourced from the DES.
 Federalism is likewise dichotomous, coded one in countries with strong federal systems [see @Lijphart1999] and zero in all others.
 Proportionality in the electoral system is measured using the Gallagher least-squares index of disproportionality, which measures the disparity between parties' vote shares and their seat shares [@Gallagher1991, 40-41; @Gallagher2023].
-The context of good and bad economic conditions was measured with data on GDP per capita, national GDP growth, and unemployment from OECD.Stat [@OECD2024] and on the Gini index of disposable income inequality from the Standardized World Income Inequality Database [@Solt2020].
+Economic conditions were measured with data on GDP per capita, national GDP growth, and unemployment from OECD.Stat [@OECD2024] and on the Gini index of disposable income inequality from the Standardized World Income Inequality Database [@Solt2020].
 
 ```{r des_download}
 if (!file.exists(here("data-raw", "es_data-v41", "es_data-v4_1.csv"))) {
@@ -1605,13 +1605,10 @@ coef_data0_m1 %>%
     plot_annotation(caption = str_wrap(plot_notes, 80))
 ```
 
-<!-- Revise below, obv -->
-
-The results of this analysis are displayed in @fig-m1plot.[^1]
-The time trend indicates that discontent has been, on average and net of the other included variables, rising over time in these countries by Consistent with the argument that campaigns bring attention-grabbing information to the public, macrointerest in election years is found to be `r get_coef("election", type = "std_coef")` points (95% credible interval: `r get_coef("election", type = "ci")` points) higher than in years without elections.
-This accords with previous research finding small but well-estimated increases in political interest in election years [see, e.g., @Larsen2022].
-
-[^1]:  @tbl-m1 in Appendix\nobreakspace{}@sec-app-numeric, provides a tabular version.
+_**Revise below, of course**_
+The results of this analysis are displayed in @fig-m1plot.[^
+@tbl-m1 in Appendix\nobreakspace{}@sec-app-numeric, provides a tabular version.]
+The time trend indicates that discontent has been, on average and net of the other included variables, rising over time in these countries by `r get_coef("year", type = "std_coef")` points (95% credible interval: `r get_coef("year", type = "ci")` points).  
 
 The hypothesis that power-sharing institutions yield more public interest in politics is also supported.
 Macrointerest is estimated to be `r get_coef("parl")` points higher in countries with parliamentary systems.
@@ -1626,27 +1623,7 @@ Year-to-year changes in income inequality are found to make little difference---
 The results with regard to growth in the national economy and with regard to unemployment similarly do not provide strong evidence of either negative or positive effects.
 Still, taken as a whole, this evidence indicates that at least with regard to economic conditions, it is good times, not bad ones, that yield more macrointerest.
 
-# Literature {.unlisted .unnumbered}
-
-A test of citation [@Claassen2019; @HuEtAl2022a].
-
-# Theory {.unlisted .unnumbered}
-
-# Research Design and Results {.unlisted .unnumbered}
-
-```{r data}
-# load(here("data", "correct_cls_ajps.rda")) # https://osf.io/52u7n/download
-# load(here("data", "expcor_cls_ajps.rda"))  # https://osf.io/cgxjd/download
-
-```
-
-See the descriptive statistics in @sec-app-descriptive.
-
-See the full, numeric results in @sec-app-numeric.
-
-# Summary and Discussion {.unlisted .unnumbered}
-
-# Reference {.unlisted .unnumbered}
+# Conclusions {.unlisted .unnumbered}
 
 ::: {#refs-main}
 :::
@@ -1692,13 +1669,13 @@ Lower values of dispersion indicate questions that better identify publics with 
 Items have one less difficulty score than the number of response categories.
 
 In accordance with the advice offered by @Hu2022 to avoid data-entry errors by automating data collection, the `DCPOtools` R package [@Solt2019] was used to compile the responses to these questions.
-The current version of the software facilitates the entire practical data generation process: from facilitating the acquisition of original survey datasets and converting them into R standard format for quicker loading; through standardizing country names, identifying survey years, and extracting the desired survey items; to restructuring the resulting data for analysis with the DCPO model.
+The current version of this software facilitates the entire practical data generation process: from facilitating the acquisition of original survey datasets and converting them into R standard format for quicker loading; through standardizing country names, identifying survey years, and extracting the desired survey items; to restructuring the resulting data for analysis with the DCPO model.
 The primary objective is to limit manual interventions, thereby maximizing reproducibility and reducing the error potential inherent in human-operated data preparation tasks.
 The survey dataset codes listed in @tbl-items correspond to those used in that package.
 
 The survey items in these source data were asked in a total of `r n_countries` different countries in at least two time points over `r n_years` years, `r year_range`, resulting in `r n_cyi` country-year-item observations.
 The number of items observed for each country-year in the source data is displayed in @fig-obs1 and @fig-obs2 below.
-The macrointerest scores of country-years with more observed items are likely to be estimated more precisely.
+The PPD scores of country-years with more observed items are likely to be estimated more precisely.
 The estimates for country-years with fewer (or no) observed items rely more heavily (or entirely) on the random-walk prior and are therefore less certain.
 
 ```{r dcpo_items}
@@ -1803,7 +1780,7 @@ legend.background = element_rect(fill = "white", colour = NA)) +
 facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
 ncol = 1,
 scales = "free_y") +
-  plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of macrointerest presented in the main text.", 80))
+  plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of public political discontent presented in the main text.", 80))
 ```
 
 ```{r obs2, fig.cap = "Source Data Observations by Country and Year, cont.", fig.height = 9}
@@ -1834,7 +1811,7 @@ legend.background = element_rect(fill = "white", colour = NA)) +
 facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
 ncol = 1,
 scales = "free_y") +
-  plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of macrointerest presented in the main text.", 80))
+  plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of public political discontent presented in the main text.", 80))
 ```
 
 \pagebreak
@@ -1844,10 +1821,10 @@ scales = "free_y") +
 <!-- [Revise the following text!] -->
 
 A number of recent studies have developed latent variable models of aggregate survey responses based on cross-national survey data [see @Claassen2019; @Caughey2019; @McGann2019; @Kolczynska2024].
-To estimate macrointerest across countries and over time, we employ the latest of these methods that is appropriate for data that is not only incomparable but also sparse, the Dynamic Comparative Public Opinion (DCPO) model elaborated in @Solt2020c.
+To estimate the extent of political discontent in the public across countries and over time, we employ the latest of these methods that is appropriate for data that is not only incomparable but also sparse, the Dynamic Comparative Public Opinion (DCPO) model elaborated in @Solt2020c.
 The DCPO model is a population-level two-parameter ordinal logistic item response theory (IRT) model with country-specific item-bias terms.
 
-DCPO models the total number of survey responses expressing at least as much macrointerest as response category $r$ to each question $q$ in country $k$ at time $t$, $y_{ktqr}$, out of the total number of respondents surveyed, $n_{ktqr}$, using the beta-binomial distribution:
+DCPO models the total number of survey responses expressing at least as much discontent as response category $r$ to each question $q$ in country $k$ at time $t$, $y_{ktqr}$, out of the total number of respondents surveyed, $n_{ktqr}$, using the beta-binomial distribution:
 
 \begin{equation}
 a_{ktqr} = \phi\eta_{ktqr} \label{eq:bb_a}
@@ -1871,7 +1848,7 @@ This expected probability, $\eta_{ktqr}$, is in turn estimated as follows:
 In this equation, $\beta_{qr}$ represents the difficulty of response $r$ to question $q$, that is, the degree of political the response expresses.
 The $\delta_{kq}$ term represents country-specific item bias: the extent to which all responses to a particular question $q$ may be more (or less) difficult in a given country $k$ due to translation issues, cultural differences in response styles, or other idiosyncrasies that render the same survey item not equivalent across countries.[^3]
 The dispersion of question $q$, its noisiness in relation to the latent variable, is $\alpha_{q}$.
-The mean and standard deviation of the unbounded latent trait of macrointerest are $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, respectively.
+The mean and standard deviation of the unbounded latent trait of public political discontent are $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, respectively.
 
 [^3]:  Estimating $\delta_{kq}$ requires repeated administrations of question $q$ in country $k$, so when responses to question $q$ are observed in country $k$ in only a single year, the DCPO model sets $\delta_{kq}$ to zero by assumption, increasing the error of the model by any country-item bias that is present.
     Questions that are asked repeatedly over time in only a single country pose no risk of country-specific item bias, so $\delta_{kq}$ in such cases are also set to zero.
