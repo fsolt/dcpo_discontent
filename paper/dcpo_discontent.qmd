@@ -1080,9 +1080,9 @@ internal_tscs_plot + internal_cs_plot + internal_ts_plot  +
 ```
 
 ```{r ext_convergent_val_dat, results=FALSE}
-external_dat <- read_csv(here("data-raw",
-                               "surveys_ext_conv.csv"),
-                          col_types = "cccccc") %>% 
+ext_dat <- read_csv(here("data-raw",
+                         "surveys_ext_conv.csv"),
+                    col_types = "cccccc") %>% 
     DCPOtools::dcpo_setup(datapath = here("..",
                                           "data",
                                           "dcpo_surveys"),
