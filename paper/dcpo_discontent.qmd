@@ -1241,20 +1241,36 @@ These relationships are all positive and are moderate to strong.
 The PPD scores perform very well in validation tests.
 
 # Explaining Political Dissatisfaction {.unlisted .unnumbered}
-How to explain these disparities in public political discontents across countries? What are the drivers of the changes over years? The literature presents various perspectives on how political and economic contexts may affect public political discontent. The first argument deals with the role of election. Elections provide an opportunity for people to turning their dissatisfaction into ballots for candidates or parties that promise changes to the system. Discontented citizens, as a result, gain political fulfillment through voting for a party voicing their discontents [@van2003lpf; @rooduijn2016expressing]. From this perspective, public political discontent should be expected to be lower in years of national elections, where some of the existing discontents could be ameliorated. However, existing studies also suggest that the effect of election time on public political discontent could be the opposite. During election times, citizens are exposed to more political messages, a significant proportion of which are those criticizing the elites and the system [@lau2007effects; @lopez2019political]. Particularly, many advanced democracies are experiencing increased levels of false information during elections, which has become a clear danger to the integrity of political process [@bennett2018disinformation]. If so, public political discontent may be expected to be higher at election times.
+How to explain these disparities in public political discontents across countries? What are the drivers of the changes over years?
+The literature presents various perspectives on how political and economic contexts may affect public political discontent.
+The first argument deals with the role of election.
+Elections provide an opportunity for people to turning their dissatisfaction into ballots for candidates or parties that promise changes to the system.
+Discontented citizens, as a result, gain political fulfillment through voting for a party voicing their discontents [@van2003lpf; @rooduijn2016expressing].
+From this perspective, public political discontent should be expected to be lower in years of national elections, in which some of the existing discontent could be ameliorated.
+However, existing studies also suggest that the effect of election time on public political discontent could be the opposite.
+Campaigns expose citizens to more political messages, a significant proportion of which criticize the elites and the system [@lau2007effects; @lopez2019political].
+Particularly, many advanced democracies are experiencing increased levels of false information during elections, which has become a clear danger to the integrity of political process [@bennett2018disinformation].
+If so, public political discontent may be expected to be higher at election times.
 
+A second potential source of public political discontent is the distribution of power created by political institutions.
+According to prominent democratic theories [@norris2008driving; @lijphart1999patterns; @powell2000elections], power-sharing systems---parliamentarism, federalism, and proportional electoral rules---aim to generate governments that facilitate broad inclusion and participation, while power-concentrating systems prioritize efficient and accountable majority rule.
+@kittilson2010engaging argues that power-sharing systems not only encourage actual political participation, but also send symbolic signals of inclusiveness to citizens.
+If so, the publics in countries with parliamentary systems, federalism, and proportional electoral rules should be more likely to perceive themselves as being included and represented in the system and so feel less discontent.
 
-The second potential source of public political discontent is the distribution of power created by political institutions. According to prominent democratic theories [@norris2008driving; @lijphart1999patterns; @powell2000elections], power-sharing systems—parliamentarism, federalism, and proportional electoral rules—aim to generate governments that facilitate broad inclusion and participation, while power-concentrating systems prioritize to generate efficient and accountable majority rule. @kittilson2010engaging argue, power-sharing systems, not only encourage actual political participation, but also send symbolic signals of inclusiveness to citizens. If so, the publics in countries with parliamentary, federal systems, and proportional electoral rules should be more likely to perceive themselves as being included and represented in the system, thereby being less discontented.
+Lastly, economic conditions are argued to be salient sources of political discontent [@quaranta2016does].
+For one thing, unfavorable economic conditions fuel social discontent and anxiety about the future among the public, which can easily evolve into anti-establishment sentiment [@kinnvall2022exploring].
+For another, economic indicators are usually used by people to evaluate the performance of the system or government policies [@becher2013economic].
+Hence, poor economic conditions, such as slow growth, high unemployment, and significant income disparities are likely to hurt perceptions of institutional quality and so increase public political discontent.
 
-Lastly, economic conditions, particularly inequalities, are argued to be salient sources of political discontent [@quaranta2016does]. For one thing, unfavorable economic conditions fuel social discontent and anxiety about the future among the public, which can easily evolve into anti-establishment sentiments [@kinnvall2022exploring]. For another, economic indicators are usually used by people to evaluate the performance of the system or government policies [@becher2013economic]. Hence, poor economic conditions, such as slow growth, high unemployment, and significant disparity, are likely to hurt the perceived institutional quality, thus increasing public political discontent.
-
-Data to test these hypotheses are drawn from several sources.
+The data we use to test these hypotheses are as follows.
 The Democratic Electoral Systems (DES) dataset updated in @Bormann2022 provides information about the timing of elections, yielding a dichotomous variable coded one in election years and zero when no election was held.
-The three institutional variables are measured as in @Kittilson2010.
-Data on parliamentarism, a dichotomous variable coded one in pure parliamentary systems and zero otherwise, is sourced from the DES.
-Federalism is likewise dichotomous, coded one in countries with strong federal systems [see @Lijphart1999] and zero in all others.
-Proportionality in the electoral system is measured using the Gallagher least-squares index of disproportionality, which measures the disparity between parties' vote shares and their seat shares [@Gallagher1991, 40-41; @Gallagher2023].
-Economic conditions were measured with data on GDP per capita, national GDP growth, and unemployment from OECD.Stat [@OECD2024] and on the Gini index of disposable income inequality from the Standardized World Income Inequality Database [@Solt2020].
+We measure three institutional variables in the same fashion as @Kittilson2010.
+Parliamentarism is coded dichotomously, coded one in pure parliamentary systems and zero otherwise, and is sourced from the DES.
+The federalism variable is also dichotomous: countries with strong federal systems [see @Lijphart1999] are coded one and all others coded zero.
+The Gallagher least-squares index of disproportionality, which measures the disparity between parties' vote shares and their seat shares [@Gallagher1991, 40-41; @Gallagher2023], provides our measure of the proportionality of the electoral system.
+We draw data on economic conditions from two sources.
+GDP per capita, national GDP growth, and unemployment are from OECD.Stat [@OECD2024].
+The Gini index of disposable income inequality comes from the Standardized World Income Inequality Database [@Solt2020].
 
 ```{r des_download}
 if (!file.exists(here("data-raw", "es_data-v41", "es_data-v4_1.csv"))) {
