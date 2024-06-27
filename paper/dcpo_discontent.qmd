@@ -716,14 +716,15 @@ These theoretical perspectives have prompted numerous analyses of the content, s
 However, scholars have proposed various conceptualizations or dimensions of political discontent, ranging from the lack of diffuse support for the political system to perceptions of low responsiveness, democratic deficit, low political trust, and dissatisfaction with the current government [@easton1975re; @muller1983discontent; @norris2011democratic; @jennings2016dimensions].
 These differences in conceptualization reflect varying analytical purposes, theoretical motivations, and the available opinion survey items at the time.
 
-This paper specifically defines political discontent as dissatisfaction with, or the lack of, diffuse support for the political system.
+This paper specifically defines political discontent as dissatisfaction with, or the lack of, diffuse support for the political system [@jennings2017decline].
 The primary theoretical motivation for this approach lies in Easton's (1965) well-known distinction between diffuse and specific political support.
 Specific support, being object-specific, refers to individuals' satisfaction with the perceived outputs or performance of the incumbent political authorities.
 In contrast, diffuse support is a generalized attachment or support for the political system, serving as a "reservoir of favorable attitudes or goodwill" toward the political system and is not object-specific in nature.
-The theoretical and analytical importance of this distinction is frequently noted in previous research, which found that people with low political trust or negative attitudes toward the government often do not reject the political system and prefer the existing political system to remain unchanged [@citrin1974comment; @miller1974political; @jennings2017decline].
+The theoretical and analytical importance of this distinction is frequently noted in previous research, which found that people with low political trust or negative attitudes toward the government often do not reject the political system and prefer the existing political system to remain unchanged [@citrin1974comment; @miller1974political].
 Furthermore, the literature shows that specific support is variable and less likely to pose a systemic threat to the regime's survival [@craig1981political; @muller1983discontent].
 Democracy allows people to express their political dissatisfaction at the ballot box and change politicians in power without fundamentally altering the system.
 On the other hand, @muller1983discontent point out that diffuse political discontent provides the public with a normative incentive to participate in radical changes to the political system as a whole.
+In this regard, @jennings2017decline points out that conceptualizing political discontent as a lack of diffuse support enables researchers to examine whether there is a sustained decline in diffuse support that could pose a threat to the political system, or if there is merely a decline in specific support that is unremarkable and arguably fluctuates "normally."
 
 Diffuse political discontent comprises several related yet distinct components: external efficacy (evaluation of the responsiveness of political authorities in general), evaluation of the trustworthiness and integrity of political authorities, and perceptions of political corruption [@craig1981political; @muller1983discontent; @park2011political].
 These components are interrelated and collectively contribute to the broader construct of diffuse political discontent.
@@ -742,7 +743,7 @@ Specifically, we exclude political trust in the incumbent government or apolitic
 Additionally, unlike previous studies that use support for democracy in the abstract as a predictor for the survival of democratic regimes [@claassen2020does], we do not include it as a component of political discontent.
 This is because support for democracy in the abstract is too prevalent in every country to be a meaningful or analytically useful measure of political discontent [@dalton2007understanding; @inglehart2003solid].
 Lastly, we exclude satisfaction with democracy (SWD) in the abstract because the literature shows that the SWD measure functions more as a type of specific support.
-People tend to have much higher democratic satisfaction when their preferred politicians or parties win elections, while electoral losers tend to have lower democratic satisfaction [@van2020long; @singh2023satisfaction; ].
+People tend to have much higher democratic satisfaction when their preferred politicians or parties win elections, while electoral losers tend to have lower democratic satisfaction [@van2020long; @singh2023satisfaction].
 Moreover, @quaranta2016does indicate that various economic indicators, such as the unemployment rate, GDP growth, inflation, or subjective economic evaluation, are strongly associated with the public's satisfaction with democracy, suggesting that it is a product of the government's economic performance.
 
 The conceptualization of political discontent as a lack of diffuse support for the political system has important implications.
@@ -754,6 +755,7 @@ However, previous studies often use abstract public support for democracy as a m
 In this context, political discontent, defined as a lack of diffuse support for the system [@claassen2020does], can serve as a better conceptual tool for discussing how public opinion relates to democratic backsliding.
 Additionally, previous studies have shown that diffuse political discontent is strongly associated with citizens participating in or endorsing regime-challenging activities, which ultimately pose a threat to the social and political order [@craig1980mobilization].
 A clearer understanding of the nature and consequences of diffuse political discontent can thus inform efforts to strengthen democratic resilience and responsiveness in the face of growing public disaffection with political systems worldwide.
+For this, this paper measures political discontent cross-nationally and further examines various sources of political discontent.
 
 # Estimates {.unlisted .unnumbered}
 
