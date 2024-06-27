@@ -404,7 +404,27 @@ long_corr <- function(x) {
 set.seed(324)
 ```
 
-Intro does not need a header.
+Public discontent with political systems and institutions has become an increasingly salient concern in recent years, with implications for democratic stability and effective governance.
+Widespread political discontent can undermine public confidence in the political process, erode the legitimacy of governing institutions, and create fertile ground for populist and anti-system movements [@mudde2004populist; @miller1974political; @lipset1959some].
+Understanding political discontent is therefore crucial for identifying potential threats to democracy and developing strategies to bolster system support.
+Nevertheless, the understanding of the nature, extent, and drivers of political discontent remains debated, with some arguing that the level of political discontent is on a clear declining trend while others claim that political discontent fluctuates without a clear sign of a declining trend [@jennings2017decline; @norris2011democratic; @foa2016danger; @foa2017signs].
+
+This paper aims to provide a clearer conceptualization and more rigorous measurement of political discontent using survey data from a wide range of developed countries over several decades. 
+Drawing on David Easton's (1965) classic distinction between diffuse and specific support for political systems, we define political discontent as dissatisfaction with or a lack of diffuse support for the political system as a whole, rather than disapproval of specific authorities or the incumbent government [@jennings2017decline].
+The explicit distinction between diffuse and specific support is highly necessary because they have different levels of variation and different consequences for individuals' political behavior and, in turn, the sustainability of the political system [@citrin1974comment; @miller1974political; @craig1981political; @muller1983discontent].
+Our conceptualization of political discontent encompasses key components of system support, including perceptions of system responsiveness (external efficacy), trust in political institutions and processes, and perceptions of political corruption, all of which are interrelated and collectively contribute to the broader construct of diffuse political discontent.
+
+To overcome issues of incomparability and sparseness that often plague survey-based measures of political discontent in the previous studies, we employ the Dynamic Comparative Public Opinion (DCPO) model developed by @Solt2020c to estimate country-year panels of public political discontent in developed OECD countries. 
+This approach allows us to combine information from a multitude of survey questions while accounting for differences in question content and response options. 
+The resulting estimates cover an wide scope - thirty-eight countries and a total of 1217 country-years - enabling both cross-national comparison and over-time analysis.
+We validate our measure by demonstrating its strong correlation between individual survey items, the democratic evaluation survey item not included in our estimation, and the construct believed causally related to political discontent (evaluations of recent government policy performance). 
+
+Following, we explore drivers of political discontent, focusing on election, political institution, and economic factors. Our findings clearly suggest that political discontent has been on the increasing trend over time in developed OECD countries, supporting Foa and Mounk's (2016, 2017) thesis of democratic deconsolidation in developed democracies.  
+Need to discuss the result (I left it blank and will write after the analysis is done).
+
+By providing a broader examination of political discontent and its determinants, this study contributes to ongoing debates about the trajectories of political discontent across countries and over time.
+A valid and comparable measure of political discontent can enrich future discussions of public opinion, representation, and democratic backsliding.
+From a methodological standpoint, the paper demonstrates the utility of latent variable modeling for harnessing the wealth of underutilized cross-national survey data that are often fragmented and incomparable.
 
 ```{r dcpo_input_raw, eval=FALSE, include=FALSE}
 # set eval to TRUE to run; running time is <5 minutes
