@@ -340,7 +340,8 @@ get_coef <- function(iv,
   } else {
     sc <- results_df %>% 
       filter(.variable == result_var & .width == width) %>% 
-      pull(std_coef)
+      pull(std_coef) %>% 
+        round(1)
     
     ci <- result_all %>%
         mutate(ci = paste0(round(.lower, 1), " to ", round(.upper, 1))) %>%
@@ -407,10 +408,10 @@ set.seed(324)
 Public discontent with political systems and institutions has become an increasingly salient concern in recent years, with implications for democratic stability and effective governance.
 Widespread political discontent can undermine public confidence in the political process, erode the legitimacy of governing institutions, and create fertile ground for populist and anti-system movements [@mudde2004populist; @miller1974political; @lipset1959some].
 Understanding political discontent is therefore crucial for identifying potential threats to democracy and developing strategies to bolster system support.
-Nevertheless, the understanding of the nature, extent, and drivers of political discontent remains debated, with some arguing that the level of political discontent is on a clear declining trend while others claim that political discontent fluctuates without a clear sign of a declining trend [@jennings2017decline; @norris2011democratic; @foa2016danger; @foa2017signs].
+Nevertheless, the understanding of the nature, extent, and drivers of political discontent remains debated, with some arguing that the level of political discontent is on a clear declining trend while others claim that political discontent fluctuates without a clear sign of a declining trend [@Jennings2017; @norris2011democratic; @foa2016danger; @foa2017signs].
 
 This paper aims to provide a clearer conceptualization and more rigorous measurement of political discontent using survey data from a wide range of developed countries over several decades. 
-Drawing on David Easton's (1965) classic distinction between diffuse and specific support for political systems, we define political discontent as dissatisfaction with or a lack of diffuse support for the political system as a whole, rather than disapproval of specific authorities or the incumbent government [@jennings2017decline].
+Drawing on David Easton's (1965) classic distinction between diffuse and specific support for political systems, we define political discontent as dissatisfaction with or a lack of diffuse support for the political system as a whole, rather than disapproval of specific authorities or the incumbent government [@Jennings2017].
 The explicit distinction between diffuse and specific support is highly necessary because they have different levels of variation and different consequences for individuals' political behavior and, in turn, the sustainability of the political system [@citrin1974comment; @miller1974political; @craig1981political; @muller1983discontent].
 Our conceptualization of political discontent encompasses key components of system support, including perceptions of system responsiveness (external efficacy), trust in political institutions and processes, and perceptions of political corruption, all of which are interrelated and collectively contribute to the broader construct of diffuse political discontent.
 
@@ -524,6 +525,65 @@ back_to_numeric <- function(string_number) {
 
 covered_share_of_spanned <- {back_to_numeric(n_cy)/back_to_numeric(spanned_cy) * 100}
 ```
+
+# Conceptualizing Political Discontent {.unlisted .unnumbered}
+
+The significance of public political discontent for the sustainability of a political system is frequently highlighted in the literature.
+@lipset1959some argues that the public's belief in the suitability of the existing political system is a key requisite for the survival of a democratic regime.
+Similarly, @miller1974political maintains that a democratic political system cannot endure without majority public support, as growing political discontent increases the potential for revolutionary changes to the political and social system.
+Additionally, widespread political discontent can complicate effective governance [@hetherington1998political].
+These theoretical perspectives have prompted numerous analyses of the content, sources, and implications of political discontent.
+However, scholars have proposed various conceptualizations or dimensions of political discontent, ranging from the lack of diffuse support for the political system to perceptions of low responsiveness, democratic deficit, low political trust, and dissatisfaction with the current government [@easton1975re; @muller1983discontent; @norris2011democratic; @jennings2016dimensions].
+These differences in conceptualization reflect varying analytical purposes, theoretical motivations, and the available opinion survey items at the time.
+
+This paper specifically defines political discontent as dissatisfaction with, or the lack of, diffuse support for the political system [@Jennings2017].
+The primary theoretical motivation for this approach lies in Easton's [-@Easton1965] well-known distinction between diffuse and specific political support.
+Specific support, being object-specific, refers to individuals' satisfaction with the perceived outputs or performance of the incumbent political authorities.
+In contrast, diffuse support is a generalized attachment or support for the political system, serving as a "reservoir of favorable attitudes or goodwill" toward the political system and is not object-specific in nature.
+The theoretical and analytical importance of this distinction is frequently noted in previous research, which found that people with low political trust or negative attitudes toward the government often do not reject the political system and prefer the existing political system to remain unchanged [@citrin1974comment; @miller1974political].
+Furthermore, the literature shows that specific support is variable and less likely to pose a systemic threat to the regime's survival [@craig1981political; @muller1983discontent].
+Democracy allows people to express their political dissatisfaction at the ballot box and change politicians in power without fundamentally altering the system.
+On the other hand, @muller1983discontent point out that diffuse political discontent provides the public with a normative incentive to participate in radical changes to the political system as a whole.
+In this regard, @Jennings2017 points out that conceptualizing political discontent as a lack of diffuse support enables researchers to examine whether there is a sustained decline in diffuse support that could pose a threat to the political system, or if there is merely a decline in specific support that is unremarkable and arguably fluctuates "normally."
+
+Diffuse political discontent comprises several related yet distinct components: external efficacy (evaluation of the responsiveness of political authorities in general), evaluation of the trustworthiness and integrity of political authorities, and perceptions of political corruption [@craig1981political; @muller1983discontent; @park2011political].
+These components are interrelated and collectively contribute to the broader construct of diffuse political discontent.
+One of the main sources of this discontent is the perception that the political system is unresponsive to the public and prioritizes its own or special interests, which increases the likelihood of the public participating in or endorsing regime-challenging activities that threaten the social and political order [@craig1980mobilization; @jennings2016dimensions].
+Recent studies of populism have also highlighted that the feeling of being unheard by the political system is a significant source of support for anti-system populist messages [@mudde2004populist].
+Political trust, often used as a measure of political discontent, is conceptually associated with external efficacy but operates on a different dimension.
+While external efficacy focuses on whether the political system functions according to public demands, political trust concerns whether political authorities work for the public good [@craig1979efficacy].
+Additionally, the implications of political trust can vary depending on the specific referents of trust [@van2017political].
+For instance, trust in political institutions in general, such as the political party system or politicians or the parliament in general, differs from trust in the incumbent government, which is a measure of specific support, or trust in apolitical institutions such as the judiciary or the police.
+In this context, we consider only distrust in general political institutions as a component of political discontent.
+Similarly, dissatisfaction with political parties or national officeholders in general is also used as a component of political discontent.
+Lastly, recent literature emphasizes the perception of political corruption as a primary source of political discontent, as people perceive political authorities working for their own interests without addressing public demands [@park2011political; @busby2018activating; @hawkins2020activation].
+
+It is also worth discussing what is not considered a component of diffuse political discontent.
+Specifically, we exclude political trust in the incumbent government or apolitical institutions, as trust in the government is a type of specific support that fluctuates over time and does not pose a serious threat to the political system [@norris1999critical].
+Additionally, unlike previous studies that use support for democracy in the abstract as a predictor for the survival of democratic regimes [@claassen2020does], we do not include it as a component of political discontent.
+This is because support for democracy in the abstract is too prevalent in every country to be a meaningful or analytically useful measure of political discontent [@dalton2007understanding; @inglehart2003solid].
+Lastly, we exclude satisfaction with democracy in the abstract because the literature shows that this measure functions more as a type of specific support.
+People tend to have much higher democratic satisfaction when their preferred politicians or parties win elections, while electoral losers tend to have lower democratic satisfaction [@van2020long; @singh2023satisfaction].
+Moreover, @quaranta2016does indicate that various economic indicators, such as the unemployment rate, GDP growth, inflation, or subjective economic evaluation, are strongly associated with the public's satisfaction with democracy, suggesting that it is a product of the government's economic performance.
+
+The conceptualization of political discontent as a lack of diffuse support for the political system has important implications.
+First, by focusing on the systemic dimension of political discontent and excluding types of specific support or abstract support for democracy, this conceptualization aligns closely with discussions about the erosion of public confidence in the political system as a whole, beyond mere dissatisfaction with specific authorities or policies.
+This understanding is crucial for identifying the underlying causes of political disaffection and developing targeted interventions to address them.
+Moreover, this conceptualization of political discontent can contribute to recent discussions about democratic backsliding.
+The literature on democratic backsliding has yielded mixed findings regarding whether public opinion can influence the possibility of backsliding [@Tai2024].
+However, previous studies often use abstract public support for democracy as a measurement, which is less satisfying because abstract support for democracy is notoriously affirming.
+In this context, political discontent, defined as a lack of diffuse support for the system [@claassen2020does], can serve as a better conceptual tool for discussing how public opinion relates to democratic backsliding.
+Additionally, previous studies have shown that diffuse political discontent is strongly associated with citizens participating in or endorsing regime-challenging activities, which ultimately pose a threat to the social and political order [@craig1980mobilization].
+A clearer understanding of the nature and consequences of diffuse political discontent can thus inform efforts to strengthen democratic resilience and responsiveness in the face of growing public disaffection with political systems worldwide.
+For this, this paper measures political discontent cross-nationally and further examines various sources of political discontent.
+
+
+# Estimating Public Political Discontent {.unlisted .unnumbered}
+
+Questions tapping political discontent as conceived above are common in national and cross-national surveys conducted over the past four decades, but no single question is asked in all countries and years.
+The result is that the relevant data are incomparable, in that they are generated by many different questions, and sparse, in that for many countries and years no question on discontent is asked at all.
+We collected `r n_surveys` different survey datasets with relevant questions, including a total of `r n_items` survey items that were asked in no fewer than five country-years in countries surveyed at least three times (see online Appendix\nobreakspace{}\@sec-surveys).
+These survey items were asked in `r n_countries` different countries over the `r n_years` years `r year_range` comprising `r n_cyi` country-year-item observations altogether.
 
 ```{r itemcountry, fig.cap="Countries and Years with the Most Observations in the Source Data \\label{item_country_plots}", fig.height=3.5, fig.pos='h', cache=FALSE}
 items_plot <- dcpo_input_raw1 %>%
@@ -726,58 +786,9 @@ cby_map <- world_map %>%
 cby_map + (countries_plot/ ybc_plot) + plot_layout(widths = c(4, 1))
 ```
 
-# Conceptualizing Political Discontent {.unlisted .unnumbered}
-
-The significance of public political discontent for the sustainability of a political system is frequently highlighted in the literature.
-@lipset1959some claims that the public's belief in the suitability of the existing political system is a key "requisite" for the survival of a democratic regime.
-Similarly, @miller1974political argues that a democratic political system cannot endure without majority public support, as growing political discontent increases the potential for revolutionary changes to the political and social system.
-Additionally, widespread political discontent can complicate effective governance [@hetherington1998political].
-These theoretical perspectives have prompted numerous analyses of the content, sources, and implications of political discontent.
-However, scholars have proposed various conceptualizations or dimensions of political discontent, ranging from the lack of diffuse support for the political system to perceptions of low responsiveness, democratic deficit, low political trust, and dissatisfaction with the current government [@easton1975re; @muller1983discontent; @norris2011democratic; @jennings2016dimensions].
-These differences in conceptualization reflect varying analytical purposes, theoretical motivations, and the available opinion survey items at the time.
-
-This paper specifically defines political discontent as dissatisfaction with, or the lack of, diffuse support for the political system [@jennings2017decline].
-The primary theoretical motivation for this approach lies in Easton's (1965) well-known distinction between diffuse and specific political support.
-Specific support, being object-specific, refers to individuals' satisfaction with the perceived outputs or performance of the incumbent political authorities.
-In contrast, diffuse support is a generalized attachment or support for the political system, serving as a "reservoir of favorable attitudes or goodwill" toward the political system and is not object-specific in nature.
-The theoretical and analytical importance of this distinction is frequently noted in previous research, which found that people with low political trust or negative attitudes toward the government often do not reject the political system and prefer the existing political system to remain unchanged [@citrin1974comment; @miller1974political].
-Furthermore, the literature shows that specific support is variable and less likely to pose a systemic threat to the regime's survival [@craig1981political; @muller1983discontent].
-Democracy allows people to express their political dissatisfaction at the ballot box and change politicians in power without fundamentally altering the system.
-On the other hand, @muller1983discontent point out that diffuse political discontent provides the public with a normative incentive to participate in radical changes to the political system as a whole.
-In this regard, @jennings2017decline points out that conceptualizing political discontent as a lack of diffuse support enables researchers to examine whether there is a sustained decline in diffuse support that could pose a threat to the political system, or if there is merely a decline in specific support that is unremarkable and arguably fluctuates "normally."
-
-Diffuse political discontent comprises several related yet distinct components: external efficacy (evaluation of the responsiveness of political authorities in general), evaluation of the trustworthiness and integrity of political authorities, and perceptions of political corruption [@craig1981political; @muller1983discontent; @park2011political].
-These components are interrelated and collectively contribute to the broader construct of diffuse political discontent.
-One of the main sources of this discontent is the perception that the political system is unresponsive to the public and prioritizes its own or special interests, which increases the likelihood of the public participating in or endorsing regime-challenging activities that threaten the social and political order [@craig1980mobilization; @jennings2016dimensions].
-Recent studies of populism have also highlighted that the feeling of being unheard by the political system is a significant source of support for anti-system populist messages [@mudde2004populist].
-Political trust, often used as a measure of political discontent, is conceptually associated with external efficacy but operates on a different dimension.
-While external efficacy focuses on whether the political system functions according to public demands, political trust concerns whether political authorities work for the public good [@craig1979efficacy].
-Additionally, the implications of political trust can vary depending on the specific referents of trust [@van2017political].
-For instance, trust in political institutions in general, such as the political party system or politicians or the parliament in general, differs from trust in the incumbent government, which is a measure of specific support, or trust in apolitical institutions such as the judiciary or the police.
-In this context, we consider only distrust in general political institutions as a component of political discontent.
-Similarly, dissatisfaction with political parties or national officeholders in general is also used as a component of political discontent.
-Lastly, recent literature emphasizes the perception of political corruption as a primary source of political discontent, as people perceive political authorities working for their own interests without addressing public demands [@park2011political; @busby2018activating; @hawkins2020activation].
-
-It is also worth discussing what is not considered a component of diffuse political discontent.
-Specifically, we exclude political trust in the incumbent government or apolitical institutions, as trust in the government is a type of specific support that fluctuates over time and does not pose a serious threat to the political system [@norris1999critical].
-Additionally, unlike previous studies that use support for democracy in the abstract as a predictor for the survival of democratic regimes [@claassen2020does], we do not include it as a component of political discontent.
-This is because support for democracy in the abstract is too prevalent in every country to be a meaningful or analytically useful measure of political discontent [@dalton2007understanding; @inglehart2003solid].
-Lastly, we exclude satisfaction with democracy (SWD) in the abstract because the literature shows that the SWD measure functions more as a type of specific support.
-People tend to have much higher democratic satisfaction when their preferred politicians or parties win elections, while electoral losers tend to have lower democratic satisfaction [@van2020long; @singh2023satisfaction].
-Moreover, @quaranta2016does indicate that various economic indicators, such as the unemployment rate, GDP growth, inflation, or subjective economic evaluation, are strongly associated with the public's satisfaction with democracy, suggesting that it is a product of the government's economic performance.
-
-The conceptualization of political discontent as a lack of diffuse support for the political system has important implications.
-First, by focusing on the systemic dimension of political discontent and excluding types of specific support or abstract support for democracy, this conceptualization aligns closely with discussions about the erosion of public confidence in the political system as a whole, beyond mere dissatisfaction with specific authorities or policies.
-This understanding is crucial for identifying the underlying causes of political disaffection and developing targeted interventions to address them.
-Moreover, this conceptualization of political discontent can contribute to recent discussions about democratic backsliding.
-The literature on democratic backsliding has yielded mixed findings regarding whether public opinion can influence the possibility of backsliding [@Tai2024].
-However, previous studies often use abstract public support for democracy as a measurement, which is less satisfying because abstract support for democracy is notoriously affirming.
-In this context, political discontent, defined as a lack of diffuse support for the system [@claassen2020does], can serve as a better conceptual tool for discussing how public opinion relates to democratic backsliding.
-Additionally, previous studies have shown that diffuse political discontent is strongly associated with citizens participating in or endorsing regime-challenging activities, which ultimately pose a threat to the social and political order [@craig1980mobilization].
-A clearer understanding of the nature and consequences of diffuse political discontent can thus inform efforts to strengthen democratic resilience and responsiveness in the face of growing public disaffection with political systems worldwide.
-For this, this paper measures political discontent cross-nationally and further examines various sources of political discontent.
-
-# Estimates {.unlisted .unnumbered}
+To make this multiplicity of different survey items useful, we estimate a latent variable model of the aggregated survey responses using the Dynamic Comparative Public Opinion (DCPO) model elaborated in @Solt2020c. 
+The DCPO model is a population-level two-parameter ordinal logistic item response theory model with country-specific item-bias terms; it has previously been used to generate comparable estimates across countries and time of such attitudes as gender egalitarianism [@Woo2023] and political interest [@Hu2024].^[
+A comprehensive description of the DCPO model is presented in Appendix\nobreakspace{}\@ref(dcpo) and @Solt2020c [, 3-8].]
 
 ```{r dcpo_input, eval=FALSE, include=FALSE, results=FALSE}
 dcpo_input <- DCPOtools::format_dcpo(dcpo_input_raw1,
@@ -907,7 +918,9 @@ res_c <- theta_summary %>%
     length()
 ```
 
-```{r cs, fig.cap="PD Scores, Most Recent Available Year \\label{cs_mry}", fig.height=10, fig.width=8}
+Using the `DCPOtools` package for R [@Solt2019], we generated estimates of the public's political discontent in all `r res_cy` country-years spanned by the source data, which we call Public Political Discontent (PPD) scores.
+
+```{r cs, fig.cap="PPD Scores, Most Recent Available Year \\label{cs_mry}", fig.height=10, fig.width=8, eval=FALSE}
 n_panes <- 2
 axis_text_size <- 10
 
@@ -960,49 +973,8 @@ bottom5 <- p1_data %>%
 
 ```
 
-```{r ts, fig.cap="Political Discontent Scores Over Time Within OECD Democracies \\label{ts}", fig.height=9}
-
-load(here::here("data", "theta_summary.rda"))
-
-oecd_countries <- c("Australia", "Austria", "Belgium",
-                    "Canada", "Chile", "Colombia",
-                    "Costa Rica", "Czechia", "Denmark",
-                    "Estonia", "Finland", "France", 
-                    "Germany", "Greece", "Hungary",
-                    "Iceland", "Ireland", "Israel",
-                    "Italy", "Japan", "South Korea",
-                    "Latvia", "Lithuania", "Luxembourg",
-                    "Mexico", "Netherlands", "New Zealand",
-                    "Norway", "Poland", "Portugal", 
-                    "Slovakia", "Slovenia", "Spain",
-                    "Sweden", "Switzerland", "Turkey", 
-                    "United Kingdom", "United States")
-
-c_res <- theta_summary %>% 
-    filter(country %in% oecd_countries) %>%
-    group_by(country) %>% 
-    mutate(last_mean = last(mean)) %>% 
-    ungroup() %>% 
-    mutate(country = fct_reorder(country, last_mean, .desc = TRUE))
-
-ggplot(data = c_res, aes(x = year, y = mean)) +
-    theme_bw() +
-    theme(legend.position = "none") +
-    coord_cartesian(xlim = c(1968, 2024), ylim = c(0, 100)) +
-    labs(x = NULL, y = "Political Discontent") +
-    geom_ribbon(data = c_res, aes(ymin = q10, ymax = q90, linetype=NA), alpha = .25) +
-    geom_line(data = c_res) +
-    facet_wrap(~country, ncol = 5) +
-    theme(axis.text.x  = element_text(size=7,
-                                      angle = 90,
-                                      vjust = .45,
-                                      hjust = .95),
-          strip.background = element_rect(fill = "white", colour = "white")) +
-    plot_annotation(caption = "Note: Countries are ordered by their most recent political discontent score; gray shading represents 80% credible intervals.")
-```
 
 # Validating Public Political Discontent {.unlisted .unnumbered}
-
 That we can *generate* estimates of political discontent does not automatically mean that they are suitable for analysis.
 Validation tests of this novel latent variable, like for any new measure, are crucial [see, e.g., @Hu2023].
 @fig-int-convergent, @fig-ext-convergent, and @fig-construct provide evidence of this measure's validity with tests of convergent validation and construct validation.
@@ -1165,7 +1137,7 @@ The middle panel compares PPD scores to responses to the question with the most 
 Finally, the right panel evaluates how well the PPD scores capture change over time by focusing on the item with the largest number of observations for a single country in the source data: Sweden's SOM surveys' question, "How much confidence do you have in the way the following institutions and groups do their job: The National Parliament?" In all three cases, the correlations, estimated taking into account the uncertainty in the measures, are strong.
 
 In @fig-ext-convergent, we present three 'external' convergent validation tests, comparing PPD scores to responses to survey items that were *not* included in the source data: items that asked respondents to evaluate "democracy" in their countries.
-We excluded these questions so as to avoid assuming that respondents conflate the current political system of their country with democracy.
+Like @Jennings2017, we excluded these questions not least to avoid assuming that respondents identify the current political system of their country with democracy.
 Nevertheless, evaluations of the democracy of respondents' countries provide good alternate indicators of the extent of political discontent.
 The left panel shows data from three rounds of the International Social Survey Program's National Identity module, which asked respondents how proud they were of how democracy works in their country.
 In the center, we plot how much satisfaction respondents reported with "the way democracy is developing" in their countries in the World Values Surveys and European Values Surveys.
@@ -1256,16 +1228,63 @@ With the success of these tests of convergent validation, we turn to construct v
 Construct validation refers to demonstrating that the tested measure is empirically associated with measures of *other* concepts believed causally related to the concept the measure seeks to represent [@Adcock2001, 542].
 Discontent with the political system should be closely tied to evaluations of recent government policy performance.
 
-@fig-construct depicts the relationships between PPD and three survey items from the WVS and EVS on other aspects of political engagement that are expected to have causal relationships with political interest [see @Kittilson2010, 995]: in the left panel, following political news on television, radio, and newspapers; in the center panel, discussing politics with friends; and on the right, feeling politics is important to one's life.
-These relationships are all positive and are moderate to strong.
+@fig-construct depicts the relationships between PPD scores and three survey items from the International Social Survey Program module on the Role of Government on the extent of the government's success in providing health care, providing for the elderly, and in protecting the environment.
+All of these relationships are negative as expected and are moderate to strong in magnitude.
 The PPD scores perform very well in validation tests.
 
+
 # Explaining Political Dissatisfaction {.unlisted .unnumbered}
-How to explain these disparities in public political discontents across countries? What are the drivers of the changes over years?
+
+In @fig-ts, we present the evolution of PPD scores over time for a group of countries where discontent has attracted particular public and scholarly concern: the advanced democracies of the OECD.
+How to explain these differences in public political discontent across countries?
+What are the drivers of the changes over years?
 The literature presents various perspectives on how political and economic contexts may affect public political discontent.
-The first argument deals with the role of election.
-Elections provide an opportunity for people to turning their dissatisfaction into ballots for candidates or parties that promise changes to the system.
-Discontented citizens, as a result, gain political fulfillment through voting for a party voicing their discontents [@van2003lpf; @rooduijn2016expressing].
+
+```{r ts, fig.cap="Political Discontent Scores Over Time Within OECD Democracies", fig.height=9}
+#| label: fig-ts
+
+load(here::here("data", "theta_summary.rda"))
+
+oecd_countries <- c("Australia", "Austria", "Belgium",
+                    "Canada", "Chile", "Colombia",
+                    "Costa Rica", "Czechia", "Denmark",
+                    "Estonia", "Finland", "France", 
+                    "Germany", "Greece", "Hungary",
+                    "Iceland", "Ireland", "Israel",
+                    "Italy", "Japan", "South Korea",
+                    "Latvia", "Lithuania", "Luxembourg",
+                    "Mexico", "Netherlands", "New Zealand",
+                    "Norway", "Poland", "Portugal", 
+                    "Slovakia", "Slovenia", "Spain",
+                    "Sweden", "Switzerland", "Turkey", 
+                    "United Kingdom", "United States")
+
+c_res <- theta_summary %>% 
+    filter(country %in% oecd_countries) %>%
+    group_by(country) %>% 
+    mutate(last_mean = last(mean)) %>% 
+    ungroup() %>% 
+    mutate(country = fct_reorder(country, last_mean, .desc = TRUE))
+
+ggplot(data = c_res, aes(x = year, y = mean)) +
+    theme_bw() +
+    theme(legend.position = "none") +
+    coord_cartesian(xlim = c(1968, 2024), ylim = c(0, 100)) +
+    labs(x = NULL, y = "Political Discontent") +
+    geom_ribbon(data = c_res, aes(ymin = q10, ymax = q90, linetype=NA), alpha = .25) +
+    geom_line(data = c_res) +
+    facet_wrap(~country, ncol = 5) +
+    theme(axis.text.x  = element_text(size=7,
+                                      angle = 90,
+                                      vjust = .45,
+                                      hjust = .95),
+          strip.background = element_rect(fill = "white", colour = "white")) +
+    plot_annotation(caption = "Note: Countries are ordered by their most recent political discontent score; gray shading represents 80% credible intervals.")
+```
+
+The first argument deals with the role of elections.
+Elections provide an opportunity for people to turning their dissatisfaction into ballots for candidates or parties that promise changes in the system.
+Discontented citizens, as a result, gain political fulfillment through voting for a party that voices their discontent [@van2003lpf; @rooduijn2016expressing].
 From this perspective, public political discontent should be expected to be lower in years of national elections, in which some of the existing discontent could be ameliorated.
 However, existing studies also suggest that the effect of election time on public political discontent could be the opposite.
 Campaigns expose citizens to more political messages, a significant proportion of which criticize the elites and the system [@lau2007effects; @lopez2019political].
@@ -1280,7 +1299,8 @@ If so, the publics in countries with parliamentary systems, federalism, and prop
 Lastly, economic conditions are argued to be salient sources of political discontent [@quaranta2016does].
 For one thing, unfavorable economic conditions fuel social discontent and anxiety about the future among the public, which can easily evolve into anti-establishment sentiment [@kinnvall2022exploring].
 For another, economic indicators are usually used by people to evaluate the performance of the system or government policies [@becher2013economic].
-Hence, poor economic conditions, such as slow growth, high unemployment, and significant income disparities are likely to hurt perceptions of institutional quality and so increase public political discontent.
+Hence, poor economic conditions, such as low average incomes, slow growth, and high unemployment are likely to hurt perceptions of institutional quality and so increase public political discontent.
+Income inequality may work similarly, but such arguments as system justification theory, which contends that greater inequality triggers in the disadvantaged a psychological need to accept and defend the existing system [see, e.g., @Jost2019], and relative power theory [see, e.g., @Solt2008], which instead sees more inequality as increasing the influence of the rich over the attitudes of the poor, suggest that worsening inequality may actually _reduce_ discontent.
 
 The data we use to test these hypotheses are as follows.
 The Democratic Electoral Systems (DES) dataset updated in @Bormann2022 provides information about the timing of elections, yielding a dichotomous variable coded one in election years and zero when no election was held.
@@ -1604,22 +1624,19 @@ eb_obs <- dcpo_input_raw1 %>%
 
 The resulting dataset comprises all thirty-eight OECD countries and a total of `r m1_obs` country-years.
 The number of country-years observed per country ranges from sixteen (Turkey) to forty-three (the United States) consecutive years (mean: `r cy_summary_m1 %>% nth(4) %>% round(1)` years, median: `r cy_summary_m1 %>% nth(3)` years).
-The advantage in data availability over pooling responses to a single question is clear: even among these relatively data-rich countries, the two richest single items available---the Eurobarometer's questions on trust in national parliaments and in political parties---each provide only fewer than half as many country-years for analysis, `r eb_obs` observations, and these Eurobarometer data naturally entirely exclude the nine OECD members outside Europe.
+The advantage in data availability over pooling the responses to a single question is clear: even among these relatively data-rich countries, the two richest single items available---the Eurobarometer's questions on trust in national parliaments and in political parties---each provide only fewer than half as many country-years for analysis, `r eb_obs` observations, and these Eurobarometer data naturally entirely exclude the nine OECD members outside Europe.
 
-<!-- Revise these lines!!! -->
+Pooled time series like these, @Shor2007 demonstrates, are most appropriately analysed using Bayesian multilevel models with varying intercepts for countries and years.
+Varying intercepts for each country account for the heteroskedasticity across our spatial units that is generated by omitted variable bias and other sources while also permitting us to include predictors like parliamentarism and federalism that do not vary over time.
+Varying intercepts for each year take into account 'time shocks' that operate on all of our countries simultaneously [@Shor2007, 171-172]. 
 
-<!-- @Shor2007 demonstrates that such pooled time series are best analyzed using a Bayesian multilevel model including varying intercepts for each country and each year.  -->
+We also use the 'within-between random effects' specification [see @Bell2015].
+This specification involves decomposing each of our time-varying predictors into its country mean and the difference between each country-year value and the country mean.
+The time-varying difference variables capture the short-term effects of the predictors, while the time-invariant country-mean variables reflect their long-run, "historical" effects [@Bell2015, 137].
+As @Bell2015 shows, this is a better approach for addressing omitted variable bias and endogeneity than fixed effects and other commonly used TSCS specifications.
 
-<!-- The former help account for heteroskedasticity across space due to, e.g., omitted variable bias, while permitting the inclusion of time-invariant predictors such as parliamentarism and federalism. -->
-
-<!-- The latter take into account 'time shocks' that operate on all countries simultaneously [@Shor2007, 171-172]. -->
-
-<!-- Further, the 'within-between random effects' specification is employed, meaning each of the time-varying predictors is decomposed into its time-invariant country mean and the difference between each country-year value and this country mean; this specification is superior to fixed effects and other commonly used TSCS specifications for addressing omitted variable bias and endogeneity [@Bell2015]. -->
-
-<!-- The time-varying difference variables capture the short-term effects of the predictors, while the time-invariant country-mean variables reflect their---often different---long-run, "historical" effects [@Bell2015, 137]. -->
-
-Finally, Bayesian analysis allows us to incorporate directly into our model the quantified measurement uncertainty in the data for political discontent and for income inequality, with the estimated values of these two variables treated as random draws from distributions with unknown true means but known standard deviations [@McElreath2016, 425-431; see also @Kurz2023, 15.1.2].
-The model was estimated using the `brms` R package [@Burkner2017].
+Finally, we use a Bayesian analysis that allows us to directly incorporate into our model the quantified measurement uncertainty in the data for political discontent and for income inequality, with the estimated values of these two variables treated as random draws from distributions with unknown true means but known standard deviations [@McElreath2016, 425-431; see also @Kurz2023, 15.1.2].
+We estimate the model using the `brms` R package [@Burkner2017].
 
 ```{r m1plot, fig.cap="Predicting Public Political Discontent in OECD Countries", fig.height = 5, fig.width = 7.5}
 #| label: fig-m1plot
@@ -1649,27 +1666,33 @@ coef_data0_m1 %>%
     plot_annotation(caption = str_wrap(plot_notes, 80))
 ```
 
-_**Revise below, of course**_
 The results of this analysis are displayed in @fig-m1plot.[^
 @tbl-m1 in Appendix\nobreakspace{}@sec-app-numeric, provides a tabular version.]
-The time trend indicates that discontent has been, on average and net of the other included variables, rising over time in these countries by `r get_coef("year", type = "std_coef")` points (95% credible interval: `r get_coef("year", type = "ci")` points).  
+Narratives of increasing political discontent over recent decades find support in these results.
+The time trend indicates that discontent has been, on average and net of the other included variables, rising over time in the OECD countries by `r get_coef("year", type = "std_coef", unstd = TRUE)` points (95% credible interval: `r get_coef("year", type = "ci", unstd = TRUE)` points) per year.
+By this evidence, election years appear to diffuse rather than exacerbate discontent: PPD scores are estimated to be `r get_coef("election", type = "std_coef", abs = TRUE) %>% as.numeric() %>% round(1)` points lower in years with elections, with `r round(p_direction(m1, parameters = "election")[[2]]*100, 1)`% of the posterior distribution less than zero.
 
-The hypothesis that power-sharing institutions yield more public interest in politics is also supported.
-Macrointerest is estimated to be `r get_coef("parl")` points higher in countries with parliamentary systems.
-The point estimate for the difference in macrointerest between countries with and without federalism is estimated be `r get_coef("federal", type = "std_coef")` points, with `r round(p_direction(m1, parameters = "federal")[[2]]*100, 1)`% of the posterior distribution greater than zero.
-And although disproportionality is not estimated to have long-run effects that consistently distinguish countries with more or less proportional electoral results, *changes* in disproportionality appear to have an immediate negative effect: a two-standard-deviation increase in the Gallagher index yields `r get_coef("lsq_diff", type = "std_coef", abs = TRUE)` points less macrointerest (95% c.i.: `r get_coef("lsq_diff", type = "ci")`).
+The hypothesis that power-sharing institutions reduce discontent with politics, on the other hand, finds little support.
+Countries with parliamentary or federal systems do not exhibit less political discontent than those without, and short-run changes in disproportionality do not trigger declines in PPD scores either.
+Countries with higher mean disproportionality did exhibit more discontent than those with lower mean values: a two-standard-deviation higher mean Gallagher index was associated with `r get_coef("lsq_mean", type = "std_coef")` points more political discontent; `r round(p_direction(m1, parameters = "lsq_mean")[[2]]*100, 1)`% of the posterior distribution of this parameter was positive.
 
-Regarding the debate on whether macrointerest is invigorated or instead discouraged by bad times, the evidence of our cross-national analysis of the impact of economic conditions falls on the side of the latter.
-Supporting modernization theory, increases in per capita GDP have a positive short-term effect on aggregate political interest, with a two-standard-deviation increase associated with `r get_coef("gdppc_diff")` points more macrointerest.
-The point estimate for the long-term, historical effect as evidenced by differences in mean levels across countries is found to be `r get_coef("gdppc_mean", type = "std_coef")` points, albeit with only `r round(p_direction(m1, parameters = "gdppc_mean")[[2]]*100, 1)`% of the posterior distribution greater than zero.
-As predicted by relative power theory, the long-term effects of income inequality are strongly negative, with a two-standard-deviation difference across countries associated with `r get_coef("gini_mean", type = "std_coef", abs = TRUE)` points less macrointerest (95% c.i.: `r get_coef("gini_mean", type = "ci")` points).
-Year-to-year changes in income inequality are found to make little difference---it would seem that, from one perspective, the influence of the wealthy over the political agenda does not change on such a short time scale, and from the other, that the public does not react to worsening conditions in the distribution of income with greater interest in its agents' actions.
-The results with regard to growth in the national economy and with regard to unemployment similarly do not provide strong evidence of either negative or positive effects.
-Still, taken as a whole, this evidence indicates that at least with regard to economic conditions, it is good times, not bad ones, that yield more macrointerest.
+The evidence of the importance of economic conditions is, however, strong.
+Even among these advanced economies, countries with greater mean per capita GDP have lower levels of political discontent: a country one standard deviation above the mean is estimated to have a PPD score `r get_coef("gdppc_mean", abs = TRUE)` points lower than a country one standard deviation below the mean.
+In the short run, increases in per capita GDP also appear to reduce discontent, with a two-standard-deviation increase associated with `r get_coef("gdppc_diff", abs = TRUE)` points less political discontent (`r round(p_direction(m1, parameters = "gdppc_diff")[[2]]*100, 1)`% of the posterior distribution of this parameter was negative).
+Although mean GDP growth exhibits no evidence of a long-term influence of growth on discontent, in the short run, discontent moves sharply in the opposite direction as growth: a two-standard-deviation increase in growth yields (`r get_coef("growth_diff")`) points less political discontent.
+Unemployment has major effects on discontent in this analysis.
+The estimate for the long-term, historical effect of unemployment on political discontent as evidenced by differences in mean levels across countries is `r get_coef("unemploy_mean")` points.
+Year-to-year differences in unemployment work similarly: a two-standard-deviation increase in unemployment has an immediate effect of increasing discontent by `r get_coef("unemploy_diff")` points.
+And, although cross-country mean differences show little impact, increases in income inequality over time work to reduce discontent in accordance with the predictions of system justification and relative power theories, with a two-standard-deviation rise prompting a `r get_coef("gini_diff", abs = TRUE)` point fall in PPD scores.
+
 
 # Conclusions {.unlisted .unnumbered}
 
 @Jennings2017: "We are also able to come down against the 'trendless fluctuation' thesis (see Norris [2011]) for Britain, at least if the full postwar period is considered."
+
+
+\pagebreak
+# References {.unlisted .unnumbered}
 
 ::: {#refs-main}
 :::
