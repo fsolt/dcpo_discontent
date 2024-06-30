@@ -420,8 +420,12 @@ This approach allows us to combine information from a multitude of survey questi
 The resulting estimates cover an wide scope - thirty-eight countries and a total of 1217 country-years - enabling both cross-national comparison and over-time analysis.
 We validate our measure by demonstrating its strong correlation between individual survey items, the democratic evaluation survey item not included in our estimation, and the construct believed causally related to political discontent (evaluations of recent government policy performance). 
 
-Following, we explore drivers of political discontent, focusing on election, political institution, and economic factors. Our findings clearly suggest that political discontent has been on the increasing trend over time in developed OECD countries, supporting Foa and Mounk's (2016, 2017) thesis of democratic deconsolidation in developed democracies.  
-Need to discuss the result (I left it blank and will write after the analysis is done).
+Following, we explore the drivers of political discontent, focusing on election, political institutions, and economic factors. 
+Our findings clearly suggest that political discontent has been on an increasing trend over time in developed OECD countries, supporting Foa and Mounk's (2016, 2017) thesis of democratic deconsolidation in developed democracies.
+We also find that election years are associated with lower levels of discontent, suggesting that elections may provide an outlet for expressing dissatisfaction and seeking redress. 
+Economic factors emerge as the strongest drivers of discontent, with higher levels of economic development and growth associated with lower discontent, while unemployment has the opposite effect.
+Additionally, increases in income inequality over time reduce discontent, in accordance with the predictions of system justification and relative power theories. Power-sharing institutions, such as federalism or parliamentarism, appear to have little impact on discontent, although countries with higher disproportionality do exhibit somewhat more discontent. 
+This suggests the greater importance of economic conditions in affecting discontent compared to institutional factors.
 
 By providing a broader examination of political discontent and its determinants, this study contributes to ongoing debates about the trajectories of political discontent across countries and over time.
 A valid and comparable measure of political discontent can enrich future discussions of public opinion, representation, and democratic backsliding.
