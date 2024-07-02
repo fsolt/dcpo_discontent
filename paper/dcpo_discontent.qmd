@@ -416,7 +416,7 @@ Understanding political discontent is therefore crucial for identifying potentia
 Nevertheless, the understanding of the nature, extent, and drivers of political discontent remains debated, with some arguing that the level of political discontent is on a clear declining trend while others claim that political discontent fluctuates without a clear sign of a declining trend [@Jennings2017; @norris2011democratic; @foa2016danger; @foa2017signs].
 
 This paper aims to provide a clearer conceptualization and more rigorous measurement of political discontent using survey data from a wide range of developed countries over several decades. 
-Drawing on David Easton's (1965) classic distinction between diffuse and specific support for political systems, we define political discontent as dissatisfaction with or a lack of diffuse support for the political system as a whole, rather than disapproval of specific authorities or the incumbent government [@Jennings2017].
+Drawing on David Easton's [-@Easton1965] classic distinction between diffuse and specific support for political systems, we define political discontent as dissatisfaction with or a lack of diffuse support for the political system as a whole, rather than disapproval of specific authorities or the incumbent government [@Jennings2017].
 The explicit distinction between diffuse and specific support is highly necessary because they have different levels of variation and different consequences for individuals' political behavior and, in turn, the sustainability of the political system [@citrin1974comment; @miller1974political; @craig1981political; @muller1983discontent].
 Our conceptualization of political discontent encompasses key components of system support, including perceptions of system responsiveness (external efficacy), trust in political institutions and processes, and perceptions of political corruption, all of which are interrelated and collectively contribute to the broader construct of diffuse political discontent.
 
@@ -546,7 +546,7 @@ However, scholars have proposed various conceptualizations or dimensions of poli
 These differences in conceptualization reflect varying analytical purposes, theoretical motivations, and the available opinion survey items at the time.
 
 This paper specifically defines political discontent as dissatisfaction with, or the lack of, diffuse support for the political system [@Jennings2017].
-The primary theoretical motivation for this approach lies in Easton's [@Easton1965] well-known distinction between diffuse and specific political support.
+The primary theoretical motivation for this approach lies in Easton's [-@Easton1965] well-known distinction between diffuse and specific political support.
 Specific support, being object-specific, refers to individuals' satisfaction with the perceived outputs or performance of the incumbent political authorities.
 In contrast, diffuse support is a generalized attachment or support for the political system, serving as a "reservoir of favorable attitudes or goodwill" toward the political system and is not object-specific in nature.
 The theoretical and analytical importance of this distinction is frequently noted in previous research, which found that people with low political trust or negative attitudes toward the government often do not reject the political system and prefer the existing political system to remain unchanged [@citrin1974comment; @miller1974political].
@@ -1708,7 +1708,7 @@ Therefore, it appears that our findings provide sounder conclusions with firmer 
 In addition to our innovative data and empirical findings, this study also contributes to the public opinion literature by offering a clearer conceptualization of political discontent.
 Although the phenomenon of political discontent has attracted extensive studies, there lacks a concept of political discontent that is distinctive from related concepts—such as (the lack of) political trust and (dis)satisfaction with democracy—and gains widespread use in the research field.
 As a result, the various conceptualizations of political discontent, despite serving varying analytical purposes and data availability, lead to seemingly conflicting findings and thus impede further research.
-In this article, we explicitly theorize political discontent as the lack of Easton’s [@Easton1965] diffuse support and spell out what is and is not considered components of the concept.
+In this article, we explicitly theorize political discontent as the lack of Easton’s [-@Easton1965] diffuse support and spell out what are and are not considered components of the concept.
 Our conceptualization provides researchers in the field with references about the possible scope when concerning political discontent.
 
 The time-series cross-national Public Political Discontent (PPD) dataset we have presented in this article, which is available on the Harvard Dataverse, has broad implications for future study.
