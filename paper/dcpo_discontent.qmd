@@ -1811,17 +1811,16 @@ transmute(`Survey\nItem\nCode` = item,
 `Difficulties` = difficulties,
 `Survey Dataset Codes*` = all_surveys) %>% 
 modelsummary::datasummary_df(output = "kableExtra",
-longtable = TRUE, 
+longtable = TRUE,
 title = "Survey Items Used to Estimate Public Political Discontent") %>% 
+  kableExtra::kable_styling(latex_options = c("repeat_header", "striped"),
+                            font_size = 7) %>%
 kableExtra::column_spec(1, width = "7em") %>%
 kableExtra::column_spec(2, width = "4em") %>%
 kableExtra::column_spec(3, width = "13em") %>%
 kableExtra::column_spec(4, width = "16em") %>%
 kableExtra::column_spec(5, width = "4em") %>%
 kableExtra::column_spec(c(6, 7), width = "8em") %>% 
-kableExtra::kable_styling(font_size = 7) %>%
-kableExtra::kable_styling(latex_options = "repeat_header") %>%
-kableExtra::kable_styling(latex_options = "striped") %>%
 kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package (Solt, Hu, and Tai 2019).")
 ```
 
@@ -1839,19 +1838,19 @@ dcpo_input_raw1 %>%
               select(survey, citation),
             by = join_by(survey)) %>%
   arrange(survey) %>% 
-  transmute(`Survey Dataset Code*` = survey %>% 
-              str_replace_all(fixed("_"), "\\_"),
+  transmute(`Survey Dataset Code*` = survey,
             `Citation` = citation %>% 
               str_replace_all("#", "No.") %>% 
               str_replace_all("&", "and") %>% 
               str_replace_all(fixed("_"), "\\_")) %>%
   datasummary_df(title = "Source Survey Information",
-                 longtable = TRUE) %>%
-  kableExtra::kable_styling(latex_options = c("repeat_header", "striped")) %>%
-  # kableExtra::kable_styling(latex_options = "striped") %>%
+                 longtable = TRUE, 
+                 output = "kableExtra") %>%
+  kableExtra::kable_styling(latex_options = c("repeat_header", "striped"),
+                            font_size = 7) %>%
   kableExtra::column_spec(1, width = "12em") %>%
-  kableExtra::column_spec(2, width = "60em") %>%
-  kableExtra::kable_styling(font_size = 7) %>%
+  kableExtra::column_spec(2, width = "55em") %>%
+  kableExtra::kable_styling() %>%
   kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package (Solt, Hu, and Tai 2019).")
 
 ```
