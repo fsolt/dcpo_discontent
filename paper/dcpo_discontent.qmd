@@ -71,8 +71,8 @@ title:  "Public Political Discontent"
 abstract: |
     Public discontent with the political system has become an increasingly salient concern in recent years, with the argument that it undermines democratic stability and effective governance.
     Nevertheless, the understanding of the nature, trends, and drivers of political discontent remains debated, largely reflecting the constraints from available survey data and items in the construction of measurement.
-    This article takes advantage of the state-of-the-art latent-variable modeling to aggregat survey responses and a comprehensive collection of survey data to generate dynamic comparative estimates of public political discontent (PPD) for over a hundred countries over the past four decades.
-    These PPD scores are validated with responses to the individual source-data survey items that were used to generate them as well as the democratic evaluation survey item that was not used in our estimation.
+    This article takes advantage of the state-of-the-art latent-variable modeling to aggregate survey responses and a comprehensive collection of survey data to generate dynamic comparative estimates of public political discontent (PPD) for over a hundred countries over the past four decades.
+    These PPD scores perform well in internal convergent, external convergent, and construct valitation tests.
     Next, a cross-national and longitudinal analysis of PPD in advanced democracies (i.e., OECD countries) highlights that public political discontent has been on a rising trend, rather than merely “trendless fluctuations” as @norris2011democratic claimed.
     Our results reveal that these increased discontents are largely attributable to worsening economic conditions, including low average income, slow growth, and high unemployment rates.
 
@@ -423,15 +423,16 @@ Drawing on David Easton's [-@Easton1965] classic distinction between diffuse and
 The explicit distinction between diffuse and specific support is highly necessary because they have different levels of variation and different consequences for individuals' political behavior and, in turn, the sustainability of the political system [@citrin1974comment; @miller1974political; @craig1981political; @muller1983discontent].
 Our conceptualization of political discontent encompasses key components of system support, including perceptions of system responsiveness (external efficacy), trust in political institutions and processes, and perceptions of political corruption, all of which are interrelated and collectively contribute to the broader construct of diffuse political discontent.
 
-To overcome issues of incomparability and sparseness that often plague survey-based measures of political discontent in the previous studies, we employ the Dynamic Comparative Public Opinion (DCPO) model developed by @Solt2020c to estimate country-year panels of public political discontent in developed OECD countries. 
-This approach allows us to combine information from a multitude of survey questions while accounting for differences in question content and response options. 
-The resulting estimates cover an wide scope - thirty-eight countries and a total of 1217 country-years - enabling both cross-national comparison and over-time analysis.
-We validate our measure by demonstrating its strong correlation between individual survey items, the democratic evaluation survey item not included in our estimation, and the construct believed causally related to political discontent (evaluations of recent government policy performance). 
+To overcome issues of incomparability and sparseness that often plague survey-based measures of political discontent in previous studies, we employ the Dynamic Comparative Public Opinion (DCPO) model developed by @Solt2020c to estimate country-year panels of public political discontent around the globe. 
+This approach allows us to combine information from a multitude of survey questions while accounting for differences in question contents and response options.
+As a result, we generated estimates of the public’s political discontent in all 3,362 country-years spanned by the source data, which we call Public Political Discontent (PPD) scores.
+We validate our PPD scores by demonstrating its strong empirical correlations with the responses to the individual source-data survey items that were used to generate them, the responses to survey items that were not included in the source data (i.e., evaluations of democratic performance in their countries), and the measure of other concept believed causally related to the concept of PPD - evaluations of recent government policy performance. 
+The PPD scores perform well in all validation tests, proving that they are suitable to be used in analysis.
 
-Following, we explore the drivers of political discontent, focusing on election, political institutions, and economic factors. 
+Following, we explore the drivers of political discontent, focusing on elections, political institutions, and economic factors. 
 Our findings clearly suggest that political discontent has been on an increasing trend over time in developed OECD countries, supporting Foa and Mounk's (2016, 2017) thesis of democratic deconsolidation in developed democracies.
 We also find that election years are associated with lower levels of discontent, suggesting that elections may provide an outlet for expressing dissatisfaction and seeking redress. 
-Economic factors emerge as the strongest drivers of discontent, with higher levels of economic development and growth associated with lower discontent, while unemployment has the opposite effect.
+Economic factors emerge as the strongest drivers of discontent, with higher levels of economic development and growth associated with lower discontent, and higher unemployment has the opposite effect.
 Additionally, increases in income inequality over time reduce discontent, in accordance with the predictions of system justification and relative power theories. Power-sharing institutions, such as federalism or parliamentarism, appear to have little impact on discontent, although countries with higher disproportionality do exhibit somewhat more discontent. 
 This suggests the greater importance of economic conditions in affecting discontent compared to institutional factors.
 
@@ -568,7 +569,7 @@ Additionally, the implications of political trust can vary depending on the spec
 For instance, trust in political institutions in general, such as the political party system or politicians or the parliament in general, differs from trust in the incumbent government, which is a measure of specific support, or trust in apolitical institutions such as the judiciary or the police.
 In this context, we consider only distrust in general political institutions as a component of political discontent.
 Similarly, dissatisfaction with political parties or national officeholders in general is also used as a component of political discontent.
-Lastly, recent literature emphasizes the perception of political corruption as a primary source of political discontent, as people perceive political authorities working for their own interests without addressing public demands [@park2011political; @busby2018activating; @hawkins2020activation].
+Lastly, recent literature emphasizes the perception of political corruption as a primary source of political discontent, as people perceive political authorities as working for their own interests without addressing public demands [@park2011political; @busby2018activating; @hawkins2020activation].
 
 It is also worth discussing what is not considered a component of diffuse political discontent.
 Specifically, we exclude political trust in the incumbent government or apolitical institutions, as trust in the government is a type of specific support that fluctuates over time and does not pose a serious threat to the political system [@norris1999critical].
@@ -1317,7 +1318,7 @@ Income inequality may work similarly, but such arguments as system justification
 The data we use to test these hypotheses are as follows.
 The Democratic Electoral Systems (DES) dataset updated in @Bormann2022 provides information about the timing of elections, yielding a dichotomous variable coded one in election years and zero when no election was held.
 We measure three institutional variables in the same fashion as @Kittilson2010.
-Parliamentarism is coded dichotomously, coded one in pure parliamentary systems and zero otherwise, and is sourced from the DES.
+tarism is coded dichotomously, coded one in pure tary systems and zero otherwise, and is sourced from the DES.
 The federalism variable is also dichotomous: countries with strong federal systems [see @Lijphart1999] are coded one and all others coded zero.
 The Gallagher least-squares index of disproportionality, which measures the disparity between parties' vote shares and their seat shares [@Gallagher1991, 40-41; @Gallagher2023], provides our measure of the proportionality of the electoral system.
 We draw data on economic conditions from two sources.
@@ -1596,7 +1597,7 @@ if (!file.exists(here::here("data", "results_m1.rda"))) {
                                           TRUE ~ paste0("b_", name)),
                   var_names = c("Time Trend",
                                 "Election Year",
-                                "Parliamentarism",
+                                "tarism",
                                 "Federalism",
                                 "Disproportionality, Mean",
                                 "Disproportionality, Difference",
@@ -1636,7 +1637,7 @@ eb_obs <- dcpo_input_raw1 %>%
 
 The resulting dataset comprises all thirty-eight OECD countries and a total of `r m1_obs` country-years.
 The number of country-years observed per country ranges from sixteen (Turkey) to forty-three (the United States) consecutive years (mean: `r cy_summary_m1 %>% nth(4) %>% round(1)` years, median: `r cy_summary_m1 %>% nth(3)` years).
-The advantage in data availability over pooling the responses to a single question is clear: even among these relatively data-rich countries, the two richest single items available---the Eurobarometer's questions on trust in national parliaments and in political parties---each provide only fewer than half as many country-years for analysis, `r eb_obs` observations, and these Eurobarometer data naturally entirely exclude the nine OECD members outside Europe.
+The advantage in data availability over pooling the responses to a single question is clear: even among these relatively data-rich countries, the two richest single items available---the Eurobarometer's questions on trust in national ts and in political parties---each provide only fewer than half as many country-years for analysis, `r eb_obs` observations, and these Eurobarometer data naturally entirely exclude the nine OECD members outside Europe.
 
 Pooled time series like these, @Shor2007 demonstrates, are most appropriately analysed using Bayesian multilevel models with varying intercepts for countries and years.
 Varying intercepts for each country account for the heteroskedasticity across our spatial units that is generated by omitted variable bias and other sources while also permitting us to include predictors like parliamentarism and federalism that do not vary over time.
