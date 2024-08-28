@@ -416,7 +416,7 @@ set.seed(324)
 Public discontent with political systems and institutions has become an increasingly salient concern in recent years, with implications for democratic stability and effective governance.
 Widespread political discontent can undermine public confidence in the political process, erode the legitimacy of governing institutions, and create fertile ground for populist and anti-system movements [@mudde2004populist; @miller1974political; @lipset1959some].
 Understanding political discontent is therefore crucial for identifying potential threats to democracy and developing strategies to bolster system support.
-Nevertheless, the understanding of the nature, extent, and drivers of political discontent remains debated, with some arguing that the level of political discontent is on a clear declining trend while others claim that political discontent fluctuates without a clear sign of a declining trend [@Jennings2017; @norris2011democratic; @foa2016danger; @foa2017signs].
+Nevertheless, the understanding of the nature, extent, and drivers of political discontent remains debated, with some arguing that the level of political discontent is on a clear increasing trend while others claim that political discontent fluctuates without a clear sign of any trend [@Jennings2017; @norris2011democratic; @foa2016danger; @foa2017signs].
 
 This paper aims to provide a clearer conceptualization and more rigorous measurement of political discontent using survey data from a wide range of developed countries over several decades. 
 Drawing on David Easton's [-@Easton1965] classic distinction between diffuse and specific support for political systems, we define political discontent as dissatisfaction with or a lack of diffuse support for the political system as a whole, rather than disapproval of specific authorities or the incumbent government [@Jennings2017].
@@ -1318,8 +1318,8 @@ Income inequality may work similarly, but such arguments as system justification
 The data we use to test these hypotheses are as follows.
 The Democratic Electoral Systems (DES) dataset updated in @Bormann2022 provides information about the timing of elections, yielding a dichotomous variable coded one in election years and zero when no election was held.
 We measure three institutional variables in the same fashion as @Kittilson2010.
-tarism is coded dichotomously, coded one in pure tary systems and zero otherwise, and is sourced from the DES.
-The federalism variable is also dichotomous: countries with strong federal systems [see @Lijphart1999] are coded one and all others coded zero.
+Parliamentarism is coded dichotomously, coded one in pure parlimentary systems and zero otherwise, and is sourced from the DES.
+The federalism variable is also dichotomous: countries with strong federal systems [see @lijphart1999patterns] are coded one and all others coded zero.
 The Gallagher least-squares index of disproportionality, which measures the disparity between parties' vote shares and their seat shares [@Gallagher1991, 40-41; @Gallagher2023], provides our measure of the proportionality of the electoral system.
 We draw data on economic conditions from two sources.
 GDP per capita, national GDP growth, and unemployment are from OECD.Stat [@OECD2024].
@@ -1692,7 +1692,7 @@ Countries with higher mean disproportionality did exhibit more discontent than t
 The evidence of the importance of economic conditions is, however, strong.
 Even among these advanced economies, countries with greater mean per capita GDP have lower levels of political discontent: a country one standard deviation above the mean is estimated to have a PPD score `r get_coef("gdppc_mean", abs = TRUE)` points lower than a country one standard deviation below the mean.
 In the short run, increases in per capita GDP also appear to reduce discontent, with a two-standard-deviation increase associated with `r get_coef("gdppc_diff", abs = TRUE)` points less political discontent (`r round(p_direction(m1, parameters = "gdppc_diff")[[2]]*100, 1)`% of the posterior distribution of this parameter was negative).
-Although mean GDP growth exhibits no evidence of a long-term influence of growth on discontent, in the short run, discontent moves sharply in the opposite direction as growth: a two-standard-deviation increase in growth yields (`r get_coef("growth_diff")`) points less political discontent.
+Although mean GDP growth exhibits no evidence of a long-term influence of growth on discontent, in the short run, discontent moves sharply in the opposite direction as growth: a two-standard-deviation increase in growth yields `r get_coef("growth_diff")` points less political discontent.
 Unemployment has major effects on discontent in this analysis.
 The estimate for the long-term, historical effect of unemployment on political discontent as evidenced by differences in mean levels across countries is `r get_coef("unemploy_mean")` points.
 Year-to-year differences in unemployment work similarly: a two-standard-deviation increase in unemployment has an immediate effect of increasing discontent by `r get_coef("unemploy_diff")` points.
@@ -1703,7 +1703,7 @@ And, although cross-country mean differences show little impact, increases in in
 
 The research on public political discontent has witnessed many inconsistent findings regarding its temporal trends, causes, and consequences.
 This inconsistency largely reflects the constraints from available survey data and items in the construction of measurement.
-Taking advantage of the state-of-the-art latent-variable model [Solt2020c], we construct a dynamic comparative measure that clearly reveals the longitudinal trends of public political discontent in democracies are not merely “trendless fluctuations” claimed by @norris2011democratic.
+Taking advantage of the state-of-the-art latent-variable model [@Solt2020c], we construct a dynamic comparative measure that clearly reveals the longitudinal trends of public political discontent in democracies are not merely “trendless fluctuations” claimed by @norris2011democratic.
 As highlighted by our analysis, public political discontent has been on a rising trend in OECD countries.
 These increased discontents are largely attributable to worsening economic conditions, including low average income, slow growth, and high unemployment rates.
 Unlike prior research that relies on single-country [@Jennings2017] evidence, our findings are built upon a measure that draws on the most available information across countries and over time.
