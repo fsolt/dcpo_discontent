@@ -75,7 +75,6 @@ abstract: |
     These PPD scores perform well in internal convergent, external convergent, and construct valitation tests.
     Next, a cross-national and longitudinal analysis of PPD in advanced democracies (i.e., OECD countries) highlights that public political discontent has been on a rising trend, rather than merely “trendless fluctuations” as @norris2011democratic claimed.
     Our results reveal that these increased discontents are largely attributable to worsening economic conditions, including low average income, slow growth, and high unemployment rates.
-
 keywords: 
     - Political discontent
     - Regime stability
@@ -413,8 +412,9 @@ long_corr <- function(x) {
 set.seed(324)
 ```
 
-Public discontent with political systems and institutions has become an increasingly salient concern in recent years, with implications for democratic stability and effective governance.
-Widespread political discontent can undermine public confidence in the political process, erode the legitimacy of governing institutions, and create fertile ground for populist and anti-system movements [@mudde2004populist; @miller1974political; @lipset1959some].
+Public discontent with political systems and institutions has become an increasingly salient concern in recent years, particularly as democracies worldwide face challenges to their stability and effectiveness.
+Scholars and policymakers have debated whether bolstering public support for democracy can stem the tide of democratic backsliding, yet its effectiveness remains contested [@hu2024democracy; @Claassen2020].
+Widespread political discontent—which undermines public confidence in the political process, erodes the legitimacy of governing institutions, and fuels the rise of populism that threatens liberal democracy [@mudde2004populist; @miller1974political; @lipset1959some; @doyle2011legitimacy; @mudderovira2017populism; @urbinati2019political]—may provide a more direct lens for understanding and predicting the erosion of democracy.
 Understanding political discontent is therefore crucial for identifying potential threats to democracy and developing strategies to bolster system support.
 Nevertheless, the understanding of the nature, extent, and drivers of political discontent remains debated, with some arguing that the level of political discontent is on a clear increasing trend while others claim that political discontent fluctuates without a clear sign of any trend [@Jennings2017; @norris2011democratic; @foa2016danger; @foa2017signs].
 
@@ -1716,9 +1716,11 @@ In this article, we explicitly theorize political discontent as the lack of East
 Our conceptualization provides researchers in the field with references about the possible scope when concerning political discontent.
 
 The time-series cross-national Public Political Discontent (PPD) dataset we have presented in this article, which is available on the Harvard Dataverse, has broad implications for future study.
-There is a prevailing concern that rising political discontent potentially nurtures anti-establishment movements [@mudde2004populist] and undermines effective governance [@hetherington1998political].
-Therefore, with the PPD dataset, future research can be conducted to examine how political discontent impacts public political engagement and democratic consolidation and backsliding.
-Further, as the PPD dataset includes most countries in the globe, not just democracies, it also allows future investigation into the potentially varying causes and effects of political discontent in different regime types.
+The growing phenomenon of democratic backsliding across diverse regions has spurred extensive scholarly inquiry into its underlying causes, with public support for democracy often positioned as a central factor. 
+However, findings on the role of public democracy support remain mixed, raising questions about its significance [@hu2024democracy; @Claassen2020].
+Public political discontent can offers a better analytical lens to democratic backsliding as rising political discontent has sparked concenrs that it fosters public support for  populism—frequently a threat to liberal democracy [@mudde2004populist; @urbinati2019political]—and undermines effective governance and political legitimacy [@hetherington1998political; @miller1974political; @lipset1959some].
+With the PPD dataset, researchers can explore how political discontent shapes public political engagement and influences democratic consolidation and backsliding. 
+Moreover, as the dataset encompasses most countries worldwide, including non-democracies, it enables the examination of the potentially varying causes and consequences of political discontent across different regime types.
 
 
 \pagebreak
