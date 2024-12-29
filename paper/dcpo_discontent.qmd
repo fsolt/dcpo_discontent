@@ -569,7 +569,13 @@ Additionally, the implications of political trust can vary depending on the spec
 For instance, trust in political institutions in general, such as the political party system or politicians or the parliament in general, differs from trust in the incumbent government, which is a measure of specific support, or trust in apolitical institutions such as the judiciary or the police.
 In this context, we consider only distrust in general political institutions as a component of political discontent.
 Similarly, dissatisfaction with political parties or national officeholders in general is also used as a component of political discontent.
-Lastly, recent literature emphasizes the perception of political corruption as a primary source of political discontent, as people perceive political authorities as working for their own interests without addressing public demands [@park2011political; @busby2018activating; @hawkins2020activation].
+
+Lastly, recent literature emphasizes the perception of political corruption as a fundamental catalyst for political discontent across political regimes and regions [@Anderson2003; @Elia2022; @Ecker2016; @Carothers2023], as people perceive political authorities as working for their own interests without addressing public demands [@park2011political; @busby2018activating; @hawkins2020activation].
+Citizens demonstrate strong intolerance toward corruption, preferring law-abiding politicians even when this leads to suboptimal policy outcomes [@Breitenstein2024].
+Corruption fuels broader institutional skepticism, leading citizens to attribute their personal hardships—from educational limitations to employment challenges—to systemic governmental failures [@Kolberg2024].
+This corruption-driven resentment shapes electoral behavior and has catalyzed the rise of populist movements, whose leaders weaponize anti-corruption narratives to portray political elites as self-self and disconnected [@Daniele2023].
+In authoritarian contexts, public anger over corruption has served as a crucial mobilizing force that has contributed to regime collapse [@Carothers2023].
+As a universal source of public grievance beyond political systems, perceived corruption serves as an essential indicator for measuring and understanding the root causes of political discontent.
 
 It is also worth discussing what is not considered a component of diffuse political discontent.
 Specifically, we exclude political trust in the incumbent government or apolitical institutions, as trust in the government is a type of specific support that fluctuates over time and does not pose a serious threat to the political system [@norris1999critical].
