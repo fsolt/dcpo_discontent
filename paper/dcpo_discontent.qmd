@@ -780,16 +780,18 @@ The DCPO model is a state-of-the-art population-level two-parameter ordinal logi
 A comprehensive description of the DCPO model is presented in Appendix\nobreakspace{}\@ref(dcpo) and @Solt2020c [, 3-8].]
 
 The underlying logic of the DCPO model is that the probability that an individual responds aﬃrmatively to a survey question is a function of the individual’s score on the latent trait, i.g., political discontent, plus two parameters that characterize the question.
-First, the *difficulty* parameter indicates the level of the latent trait, i.g., political discontent, needed for a respondent to endorse a particular response option of a survey item (question).
+First, the *difficulty* parameter indicates the level of the latent trait needed for a respondent to endorse a particular response option of a survey item (question).
 That each response evinces varying level of political discontent is most easily seen with regard to the ordinal responses to the same survey item.
 For example, responding “strongly agree” to the statement “people like me don’t have any say about what the government does” exhibits more political discontent than choosing “agree,” which is a more discontented response than “disagree,” which in turn is more discontented than “strongly disagree.”
 Moreover, and more importantly, the difficulty parameter varies across different survey items to reflect that a respondent may need to feel greater discontent to endorse a specific response option for one question compared to endorsing the same level of response for another question.
 For example, strongly agreeing that “there is widespread corruption among those who govern the country” likely expresses even more political discontent than strongly agreeing that “people like me can probably vote, but we cannot do anything else to influence politics.”
+
 Second, the *dispersion* parameter accounts for the noisiness (measurement error) in a survey question with respect to the latent trait.
 A question may confuse some respondents or may not align cleanly with the concept of political discontent.
 If such a question is nevertheless used as an indicator of political discontent, it will exhibit high dispersion.
 On the contrary, the lower the dispersion, the better that changes in responses to the question map onto changes in political discontent.
 By incorporating this parameter, we can address concerns that some survey questions selected to construct the discontent measure may not be perfectly associated with it.
+
 In addition, to provide for the possibility that translation issues or cultural
 differences result in the same question being interpreted differently in different countries and regions, the
 DCPO model estimates *country-specific bias* parameters that shift the diﬀiculty of all responses for
