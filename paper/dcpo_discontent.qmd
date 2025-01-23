@@ -1863,7 +1863,7 @@ dcpo_input_raw1 %>%
 ```
 
 
-```{r obs1, fig.cap = "Source Data Observations by Country and Year", fig.height = 9}
+```{r obs1, fig.cap = "Source Data Observations by Country/Region and Year", fig.height = 9}
 #| label: fig-obs1
 
 dcpo_input_plot <- dcpo_input_raw1 %>% 
@@ -1903,7 +1903,12 @@ name = "Observations") +
 labs(x = NULL, y = NULL) +
 scale_x_continuous(breaks=seq(1968, 2024, 4),
 sec.axis = dup_axis()) +
-scale_y_discrete(position = "right") +
+scale_y_discrete(position = "right", 
+                 labels = function(x) { 
+                   x[x == "China"] <- "China Mainland"
+                   x[x == "Hong Kong SAR China"] <- "Hong Kong SAR"
+                   return(x)
+                 }) +
 theme(axis.text.x  = element_text(size = 6),
 axis.text.y  = element_text(size = 7),
 strip.background = element_rect(fill = "white", colour = "white"),
@@ -1916,7 +1921,7 @@ scales = "free_y") +
   plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of public political discontent presented in the main text.", 80))
 ```
 
-```{r obs2, fig.cap = "Source Data Observations by Country and Year, cont.", fig.height = 9}
+```{r obs2, fig.cap = "Source Data Observations by Country/Region and Year, cont.", fig.height = 9}
 #| label: fig-obs2
 
 dcpo_input_plot %>%
