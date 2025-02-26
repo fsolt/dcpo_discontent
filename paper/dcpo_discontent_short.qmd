@@ -762,10 +762,16 @@ The underlying logic of the DCPO model is that the probability that an individua
 In this function, specifically, two parameters that characterize each question, along with country-specific bias parameters, are used to address the issue incomparability of different survey questions across different survey projects and rounds.
 
 First, the *difficulty* parameter accounts the level of the latent trait (i.e., how much political discontent) needed for a respondent to endorse a particular response option of a survey question.
-This parameter varies across different survey questions to reflect that a respondent may need to feel greater discontent to endorse a specific response option for one question compared to endorsing the same level of response for another question.
+That each response evinces varying level of political discontent is most easily seen with regard to the ordinal responses to the same survey item.
+For example, responding “strongly agree” to the statement “people like me don’t have any say about what the government does” exhibits more political discontent than choosing “agree,” which is a more discontented response than “disagree,” which in turn is more discontented than “strongly disagree.”
+Moreover, and more importantly, the difficulty parameter varies across different survey items to reflect that a respondent may need to feel greater discontent to endorse a specific response option for one question compared to endorsing the same level of response for another question.
+For example, strongly agreeing that “there is widespread corruption among those who govern the country” likely expresses even more political discontent than strongly agreeing that “people like me can probably vote, but we cannot do anything else to influence politics.”
+
 Second, the *dispersion* parameter accounts for the noisiness (measurement error) in a survey question with respect to the latent trait.
 A survey question may confuse some respondents or may not align cleanly with the concept of political discontent, reflecting a larger dispersion.
-Therefore, the lower a question’s dispersion, the better that changes in responses to the question map onto changes in public political discontent.
+If such a question is nevertheless used as an indicator of political discontent, it will exhibit high dispersion.
+On the contrary, the lower the dispersion, the better that changes in responses to the question map onto changes in political discontent.
+
 Third, to provide for the possibility that translation issues or cultural differences result in the same question being interpreted differently in different countries, the model estimates *country-specific bias* parameters that shift the diﬀiculty of all responses for a particular question in a particular country.
 Together, the model’s diﬀiculty, dispersion, and country-specific bias parameters work to generate comparable estimates of the latent variable of political discontent from the available but incomparable source data.
 
@@ -906,10 +912,13 @@ These dynamic models smooth the estimates of public political discontent over ti
 Using the `DCPOtools` package for R [@Solt2019], we generated estimates of the public's political discontent in all `r res_cy` country-years spanned by the source data, which we call Public Political Discontent (PPD) scores.
 
 Validation of novel latent variables, as with any new measure, is crucial.
-To this end, we conduct a series of tests to validate our PPD scores.
-These include assessments of internal *convergent validity* (i.e., whether the country-year PPD scores align with the individual-level survey items used to generate them), *external convergent validity* (i.e., whether the PPD scores correlate with individual-level survey items that serve as alternative indicators of political discontent, but were not used in constructing our measure), and *construct validity* (i.e., whether the PPD scores are associated with other concepts believed to be causally related to the construct the measure aims to represent).
-The methods and results of these tests are presented in full in online Appendix\nobreakspace{}@sec-app-validation.
-The PPD scores perform robustly across all validation tests, providing evidence that they are appropriate estimates of the political discontent concept we theorize.
+To this end, we conduct a series of measurement validity tests to validate our PPD scores.
+We start with the tests of convergent validation, which refers to whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
+Specifically, we first perform tests of *internal convergent validity*, that is, whether the country-year PPD scores align with a few key individual-level survey items used to generate them.
+Then, we test our measure's *external convergent validity* by comparing the PPD scores with three individual-level survey items that asked respondents to evaluate “democracy” in their countries and regions - these items were not used in constructing our measure but provide good alternate indicators of the extent of political discontent.
+Last, we turn to *construct validity*, which refers to demonstrating that the tested measure is empirically associated with measures of other concepts believed causally related to the concept the measure seeks to represent [@Adcock2001, 542]. Discontent with the political system should be closely tied to evaluations of recent government policy performance.
+
+The methods and results of these tests are presented in full in online Appendix\nobreakspace{}@sec-app-validation. In summary, the PPD scores perform very robustly across all validation tests, providing evidence that they are appropriate estimates of the political discontent concept we theorize.
 
 ```{r cs, fig.cap="PPD Scores, Most Recent Available Year \\label{cs_mry}", fig.height=10, fig.width=8, eval=FALSE}
 n_panes <- 2
