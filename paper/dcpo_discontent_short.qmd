@@ -58,7 +58,7 @@ editor:
 
 # Authors {.unlisted .unnumbered}
 
--   Haofeng Ma, ORCID: <https://orcid.org/0000-0003-4379-8449>, Postdoctoral Fellow, Institute of Computational Social Science, Chinese University of Hong Kong, Shenzhen, [haofeng-ma\@uiowa.edu](mailto:haofeng-ma@uiowa.edu){.email}
+-   Haofeng Ma, ORCID: <https://orcid.org/0000-0003-4379-8449>, Postdoctoral Fellow, School of Humanities and Social Science, Chinese University of Hong Kong, Shenzhen, [mahaofeng\@cuhk.edu.cn](mailto:mahaofeng@cuhk.edu.cn){.email}
 -   Jeongho Choi, ORCID: <https://orcid.org/0000-0002-8060-7907>, Ph.D. Candidate, Department of Political Science, University of Iowa, [jeongho-choi\@uiowa.edu](mailto:jeongho-choi@uiowa.edu){.email}
 -   Yuehong Cassandra Tai, ORCID: <https://orcid.org/0000-0001-7303-7443>, Postdoctoral Fellow, Center for Social Data Analytics, Pennsylvania State University, [yhcasstai\@psu.edu](mailto:yhcasstai@psu.edu){.email}
 -   Yue Hu, ORCID: <https://orcid.org/0000-0002-2829-3971>, Associate Professor, Department of Political Science, Tsinghua University, [yuehu\@tsinghua.edu.cn](mailto:yuehu@tsinghua.edu.cn){.email}
