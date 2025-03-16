@@ -115,6 +115,8 @@ p_load(
     vroom,
     modelsummary,
     kableExtra,
+    maps,
+    mapproj,
     rnaturalearth, # maps
     rnaturalearthdata, # maps
     sf
@@ -1213,7 +1215,7 @@ if (!file.exists(here::here("data-raw", "oecd_data.rda"))) {
 if (!file.exists(here("data-raw",
                       "swiid9_8",
                       "swiid9_8_summary.csv"))) {
-    download.file("https://dataverse.harvard.edu/api/access/datafile/7878619", "data-raw/swiid9_8.zip")
+    download.file("https://dataverse.harvard.edu/api/access/datafile/10797566", "data-raw/swiid9_8.zip")
     unzip(here("data-raw", "swiid9_8.zip"), exdir = here("data-raw"))
     file.remove(here("data-raw", "swiid9_8.zip"))
 }
