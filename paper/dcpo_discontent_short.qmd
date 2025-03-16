@@ -121,6 +121,7 @@ p_load(
     rnaturalearthdata, # maps
     sf
 ) 
+conflicted::conflicts_prefer(purrr::map)
 
 theme_set(theme_minimal())
 set.seed(313)
@@ -2043,7 +2044,7 @@ modelsummary(m1,
     metrics = c("R2", "RMSE"),
     gof_omit = "[Mm]arg",
     statistic = "conf.int",
-    notes = str_wrap("Unstandardized coefficients with associated 95-percent credible intervals in brackets below.", 80),
+    notes = str_wrap("Unstandardized coefficients with associated 95-percent credible intervals in brackets below.", 100),
     output = "kableExtra") %>% 
     kableExtra::kable_styling(font_size = 10)
 # tinytable::style_tt(fontsize = .6,
