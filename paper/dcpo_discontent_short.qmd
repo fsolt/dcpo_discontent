@@ -1831,7 +1831,7 @@ internal_tscs_plot + internal_cs_plot + internal_ts_plot  +
   patchwork::plot_annotation(caption = "Note: Gray whiskers and shading represent 80% credible intervals.")
 ```
 
-```{r ext_convergent_val_dat, results=FALSE}
+```{r ext_convergent_val_dat, eval=FALSE}
 ext_dat <- read_csv(here("data-raw",
                          "surveys_ext_conv.csv"),
                     col_types = "cccccc") %>% 
