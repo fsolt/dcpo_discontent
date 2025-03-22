@@ -38,13 +38,6 @@ editor_options:
   chunk_output_type: console
 title:  "Macrodiscontent Across Countries"
 # subtitle: |
-abstract: |
-    Public discontent with the political system has become an increasingly salient concern in recent years, with the argument that it undermines democratic stability and effective governance.
-    Nevertheless, the understanding of the nature, trends, and drivers of political discontent remains debated, largely reflecting the constraints from available survey data and items in the construction of measurement.
-    This article takes advantage of the state-of-the-art latent-variable modeling to aggregate survey responses and a comprehensive collection of survey data to generate dynamic comparative estimates of public political discontent (PPD) for over a hundred countries and regions over the past four decades.
-    These PPD scores perform well in internal convergent, external convergent, and construct valitation tests.
-    Next, a cross-national and longitudinal analysis of PPD in advanced democracies (i.e., OECD countries) highlights that public political discontent has been on a rising trend, rather than merely “trendless fluctuations” as @norris2011democratic claimed.
-    Our results reveal that these increased discontents are largely attributable to worsening economic conditions, including low average income, slow growth, and high unemployment rates.
 keywords: 
     - Political discontent
     - Regime stability
@@ -59,7 +52,7 @@ editor:
 # Authors {.unlisted .unnumbered}
 
 -   Haofeng Ma, ORCID: <https://orcid.org/0000-0003-4379-8449>, Postdoctoral Fellow, School of Humanities and Social Science, Chinese University of Hong Kong, Shenzhen, [mahaofeng\@cuhk.edu.cn](mailto:mahaofeng@cuhk.edu.cn){.email}
--   Jeongho Choi, ORCID: <https://orcid.org/0000-0002-8060-7907>, Ph.D. Candidate, Department of Political Science, University of Iowa, [jeongho-choi\@uiowa.edu](mailto:jeongho-choi@uiowa.edu){.email}
+-   Jeongho Choi (Corresponding), ORCID: <https://orcid.org/0000-0002-8060-7907>, Ph.D. Candidate, Department of Political Science, University of Iowa, [jeongho-choi\@uiowa.edu](mailto:jeongho-choi@uiowa.edu){.email}
 -   Yuehong Cassandra Tai, ORCID: <https://orcid.org/0000-0001-7303-7443>, Postdoctoral Fellow, Center for Social Data Analytics, Pennsylvania State University, [yhcasstai\@psu.edu](mailto:yhcasstai@psu.edu){.email}
 -   Yue Hu, ORCID: <https://orcid.org/0000-0002-2829-3971>, Associate Professor, Department of Political Science, Tsinghua University, [yuehu\@tsinghua.edu.cn](mailto:yuehu@tsinghua.edu.cn){.email}
 -   Frederick Solt, ORCID: <https://orcid.org/0000-0002-3154-6132>, Professor, Department of Political Science, University of Iowa, [frederick-solt\@uiowa.edu](mailto:frederick-solt@uiowa.edu){.email}
@@ -79,8 +72,18 @@ Replication data is available on the Harvard Dataverse \[link tbd\], and the wor
 \textbf{Abstract}\par
 }
 \begin{abstract}
-    Public discontent with the political system has become an increasingly salient concern in recent years, with the argument that it undermines democratic stability and effective governance. Nevertheless, the understanding of the nature, trends, and drivers of political discontent remains debated, largely reflecting the constraints from available survey data and items in the construction of measurement. This article takes advantage of the state-of-the-art latent-variable modeling to aggregat survey responses and a comprehensive collection of survey data to generate dynamic comparative estimates of public political discontent (PPD) for over a hundred countries and regions over the past four decades. These PPD scores are validated with responses to the individual source-data survey items that were used to generate them as well as the democratic evaluation survey item that was not used in our estimation. Next, a cross-national and longitudinal analysis of PPD in advanced democracies (i.e., OECD countries) highlights that public political discontent has been on a rising trend, rather than merely “trendless fluctuations” as @norris2011democratic claimed. Our results reveal that these increased discontents are largely attributable to worsening economic conditions, including low average income, slow growth, and high unemployment rates.
+    Public discontent with the political system has become an increasingly salient concern in recent years, with the argument that it undermines democratic stability and effective governance. Nevertheless, the understanding of the nature, trends, and drivers of political discontent remains debated, largely reflecting the constraints from available survey data and items in the construction of measurement. This article takes advantage of the state-of-the-art latent-variable modeling to aggregat survey responses and a comprehensive collection of survey data to generate dynamic comparative estimates of public political discontent (PPD) for over a hundred countries and regions over the past four decades. These PPD scores are validated with responses to the individual source-data survey items that were used to generate them as well as the democratic evaluation survey item that was not used in our estimation. Next, a cross-national and longitudinal analysis of PPD in advanced democracies (i.e., OECD countries) highlights that public political discontent has been on a rising trend, rather than merely “trendless fluctuations” as Norris (2011) claimed. Our results reveal that these increased discontents are largely attributable to worsening economic conditions, including low average income, slow growth, and high unemployment rates.
 \end{abstract}
+
+\vspace{1em}
+{\centering
+\textbf{Significance Statement}\par
+}
+\vspace{0.5em}
+\begin{quote}
+Public discontent with political systems poses a growing threat to democratic stability, yet fragmented and inconsistent survey data have hampered efforts to track and understand this discontent. This study introduces the first comprehensive, cross-national, and over-time measure of political discontent—Public Political Discontent (PPD) scores—for OECD advanced democracies over the past four decades. Using advanced latent-variable modeling, the research reveals a clear and consistent rise in discontent, largely driven by worsening economic conditions. These findings challenge previous claims of “trendless fluctuations” in levels of political discontent and offer a powerful new tool for understanding the roots of democratic backsliding and the global rise of anti-system sentiment.
+\end{quote}
+\vspace{1em}
 
 \renewcommand{\baselinestretch}{1.5}
 \selectfont
@@ -535,7 +538,7 @@ Corruption is also a key driver of political discontent, as it fuels perceptions
 Resentment toward corruption fosters broader skepticism toward political institutions and the system, shaping electoral behavior—such as voting for populist elites who weaponize anti-corruption and anti-establishment narratives [@Breitenstein2024; @Daniele2023; @Kolberg2024]. 
 In authoritarian regimes, corruption has also sparked public protests that led to regime collapse [@Carothers2023]. 
 
-Notably, this paper excludes support for democracy as a component of political discontent, as it is too widespread among the public to serve as a useful measure of system support or a predictor of systemic change [@Dalton2007understanding; @Inglehart2003solid].
+Notably, this paper excludes support for democracy as a component of political discontent, as it is too widespread among the public to serve as a useful measure of system support or a predictor of systemic change [@dalton2007understanding; @inglehart2003solid].
 Satisfaction with democracy is also excluded because it aligns more closely with incumbent government performance than with systemic legitimacy [@van2020long; @singh2023satisfaction]. 
 For example, economic conditions heavily influence this measure, further limiting its utility [@quaranta2016does].
 
@@ -1020,7 +1023,8 @@ ggplot(data = c_res, aes(x = year, y = mean)) +
                                       vjust = .45,
                                       hjust = .95),
           strip.background = element_rect(fill = "white", colour = "white")) +
-    plot_annotation(caption = "Note: Countries are ordered by their most recent political discontent score; gray shading represents 80% credible intervals.")
+    plot_annotation(caption = str_wrap("Note: Countries are ordered by their most recent political discontent score; gray shading represents 80% credible intervals.", 80))
+
 ```
 
 The first argument deals with the role of elections.
@@ -1924,7 +1928,7 @@ In the center, we plot how much satisfaction respondents reported with "the way 
 The right draws on data from the Comparative Study of Electoral Systems about how many respondents were at least fairly satisfied "with the way democracy works" in their country.
 Across countries and years and all three of these survey items, our latent-variable measure of political discontent is strongly negatively correlated with aggregate positive evaluations of democracy.
 
-```{r construct_val_dat, results=FALSE}
+```{r construct_val_dat, eval=FALSE}
 construct_dat <- read_csv(here("data-raw",
                                "surveys_construct.csv"),
                           col_types = "cccccc") %>% 
