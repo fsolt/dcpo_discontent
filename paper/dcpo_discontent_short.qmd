@@ -521,51 +521,51 @@ covered_share_of_spanned <- {back_to_numeric(n_cy)/back_to_numeric(spanned_cy) *
 
 # Conceptualizing Political Discontent {.unlisted .unnumbered}
 
-Public political discontent is widely recognized as crucial for the stability of a political system.
-@lipset1959some argues that public belief in the system's legitimacy is essential for democratic survival.
-Similarly, @miller1974political maintains that a democratic political system cannot endure without majority public support, as growing political discontent increases the potential for revolutionary changes to the political and social system.
-Additionally. widespread political discontent also complicates effetive governance, which potentially erode public perception of legitimary of poliitcal system in the long term [@hetherington1998political].
+Public political discontent is widely recognized as a critical factor affecting the stability of political systems.
+@lipset1959some argues that public belief in a system's legitimacy is essential for democratic survival.
+Similarly, @miller1974political maintains that a democratic political system cannot endure without majority support, as increasing political discontent among public raises the potential for revolutionary changes to their political and social system.
+Widespread political discontent also complicates effective governance, which in turn reinforces dissatisfaction and ultimately erodes public perceptions of the system’s legitimacy over time [@hetherington1998political].
 These concerns have driven extensive research on its contents, sources and implications. 
-However, scholars conceptualize political discontent differently, from a lack of diffuse support to low exteral efficacy, democratic deficit, and political trust issues [@easton1975re; @muller1983discontent; @norris2011democratic; @jennings2016dimensions]. 
+However, scholars have conceptualize political discontent in various ways, ranging from a lack of diffuse support for the political system to perceptions of low responsiveness, democratic deficits, political distrust, and dissatisfaction with the incumbent government [@easton1975re; @muller1983discontent; @norris2011democratic; @jennings2016dimensions]. 
 These differences in conceptualization reflect varying analytical purposes, theoretical motivations, and the available opinion survey items at the time.
 
-This paper defines political discontent as dissatisfaction with, or the lack of, diffuse support for the political system [@Jennings2017], drawing on Easton's [-@Easton1965] distinction between diffuse and specific political support.
-While specific support refers to satisfaction with incumbent performance, diffuse support reflects broader system legitimacy and serves as a ‘reservoir of favorable attitudes or goodwill’ toward the political system.
-The theoretical importance of this distinction is well noted in the literature, as they found low satisfaction with or trust in the incumbent government often fluctuates without systematic pattern and does not always translate into rejection of the system [@citrin1974comment; @miller1974political; @craig1981political]. 
-Thus, scholars argue that specific support is variable and less likely to pose a systemic threat to the regime's survival as democracy allows people to express their political dissatisfaction at the ballot box and change politicians in power without fundamentally altering the system. [@muller1983discontent].
+This paper defines political discontent as dissatisfaction with, or the lack of, diffuse support for a political system, primarily drawing on Easton's [-@Easton1965] influential distinction between diffuse and specific political support.
+While specific support refers to satisfaction with incumbent performance, diffuse support concerns broader system legitimacy and serves as a ‘reservoir of favorable attitudes or goodwill’ toward a political system.
+The theoretical importance of this distinction is well noted in the literature.
+Scholars have found that low satisfaction with, or trust in, the incumbent government often fluctuates without a systematic pattern and does not necessarily translate into rejection of the regime itself [@citrin1974comment; @miller1974political; @craig1981political]. 
+Consequently, specific support is considered variable and less threatening to regime stability, as democratic institutions allow citizens to express dissatisfaction through elections and peacefully change political leadership [@muller1983discontent].
+On the other hand, the erosion of diffuse support provides the public with a normative incentive to pursue radical change to the political system as a whole.
+In this regard, @Jennings2017 emphasize that defining discontent in terms of diffuse support enables researchers to distinguish between temporary dissatisfaction and a sustained erosion of system-level legitimacy that could pose a systemic threat.
 
-However, @muller1983discontent argues that diffuse discontent motivates systemic change. 
-@Jennings2017 emphasizes that distinguishing between declining diffuse versus specific support is key to understanding systemic threats.
+Diffuse political discontent comprises several related yet distinct components: externalv efficacy (evaluation of the responsiveness of political authorities in general), evaluation of the trustworthiness and integrity of political authorities, and perceptions of political corruption [@craig1981political; @muller1983discontent; @park2011political]. 
+External efficacy, as one of key driver of political discontent, is the belief that the system is unresponsive to the public and prioritizes its own or special interests, which increases the likelihood of the public participating in or endorsing regime-challenging activities that threaten the social and political order [@craig1980mobilization; @jennings2016dimensions]. 
+Recent studies of populism also highlight that low external efficacy is a main source of anti-system sentiments among populist supporters [@mudde2004populist]. 
+Political trust, often used as a measure of political discontent, is conceptually associated with external efficacy but operates on a different dimension.
+Specifically, while external efficacy concerns whether the political system functions according to public demands, political trust concerns whether political authorities act in the public interest regardless of public inputs [@craig1979efficacy]. 
+Yet, implications of political trust can vary depending on the specific referents of trust [@van2017political].
+For instance, trust in political institutions as a system, such as the party system, politicians, or parliament in general, differs from trust in the incumbent government, as the latter reflects specific support, fluctuates with political cycles, and does not threaten systemic stability [@norris1999critical].
 
-
-The theoretical importance of this distinction is frequently noted in previous research, which found that people with low political trust or negative attitudes toward the government often do not reject the political system and prefer the existing political system to remain unchanged [@citrin1974comment; @miller1974political].
-Furthermore, 
-
-On the other hand, @muller1983discontent point out that diffuse political discontent provides the public with a normative incentive to participate in radical changes to the political system as a whole.
-In this regard, @Jennings2017 points out that conceptualizing political discontent as a lack of diffuse support enables researchers to examine whether there is a sustained decline in diffuse support that could pose a threat to the political system, or if there is merely a decline in specific support that is unremarkable and arguably fluctuates "normally."
-
-
-
-The concept of political discontent also includes external efficacy, trust in political authorities, and corruption perceptions [@craig1981political; @muller1983discontent; @park2011political]. 
-A primary source for discontent is the belief that the system is unresponsive, driving support for regime-challenging activities [@craig1980mobilization; @jennings2016dimensions]. 
-Populism studies also highlight low external efficacy is a main source of anti-system sentiments among populist supporters [@mudde2004populist]. 
-While external efficacy assesses system responsiveness, political trust concerns whether authorities act in the public interest regardless of public inputs [@craig1979efficacy]. 
-Implications of political trust can vary depending on the specific referents of trust [@van2017political].
-For instance, trust in political institutions as a system—such as the party system, politicians, or parliament in general—differs from trust in government, as the latter reflects specific support, fluctuates with political cycles, and does not threaten systemic stability [@norris1999critical].
-Corruption is also a key driver of political discontent, as it fuels perceptions that authorities prioritize personal gain over public needs [@Anderson2003; @Ecker2016; @Carothers2023]. 
+Literature also emphasizes the perception of political corruption as an important factor for political discontent across political regimes and regions [@Anderson2003; @Elia2022; @Ecker2016; @Carothers2023], as people perceive political authorities as working for their own interests over public interests [@park2011political; @busby2018activating; @hawkins2020activation].
 Resentment toward corruption fosters broader skepticism toward political institutions and the system, shaping electoral behavior—such as voting for populist elites who weaponize anti-corruption and anti-establishment narratives [@Breitenstein2024; @Daniele2023; @Kolberg2024]. 
-In authoritarian regimes, corruption has also sparked public protests that led to regime collapse [@Carothers2023]. 
+In authoritarian regimes, public anger over political corruption has often sparked public protests that led to regime collapse [@Carothers2023].
 
-Notably, this paper excludes support for democracy as a component of political discontent, as it is too widespread among the public to serve as a useful measure of system support or a predictor of systemic change [@dalton2007understanding; @inglehart2003solid].
-Satisfaction with democracy is also excluded because it aligns more closely with incumbent government performance than with systemic legitimacy [@van2020long; @singh2023satisfaction]. 
-For example, economic conditions heavily influence this measure, further limiting its utility [@quaranta2016does].
+It is also worth discussing what is not considered a component of diffuse political discontent.
+Specifically, we exclude political trust in the incumbent government or apolitical institutions, as trust in the government is a type of specific support that fluctuates over time and does not pose a serious threat to the political system [@norris1999critical].
+Additionally, unlike previous studies that use support for democracy in the abstract as a predictor for the survival of democratic regimes [@claassen2020does], we do not include it as a component of political discontent.
+This is because support for democracy in the abstract is too prevalent in every country to be a meaningful or analytically useful measure of political discontent [@dalton2007understanding; @inglehart2003solid].
+Lastly, we exclude satisfaction with democracy in the abstract because the literature shows that this measure functions more as a type of specific support.
+People tend to have much higher democratic satisfaction when their preferred politicians or parties win elections, while electoral losers tend to have lower democratic satisfaction [@van2020long; @singh2023satisfaction].
+Moreover, @quaranta2016does indicate that various economic indicators, such as the unemployment rate, GDP growth, inflation, or subjective economic evaluation, are strongly associated with the public's satisfaction with democracy, suggesting that it is a product of the government's economic performance.
 
-Our conceptualization of political discontent, which encompasses key components of system support, better reflects growing concerns about declining confidence in the democratic system among the public. 
-This distinction is crucial for understanding democratic backsliding, as previous research often misuses abstract democratic support as a measure, leading to mixed results [@claassen2020does; @Tai2024]. 
-In contrast, political discontent more accurately captures public sentiment toward systemic stability, as it is strongly associated with regime-challenging activities, highlighting its threat to democratic order [@craig1980mobilization].
-A clearer understanding of its sources and consequences can inform strategies to strengthen democratic resilience. 
-This paper examines political discontent cross-nationally and explores its key determinants.
-
+The conceptualization of political discontent as a lack of diffuse support for the political system carries important theoretical and empirical implications.
+By encompassing multiple dimensions of system-level evaluations, such as external political efficacy, trust in core political institutions, and perceptions of corruption, this definition offers a more accurate reflection of growing concerns about declining public confidence in democratic governance.
+Specifically, our conceptualization underscores the analytical value of political discontent as a comprehensive indicator of how citizens perceive the political system—as illegitimate, untrustworthy, or unresponsive. 
+For these reasons, we argue that political discontent provides a more robust tool for assessing the erosion of confidence in democratic governance.
+This broader conceptualization also contributes meaningfully to ongoing debates about democratic backsliding. 
+While recent studies offer mixed evidence regarding the role of public opinion in democratic erosion [@claassen2020does; @Tai2024], many rely on measures of abstract support for democracy. 
+However, such measures tend to be uniformly high and thus lack the discriminatory power to capture meaningful variation in citizens’ democratic commitment [@dalton2007understanding; @inglehart2003solid]. 
+In contrast, political discontent—defined as a multidimensional absence of diffuse system support—serves as a more nuanced and analytically useful indicator of public sentiment toward the political order. 
+Given its close association with regime-challenging attitudes and behaviors, political discontent functions as a more direct signal of potential threats to democratic stability [@craig1980mobilization].
 
 # Estimating Public Political Discontent {.unlisted .unnumbered}
 
@@ -1453,12 +1453,10 @@ And, although cross-country mean differences show little impact, increases in in
 
 Previous research on political discontent has produced inconsistent findings regarding its trends, causes, and consequences, largely due to conceptual inconsistencies and measurement constraints in available survey data.
 To address these limitations, this article offers a clearer conceptualization of political discontent as the lack of Easton’s [-@Easton1965] diffuse support, explicitly defining what is—and is not—considered part of the concept.
-This conceptual clarity provides a stronger foundation for future research.
-Using a state-of-the-art latent-variable model [@Solt2020c], we construct a dynamic comparative measure of public political discontent in OECD countries.
+Moreover, using a state-of-the-art latent-variable model [@Solt2020c], we construct a dynamic comparative measure of public political discontent in OECD countries.
 The result shows a clear rising trend of political discontent across OECD countries, challenging @norris2011democratic's claim of "trendless fluctuations." 
 Our analysis reveals this rising trend is primarily driven by worsening economic conditions, including low income, slow growth, and high unemployment. 
 Unlike single-country studies [@Jennings2017], our measure integrates cross-national and longitudinal data, offering stronger evidence for ongoing debates on political discontent.
-
 The Public Political Discontent (PPD) dataset, available on Harvard Dataverse, has broad implications.
 Amid rising democratic backsliding, political discontent provides a more precise lens than abstract democratic support for understanding democratic backsliding [@hu2024democracy; @Claassen2020]. 
 Discontent fuels populism [@mudde2004populist; @urbinati2019political] and undermines governance and legitimacy [@hetherington1998political; @miller1974political; @lipset1959some]. 
