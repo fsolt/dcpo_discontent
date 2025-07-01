@@ -533,7 +533,7 @@ Consequently, specific support is considered variable and less threatening to re
 On the other hand, the erosion of diffuse support provides the public with a normative incentive to pursue radical change to the political system as a whole.
 In this regard, @Jennings2017 emphasize that defining discontent in terms of diffuse support enables researchers to distinguish between temporary dissatisfaction and a sustained erosion of system-level legitimacy that could pose a systemic threat.
 
-Diffuse political discontent comprises several related yet distinct components: externalv efficacy (evaluation of the responsiveness of political authorities in general), evaluation of the trustworthiness and integrity of political authorities, and perceptions of political corruption [@craig1981political; @muller1983discontent; @park2011political]. 
+Diffuse political discontent comprises several related yet distinct components: external efficacy (evaluation of the responsiveness of political authorities in general), evaluation of the trustworthiness and integrity of political authorities, and perceptions of political corruption [@craig1981political; @muller1983discontent; @park2011political]. 
 External efficacy, as one of key driver of political discontent, is the belief that the system is unresponsive to the public and prioritizes its own or special interests, which increases the likelihood of the public participating in or endorsing regime-challenging activities that threaten the social and political order [@craig1980mobilization; @jennings2016dimensions]. 
 Recent studies of populism also highlight that low external efficacy is a main source of anti-system sentiments among populist supporters [@mudde2004populist]. 
 Political trust, often used as a measure of political discontent, is conceptually associated with external efficacy but operates on a different dimension.
@@ -771,9 +771,9 @@ cby_map <- world_map %>%
 cby_map + (countries_plot/ ybc_plot) + plot_layout(widths = c(4, 1))
 ```
 
-To make this multiplicity of different survey items useful, we estimate a latent variable model of the aggregated survey responses using the Dynamic Comparative Public Opinion (DCPO) model elaborated in @Solt2020c.
-The DCPO model is a state-of-the-art population-level two-parameter ordinal logistic item response theory model with country-specific item-bias terms; it has previously been used to generate comparable estimates across countries and time of such attitudes as gender egalitarianism [@Woo2023] and political interest [@Hu2024].^[
-A comprehensive description of the DCPO model is presented in Appendix\nobreakspace{}@sec-app-dcpo and @Solt2020c [, 3-8].]
+To make this multiplicity of different survey items useful, we estimate a latent variable model of the aggregated survey responses using the Dynamic Comparative Public Opinion (DCPO) model.
+The DCPO model is a state-of-the-art population-level two-parameter ordinal logistic item response theory model with country-specific item-bias terms; it has previously been used to generate comparable estimates across countries and time of such attitudes as gender egalitarianism [@Woo2023].^[
+A comprehensive description of the DCPO model is presented in Appendix\nobreakspace{}@sec-app-dcpo.]
 
 The underlying logic of the DCPO model is that the probability that an individual responds aﬃrmatively to a survey question is a function of the respondent’s score on the latent trait, i.g., political discontent.
 In this function, specifically, two parameters that characterize each question, along with country-specific bias parameters, are used to address the issue incomparability of different survey questions across different survey projects and rounds.
@@ -920,13 +920,11 @@ res_c <- theta_summary %>%
     length()
 ```
 
-To address sparsity in the source data—unpolled or thinly surveyed years in each
-country and region—DCPO uses simple local-level dynamic linear models, i.e., random-walk priors, for
-each country and region.
+To address sparsity in the source data—unpolled or thinly surveyed years in each country and region—DCPO uses simple local-level dynamic linear models, i.e., random-walk priors, for each country and region.
 That is, within each country and region, each year’s value of public political discontent is modeled
 as the previous year’s estimate plus a random shock.
 These dynamic models smooth the estimates of public political discontent over time and allow estimation even in years for which little or no survey data is available, albeit at the expense of greater measurement uncertainty.
-Using the `DCPOtools` package for R [@Solt2019], we generated estimates of the public's political discontent in all `r res_cy` country-years spanned by the source data, which we call Public Political Discontent (PPD) scores.
+Using the `DCPOtools` package for R, we generated estimates of the public's political discontent in all `r res_cy` country-years spanned by the source data, which we call Public Political Discontent (PPD) scores.
 
 Validation of novel latent variables, as with any new measure, is crucial.
 To this end, we conduct a series of measurement validity tests to validate our PPD scores.
@@ -1070,7 +1068,7 @@ The federalism variable is also dichotomous: countries with strong federal syste
 The Gallagher least-squares index of disproportionality, which measures the disparity between parties' vote shares and their seat shares [@Gallagher1991, 40-41; @Gallagher2023], provides our measure of the proportionality of the electoral system.
 We draw data on economic conditions from two sources.
 GDP per capita, national GDP growth, and unemployment are from OECD.Stat [@OECD2024].
-The Gini index of disposable income inequality comes from the Standardized World Income Inequality Database [@Solt2020].
+The Gini index of disposable income inequality comes from the Standardized World Income Inequality Database.
 
 ```{r des_download}
 if (!file.exists(here("data-raw", "es_data-v41", "es_data-v4_1.csv"))) {
@@ -1451,7 +1449,7 @@ And, although cross-country mean differences show little impact, increases in in
 The research on public political discontent has witnessed many inconsistent findings regarding its temporal trends, causes, and consequences.
 This inconsistency largely reflects conceptual inconsistencies and the constraints from available survey data and items in the construction of measurement.
 To address these limitations, this article offers a clearer conceptualization of political discontent as the lack of Easton’s [-@Easton1965] diffuse support, explicitly defining what is—and is not—considered part of the concept.
-Moreover, using a state-of-the-art latent-variable model [@Solt2020c], we construct a dynamic comparative measure of public political discontent in OECD countries.
+Moreover, using a state-of-the-art latent-variable model, we construct a dynamic comparative measure of public political discontent in OECD countries.
 The result shows a clear rising trend of political discontent across OECD countries, challenging @norris2011democratic's claim that the changes in political discontent are merely "trendless fluctuations." 
 Our analysis clearly reveals the rise of political discontent in the public is driven by worsening economic conditions, including low income, slow growth, and high unemployment. 
 Unlike prior research that relies on single-country evidence [@Jennings2017], our findings are built upon a measure that draws on the most available information across countries/regions and over time.
@@ -1466,7 +1464,7 @@ Our conceptualization provides researchers in the field with references about th
 
 The time-series cross-national Public Political Discontent (PPD) dataset we have presented in this article, which is available on the Harvard Dataverse, has broad implications for future study.
 The growing phenomenon of democratic backsliding across diverse regions has spurred extensive scholarly inquiry into its underlying causes, with public support for democracy often positioned as a central factor. 
-However, findings on the role of public democracy support remain mixed, raising questions about its significance [@hu2024democracy; @Claassen2020].
+However, findings on the role of public democracy support remain mixed, raising questions about its significance.
 Public political discontent can offers a better analytical lens to democratic backsliding as rising political discontent has sparked concenrs that it fosters public support for  populism—frequently a threat to liberal democracy [@mudde2004populist; @urbinati2019political]—and undermines effective governance and political legitimacy [@hetherington1998political; @miller1974political; @lipset1959some].
 With the PPD dataset, researchers can explore how political discontent shapes public political engagement and influences democratic consolidation and backsliding. 
 Moreover, as the dataset encompasses most countries and regions worldwide, including non-democracies, it enables the examination of the potentially varying causes and consequences of political discontent across different regime types.
@@ -1518,7 +1516,7 @@ These items are listed in @tbl-items below, along with the dispersion ($\alpha$)
 Lower values of dispersion indicate questions that better identify publics with a higher level of trust from those with lower.
 Items have one less difficulty score than the number of response categories.
 
-In accordance with the advice offered by @Hu2022 to avoid data-entry errors by automating data collection, the `DCPOtools` R package [@Solt2019] was used to compile the responses to these questions.
+In accordance with the advice offered by @Hu2022 to avoid data-entry errors by automating data collection, the `DCPOtools` R package was used to compile the responses to these questions.
 The current version of this software facilitates the entire practical data generation process: from facilitating the acquisition of original survey datasets and converting them into R standard format for quicker loading; through standardizing country names, identifying survey years, and extracting the desired survey items; to restructuring the resulting data for analysis with the DCPO model.
 The primary objective is to limit manual interventions, thereby maximizing reproducibility and reducing the error potential inherent in human-operated data preparation tasks.
 The survey dataset codes listed in @tbl-items correspond to those used in that package.
@@ -1576,7 +1574,7 @@ kableExtra::column_spec(3, width = "13em") %>%
 kableExtra::column_spec(4, width = "16em") %>%
 kableExtra::column_spec(5, width = "4em") %>%
 kableExtra::column_spec(c(6, 7), width = "8em") %>% 
-kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package (Solt, Hu, and Tai 2019).")
+kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package.")
 ```
 
 ```{r surveyInfo}
@@ -1604,9 +1602,10 @@ dcpo_input_raw1 %>%
   kableExtra::kable_styling(latex_options = c("repeat_header", "striped"),
                             font_size = 7) %>%
   kableExtra::column_spec(1, width = "12em") %>%
+  kableExtra::column_spec(2, width = "55em") %>% 
   kableExtra::column_spec(2, width = "55em") %>%
   kableExtra::kable_styling() %>%
-  kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package (Solt, Hu, and Tai 2019).")
+  kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package.")
 
 ```
 
@@ -1707,7 +1706,7 @@ scales = "free_y") +
 <!-- [Revise the following text!] -->
 
 A number of recent studies have developed latent variable models of aggregate survey responses based on cross-national survey data [see @Claassen2019; @Caughey2019; @McGann2019; @Kolczynska2024].
-To estimate the extent of political discontent in the public across countries and over time, we employ the latest of these methods that is appropriate for data that is not only incomparable but also sparse, the Dynamic Comparative Public Opinion (DCPO) model elaborated in @Solt2020c.
+To estimate the extent of political discontent in the public across countries and over time, we employ the latest of these methods that is appropriate for data that is not only incomparable but also sparse, the Dynamic Comparative Public Opinion (DCPO) model.
 The DCPO model is a population-level two-parameter ordinal logistic item response theory (IRT) model with country-specific item-bias terms.
 
 DCPO models the total number of survey responses expressing at least as much discontent as response category $r$ to each question $q$ in country $k$ at time $t$, $y_{ktqr}$, out of the total number of respondents surveyed, $n_{ktqr}$, using the beta-binomial distribution:
@@ -1755,7 +1754,7 @@ The sum of $\delta_{kq}$ across all countries $k$ is set to zero for each questi
 \sum_{k = 1}^K \delta_{kq} = 0
 \end{equation}
 ```
-Finally, the logistic function is used to transform $\bar{\theta'}_{kt}$ to the unit interval and so give the bounded mean of political discontent, $\bar{\theta}_{kt}$, which is our parameter of interest here [see @Solt2020c, 3-8].
+Finally, the logistic function is used to transform $\bar{\theta'}_{kt}$ to the unit interval and so give the bounded mean of political discontent, $\bar{\theta}_{kt}$, which is our parameter of interest here.
 
 The DCPO model accounts for the incomparability of different survey questions with two parameters.
 First, the *difficulty* parameter indicates the level of the latent trait needed for a respondent to endorse a particular response option of a survey item (question).
