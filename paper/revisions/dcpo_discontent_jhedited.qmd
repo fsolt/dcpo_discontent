@@ -1,0 +1,2088 @@
+---
+format:
+  pdf:
+    number-sections: true
+    papersize: a4
+    keep-tex: false
+crossref:
+#  sec-prefix: OSM
+  sec-labels: alpha A
+citeproc: false # to make multibib and wordcount work
+filters:
+  - at: pre-render
+    path: "_extensions/pandoc-ext/multibib/multibib.lua"
+  - at: pre-render
+    path: "_extensions/andrewheiss/wordcount/wordcount.lua"
+validate-yaml: false # for multibib to work
+  # - authors-block
+# reference of multibib: https://www.andrewheiss.com/blog/2023/12/11/separate-bibliographies-quarto/
+bibliography: 
+    main: p_dcpo_trustRegime_main.bib
+    appendix: p_dcpo_trustRegime_app.bib
+citation_package: natbib
+tables: true # enable longtable and booktabs
+fontsize: 12pt
+indent: true
+geometry: margin=1in
+linestretch: 1.5 # double spacing using linestretch 1.5
+citecolor: black
+linkcolor: black
+link-citations: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  dpi: 300
+editor_options: 
+  chunk_output_type: console
+title:  "Macrodiscontent Across Countries"
+# subtitle: |
+keywords: 
+    - Political discontent
+    - Regime stability
+    - Cross-national panel
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+\pagenumbering{gobble}
+
+# Authors {.unlisted .unnumbered}
+
+-   Haofeng Ma, ORCID: <https://orcid.org/0000-0003-4379-8449>, Postdoctoral Fellow, School of Humanities and Social Science, Chinese University of Hong Kong, Shenzhen, [mahaofeng\@cuhk.edu.cn](mailto:mahaofeng@cuhk.edu.cn){.email}
+-   Jeongho Choi (Corresponding), ORCID: <https://orcid.org/0000-0002-8060-7907>, Postdoctoral Researcher, Institute of Political Science, Leibniz University Hannover, [j.choi\@ipw.uni-hannover.de](mailto:j.choi@ipw.uni-hannover.de){.email}
+-   Yuehong Cassandra Tai, ORCID: <https://orcid.org/0000-0001-7303-7443>, Research Assistant Professor, Center for Social Data Analytics, Pennsylvania State University, [yhcasstai\@psu.edu](mailto:yhcasstai@psu.edu){.email}
+-   Yue Hu, ORCID: <https://orcid.org/0000-0002-2829-3971>, Associate Professor, Department of Political Science, Tsinghua University, [yuehu\@tsinghua.edu.cn](mailto:yuehu@tsinghua.edu.cn){.email}
+-   Frederick Solt, ORCID: <https://orcid.org/0000-0002-3154-6132>, Professor, Department of Political Science, University of Iowa, [frederick-solt\@uiowa.edu](mailto:frederick-solt@uiowa.edu){.email}
+
+# Data Availability Statement {.unlisted .unnumbered}
+
+Replication data is available on the Harvard Dataverse \[link tbd\], and the work's complete revision history is available at \url{https://github.com/fsolt/dcpo_discontent}.
+
+\pagebreak
+
+```{=tex}
+\renewcommand{\baselinestretch}{1}
+\selectfont
+\maketitle
+
+{\centering
+\textbf{Abstract}\par
+}
+\begin{abstract}
+    Public discontent with the political system has become an increasingly salient concern in recent years, with the argument that it undermines democratic stability and effective governance. Nevertheless, the understanding of the nature, trends, and drivers of political discontent remains debated, largely reflecting the constraints from available survey data and items in the construction of measurement. This article takes advantage of the state-of-the-art latent-variable modeling to aggregat survey responses and a comprehensive collection of survey data to generate dynamic comparative estimates of public political discontent (PPD) for over a hundred countries and regions over the past four decades. These PPD scores are validated with responses to the individual source-data survey items that were used to generate them as well as the democratic evaluation survey item that was not used in our estimation. Next, a cross-national and longitudinal analysis of PPD in advanced democracies (i.e., OECD countries) highlights that public political discontent has been on a rising trend, rather than merely “trendless fluctuations” as Norris (2011) claimed. Our results reveal that these increased discontents are largely attributable to worsening economic conditions, including low average income, slow growth, and high unemployment rates.
+\end{abstract}
+
+\renewcommand{\baselinestretch}{1.5}
+\selectfont
+\pagenumbering{arabic}
+```
+```{r setup, include=FALSE}
+if (!require(pacman)) install.packages("pacman")
+library(pacman)
+p_install(janitor, force = FALSE)
+#p_install_gh(c("fsolt/DCPOtools"), force = FALSE)
+if (!require(posterior))
+    install.packages("posterior")
+p_load(
+    DCPOtools,
+    cmdstanr,
+    tidyverse,
+    here,
+    rio,
+    countrycode,
+    patchwork,
+    ggthemes,
+    ggdist,
+    imputeTS,
+    rsdmx,
+    osfr,
+    tabulapdf,
+    brms,
+    bayestestR,
+    tidybayes,
+    repmis,
+    rvest,
+    vroom,
+    modelsummary,
+    kableExtra,
+    maps,
+    mapproj,
+    rnaturalearth, # maps
+    rnaturalearthdata, # maps
+    sf
+) 
+conflicted::conflicts_prefer(purrr::map)
+
+theme_set(theme_minimal())
+set.seed(313)
+
+conflicted::conflicts_prefer(dplyr::filter,
+                             dplyr::select,
+                             posterior::sd,
+                             posterior::mad,
+                             DCPOtools::extract_dcpo_results)
+```
+
+```{r define_funs}
+# define functions
+validation_plot <- function(v_data_raw,
+                            lab_x = 38, lab_y = 92,
+                            theta_summary, theta_results,
+                            survey = TRUE) {
+    
+    # defaults per https://stackoverflow.com/a/49167744/2620381
+    if ("theta_summary" %in% ls(envir = .GlobalEnv) & missing(theta_summary))
+        theta_summary <- get("theta_summary", envir = .GlobalEnv)
+    if ("theta_results" %in% ls(envir = .GlobalEnv) & missing(theta_results))
+        theta_results <- get("theta_results", envir = .GlobalEnv)
+    
+    median_val <- Vectorize(function(x) median(1:x),
+                            vectorize.args = "x")
+    if (survey) {    
+        v_vars <- v_data_raw %>% 
+            select(item0 = item) %>% 
+            unique() %>% 
+            mutate(v_val = str_extract(item0, "\\d+") %>% 
+                       as.numeric() %>% 
+                       median_val(.) %>%
+                       `+`(.6) %>% 
+                       round())
+        
+        validation_summarized <- v_data_raw %>% 
+            DCPOtools::format_dcpo(scale_q = v_vars$item0[[1]], # these arguments are required
+                                   scale_cp = 1) %>% # but they don't matter
+            pluck("data") %>% 
+            mutate(item0 = str_remove(item, " \\d or higher"),
+                   title = factor(v_data_raw %>%
+                                      pull(title) %>%
+                                      first()), 
+                   levels = v_data_raw %>%
+                       pull(title) %>%
+                       unique(),
+                   neg = v_data_raw %>% 
+                       pull(neg) %>% 
+                       first) %>% 
+            right_join(v_vars, by = "item0") %>%
+            arrange(title) %>% 
+            filter(str_detect(item, paste(v_val, "or higher"))) %>%
+            mutate(iso2c = countrycode::countrycode(country,
+                                                    origin = "country.name",
+                                                    destination = "iso2c",
+                                                    warn = FALSE),
+                   prop = if_else(neg, 1-y_r/n_r, y_r/n_r),
+                   se = sqrt((prop*(1-prop))/n),
+                   prop_90 = prop + qnorm(.9)*se,
+                   prop_10 = prop - qnorm(.9)*se) %>%
+            inner_join(theta_summary %>% select(-kk, -tt), by = c("country", "year"))
+    } else {
+        validation_summarized <- v_data_raw %>% 
+            mutate(iso2c = countrycode::countrycode(country,
+                                                    origin = "country.name",
+                                                    destination = "iso2c",
+                                                    warn = FALSE),
+                   prop = prop,
+                   se = se,
+                   prop_90 = prop + qnorm(.9)*se,
+                   prop_10 = prop - qnorm(.9)*se) %>%
+            inner_join(theta_summary %>% select(-kk, -tt), by = c("country", "year"))
+    }
+    
+    validation_cor <- theta_results %>%
+        inner_join(validation_summarized %>%
+                       select(country, year, title, prop, se),
+                   by = c("country", "year")) %>% 
+        rowwise() %>% 
+        mutate(sim = rnorm(1, mean = prop, sd = se)) %>% 
+        ungroup() %>% 
+        select(title, theta, sim, draw) %>% 
+        nest(data = c(theta, sim)) %>% 
+        mutate(r = lapply(data, function(df) cor(df)[2,1]) %>% 
+                   unlist()) %>%
+        select(-data) %>% 
+        group_by(title) %>% 
+        summarize(r = paste("R =", sprintf("%.2f", round(mean(r), 2))))
+    
+    if ({validation_summarized %>%
+            pull(country) %>%
+            unique() %>% 
+            length()} > 1) {
+        val_plot <- validation_summarized %>%
+            ggplot(aes(x = mean,
+                       y = prop * 100)) +
+            geom_segment(aes(x = q10, xend = q90,
+                             y = prop * 100, yend = prop * 100),
+                         na.rm = TRUE,
+                         alpha = .2) +
+            geom_segment(aes(x = mean, xend = mean,
+                             y = prop_90 * 100, yend = prop_10 * 100),
+                         na.rm = TRUE,
+                         alpha = .2) +
+            geom_smooth(method = 'lm', formula = 'y ~ x', se = FALSE) +
+            facet_wrap(~ title, ncol = 4) +
+            geom_label(data = validation_cor, aes(x = lab_x,
+                                                  y = lab_y,
+                                                  label = r),
+                       size = 2)
+    } else {
+        val_plot <- validation_summarized %>%
+            ggplot(aes(x = year,
+                       y = mean)) +
+            geom_line() +
+            geom_ribbon(aes(ymin = q10,
+                            ymax = q90,
+                            linetype = NA),
+                        alpha = .2) +
+            geom_point(aes(y = prop*100),
+                       fill = "black",
+                       shape = 21,
+                       size = .5,
+                       na.rm = TRUE) +
+            geom_path(aes(y = prop*100),
+                      linetype = 3,
+                      na.rm = TRUE,
+                      alpha = .7) +
+            geom_segment(aes(x = year, xend = year,
+                             y = prop_90*100, yend = prop_10*100),
+                         na.rm = TRUE,
+                         alpha = .2) +
+            facet_wrap(~ title, ncol = 4) +
+            geom_label(data = validation_cor, aes(x = lab_x,
+                                                  y = lab_y,
+                                                  label = r),
+                       size = 2)
+    }
+    
+    return(val_plot)
+}
+
+covered_share_of_spanned <- function(dcpo_input_raw) {
+    n_cy <- dcpo_input_raw %>%
+        distinct(country, year) %>% 
+        nrow()
+    
+    spanned_cy <- dcpo_input_raw %>% 
+        group_by(country) %>% 
+        summarize(years = max(year) - min(year) + 1) %>% 
+        summarize(n = sum(years)) %>% 
+        pull(n)
+    
+    {(n_cy/spanned_cy) * 100}
+}
+
+get_coef <- function(iv, 
+                     results_df = coef_data,
+                     type = "both",
+                     width = .95,
+                     abs = FALSE,
+                     unstd = FALSE) {
+  result_var <- results_df %>% 
+    filter(.width == width) %>% 
+    pull(.variable) %>% 
+    str_subset(iv)
+  
+  result_all <- results_df %>% 
+            filter(.variable == result_var & .width == width)
+  
+  sd2 <- result_all %>% 
+            pull(sd2)
+  
+  if (type=="std_coef") {
+    res <- result_all %>% 
+      pull(std_coef)
+    
+    if (unstd) {
+            res <- {as.numeric(res)/sd2} %>% 
+            round(2) %>% 
+            as.character()
+    }
+  } else if (type == "ci") {
+      res <- result_all %>%
+          mutate(ci = paste0(round(.lower, 1), " to ", round(.upper, 1))) %>%
+          pull(ci)
+      
+      if (unstd) {
+          res <- list(result_all$.lower, result_all$.upper) %>% 
+              map(~ {as.numeric(.x)/sd2} %>%
+                      round(2)) %>% 
+              unlist() %>% 
+              {paste(pluck(., 1), "to", pluck(., 2))}
+    }
+  } else {
+    sc <- results_df %>% 
+      filter(.variable == result_var & .width == width) %>% 
+      pull(std_coef) %>% 
+        round(1)
+    
+    ci <- result_all %>%
+        mutate(ci = paste0(round(.lower, 1), " to ", round(.upper, 1))) %>%
+        pull(ci)
+    
+    if (unstd) {
+        sc <- {as.numeric(sc)/sd2} %>% 
+            round(2)
+        ci <- list(result_all$.lower, result_all$.upper) %>% 
+            map(~ {as.numeric(.x)/sd2} %>%
+                    round(3)) %>% 
+            unlist() %>% 
+            {paste(pluck(., 1), "to", pluck(., 2))}
+    }
+    res <- paste0(sc, " (95% c.i.: ", ci, ")")
+  }
+  
+  if (abs) {
+      res <- as.character(res) %>% 
+          str_remove_all("-")
+  }
+  return(res)
+}
+
+by2sd <- function(var) {
+    dich <- stats::na.omit(unique(var)) %>% 
+        sort() %>% 
+        identical(c(0, 1))
+    if (dich) 
+        sd <- 1
+    else 
+        sd <- 2 * stats::sd(var, na.rm = TRUE)
+    
+    return(sd)
+}
+
+pairwise_count <- function(x) {
+    x <- !is.na(x)
+    n <- crossprod(x)
+    return(n)
+}
+
+long_corr <- function(x) {
+    n_long <- crossprod(!is.na(x)) %>% 
+        as.data.frame() %>% 
+        rownames_to_column(var = "item1") %>% 
+        pivot_longer(cols = -item1,
+                     names_to = "item2",
+                     values_to = "n")
+    
+    cor(x, use = "pairwise.complete.obs") %>% 
+        as.data.frame() %>% 
+        rownames_to_column(var = "item1") %>% 
+        pivot_longer(cols = -item1,
+                     names_to = "item2",
+                     values_to = "corr") %>% 
+        filter(!is.na(corr)) %>% 
+        left_join(n_long, by = join_by(item1, item2))
+}
+
+set.seed(324)
+```
+
+Public discontent with political systems and institutions has become an increasingly salient concern in recent years, particularly as democracies worldwide face mounting challenges to their stability and effectiveness.
+Widespread political discontent—which undermines public confidence in the political process, erodes the legitimacy of governing institutions, and fuels the rise of populism that threatens liberal democracy [@mudde2004populist; @miller1974political; @lipset1959some; @doyle2011legitimacy; @mudderovira2017populism; @urbinati2019political]—offers a critical lens for understanding and predicting the erosion of democracy and political conflicts.
+Nevertheless, the nature, extent, and drivers of political discontent remains debated, with some arguing that the level of political discontent is on a clear increasing trend while others claim that political discontent fluctuates without a clear sign of any trend [@Jennings2017; @norris2011democratic; @foa2016danger; @foa2017signs; @Dalton2004].
+
+This debate is largely attributable to differences in how political discontent is conceptualized and measured.
+For instance, Some scholars define it as dissatisfaction with or a lack of diffuse support for the political system, while others frame it as perceptions of low responsiveness, democratic deficits, or dissatisfaction with the current government  [@easton1975re; @muller1983discontent; @norris2011democratic; @jennings2016dimensions]. 
+A more pressing issue concerns the incomparability and sparsity of survey data, which have prevented scholars from consistently measuring political discontent across countries and over time.
+As discussed by Jennings et al [-@Jennings2017], the fragmented and uneven availability of relevant data has led researchers to rely on different datasets, resulting in conflicting conclusions about the nature, extent, and causes of political discontent.
+
+This paper aims to provide a framework of political discontent with clearer conceptualization and more rigorous measurement using survey data from a wide range of developed countries and regions over several decades.
+Drawing on David Easton's [-@Easton1965] classic distinction between diffuse and specific support for political systems, we define political discontent as dissatisfaction with or a lack of diffuse support for the political system as a whole, rather than disapproval of specific authorities or the incumbent government.
+The explicit distinction between diffuse and specific support is highly necessary because they have different levels of variation and different consequences for individuals' political behavior and, in turn, the sustainability of the political system [@citrin1974comment; @miller1974political; @craig1981political; @muller1983discontent].
+Our conceptualization of political discontent also includes key components of system support, including perceptions of system responsiveness (external efficacy), trust in political institutions and processes, and perceptions of pervasive political corruption, all of which are interrelated and collectively contribute to the broader concept of political discontent.
+
+To overcome issues of incomparability and sparseness that often plague survey-based measures of political discontent in previous studies, we employ the Dynamic Comparative Public Opinion (DCPO) model to estimate country-year panels of public political discontent around the globe [@Solt2020c].
+This approach allows us to combine information from a multitude of survey questions while accounting for differences in question contents and response options.
+As a result, we generate estimates of the macro-level public’s political discontent in all 3,362 country-years spanned by the source data, which we call Public Political Discontent (PPD) scores.
+Our PPD scores constitute the largest and most temporally and spatially comprehensive dataset on the topic to date.
+Most importantly, with these PPD scores, researchers can meaningfully compare trends, determinants, and consequences of political discontent across 136 countries and regions over 56 years (1968–2023) in a conceptually consistent manner.
+
+We further assess the convergent and construct validity of the PPD scores by examining their strong empirical correlations with three types of indicators: (1) the original individual-level survey items used to construct the scores, (2) independent survey items not included in the source data (e.g., evaluations of democratic performance), and (3) conceptually related variables, such as assessments of recent government policy performance.
+Across all tests, the PPD scores demonstrate robust validity, confirming their reliability for empirical analysis.
+
+Last, we explore the extent and drivers of political discontent in advanced democracies as a demonstration of the utility of the PPD dataset.
+Our findings clearly suggest that political discontent has followed an upward trend over time in developed OECD countries, supporting Foa and Mounk's (2016, 2017) thesis of democratic deconsolidation in developed democracies.
+Among the key factors theorized to influence political discontent-elections, political institutions, and economic conditions—we find that election years are associated with lower levels of discontent, suggesting that elections can provide an outlet for expressing dissatisfaction and seeking redress. 
+Economic factors emerge as the strongest drivers of discontent, with higher levels of economic development and growth associated with lower discontent, and higher unemployment has the opposite effect.
+Additionally, increases in income inequality over time reduce discontent, in accordance with the predictions of system justification and relative power theories. 
+However, power-sharing institutions, such as federalism or parliamentarism, appear to have little impact on discontent, yet countries with higher disproportionality do exhibit somewhat more discontent. 
+These results suggest the greater importance of economic conditions in affecting discontent compared to institutional factors.
+
+By offering a conceptually consistent framework of political discontent and a comprehensive dataset with maximum temporal and spatial comparability, this study contributes to ongoing debates about the trajectories of democratic dissatisfaction across countries and over time.
+More importantly, this study enriches the public opinion literature by providing a framework of political discontent with clearer conceptualization and a thorough elaboration of its theoretical significance.
+To understand cross-national and temporal variations in individual political behavior, quality of governance, and state stability, scholars require more than the rich array of political attitude indicators developed in the literature—such as perceptions of incumbent performance, electoral integrity, or external efficacy.
+Equally critical is paying attention to a general disposition toward the political system that emerges from individuals’ attitudes toward its various components—an outlook we conceptualize as macro-level political discontent.
+As a form of political culture, this macrodiscontent interacts with other systemic conditions—such as economic performance and institutional contexts—to shape citizens’ political behaviors and state governance.
+Therefore, the concept of political discontent and the PPD scores developed in the article can offers a better analytical lens that enriches future discussions of public opinion, political representation, and effective governance and political legitimacy.
+From a methodological standpoint, this study also highlights the utility of latent variable modeling for harnessing the wealth of underutilized cross-national survey data that are often fragmented and incomparable.
+
+```{r dcpo_input_raw, eval=FALSE, include=FALSE}
+# set eval to TRUE to run; running time is <5 minutes
+surveys_pd <- read_csv(here::here("data-raw",
+                                  "surveys_pd.csv"),
+                       col_types = "cccc")
+
+# item_groups <- c("eff",
+#                  "trust_eff",
+#                  "corrupt",
+#                  "sat",
+#                  "trust")
+# 
+# items_by_group <- map(item_groups, \(g) {
+#     surveys_pd %>% 
+#         filter(group == g) %>% 
+#         pull(item) %>% 
+#         unique() %>% 
+#         sort()
+# }) %>% 
+#     set_names(item_groups)
+
+dcpo_input_raw <- DCPOtools::dcpo_setup(vars = surveys_pd,
+                                        datapath = here::here("..",
+                                                              "data", "dcpo_surveys"),
+                                        file = here::here("data",
+                                                          "dcpo_input_raw.csv"))
+
+
+```
+
+```{r pd_summary_stats}
+surveys_pd <- read_csv(here::here("data-raw",
+                                  "surveys_pd.csv"),
+                       col_types = "cccc")
+
+dcpo_input_raw <- read_csv(here::here("data", "dcpo_input_raw.csv"),
+                           col_types = "cdcddcd")
+
+process_dcpo_input_raw <- function(dcpo_input_raw_df) {
+    dcpo_input_raw_df %>% 
+        filter(year >= 1968 & !country == "Northern Cyprus") %>% 
+        with_min_yrs(3) %>% 
+        with_min_cy(5) %>% 
+        group_by(country) %>% 
+        mutate(cc_rank = n()) %>% 
+        ungroup() %>% 
+        arrange(-cc_rank)
+} 
+
+dcpo_input_raw1 <- process_dcpo_input_raw(dcpo_input_raw)
+
+n_surveys <- surveys_pd %>%
+    distinct(survey) %>% 
+    nrow()
+
+n_items <- dcpo_input_raw1 %>%
+    distinct(item) %>% 
+    nrow()
+
+n_countries <- dcpo_input_raw1 %>%
+    distinct(country) %>% 
+    nrow()
+
+n_cy <- dcpo_input_raw1 %>%
+    distinct(country, year) %>% 
+    nrow() %>% 
+    scales::comma()
+
+n_years <- as.integer(summary(dcpo_input_raw1$year)[6]-summary(dcpo_input_raw1$year)[1] + 1)
+
+spanned_cy <- dcpo_input_raw1 %>% 
+    group_by(country) %>% 
+    summarize(years = max(year) - min(year) + 1) %>% 
+    summarize(n = sum(years)) %>% 
+    pull(n) %>% 
+    scales::comma()
+
+total_cy <- {n_countries * n_years} %>% 
+    scales::comma()
+
+year_range <- paste("from",
+                    summary(dcpo_input_raw1$year)[1],
+                    "to",
+                    summary(dcpo_input_raw1$year)[6])
+
+n_cyi <- dcpo_input_raw1 %>% 
+    distinct(country, year, item) %>% 
+    nrow() %>% 
+    scales::comma()
+
+back_to_numeric <- function(string_number) {
+    string_number %>% 
+        str_replace(",", "") %>% 
+        as.numeric()
+}
+
+covered_share_of_spanned <- {back_to_numeric(n_cy)/back_to_numeric(spanned_cy) * 100}
+```
+
+# Conceptualizing Political Discontent {.unlisted .unnumbered}
+
+Public political discontent is widely recognized as a critical factor affecting the stability of political systems.
+@lipset1959some argues that public belief in a system's legitimacy is essential for democratic survival.
+Similarly, @miller1974political maintains that a democratic political system cannot endure without majority support, as increasing political discontent among public raises the potential for revolutionary changes to their political and social system.
+Widespread political discontent also complicates effective governance, which in turn reinforces dissatisfaction and ultimately erodes public perceptions of the system’s legitimacy over time [@hetherington1998political].
+These concerns have driven extensive research on its contents, sources and implications. 
+However, scholars have conceptualize political discontent in various ways, ranging from a lack of diffuse support for the political system to perceptions of low responsiveness, democratic deficits, political distrust, and dissatisfaction with the incumbent government [@easton1975re; @muller1983discontent; @norris2011democratic; @jennings2016dimensions]. 
+These differences in conceptualization reflect varying analytical purposes, theoretical motivations, and the available opinion survey items at the time.
+
+This paper defines political discontent as dissatisfaction with, or the lack of, diffuse support for a political system, primarily drawing on Easton's [-@Easton1965] influential distinction between diffuse and specific political support.
+While specific support refers to satisfaction with incumbent performance, diffuse support concerns broader system legitimacy and serves as a ‘reservoir of favorable attitudes or goodwill’ toward a political system.
+The theoretical importance of this distinction is well noted in the literature.
+Scholars have found that low satisfaction with, or trust in, the incumbent government often fluctuates without a systematic pattern and does not necessarily translate into rejection of the regime itself [@citrin1974comment; @miller1974political; @craig1981political]. 
+Consequently, specific support is considered variable and less threatening to regime stability, as democratic institutions allow citizens to express dissatisfaction through elections and peacefully change political leadership [@muller1983discontent].
+On the other hand, the erosion of diffuse support provides the public with a normative incentive to pursue radical change to the political system as a whole.
+In this regard, @Jennings2017 emphasize that defining discontent in terms of diffuse support enables researchers to distinguish between temporary dissatisfaction and a sustained erosion of system-level legitimacy that could pose a systemic threat.
+
+Diffuse political discontent also includes several related yet distinct components: external efficacy (evaluation of the responsiveness of political authorities in general), evaluation of the trustworthiness and integrity of political authorities, and perceptions of political corruption [@craig1981political; @muller1983discontent; @park2011political]. 
+External efficacy, as one of key driver of political discontent, is the belief that the system is unresponsive to the public and prioritizes its own or special interests, which increases the likelihood of the public participating in or endorsing regime-challenging activities that threaten the social and political order [@craig1980mobilization; @jennings2016dimensions]. 
+Recent studies of populism also highlight that low external efficacy is a main source of anti-system sentiments among populist supporters [@mudde2004populist]. 
+Political trust, often used as a measure of political discontent, is conceptually associated with external efficacy but operates on a different dimension.
+Specifically, while external efficacy concerns whether the political system functions according to public demands, political trust concerns whether political authorities act in the public interest regardless of public inputs [@craig1979efficacy]. 
+Yet, implications of political trust can vary depending on the specific referents of trust [@van2017political].
+For instance, trust in political institutions as a system, such as the party system, politicians, or parliament in general, differs from trust in the incumbent government, as the latter reflects specific support, fluctuates with political cycles, and does not threaten systemic stability [@norris1999critical; @Dalton2004].
+
+Literature also emphasizes the perception of pervasive political corruption as an important factor for political discontent across political regimes and regions [@Anderson2003; @Elia2022; @Ecker2016; @Carothers2023], as people perceive political authorities as working for their own interests over public interests [@park2011political; @busby2018activating; @hawkins2020activation].
+Resentment toward political corruption fosters broader skepticism toward political institutions and the system, shaping electoral behavior—such as voting for populist elites who weaponize anti-corruption and anti-establishment narratives [@Breitenstein2024; @Daniele2023; @Kolberg2024]. 
+In authoritarian regimes, public anger over political corruption has often sparked public protests that led to regime collapse [@Carothers2023].
+
+It is also worth discussing what is not considered a component of diffuse political discontent.
+Specifically, we exclude political trust in the incumbent government or apolitical institutions, as trust in the government is a type of specific support that fluctuates over time and does not pose a serious threat to the political system [@norris1999critical].
+Additionally, unlike previous studies that use support for democracy in the abstract as a predictor for the survival of democratic regimes [@claassen2020does], we do not include it as a component of political discontent.
+This is because support for democracy in the abstract is too prevalent in every country to be a meaningful or analytically useful measure of political discontent [@dalton2007understanding; @inglehart2003solid].
+Lastly, we exclude satisfaction with democracy in the abstract because the literature shows that this measure functions more as a type of specific support.
+People tend to have much higher democratic satisfaction when their preferred politicians or parties win elections, while electoral losers tend to have lower democratic satisfaction [@van2020long; @singh2023satisfaction].
+Moreover, @quaranta2016does indicate that various economic indicators, such as the unemployment rate, GDP growth, inflation, or subjective economic evaluation, are strongly associated with the public's satisfaction with democracy, suggesting that it is a product of the government's economic performance.
+
+The conceptualization of political discontent as a lack of diffuse support for the political system carries important theoretical and empirical implications.
+By encompassing multiple dimensions of system-level evaluations, such as external political efficacy, trust in core political institutions, and perceptions of corruption, this definition offers a more accurate reflection of growing concerns about declining public confidence in democratic governance.
+Specifically, our conceptualization underscores the analytical value of political discontent as a comprehensive indicator of how citizens perceive the political system—as illegitimate, untrustworthy, or unresponsive. 
+For these reasons, we argue that political discontent provides a more robust tool for assessing the erosion of confidence in democratic governance.
+This broader conceptualization can also contribute meaningfully to ongoing debates about democratic backsliding. 
+While recent studies offer mixed evidence regarding the role of public opinion in democratic erosion [@claassen2020does], many rely on measures of abstract support for democracy. 
+However, such measures tend to be uniformly high and thus lack the discriminatory power to capture meaningful variation in citizens’ democratic commitment [@dalton2007understanding; @inglehart2003solid]. 
+In contrast, political discontent—defined as a multidimensional absence of diffuse system support—serves as a more nuanced and analytically useful indicator of public sentiment toward the political order. 
+Given its close association with regime-challenging attitudes and behaviors, political discontent functions as a more direct signal of potential threats to democratic stability [@craig1980mobilization].
+
+# Estimating Public Political Discontent {.unlisted .unnumbered}
+
+Questions tapping political discontent as conceived above are common in national and cross-national surveys conducted over the past four decades, but no single question is asked in all countries and years.
+The result is that the relevant data are incomparable, in that they are generated by many different questions, and sparse, in that for many countries and years no question on discontent is asked at all.
+We collected `r n_surveys` different survey datasets with relevant questions, including a total of `r n_items` survey items that were asked in no fewer than five country-years in countries surveyed at least three times (see online Appendix\nobreakspace{}@sec-surveys).
+These survey items were asked in `r n_countries` different countries over the `r n_years` years `r year_range` comprising `r n_cyi` country-year-item observations altogether.
+
+```{r itemcountry, fig.cap="Countries and Years with the Most Observations in the Source Data \\label{item_country_plots}", fig.height=3.5, fig.pos='h', cache=FALSE}
+items_plot <- dcpo_input_raw1 %>%
+    distinct(country, year, item) %>%
+    count(item) %>%
+    arrange(desc(n)) %>% 
+    head(12) %>% 
+    ggplot(aes(forcats::fct_reorder(item, n, .desc = TRUE), n)) +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    theme(axis.title.x = element_blank(),
+          axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
+          axis.title.y = element_text(size = 9),
+          plot.title = element_text(hjust = 0.5, size = 11)) +
+    ylab("Country-Years\nObserved") +
+    ggtitle("Items")
+
+most_common_item <- dcpo_input_raw1 %>% 
+    distinct(country, year, item) %>% 
+    count(item) %>% 
+    arrange(-n) %>% 
+    slice(1) %>% 
+    pull(item)
+
+most_common_item_cy <- dcpo_input_raw1 %>%
+    filter(item == most_common_item) %>%
+    distinct(country, year) %>%
+    nrow()
+
+most_common_item_surveys <- dcpo_input_raw1 %>%
+    filter(item == most_common_item) %>%
+    distinct(survey) %>%
+    pull(survey)
+
+countries_plot <- dcpo_input_raw1 %>%
+    mutate(country = if_else(stringr::str_detect(country, "United"),
+                             stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
+                             country)) %>% 
+    distinct(country, year, item) %>% 
+    count(country) %>%
+    arrange(desc(n)) %>% 
+    head(12) %>% 
+    ggplot(aes(forcats::fct_reorder(country, n, .desc = TRUE), n)) +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    theme(axis.title.x = element_blank(),
+          axis.text.x  = element_text(angle = 90,
+                                      vjust = .45,
+                                      hjust = .95,
+                                      size = 6),
+          axis.title.y = element_text(size = 9),
+          plot.title = element_text(hjust = 0.5, 
+                                    size = 11)) +
+    ylab("Year-Items\nObserved") +
+    ggtitle("Countries")
+
+cby_plot <- dcpo_input_raw1 %>%
+    mutate(country = if_else(stringr::str_detect(country, "United"),
+                             stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
+                             country),
+           country = stringr::str_replace(country, "South", "S.")) %>% 
+    distinct(country, year) %>%
+    count(country) %>% 
+    arrange(desc(n)) %>% 
+    head(12) %>% 
+    ggplot(aes(forcats::fct_reorder(country, n, .desc = TRUE), n)) +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    theme(axis.title.x = element_blank(),
+          axis.text.x  = element_text(angle = 90,
+                                      vjust = .45,
+                                      hjust = .95,
+                                      size = 7),
+          axis.title.y = element_text(size = 9),
+          plot.title = element_text(hjust = 0.5,
+                                    size = 11)) +
+    ylab("Years\nObserved") +
+    ggtitle("Countries")
+
+
+ybc_plot <- dcpo_input_raw1 %>%
+    distinct(country, year) %>%
+    count(year, name = "nn") %>%
+    ggplot(aes(year, nn)) +
+    geom_bar(stat = "identity") +
+    theme_bw() +
+    theme(axis.title.x = element_blank(),
+          # axis.text.x  = element_text(angle = 90, vjust = .45, hjust = .95),
+          axis.title.y = element_text(size = 9),
+          plot.title = element_text(hjust = 0.5, size = 11)) +
+    ylab("Countries\nObserved") +
+    ggtitle("Years")
+
+us_obs <- dcpo_input_raw1 %>% 
+    distinct(country, year, item) %>%
+    count(country) %>%
+    filter(country == "United States") %>%
+    pull(n)
+
+others <- dcpo_input_raw1 %>%
+    distinct(country, year, item) %>%
+    count(country) %>%
+    arrange(desc(n)) %>%
+    slice(2:5) %>%
+    pull(country) %>% 
+    paste(collapse = ", ") %>% 
+    str_replace(", (\\w+)$", ", and \\1") %>% 
+    str_replace("United", "the United")
+
+countries_cp <- dcpo_input_raw1 %>%
+    mutate(country = if_else(stringr::str_detect(country, "United"),
+                             stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
+                             country),
+           country = stringr::str_replace(country, "South", "S.")) %>% 
+    distinct(country, year, item) %>%
+    count(country) %>% 
+    arrange(desc(n)) %>% 
+    head(12) %>% 
+    pull(country)
+
+countries_cbyp <- dcpo_input_raw1 %>%
+    mutate(country = if_else(stringr::str_detect(country, "United"),
+                             stringr::str_replace(country, "((.).*) ((.).*)", "\\2.\\4."),
+                             country),
+           country = stringr::str_replace(country, "South", "S.")) %>% 
+    distinct(country, year) %>%
+    count(country) %>% 
+    arrange(desc(n)) %>% 
+    head(12) %>% 
+    pull(country)
+
+adding <- setdiff(countries_cbyp, countries_cp) %>% 
+    knitr::combine_words()
+
+dropping <- setdiff(countries_cp, countries_cbyp) %>% 
+    knitr::combine_words()
+
+y_peak_year <- dcpo_input_raw1 %>%
+    distinct(country, year) %>%
+    count(year, name = "nn") %>% 
+    filter(nn == max(nn)) %>% 
+    pull(year)
+
+y_peak_nn <- dcpo_input_raw1 %>%
+    distinct(country, year) %>%
+    count(year, name = "nn") %>% 
+    filter(nn == max(nn)) %>% 
+    pull(nn)
+
+data_poorest <- dcpo_input_raw1 %>%
+    distinct(country, year, item) %>%
+    count(country) %>%
+    arrange(n) %>%
+    filter(n == 3) %>%
+    pull(country) %>% 
+    knitr::combine_words()
+
+wordify_numeral <- function(x) setNames(c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", " seventeen", "eighteen", "nineteen"), 1:19)[x]
+
+n_data_poorest <- {data_poorest %>%
+        str_split(",") %>% 
+        first()} %>% 
+    length() %>% 
+    wordify_numeral()
+
+world_map <- map_data("world") %>% 
+    filter(!long > 180)
+
+cby_map <- world_map %>% 
+    distinct(region) %>% 
+    mutate(country = countrycode::countrycode(region,
+                                              "country.name",
+                                              "country.name",
+                                              warn = FALSE)) %>% 
+    filter(!region=="Antarctica") %>% 
+    left_join(dcpo_input_raw1 %>% 
+                  count(country, year) %>% 
+                  count(country, name = "Years"),
+              by = "country") %>% 
+    mutate(Years = ifelse(is.na(Years), 0, Years)) %>% 
+    ggplot(aes(fill = Years, map_id = region)) +
+    geom_map(map = world_map,
+             color = "white",
+             linewidth = 0.06) +
+    coord_map(projection = "mollweide", 
+              ylim=c(-80, 90),
+              xlim=c(-170, 170)) +
+    theme_void() +
+    scale_fill_distiller(na.value = "gray90", 
+                         palette = "Blues",
+                         direction = 1) +
+    ggtitle("Years Observed by Country") +
+    theme(plot.title = element_text(hjust = 0.5),
+          legend.position = c(.05,.1),
+          legend.justification = c(0,0), 
+          legend.direction = "vertical") +
+    scale_y_continuous(expand=c(0,0)) +
+    scale_x_continuous(expand=c(0,0))
+
+cby_map + (countries_plot/ ybc_plot) + plot_layout(widths = c(4, 1))
+```
+
+To make this multiplicity of different survey items useful, we estimate a latent variable model of the aggregated survey responses using the Dynamic Comparative Public Opinion (DCPO) model.
+The DCPO model is a state-of-the-art population-level two-parameter ordinal logistic item response theory model with country-specific item-bias terms.^[
+A comprehensive description of the DCPO model is presented in Appendix\nobreakspace{}@sec-app-dcpo.]
+The underlying logic of the DCPO model is that the probability that an individual responds affirmatively to a survey question is a function of the respondent’s score on the latent trait, i.g., political discontent.
+In this function, specifically, two parameters that characterize each question, along with country-specific bias parameters, are used to address the issue incomparability of different survey questions across different survey projects and rounds.
+
+First, the *difficulty* parameter accounts the level of the latent trait (i.e., how much political discontent) needed for a respondent to endorse a particular response option of a survey question.
+That each response evinces varying level of political discontent is most easily seen with regard to the ordinal responses to the same survey item.
+For example, responding “strongly agree” to the statement “people like me don’t have any say about what the government does” exhibits more political discontent than choosing “agree,” which is a more discontented response than “disagree,” which in turn is more discontented than “strongly disagree.”
+Moreover, and more importantly, the difficulty parameter varies across different survey items to reflect that a respondent may need to feel greater discontent to endorse a specific response option for one question compared to endorsing the same level of response for another question.
+For example, strongly agreeing that “there is widespread corruption among those who govern the country” likely expresses even more political discontent than strongly agreeing that “people like me can probably vote, but we cannot do anything else to influence politics.”
+
+Second, the *dispersion* parameter accounts for the noisiness (measurement error) in a survey question with respect to the latent trait.
+A survey question may confuse some respondents or may not align cleanly with the concept of political discontent, reflecting a larger dispersion.
+If such a question is nevertheless used as an indicator of political discontent, it will exhibit high dispersion.
+On the contrary, the lower the dispersion, the better that changes in responses to the question map onto changes in political discontent.
+
+Third, to provide for the possibility that translation issues or cultural differences result in the same question being interpreted differently in different countries, the model estimates *country-specific bias* parameters that shift the diﬀiculty of all responses for a particular question in a particular country.
+Together, the model’s diﬀiculty, dispersion, and country-specific bias parameters work to generate comparable estimates of the latent variable of political discontent from the available but incomparable source data.
+
+```{r dcpo_input, eval=FALSE, include=FALSE, results=FALSE}
+dcpo_input <- DCPOtools::format_dcpo(dcpo_input_raw1,
+                                     scale_q = "big2",
+                                     scale_cp = 1)
+save(dcpo_input, file = here::here("data", "dcpo_input.rda"))
+```
+
+```{r dcpo, eval=FALSE, include=FALSE, results=FALSE}
+iter <- 1000
+
+dcpo <- paste0(.libPaths(), "/DCPO/stan/dcpo.stan")[1] |> 
+    cmdstan_model()
+
+dcpo_output <- dcpo$sample(
+    data = dcpo_input[1:13], 
+    max_treedepth = 14,
+    adapt_delta = 0.99,
+    step_size = 0.005,
+    seed = 324, 
+    chains = 4, 
+    parallel_chains = 4,
+    iter_warmup = iter/2,
+    iter_sampling = iter/2,
+    refresh = iter/50
+)
+
+results_path <- here::here(file.path("data", 
+                                     iter, 
+                                     {str_replace_all(Sys.time(),
+                                                      "[- :]",
+                                                      "") %>%
+                                             str_replace("\\d{2}.\\d+$",
+                                                         "")}))
+
+dir.create(results_path, 
+           showWarnings = FALSE, 
+           recursive = TRUE)
+
+dcpo_output$save_data_file(dir = results_path,
+                           random = FALSE)
+dcpo_output$save_output_files(dir = results_path,
+                              random = FALSE)
+```
+
+```{r dcpo_output, eval=FALSE}
+if (!exists("results_path")) {
+    latest <- "202405120647"
+    results_path <- here::here("data", "1000", latest)
+    
+    # Define OSF_PAT in .Renviron: https://docs.ropensci.org/osfr/articles/auth
+    if (!file.exists(file.path(results_path, paste0("dcpo-", str_extract(latest, "\\d{12}"), "-1.csv")))) {
+        dir.create(results_path,
+                   showWarnings = FALSE,
+                   recursive = TRUE)
+        osf_retrieve_node("hdsfr") %>%
+            osf_ls_files() %>%
+            filter(str_detect(name, str_extract(latest, "\\d{12}"))) %>%
+            osf_download(path = here::here("data", "1000"))
+    }
+    
+    dcpo_output <- as_cmdstan_fit(here::here(results_path,
+                                             list.files(results_path,
+                                                        pattern = "csv$")))  
+}
+
+load(file = here::here("data", "dcpo_input.rda"))
+
+theta_summary <- DCPOtools::summarize_dcpo_results(dcpo_input,
+                                                   dcpo_output,
+                                                   "theta") %>% 
+    mutate(across(mean:q90, ~ .x*100))
+
+save(theta_summary, file = here::here("data",
+                                      "theta_summary.rda"))
+
+theta_results <- extract_dcpo_results(dcpo_input,
+                                      dcpo_output,
+                                      par = "theta") %>% 
+    mutate(theta = theta*100)
+
+save(theta_results, file = here::here("data",
+                                      "theta_results.rda"))
+
+alpha_results <- summarize_dcpo_results(dcpo_input,
+                                        dcpo_output = dcpo_output,
+                                        pars = "alpha") %>% 
+    transmute(item = question,
+              dispersion = mean)
+
+beta_results <- summarize_dcpo_results(dcpo_input,
+                                       dcpo_output,
+                                       "beta") %>% 
+    group_by(question) %>% 
+    summarize(difficulties0 = paste0(sprintf("%.2f", round(mean, 2)),
+                                     collapse = ", ")) %>% 
+    mutate(item = question,
+           cp = if_else(str_detect(item, "threestate"),
+                        2, 
+                        as.numeric(str_extract(item, "\\d+")) - 1),
+           term = str_glue("(( ?-?[0-9].[0-9][0-9]?,?){{{cp}}})"),
+           difficulties = str_extract(difficulties0, 
+                                      term) %>%
+               str_replace(",$", "") %>% 
+               str_trim()) %>% 
+    transmute(item, difficulties)
+
+save(alpha_results,
+     beta_results,
+     file = here::here("data",
+                       "item_results.rda"))
+```
+
+```{r theta}
+load(here::here("data",
+                "theta_results.rda"))
+
+load(here::here("data",
+                "theta_summary.rda"))
+
+res_cy <- nrow(theta_summary) %>% 
+    scales::comma()
+
+res_c <- theta_summary %>% 
+    pull(country) %>% 
+    unique() %>% 
+    length()
+```
+
+To address sparsity in the source data—unpolled or thinly surveyed years in each country and region—DCPO uses simple local-level dynamic linear models, i.e., random-walk priors, for each country and region.
+That is, within each country and region, each year’s value of public political discontent is modeled
+as the previous year’s estimate plus a random shock.
+These dynamic models smooth the estimates of public political discontent over time and allow estimation even in years for which little or no survey data is available, albeit at the expense of greater measurement uncertainty.
+As a result, we generated estimates of the public's political discontent in all `r res_cy` country-years spanned by the source data, which we call Public Political Discontent (PPD) scores.
+
+Validation of novel latent variables, as with any new measure, is crucial.
+To this end, we conduct a series of measurement validity tests to validate our PPD scores.
+We start with the tests of convergent validation, which refers to whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
+Specifically, we first perform tests of *internal convergent validity*, that is, whether the country-year PPD scores align with a few key individual-level survey items used to generate them.
+Then, we test our measure's *external convergent validity* by comparing the PPD scores with three individual-level survey items that asked respondents to evaluate “democracy” in their countries and regions - these items were not used in constructing our measure but provide good alternate indicators of the extent of political discontent.
+Last, we turn to *construct validity*, which refers to demonstrating that the tested measure is empirically associated with measures of other concepts believed causally related to the concept the measure seeks to represent [@Adcock2001, 542]. Discontent with the political system should be closely tied to evaluations of recent government policy performance.
+
+The methods and results of these tests are presented in full in online Appendix\nobreakspace{}@sec-app-validation.
+In summary, the PPD scores perform very robustly across all validation tests, providing evidence that they are appropriate estimates of the political discontent concept we theorize and thus suitable to be used in analysis.
+
+```{r cs, fig.cap="PPD Scores, Most Recent Available Year \\label{cs_mry}", fig.height=10, fig.width=8, eval=FALSE}
+n_panes <- 2
+axis_text_size <- 10
+
+p1_data <- theta_summary %>%
+    group_by(country) %>%
+    top_n(1, year) %>%
+    ungroup() %>%
+    arrange(mean) %>%
+    transmute(country_year = paste0(country, " (", year, ")") %>% 
+                  str_replace("’", "'"),
+              estimate = mean,
+              conf.high = q90,
+              conf.low = q10,
+              pane = n_panes - (ntile(mean, n_panes) - 1),
+              ranked = as.factor(ceiling(row_number())))
+
+p_theta <- ggplot(p1_data,
+                  aes(x = estimate, y = ranked)) +
+    geom_segment(aes(x = conf.low, xend = conf.high,
+                     y = ranked, yend = ranked),
+                 na.rm = TRUE,
+                 alpha = .4) +
+    geom_point(fill = "black", shape = 21, size = .5, na.rm = TRUE) +
+    theme_bw() + 
+    theme(legend.position="none",
+          axis.text.x  = element_text(size = axis_text_size,
+                                      angle = 90,
+                                      vjust = .45,
+                                      hjust = .95),
+          axis.text.y  = element_text(size = axis_text_size),
+          axis.title = element_blank(),
+          strip.background = element_blank(), 
+          strip.text = element_blank(),
+          panel.grid.major = element_line(linewidth = .3),
+          panel.grid.minor = element_line(linewidth = .15)) +
+    scale_y_discrete(breaks = p1_data$ranked, labels=p1_data$country_year) +
+    coord_cartesian(xlim=c(0, 100)) +
+    facet_wrap(vars(pane), scales = "free", nrow = 1)
+
+
+p_theta +
+    plot_annotation(caption = "Note: Gray whiskers represent 80% credible intervals.")
+
+bottom5 <- p1_data %>% 
+    arrange(ranked) %>% 
+    slice(1:5) %>% 
+    pull(country_year) %>% 
+    str_replace(" \\(.*", "") %>% 
+    knitr::combine_words()
+
+```
+
+
+# Explaining Political Dissatisfaction {.unlisted .unnumbered}
+
+In @fig-ts, we present the evolution of PPD scores over time for a group of countries where discontent has attracted particular public and scholarly concern: the advanced democracies of the OECD.
+How to explain these differences in public political discontent across countries?
+What are the drivers of the changes over years?
+The literature presents various perspectives on how political and economic contexts may affect public political discontent.
+
+```{r ts, fig.cap="Political Discontent Scores Over Time Within OECD Democracies", fig.height=9}
+#| label: fig-ts
+
+load(here::here("data", "theta_summary.rda"))
+
+oecd_countries <- c("Australia", "Austria", "Belgium",
+                    "Canada", "Chile", "Colombia",
+                    "Costa Rica", "Czechia", "Denmark",
+                    "Estonia", "Finland", "France", 
+                    "Germany", "Greece", "Hungary",
+                    "Iceland", "Ireland", "Israel",
+                    "Italy", "Japan", "South Korea",
+                    "Latvia", "Lithuania", "Luxembourg",
+                    "Mexico", "Netherlands", "New Zealand",
+                    "Norway", "Poland", "Portugal", 
+                    "Slovakia", "Slovenia", "Spain",
+                    "Sweden", "Switzerland", "Turkey", 
+                    "United Kingdom", "United States")
+
+c_res <- theta_summary %>% 
+    filter(country %in% oecd_countries) %>%
+    group_by(country) %>% 
+    mutate(last_mean = last(mean)) %>% 
+    ungroup() %>% 
+    mutate(country = fct_reorder(country, last_mean, .desc = TRUE))
+
+ggplot(data = c_res, aes(x = year, y = mean)) +
+    theme_bw() +
+    theme(legend.position = "none") +
+    coord_cartesian(xlim = c(1968, 2024), ylim = c(0, 100)) +
+    labs(x = NULL, y = "Political Discontent") +
+    geom_ribbon(data = c_res, aes(ymin = q10, ymax = q90, linetype=NA), alpha = .25) +
+    geom_line(data = c_res) +
+    facet_wrap(~country, ncol = 5) +
+    theme(axis.text.x  = element_text(size=7,
+                                      angle = 90,
+                                      vjust = .45,
+                                      hjust = .95),
+          strip.background = element_rect(fill = "white", colour = "white")) +
+    plot_annotation(caption = str_wrap("Note: Countries are ordered by their most recent political discontent score; gray shading represents 80% credible intervals.", 80))
+
+```
+
+The first argument deals with the role of elections.
+Elections provide an opportunity for people to turning their dissatisfaction into ballots for candidates or parties that promise changes in the system.
+Discontented citizens, as a result, gain political fulfillment through voting for a party that voices their discontent [@van2003lpf; @rooduijn2016expressing].
+From this perspective, public political discontent should be expected to be lower in years of national elections, in which some of the existing discontent could be ameliorated.
+However, existing studies also suggest that the effect of election time on public political discontent could be the opposite.
+Campaigns expose citizens to more political messages, a significant proportion of which criticize the elites and the system [@lau2007effects; @lopez2019political].
+Particularly, many advanced democracies are experiencing increased levels of false information during elections, which has become a clear danger to the integrity of political process [@bennett2018disinformation].
+If so, public political discontent may be expected to be higher at election times.
+
+A second potential source of public political discontent is the distribution of power created by political institutions.
+According to prominent democratic theories [@norris2008driving; @lijphart1999patterns; @powell2000elections], power-sharing systems---parliamentarism, federalism, and proportional electoral rules---aim to generate governments that facilitate broad inclusion and participation, while power-concentrating systems prioritize efficient and accountable majority rule.
+@kittilson2010engaging argues that power-sharing systems not only encourage actual political participation, but also send symbolic signals of inclusiveness to citizens.
+If so, the publics in countries with parliamentary systems, federalism, and proportional electoral rules should be more likely to perceive themselves as being included and represented in the system and so feel less discontent.
+
+Lastly, economic conditions are argued to be salient sources of political discontent [@quaranta2016does].
+For one thing, unfavorable economic conditions fuel social discontent and anxiety about the future among the public, which can easily evolve into anti-establishment sentiment [@kinnvall2022exploring].
+For another, economic indicators are usually used by people to evaluate the performance of the system or government policies [@becher2013economic].
+Hence, poor economic conditions, such as low average incomes, slow growth, and high unemployment are likely to hurt perceptions of institutional quality and so increase public political discontent.
+Income inequality may work similarly, but such arguments as system justification theory, which contends that greater inequality triggers in the disadvantaged a psychological need to accept and defend the existing system [see, e.g., @Jost2019], and relative power theory [see, e.g., @Solt2008], which instead sees more inequality as increasing the influence of the rich over the attitudes of the poor, suggest that worsening inequality may actually _reduce_ discontent.
+
+The data we use to test these hypotheses are as follows.
+The Democratic Electoral Systems (DES) dataset updated in @Bormann2022 provides information about the timing of elections, yielding a dichotomous variable coded one in election years and zero when no election was held.
+We measure three institutional variables in the same fashion as @Kittilson2010.
+Parliamentarism is coded dichotomously, coded one in pure parlimentary systems and zero otherwise, and is sourced from the DES.
+The federalism variable is also dichotomous: countries with strong federal systems [see @lijphart1999patterns] are coded one and all others coded zero.
+The Gallagher least-squares index of disproportionality, which measures the disparity between parties' vote shares and their seat shares [@Gallagher1991, 40-41; @Gallagher2023], provides our measure of the proportionality of the electoral system.
+We draw data on economic conditions from two sources.
+GDP per capita, national GDP growth, and unemployment are from OECD.Stat [@OECD2024].
+The Gini index of disposable income inequality comes from the Standardized World Income Inequality Database.
+
+```{r des_download}
+if (!file.exists(here("data-raw", "es_data-v41", "es_data-v4_1.csv"))) {
+    dir.create(here("data-raw", "es_data-v41"))
+    download.file("http://mattgolder.com/files/research/es_v4_codebook.pdf",
+                  here("data-raw", "es_data-v41", "es_v4_codebook.pdf"))
+    download.file("http://mattgolder.com/files/research/es_data-v41.zip",
+                  here("data-raw", "es_data-v41", "es_data-v41.zip"))
+    unzip(here("data-raw", "es_data-v41", "es_data-v41.zip"),
+          exdir = here("data-raw", "es_data-v41"))
+}
+```
+
+```{r des}
+des_data <- vroom::vroom(here("data-raw",
+                              "es_data-v41",
+                              "es_data-v4_1.csv"),
+                         guess_max = 5000,
+                         show_col_types = FALSE) %>% 
+    mutate(country = countrycode(country,
+                                 origin = "country.name",
+                                 destination = "country.name",
+                                 custom_match = c("Serbia & Montenegro" =
+                                                      "Serbia",
+                                                  "The Co-operative Republic of Guyana" = "Guyana"))) %>% 
+    filter(country %in% oecd_countries &
+               year >= 1968) %>% 
+    arrange(country, year) %>% 
+    fill() %>% 
+    group_by(country, year) %>% 
+    summarize(regime = first(regime))
+```
+
+```{r disp}
+if (!file.exists(here::here("data", "gallagher_data.rda"))) {
+    if (!file.exists(here("data-raw", "ElectionIndices.pdf"))) {
+        download.file("https://www.tcd.ie/Political_Science/about/people/michael_gallagher/ElSystems/Docts/ElectionIndices.pdf",
+                      here("data-raw", "ElectionIndices.pdf"))
+    }
+    
+    if (!file.exists(here("data-raw", "Disproportionality.csv"))) {
+        download.file("https://raw.githubusercontent.com/christophergandrud/Disproportionality_Data/master/Disproportionality.csv", 
+                      here("data-raw", "Disproportionality.csv"))
+    }
+    
+    disp_add <- rio::import(here("data-raw", "Disproportionality.csv")) %>% 
+        filter((country == "Korea, Republic of" & year < 2000) |
+                   (country == "Colombia")) %>% 
+        select(country, year, lsq = disproportionality) %>% 
+        mutate(country = countrycode(country, "country.name", "country.name"))
+    
+    gallagher0 <- map(5:49, ~ extract_tables(here("data-raw",
+                                                  "ElectionIndices.pdf"),
+                                             pages = .x, output = "matrix") %>%
+                          map(\(x) as_tibble(x, .name_repair = "unique")) %>%
+                          list_rbind()) %>% 
+        list_rbind()
+    
+    gallagher <- gallagher0 %>% 
+        mutate(...1 = case_when(...1 == "Republic" ~ "Dominican Rep",
+                                ...1 == "Ireland LSq" ~ "Northern Ireland",
+                                ...1 == "Kingdom" ~ "United Kingdom",
+                                ...1 == "(House)" ~ "United States",
+                                ...1 == "Scotland" ~ "Scotland",
+                                ...1 == "Barbuda" ~ "Antigua & Barbuda",
+                                ...1 == "Hercegovina" ~ "Bosnia",
+                                TRUE ~ ...1),
+               country = countrycode(...1, "country.name", "country.name",
+                                     warn = FALSE),
+               country = case_when(...1 == "elections" ~ "Ireland EP",
+                                   ...1 == "college)" ~ "U.S. Electoral College",
+                                   ...1 == "Ireland LSq" ~ "Northern Ireland",
+                                   ...1 == "Wales" ~ "Wales",
+                                   ...1 == "Principe" ~ "Principe",
+                                   TRUE ~ country),
+               country2 = country) %>% 
+        fill(country) %>% 
+        filter(is.na(country2) & !...1 == "See Notes.") %>% 
+        separate_wider_delim(...1, 
+                             delim = " ", 
+                             names = c("year", "info"),
+                             too_few = "align_start",
+                             too_many = "merge") %>% 
+        mutate(lsq = str_replace_all(info, "[^\\d.]", ""),
+               ...2 = if_else(...2 == "", lsq, ...2),
+               month = str_extract(info, "[A-Z][a-z]{2}\\b") %>% 
+                   base::match(month.abb)) %>% 
+        filter((is.na(info) | !str_detect(info, "PR|list|SMD|SMP")) ) %>% 
+        transmute(country = country,
+                  year = as.numeric(year),
+                  lsq = as.numeric(...2),
+                  info = info,
+                  month = month) %>% 
+        filter(!is.na(lsq)) %>% 
+        bind_rows(disp_add) %>% 
+        group_by(country, year) %>% 
+        arrange(country, -year, -month) %>% 
+        distinct(country, year, .keep_all = TRUE) %>% 
+        arrange(country, year) %>% 
+        select(country, year, lsq)
+    
+    rio::export(gallagher, here::here("data", "gallagher_data.rda"))
+} else {
+    gallagher <- rio::import(here::here("data", "gallagher_data.rda"))
+}    
+```
+
+```{r oecd}
+if (!file.exists(here::here("data-raw", "oecd_data.rda"))) {
+    
+    oecd_growth_link <- "https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/SNA_TABLE1/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA.B1_GE.G/all?startTime=1980&endTime=2023"
+    
+    oecd_growth <- oecd_growth_link %>% 
+        readSDMX() %>% 
+        as_tibble() %>% 
+        transmute(country = countrycode(LOCATION, "iso3c", "country.name"),
+                  year = as.numeric(obsTime),
+                  growth = obsValue)
+    
+    oecd_unemployment_link <- "https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/LFS_SEXAGE_I_R/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA.MW.1564.UR.A/all?startTime=1980&endTime=2023"
+    
+    oecd_unemp <- oecd_unemployment_link %>% 
+        readSDMX() %>% 
+        as_tibble() %>% 
+        transmute(country = countrycode(COUNTRY, "iso3c", "country.name"),
+                  year = as.numeric(obsTime),
+                  unemployment = obsValue)
+    
+    oecd_inflation_link <- "https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/PRICES_CPI/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA.CPALTT01.GY.A/all?startTime=1980&endTime=2023"
+    
+    oecd_inf <- oecd_inflation_link %>% 
+        readSDMX() %>% 
+        as_tibble() %>% 
+        transmute(country = countrycode(LOCATION, "iso3c", "country.name"),
+                  year = as.numeric(obsTime),
+                  inflation = obsValue)
+    
+    oecd_gdppc_link <- "https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/SNA_TABLE1/AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA.B1_GE.HVPVOB/all?startTime=1980&endTime=2023"
+    
+    oecd_gdppc <- oecd_gdppc_link %>% 
+        readSDMX() %>% 
+        as_tibble() %>% 
+        transmute(country = countrycode(LOCATION, "iso3c", "country.name"),
+                  year = as.numeric(obsTime),
+                  gdppc = obsValue)
+    
+    oecd <- oecd_gdppc %>% 
+        left_join(oecd_growth, by = c("country", "year")) %>% 
+        left_join(oecd_unemp, by = c("country", "year")) %>% 
+        left_join(oecd_inf, by = c("country", "year")) %>% 
+        group_by(country) %>% 
+        mutate(across(gdppc:inflation,
+                      ~ imputeTS::na_interpolation(.x)))
+    
+    rio::export(oecd, here::here("data-raw", "oecd_data.rda"))
+} else {
+    oecd <- rio::import(here::here("data-raw", "oecd_data.rda"))
+}
+```
+
+```{r swiid_data}
+if (!file.exists(here("data-raw",
+                      "swiid9_8",
+                      "swiid9_8_summary.csv"))) {
+    download.file("https://dataverse.harvard.edu/api/access/datafile/10797566", "data-raw/swiid9_8.zip")
+    unzip(here("data-raw", "swiid9_8.zip"), exdir = here("data-raw"))
+    file.remove(here("data-raw", "swiid9_8.zip"))
+}
+
+swiid_summary <- read_csv(here("data-raw",
+                               "swiid9_8",
+                               "swiid9_8_summary.csv"),
+                          col_types = "cddddddddd") %>% 
+    mutate(country = countrycode::countrycode(country,
+                                              "country.name",
+                                              "country.name",
+                                              warn = FALSE)) %>% 
+    select(country, year, gini_disp, gini_disp_se)
+```
+
+```{r data_combo}
+if (!file.exists(here::here("data", "data_combo.rda"))) {
+    data_combo <- theta_summary %>% 
+        filter(country %in% oecd_countries) %>% 
+        group_by(country) %>% 
+        group_modify(~ add_row(.x, year = 0:4, .before = 0)) %>%
+        mutate(year = case_when(year == 0 ~ lead(year, 5) - 5,
+                                year == 1 ~ lead(year, 4) - 4,
+                                year == 2 ~ lead(year, 3) - 3,
+                                year == 3 ~ lead(year, 2) - 2,
+                                year == 4 ~ lead(year, 1) - 1,
+                                TRUE ~ year)) %>% 
+        left_join(des_data, by = c("country", "year")) %>%
+        left_join(gallagher,
+                  by = c("country", "year")) %>% 
+        mutate(parl = if_else(regime == 0, 1, 0),
+               election = as.numeric(!is.na(regime) | !is.na(lsq))) %>% 
+        select(-regime) %>% 
+        fill(parl, .direction = "downup") %>% 
+        left_join(oecd,
+                  by = c("country", "year")) %>% 
+        left_join(swiid_summary,
+                  by = c("country", "year")) %>% 
+        fill(lsq) %>% 
+        drop_na(mean:gini_disp_se) %>% 
+        mutate(federal = as.numeric(country %in% c("Australia", # decentralized = strong
+                                                   "Belgium",
+                                                   "Canada",
+                                                   "Germany",
+                                                   "Mexico",
+                                                   "Switzerland",
+                                                   "United States")),
+               lsq_mean = mean(lsq),
+               lsq_diff = lsq - lsq_mean,
+               gini_mean = mean(gini_disp),
+               gini_mean_se = sqrt(sum(gini_disp_se^2))/
+                   length(gini_disp),
+               gini_diff = (gini_disp - gini_mean),
+               gini_diff_se = sqrt(gini_disp_se^2 + gini_mean_se^2)/2,
+               gdppc_mean = mean(gdppc/1000),
+               gdppc_diff = gdppc/1000 - gdppc_mean,
+               growth_mean = mean(growth),
+               growth_diff = growth - growth_mean,
+               recession = if_else(growth >= 0, 0, 1),
+               unemploy_mean = mean(unemployment),
+               unemploy_diff = unemployment - unemploy_mean,
+               inflation_mean = mean(inflation),
+               inflation_diff = inflation - inflation_mean) %>% 
+        ungroup()
+    
+    rio::export(data_combo, here::here("data", "data_combo.rda"))
+} else {
+    data_combo <- rio::import(here::here("data", "data_combo.rda"))
+}
+```
+
+```{r m1, include=FALSE}
+if (!file.exists(here::here("data", "results_m1.rda"))) {
+    m1 <- brm(
+        formula = bf(
+            mean | mi(sd) ~ year +
+                election +
+                parl +
+                federal +
+                lsq_mean + lsq_diff +
+                gdppc_mean + gdppc_diff +
+                growth_mean + growth_diff +
+                unemploy_mean + unemploy_diff +
+                me(gini_mean, gini_mean_se) +
+                me(gini_diff, gini_diff_se) +
+                (1 | country) + (1 | year)
+        ),
+        data = data_combo,
+        backend = "cmdstanr",
+        warmup = 1000,
+        iter = 2000,
+        chains = 4,
+        cores = parallel::detectCores(),
+        seed = 324
+    )
+    
+    doubled_sd_m1 <- m1$data %>% 
+        select(-mean, -sd,
+               -country, -ends_with("_se")) %>% 
+        summarize(across(everything(), by2sd)) %>% 
+        pivot_longer(everything()) %>% 
+        transmute(`.variable` = case_when(name == "gini_mean" ~ 
+                                              "bsp_megini_meangini_mean_se",
+                                          name == "gini_diff" ~
+                                              "bsp_megini_diffgini_diff_se",
+                                          TRUE ~ paste0("b_", name)),
+                  var_names = c("Time Trend",
+                                "Election Year",
+                                "tarism",
+                                "Federalism",
+                                "Disproportionality, Mean",
+                                "Disproportionality, Difference",
+                                "GDPpc, Mean",
+                                "GDPpc, Difference",
+                                "GDP Growth, Mean",
+                                "GDP Growth, Difference",
+                                "Unemployment, Mean",
+                                "Unemployment, Difference",
+                                "Income Inequality, Mean",
+                                "Income Inequality, Difference"),
+                  sd2 = value)
+    
+    coef_data0_m1 <- m1 %>% 
+        tidybayes::gather_draws(`bs?p?_.*`, regex = TRUE) %>% 
+        filter(!`.variable`=="b_Intercept") %>% 
+        left_join(doubled_sd_m1, by = join_by(.variable))
+    
+    cy_summary_m1 <- m1$data %>%
+        count(country) %>%
+        pull(n) %>%
+        summary()
+
+    save(m1, doubled_sd_m1, coef_data0_m1, cy_summary_m1,
+         file = here::here("data", "results_m1.rda"))
+} else {
+    load(file = here::here("data", "results_m1.rda"))
+}
+
+m1_obs <- m1$data %>% 
+    nrow()
+
+eb_obs <- dcpo_input_raw1 %>% 
+    filter(country %in% oecd_countries & r==1 & item == "trust_parl2") %>% 
+    nrow()
+```
+
+The resulting dataset comprises all thirty-eight OECD countries and a total of `r m1_obs` country-years.
+The number of country-years observed per country ranges from sixteen (Turkey) to forty-three (the United States) consecutive years (mean: `r cy_summary_m1 %>% nth(4) %>% round(1)` years, median: `r cy_summary_m1 %>% nth(3)` years).
+The advantage in data availability over pooling the responses to a single question is clear: even among these relatively data-rich countries, the two richest single items available---the Eurobarometer's questions on trust in national ts and in political parties---each provide only fewer than half as many country-years for analysis, `r eb_obs` observations, and these Eurobarometer data naturally entirely exclude the nine OECD members outside Europe.
+
+Pooled time series like these, @Shor2007 demonstrates, are most appropriately analysed using Bayesian multilevel models with varying intercepts for countries and years.
+Varying intercepts for each country account for the heteroskedasticity across our spatial units that is generated by omitted variable bias and other sources while also permitting us to include predictors like parliamentarism and federalism that do not vary over time.
+Varying intercepts for each year take into account 'time shocks' that operate on all of our countries simultaneously [@Shor2007, 171-172]. 
+
+We also use the 'within-between random effects' specification [see @Bell2015].
+This specification involves decomposing each of our time-varying predictors into its country mean and the difference between each country-year value and the country mean.
+The time-varying difference variables capture the short-term effects of the predictors, while the time-invariant country-mean variables reflect their long-run, "historical" effects [@Bell2015, 137].
+As @Bell2015 shows, this is a better approach for addressing omitted variable bias and endogeneity than fixed effects and other commonly used TSCS specifications.
+
+Finally, we use a Bayesian analysis that allows us to directly incorporate into our model the quantified measurement uncertainty in the data for political discontent and for income inequality, with the estimated values of these two variables treated as random draws from distributions with unknown true means but known standard deviations [@McElreath2016, 425-431; see also @Kurz2023, 15.1.2].
+We estimate the model using the `brms` R package [@Burkner2017].
+
+```{r m1plot, fig.cap="Predicting Public Political Discontent in OECD Countries", fig.height = 5, fig.width = 7.5}
+#| label: fig-m1plot
+
+ordered <- doubled_sd_m1 %>%
+    pull(var_names) %>% 
+    rev()
+
+coef_data <- coef_data0_m1 %>% 
+    mutate(std_coef = round(.value * sd2, 3),
+           term = factor(var_names, levels = ordered)) %>%
+    ggdist::median_qi(std_coef, .width = c(.8, .9, .95)) %>%
+    left_join(doubled_sd_m1, ., by = join_by(.variable))
+
+plot_notes <- paste0("Notes: Dots indicate posterior means; whiskers, from thickest to thinnest, describe 80%,\n90%, and 95% credible intervals; shading depicts the posterior probability density function. Number of country-year observations: ", nrow(m1$data), ".")
+
+coef_data0_m1 %>% 
+    mutate(std_coef = .value * sd2,
+           term = factor(var_names, levels = ordered)) %>% 
+    ggplot(aes(y = term, x = std_coef)) +
+    stat_halfeye(.width = c(.8, .9, .95)) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    coord_cartesian(xlim = c(-15, 15)) +
+    theme_light() +
+    xlab(NULL) +
+    ylab(NULL) +
+    plot_annotation(caption = str_wrap(plot_notes, 80))
+```
+
+The results of this analysis are displayed in @fig-m1plot.^[
+@tbl-m1 in online Appendix\nobreakspace{}@sec-app-numeric, provides a tabular version.]
+Narratives of increasing political discontent over recent decades find support in these results.
+The time trend indicates that discontent has been, on average and net of the other included variables, rising over time in the OECD countries by `r get_coef("year", type = "std_coef", unstd = TRUE)` points (95% credible interval: `r get_coef("year", type = "ci", unstd = TRUE)` points) per year.
+By this evidence, election years appear to diffuse rather than exacerbate discontent: PPD scores are estimated to be `r get_coef("election", type = "std_coef", abs = TRUE) %>% as.numeric() %>% round(1)` points lower in years with elections, with `r round(p_direction(m1, parameters = "election")[[2]]*100, 1)`% of the posterior distribution less than zero.
+
+The hypothesis that power-sharing institutions reduce discontent with politics, on the other hand, finds little support.
+Countries with parliamentary or federal systems do not exhibit less political discontent than those without, and short-run changes in disproportionality do not trigger declines in PPD scores either.
+Countries with higher mean disproportionality did exhibit more discontent than those with lower mean values: a two-standard-deviation higher mean Gallagher index was associated with `r get_coef("lsq_mean", type = "std_coef")` points more political discontent; `r round(p_direction(m1, parameters = "lsq_mean")[[2]]*100, 1)`% of the posterior distribution of this parameter was positive.
+
+The evidence of the importance of economic conditions is, however, strong.
+Even among these advanced economies, countries with greater mean per capita GDP have lower levels of political discontent: a country one standard deviation above the mean is estimated to have a PPD score `r get_coef("gdppc_mean", abs = TRUE)` points lower than a country one standard deviation below the mean.
+In the short run, increases in per capita GDP also appear to reduce discontent, with a two-standard-deviation increase associated with `r get_coef("gdppc_diff", abs = TRUE)` points less political discontent (`r round(p_direction(m1, parameters = "gdppc_diff")[[2]]*100, 1)`% of the posterior distribution of this parameter was negative).
+Although mean GDP growth exhibits no evidence of a long-term influence of growth on discontent, in the short run, discontent moves sharply in the opposite direction as growth: a two-standard-deviation increase in growth yields `r get_coef("growth_diff")` points less political discontent.
+Unemployment has major effects on discontent in this analysis.
+The estimate for the long-term, historical effect of unemployment on political discontent as evidenced by differences in mean levels across countries is `r get_coef("unemploy_mean")` points.
+Year-to-year differences in unemployment work similarly: a two-standard-deviation increase in unemployment has an immediate effect of increasing discontent by `r get_coef("unemploy_diff")` points.
+And, although cross-country mean differences show little impact, increases in income inequality over time work to reduce discontent in accordance with the predictions of system justification and relative power theories, with a two-standard-deviation rise prompting a `r get_coef("gini_diff", abs = TRUE)` point fall in PPD scores.
+
+
+# Conclusions {.unlisted .unnumbered}
+
+The research on public political discontent has witnessed many inconsistent findings regarding its temporal trends, causes, and consequences.
+This inconsistency largely reflects conceptual inconsistencies and the constraints from available survey data and items in the construction of measurement.
+To address these limitations, this article offers a clearer conceptualization of political discontent as the lack of Easton’s [-@Easton1965] diffuse support, explicitly defining what is—and is not—considered part of the concept.
+Moreover, using a state-of-the-art latent-variable model, we construct a dynamic comparative measure of public political discontent in OECD countries.
+The result shows a clear rising trend of political discontent across OECD countries, challenging @norris2011democratic's claim that the changes in political discontent are merely "trendless fluctuations." 
+Our analysis clearly reveals the rise of political discontent in the public is driven by worsening economic conditions, including low income, slow growth, and high unemployment. 
+Unlike prior research that relies on single-country evidence [@Jennings2017], our findings are built upon a measure that draws on the most available information across countries/regions and over time.
+Therefore, it appears that our findings provide sounder conclusions with firmer evidence—at least so far—to the ongoing debates on the trajectories and sources of political discontent.
+
+In addition to our innovative data and empirical findings, this study also contributes to the public opinion literature by offering a clearer conceptualization of political discontent.
+Although the phenomenon of political discontent has attracted extensive studies, there lacks a concept of political discontent that is distinctive from related concepts—such as (the lack of) political trust and (dis)satisfaction with democracy—and gains widespread use in the research field.
+As a result, the various conceptualizations of political discontent, despite serving varying analytical purposes and data availability, lead to seemingly conflicting findings and thus impede further research.
+In this article, we explicitly theorize political discontent as the lack of Easton’s [-@Easton1965] diffuse support and spell out what are and are not considered components of the concept.
+Our conceptualization provides researchers in the field with references about the possible scope when concerning political discontent.
+
+The time-series cross-national Public Political Discontent (PPD) dataset we have presented in this article, which is available on the Harvard Dataverse, has broad implications for future study.
+The growing phenomenon of democratic backsliding across diverse regions has spurred extensive scholarly inquiry into its underlying causes, with public support for democracy often positioned as a central factor. 
+However, findings on the role of public democracy support remain mixed, raising questions about its significance.
+Public political discontent can offers a better analytical lens to democratic backsliding as rising political discontent has sparked concenrs that it fosters public support for  populism—frequently a threat to liberal democracy [@mudde2004populist; @urbinati2019political]—and undermines effective governance and political legitimacy [@hetherington1998political; @miller1974political; @lipset1959some].
+With the PPD dataset, researchers can explore how political discontent shapes public political engagement and influences democratic consolidation and backsliding. 
+Moreover, as the dataset encompasses most countries and regions worldwide, including non-democracies, it enables the examination of the potentially varying causes and consequences of political discontent across different regime types.
+
+
+\pagebreak
+# References {.unlisted .unnumbered}
+
+::: {#refs-main}
+:::
+
+\pagebreak
+
+```{=tex}
+\renewcommand{\baselinestretch}{1}
+\selectfont
+\maketitle
+\selectfont
+```
+```{=tex}
+\pagenumbering{arabic}
+\renewcommand*{\thepage}{A\arabic{page}}
+\setcounter{page}{1}
+\renewcommand*{\thefigure}{A\arabic{figure}}
+\setcounter{figure}{0}
+\renewcommand{\thetable}{A\arabic{table}}
+\setcounter{table}{0}
+\renewcommand*{\thesection}{A\arabic{section}}
+\setcounter{section}{0}
+```
+```{=tex}
+\vspace{-.5in}
+\begin{center}
+\begin{Large}
+Online Supplementary Materials
+\end{Large}
+\end{center}
+
+\tableofcontents
+\newpage
+```
+# Survey Items Used to Estimate Public Political Discontent {#sec-surveys}
+
+Following @Jennings2017 and @Easton1965, we conceptualize political discontent as the lack of diffuse political support among the public.
+This lack is in turn understood as encompassing low external efficacy, that is, perceptions of government unresponsiveness; a lack of trust in the political system; and perceptions of pervasive corruption.
+National and cross-national surveys have often included questions tapping such political discontent for over a half century, but the resulting data are both sparse, that is, unavailable for many countries and years, and incomparable, generated by many different survey items.
+We identified `r n_items` such survey items that were asked in no fewer than five country-years in countries surveyed at least twice; these items were drawn from `r n_surveys` different survey datasets.
+These items are listed in @tbl-items below, along with the dispersion ($\alpha$) and difficulty ($\beta$) scores estimated for each from the DCPO model.
+Lower values of dispersion indicate questions that better identify publics with a higher level of trust from those with lower.
+Items have one less difficulty score than the number of response categories.
+
+To avoid data-entry errors by automating data collection, the `DCPOtools` R package was used to compile the responses to these questions.
+The current version of this software facilitates the entire practical data generation process: from facilitating the acquisition of original survey datasets and converting them into R standard format for quicker loading; through standardizing country names, identifying survey years, and extracting the desired survey items; to restructuring the resulting data for analysis with the DCPO model.
+The primary objective is to limit manual interventions, thereby maximizing reproducibility and reducing the error potential inherent in human-operated data preparation tasks.
+The survey dataset codes listed in @tbl-items correspond to those used in that package.
+
+The survey items in these source data were asked in a total of `r n_countries` different countries in at least two time points over `r n_years` years, `r year_range`, resulting in `r n_cyi` country-year-item observations.
+The number of items observed for each country-year in the source data is displayed in @fig-obs1 and @fig-obs2 below.
+The PPD scores of country-years with more observed items are likely to be estimated more precisely.
+The estimates for country-years with fewer (or no) observed items rely more heavily (or entirely) on the random-walk prior and are therefore less certain.
+
+```{r dcpo_items}
+load(here::here("data", "dcpo_input.rda"))
+load(here::here("data", "item_results.rda"))
+
+items_summary <- dcpo_input_raw1 %>%
+dplyr::select(country, year, item, survey) %>%
+separate_rows(survey, sep=",\\s+") %>% 
+distinct() %>%
+group_by(item) %>% 
+mutate(survey = str_extract(survey, "^[a-z]*"),
+all_surveys = paste0(unique(survey), collapse = ", ")) %>% 
+ungroup() %>% 
+distinct(country, year, item, .keep_all = TRUE) %>% 
+group_by(item) %>% 
+mutate(n_cy = n()) %>% 
+ungroup() %>%
+distinct(item, n_cy, all_surveys) %>% 
+left_join(surveys_pd %>%
+select(item, question_text, response_categories) %>%
+distinct(item, .keep_all = TRUE),
+by = "item") %>% 
+left_join(alpha_results, by = "item") %>% 
+left_join(beta_results, by = "item") %>% 
+arrange(-n_cy)
+```
+
+```{r dcpo_items_table}
+#| label: tbl-items
+
+items_summary %>% 
+transmute(`Survey\nItem\nCode` = item,
+`Country-Years` = as.character(n_cy),
+`Question Text` = str_replace(question_text, "([^(]*)\\(.*", "\\1"),
+`Response Categories` = response_categories,
+`Dispersion` = dispersion,
+`Difficulties` = difficulties,
+`Survey Dataset Codes*` = all_surveys) %>% 
+modelsummary::datasummary_df(output = "kableExtra",
+longtable = TRUE,
+title = "Survey Items Used to Estimate Public Political Discontent") %>% 
+  kableExtra::kable_styling(latex_options = c("repeat_header", "striped"),
+                            font_size = 7) %>%
+kableExtra::column_spec(1, width = "7em") %>%
+kableExtra::column_spec(2, width = "4em") %>%
+kableExtra::column_spec(3, width = "13em") %>%
+kableExtra::column_spec(4, width = "16em") %>%
+kableExtra::column_spec(5, width = "4em") %>%
+kableExtra::column_spec(c(6, 7), width = "8em") %>% 
+kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package.")
+```
+
+```{r surveyInfo}
+dcpo_input_raw1 %>%
+  dplyr::select(country, year, item, survey) %>%
+  distinct() %>%
+  separate(survey, c("surv1", "surv2", "surv3", "surv4", "surv5"), sep=", ", fill = "left") %>%
+  pivot_longer(cols = starts_with("surv"), values_to = "survey") %>%
+  mutate(str_trim(survey)) %>% 
+  filter(!is.na(survey)) %>% 
+  select(survey) %>% 
+  distinct() %>% 
+  left_join(surveys_data %>% 
+              select(survey, citation),
+            by = join_by(survey)) %>%
+  arrange(survey) %>% 
+  transmute(`Survey Dataset Code*` = survey,
+            `Citation` = citation %>% 
+              str_replace_all("#", "No.") %>% 
+              str_replace_all("&", "and") %>% 
+              str_replace_all(fixed("_"), "\\_")) %>%
+  datasummary_df(title = "Source Survey Information",
+                 longtable = TRUE, 
+                 output = "kableExtra") %>%
+  kableExtra::kable_styling(latex_options = c("repeat_header", "striped"),
+                            font_size = 7) %>%
+  kableExtra::column_spec(1, width = "12em") %>%
+  kableExtra::column_spec(2, width = "55em") %>% 
+  kableExtra::column_spec(2, width = "55em") %>%
+  kableExtra::kable_styling() %>%
+  kableExtra::footnote(symbol = "Survey dataset codes correspond to those used in the DCPOtools R package.")
+
+```
+
+
+```{r obs1, fig.cap = "Source Data Observations by Country/Region and Year", fig.height = 9}
+#| label: fig-obs1
+
+dcpo_input_plot <- dcpo_input_raw1 %>% 
+mutate(country = str_replace(country, "’", "'"),
+         country = if_else(country %in% oecd_countries,
+                           paste0(country, "*"),
+                           country)) %>% 
+distinct(country, year, item, cc_rank) %>% 
+group_by(country, year) %>% 
+summarize(n = n(),
+cc_rank = mean(cc_rank)) %>% 
+ungroup() %>% 
+distinct() |> 
+mutate(continent = countrycode(country, "country.name", "continent",
+warn = FALSE), 
+continent = case_when(country %in% c("Kosovo", "Northern Ireland") ~
+"Europe",
+continent %in% c("Asia", "Oceania") ~
+"Asia-Oceania",
+TRUE ~ continent)) %>% 
+group_by(continent) %>% 
+mutate(mean_cc_rank = mean(cc_rank),
+continent = as_factor(continent))
+
+dcpo_input_plot %>%
+filter(continent %in% c("Europe", "Asia-Oceania")) %>%
+ggplot(aes(x = year, 
+y = forcats::fct_reorder(country, cc_rank),
+fill = n)) + 
+geom_tile() +
+scale_fill_steps(low = rev(hcl.colors(8, "inferno"))[1],
+high = rev(hcl.colors(8, "inferno"))[8],
+breaks =  seq(2, 16, 2),
+show.limits = TRUE,
+right = FALSE,
+name = "Observations") +
+labs(x = NULL, y = NULL) +
+scale_x_continuous(breaks=seq(1968, 2024, 4),
+sec.axis = dup_axis()) +
+scale_y_discrete(position = "right", 
+                 labels = function(x) { 
+                   x[x == "China"] <- "China Mainland"
+                   x[x == "Hong Kong SAR China"] <- "Hong Kong SAR"
+                   return(x)
+                 }) +
+theme(axis.text.x  = element_text(size = 6),
+axis.text.y  = element_text(size = 7),
+strip.background = element_rect(fill = "white", colour = "white"),
+strip.placement = "outside",
+legend.position = c(0.13, 0.12),
+legend.background = element_rect(fill = "white", colour = NA)) +
+facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
+ncol = 1,
+scales = "free_y") +
+  plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of public political discontent presented in the main text.", 80))
+```
+
+```{r obs2, fig.cap = "Source Data Observations by Country/Region and Year, cont.", fig.height = 9}
+#| label: fig-obs2
+
+dcpo_input_plot %>%
+filter(!continent %in% c("Europe", "Asia-Oceania")) %>%
+ggplot(aes(x = year, 
+y = forcats::fct_reorder(country, cc_rank),
+fill = n)) + 
+geom_tile() +
+scale_fill_steps(low = rev(hcl.colors(8, "inferno"))[1],
+high = rev(hcl.colors(8, "inferno"))[8],
+breaks =  seq(2, 16, 2),
+show.limits = TRUE,
+right = FALSE,
+name = "Observations") +
+labs(x = NULL, y = NULL) +
+scale_x_continuous(breaks=seq(1968, 2024, 4),
+sec.axis = dup_axis()) +
+scale_y_discrete(position = "right") +
+theme(axis.text.x  = element_text(size = 6),
+axis.text.y  = element_text(size = 7),
+strip.background = element_rect(fill = "white", colour = "white"),
+strip.placement = "outside",
+legend.position = c(0.13, 0.12),
+legend.background = element_rect(fill = "white", colour = NA)) +
+facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
+ncol = 1,
+scales = "free_y") +
+  plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of public political discontent presented in the main text.", 80))
+```
+
+\pagebreak
+
+# The DCPO Model {#sec-app-dcpo}
+
+<!-- [Revise the following text!] -->
+
+A number of recent studies have developed latent variable models of aggregate survey responses based on cross-national survey data [see @Claassen2019; @Caughey2019; @McGann2019; @Kolczynska2024].
+To estimate the extent of political discontent in the public across countries and over time, we employ the Dynamic Comparative Public Opinion (DCPO) model that is appropriate for data that is not only incomparable but also sparse.
+The DCPO model is a population-level two-parameter ordinal logistic item response theory (IRT) model with country-specific item-bias terms.
+
+DCPO models the total number of survey responses expressing at least as much discontent as response category $r$ to each question $q$ in country $k$ at time $t$, $y_{ktqr}$, out of the total number of respondents surveyed, $n_{ktqr}$, using the beta-binomial distribution:
+
+\begin{equation}
+a_{ktqr} = \phi\eta_{ktqr} \label{eq:bb_a}
+\end{equation} \begin{equation}
+b_{ktqr} = \phi(1 - \eta_{ktqr}) \label{eq:bb_b}
+\end{equation} \begin{equation}
+y_{ktqr} \sim \textrm{BetaBinomial}(n_{ktqr}, a_{ktqr}, b_{ktqr}) \label{eq:betabinomial}
+\end{equation}
+
+where $\phi$ represents an overall dispersion parameter to account for additional sources of survey error beyond sampling error and $\eta_{ktqr}$ is the expected probability that a random person in country $k$ at time $t$ answers question $q$ with a response at least as interested as response $r$.[^2]
+
+[^2]:  The ordinal responses to question $q$ are coded to range from 1 (expressing the least political discontent) to $R$ (expressing the most political discontent), and $r$ takes on all values greater than 1 and less than or equal to $R$.
+
+This expected probability, $\eta_{ktqr}$, is in turn estimated as follows:
+
+```{=tex}
+\begin{equation}
+\eta_{ktqr} = \textrm{logit}^{-1}(\frac{\bar{\theta'}_{kt} - (\beta_{qr} + \delta_{kq})}{\sqrt{\alpha_{q}^2 + (1.7*\sigma_{kt})^2}}) \label{eq:dcpo}
+\end{equation}
+```
+In this equation, $\beta_{qr}$ represents the difficulty of response $r$ to question $q$, that is, the degree of political discontent the response expresses.
+The $\delta_{kq}$ term represents country-specific item bias: the extent to which all responses to a particular question $q$ may be more (or less) difficult in a given country $k$ due to translation issues, cultural differences in response styles, or other idiosyncrasies that render the same survey item not equivalent across countries.[^3]
+The dispersion of question $q$, its noisiness in relation to the latent variable, is $\alpha_{q}$.
+The mean and standard deviation of the unbounded latent trait of public political discontent are $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, respectively.
+
+[^3]:  Estimating $\delta_{kq}$ requires repeated administrations of question $q$ in country $k$, so when responses to question $q$ are observed in country $k$ in only a single year, the DCPO model sets $\delta_{kq}$ to zero by assumption, increasing the error of the model by any country-item bias that is present.
+    Questions that are asked repeatedly over time in only a single country pose no risk of country-specific item bias, so $\delta_{kq}$ in such cases are also set to zero.
+
+Random-walk priors are used to account for the dynamics in $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, and weakly informative priors are placed on the other parameters.[^4]
+The dispersion parameters $\alpha_q$ are constrained to be positive and all survey responses are coded with high values indicating more political discontent to fix direction.
+The difficulty $\beta$ of "run by a few big interests" to the oft-asked question "would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?" is set to 1 to identify location, and for each question $q$ the difficulties for increasing response categories $r$ are constrained to be increasing.
+The sum of $\delta_{kq}$ across all countries $k$ is set to zero for each question $q$:
+
+[^4]:  The dispersion parameters $\alpha_{q}$ are drawn from standard half-normal prior distributions, that is, the positive half of N(0, 1).
+    The first difficulty parameters for each question, $\beta_{q1}$, are drawn from standard normal prior distributions, and the differences between $\beta$s for each $r$ for the same question $q$ are drawn from standard half-normal prior distributions.
+    The item-bias parameters $\delta_{kq}$ receive normally-distributed hierarchical priors with mean 0 and standard deviations drawn from standard half-normal prior distributions.
+    The initial value of the mean unbounded latent trait for each country, $\bar{\theta'}_{k1}$, is assigned a standard normal prior, as are the transition variances $\sigma_{\bar{\theta'}}^2$ and $\sigma_{\sigma}^2$; the initial value of the standard deviation of the unbounded latent trait for each country, $\sigma_{k1}$, is drawn from a standard lognormal prior distribution.
+    The overall dispersion, $\phi$, receives a somewhat more informative prior drawn from a gamma(4, 0.1) distribution that yields values that are well scaled for that parameter.
+
+```{=tex}
+\begin{equation}
+\sum_{k = 1}^K \delta_{kq} = 0
+\end{equation}
+```
+Finally, the logistic function is used to transform $\bar{\theta'}_{kt}$ to the unit interval and so give the bounded mean of political discontent, $\bar{\theta}_{kt}$, which is our parameter of interest here.
+
+The DCPO model accounts for the incomparability of different survey questions with two parameters.
+First, the *difficulty* parameter indicates the level of the latent trait needed for a respondent to endorse a particular response option of a survey item (question).
+That each response evinces varying level of political discontent is most easily seen with regard to the ordinal responses to the same survey item.
+For example, responding “strongly agree” to the statement “people like me don’t have any say about what the government does” exhibits more political discontent than choosing “agree,” which is a more discontented response than “disagree,” which in turn is more discontented than “strongly disagree.”
+Moreover, and more importantly, the difficulty parameter varies across different survey items to reflect that a respondent may need to feel greater discontent to endorse a specific response option for one question compared to endorsing the same level of response for another question.
+For example, strongly agreeing that “there is widespread corruption among those who govern the country” likely expresses even more political discontent than strongly agreeing that “people like me can probably vote, but we cannot do anything else to influence politics.”
+
+Second, the *dispersion* parameter accounts for the noisiness (measurement error) in a survey question with respect to the latent trait.
+A question may confuse some respondents or may not align cleanly with the concept of political discontent.
+If such a question is nevertheless used as an indicator of political discontent, it will exhibit high dispersion.
+On the contrary, the lower the dispersion, the better that changes in responses to the question map onto changes in political discontent.
+By incorporating this parameter, we can address concerns that some survey questions selected to construct the discontent measure may not be perfectly associated with it.
+Together, the model's difficulty and dispersion estimates work to generate comparable estimates of the latent variable of public political discontent from the available but incomparable source data.
+
+To address the sparsity of the source data---the fact that there are gaps in the time series of each country, and even many observed country-years have only one or few observed items---DCPO uses simple local-level dynamic linear models, i.e., random-walk priors, for each country.
+That is, within each country, each year's value of public political discontent is modeled as the previous year's estimate plus a random shock.
+These dynamic models smooth the estimates of discontent over time and allow estimation even in years for which little or no survey data is available, albeit at the expense of greater measurement uncertainty.
+
+It is worth noting that not all sources of incomparability are likely to be fully addressed by the DCPO model.
+To the extent that survey sample representation issues---such as from variations in population definitions (such as age range, minority inclusion, and territorial exclusions) and sample designs (like probability versus non-probability samples, and older surveys' reliance on quota or random route samples without enumeration)---vary across years for a single country and item (as is typically the case, as more recent surveys are more likely to be fully representative), the country-specific item bias terms will not remedy this problem.
+And although survey weights are easily incorporated in the source data (and indeed the `DCPOtools` package does so automatically), not all available weights yield fully representative samples, and some surveys lack weights entirely.
+Unlike the model employed by @Caughey2019, the DCPO model does not incorporate poststratification to correct for these issues.
+While this does increase computational tractability and decrease data demands, the downside is clearly greater measurement uncertainty in the estimates in country-years where the data are relatively rich (via $\phi$) and potential bias in the estimates where data are more sparse.
+
+\pagebreak
+
+# Validating Public Political Discontent {#sec-app-validation}
+That we can *generate* estimates of political discontent does not automatically mean that they are suitable for analysis.
+Validation tests of this novel latent variable, like for any new measure, are crucial.
+@fig-int-convergent, @fig-ext-convergent, and @fig-construct provide evidence of this measure's validity with tests of convergent validation and construct validation.
+
+```{r int_convergent_val_dat}
+internal_tscs_dat <- dcpo_input_raw1 %>% 
+  filter(item == "trust_parties2") %>%  
+  mutate(title = "Eurobarometer",
+         neg = FALSE)
+
+internal_cs_dat <- dcpo_input_raw1 %>% 
+  filter(survey == "gallup_vop2005") %>%  
+  mutate(title = "Gallup Voice of\nthe People, 2005",
+         neg = FALSE)
+
+internal_ts_dat <- dcpo_input_raw1 %>% 
+  filter(item == "trust_parl5" & country == "Sweden") %>%  
+  mutate(title = "Sweden",
+         neg = FALSE)
+```
+
+```{r int_convergent, fig.height = 3.5, fig.cap = "Internal Convergent Validation: Correlations Between Public Political Discontent and Individual Source-Data Survey Items"}
+#| label: fig-int-convergent
+
+load(here("data", "theta_summary.rda"))
+load(here("data", "theta_results.rda"))
+
+internal_tscs_plot <- validation_plot(internal_tscs_dat,
+                                lab_x = 15,
+                                lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 8),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  labs(x = "PPD Score",
+       y = "% Who 'Tend Not to Trust' Political Parties")
+
+internal_cs_plot <- validation_plot(internal_cs_dat,
+                                lab_x = 15,
+                                lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 8),
+        # strip.text.x = element_text(size=5),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  labs(x = "PPD Score",
+       y = "% Disagreeing that Their 'Country\nis Governed by the Will of the People'")
+
+internal_ts_plot <- validation_plot(internal_ts_dat,
+                                    lab_x = 1990,
+                                    lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(ylim = c(0,100),
+                  xlim = c(1985, 2020)) +
+  labs(x = "Year",
+       y = "Score") +
+  annotate("text", x = 2010, y = 10, size = 2,
+           label = 'SOM') +
+  annotate("text", x = 2000, y = 59, size = 2,
+           label = "PPD Score")
+
+internal_tscs_plot + internal_cs_plot + internal_ts_plot  +
+  patchwork::plot_annotation(caption = "Note: Gray whiskers and shading represent 80% credible intervals.")
+```
+
+```{r ext_convergent_val_dat, eval=FALSE}
+ext_dat <- read_csv(here("data-raw",
+                         "surveys_ext_conv.csv"),
+                    col_types = "cccccc") %>% 
+    DCPOtools::dcpo_setup(datapath = here("..",
+                                          "data",
+                                          "dcpo_surveys"),
+                          file = here("data",
+                                      "ext_conv_dat.csv"))
+```
+
+```{r ext_convergent_dat, results=FALSE}
+ext_dat <- read_csv(here("data",
+                         "ext_conv_dat.csv"),
+                    col_types = "cdcddcd")
+
+ext_issp_dem_dat <- ext_dat %>%
+  filter(str_detect(item, "pride_dem4")) %>% 
+  mutate(title = "ISSP:\nNational Identity",
+         neg = FALSE)
+
+ext_wvs_dat <- ext_dat %>%
+  filter(str_detect(survey, "[ew]vs")) %>% 
+  mutate(title = "WVS & EVS",
+         neg = FALSE)
+
+ext_cses_dat <- ext_dat %>%
+  filter(str_detect(survey, "cses")) %>% 
+  mutate(title = "CSES",
+         neg = FALSE)
+```
+
+```{r ext_convergent, fig.cap="External Convergent Validation: Correlations Between PPD Scores and Evaluations of Democratic Performance", fig.height=3.5}
+#| label: fig-ext-convergent
+
+ext_issp_dem_plot <- validation_plot(ext_issp_dem_dat,
+                                     lab_x = 20,
+                                     lab_y = 5) +
+    theme_bw() +
+    theme(legend.position="none",
+          axis.text  = element_text(size=8),
+          axis.title = element_text(size=9),
+          plot.title = element_text(hjust = 0.5, size = 9),
+          strip.background = element_blank()) +
+    coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+    labs(x = "PPD Score",
+         y = "% Who Are 'Somewhat' or 'Very'\nProud of 'the Way Democracy Works'")
+
+ext_wvs_plot <- validation_plot(ext_wvs_dat,
+                                lab_x = 20,
+                                lab_y = 5) +
+    theme_bw() +
+    theme(legend.position="none",
+          axis.text  = element_text(size=8),
+          axis.title = element_text(size=9),
+          plot.title = element_text(hjust = 0.5, size = 9),
+          strip.background = element_blank()) +
+    coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+    labs(x = "PPD Score",
+         y = "% Who Are 'Rather' or 'Very' Satisfied\n'With the Way Democracy is Developing'")
+
+ext_cses_plot <- validation_plot(ext_cses_dat,
+                                 lab_x = 20,
+                                 lab_y = 5) +
+    theme_bw() +
+    theme(legend.position="none",
+          axis.text  = element_text(size=8),
+          axis.title = element_text(size=9),
+          plot.title = element_text(hjust = 0.5, size = 9),
+          strip.background = element_blank()) +
+    coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+    labs(x = "PPD Score",
+         y = "% Who Are 'Fairly' or 'Very' Satisfied\n'With the Way Democracy Works'")
+
+ext_issp_dem_plot + ext_wvs_plot + ext_cses_plot +
+  plot_annotation(
+    caption = "Note: Gray whiskers represent 80% credible intervals.")
+```
+
+Convergent validation refers to tests of whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
+Here, @fig-int-convergent offers 'internal' convergent validation tests [@Caughey2019, 686]: it compares PPD scores to responses to the individual source-data survey items that were used to generate them.
+On the left, PPD scores are plotted against the percentage of respondents across all country-years who responded "tend not to trust" rather than "tend to trust" to the Eurobarometer's dichotomous question, "How much trust do you have in certain institutions: Political parties?" This is the single most-asked item in the source data.
+The middle panel compares PPD scores to responses to the question with the most data-rich cross-section, "Would you say your country is governed by the will of the people?" in Gallup's 2005 Voice of the People survey.
+Finally, the right panel evaluates how well the PPD scores capture change over time by focusing on the item with the largest number of observations for a single country and region in the source data: Sweden's SOM surveys' question, "How much confidence do you have in the way the following institutions and groups do their job: The National Parliament?" In all three cases, the correlations, estimated taking into account the uncertainty in the measures, are strong.
+
+In @fig-ext-convergent, we present three 'external' convergent validation tests, comparing PPD scores to responses to survey items that were *not* included in the source data: items that asked respondents to evaluate "democracy" in their countries and regions.
+Like @Jennings2017, we excluded these questions not least to avoid assuming that respondents identify the current political system of their country with democracy.
+Nevertheless, evaluations of the democracy of respondents' countries provide good alternate indicators of the extent of political discontent.
+The left panel shows data from three rounds of the International Social Survey Program's National Identity module, which asked respondents how proud they were of how democracy works in their country.
+In the center, we plot how much satisfaction respondents reported with "the way democracy is developing" in their countries in the World Values Surveys and European Values Surveys.
+The right draws on data from the Comparative Study of Electoral Systems about how many respondents were at least fairly satisfied "with the way democracy works" in their country.
+Across countries and years and all three of these survey items, our latent-variable measure of political discontent is strongly negatively correlated with aggregate positive evaluations of democracy.
+
+```{r construct_val_dat, eval=FALSE}
+construct_dat <- read_csv(here("data-raw",
+                               "surveys_construct.csv"),
+                          col_types = "cccccc") %>% 
+    DCPOtools::dcpo_setup(datapath = here("..",
+                                          "data",
+                                          "dcpo_surveys"),
+                          file = here("data",
+                                      "construct_dat.csv"))
+```
+
+```{r construct_dat}
+construct_dat <- read_csv(here("data",
+                               "construct_dat.csv"),
+                          col_types = "cdcddcd")
+
+construct_hc_dat <- construct_dat %>%
+  filter(str_detect(item, "hc")) %>% 
+  mutate(title = "",
+         neg = FALSE)
+
+construct_env_dat <- construct_dat %>%
+  filter(str_detect(item, "env")) %>% 
+  mutate(title = "",
+         neg = FALSE)
+
+construct_old_dat <- construct_dat %>%
+  filter(str_detect(item, "old")) %>% 
+  mutate(title = "",
+         neg = FALSE)
+
+```
+
+```{r construct, fig.cap="Construct Validation: Correlations Between PPD Scores and Views of Government Success", fig.height=3.5}
+#| label: fig-construct
+
+construct_hc_plot <- validation_plot(construct_hc_dat,
+                                    lab_x = 20,
+                                    lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  labs(x = "PPD Score",
+       y = "% Who Say Government is 'Quite' or 'Very'\nSuccessful in Providing Health Care")
+
+construct_old_plot <- validation_plot(construct_old_dat,
+                                       lab_x = 20,
+                                       lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  labs(x = "PPD Score",
+       y = "% Who Say Government is 'Quite' or 'Very'\nSuccessful in Providing for the Elderly")
+
+construct_env_plot <- validation_plot(construct_env_dat,
+                                       lab_x = 20,
+                                       lab_y = 95)  +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+    labs(x = "PPD Score",
+         y = "% Who Say Government is 'Quite' or 'Very'\nSuccessful in Protecting the Environment")
+
+construct_hc_plot + construct_old_plot + construct_env_plot +
+  plot_annotation(
+    caption = str_wrap("Note: Gray whiskers represent 80% credible intervals. Data from ISSP Role of Government surveys, 2006 and 2016.", 80))
+```
+
+With the success of these tests of convergent validation, we turn to construct validation.
+Construct validation refers to demonstrating that the tested measure is empirically associated with measures of *other* concepts believed causally related to the concept the measure seeks to represent [@Adcock2001, 542].
+Discontent with the political system should be closely tied to evaluations of recent government policy performance.
+
+@fig-construct depicts the relationships between PPD scores and three survey items from the International Social Survey Program module on the Role of Government on the extent of the government's success in providing health care, providing for the elderly, and in protecting the environment.
+All of these relationships are negative as expected and are moderate to strong in magnitude.
+The PPD scores perform very well in validation tests.
+
+\pagebreak
+
+# Numeric Results {#sec-app-numeric}
+
+## Tabular Version of Results Presented in @fig-m1plot {#sec-m1table}
+
+<!-- \FloatBarrier -->
+
+```{r modelTB}
+#| label: tbl-m1
+
+vec_coefName <- c("b_year" = "Time Trend",
+  "b_election" = "Election Year",
+  "b_parl" = "Parliamentarism",
+  "b_federal" = "Federalism",
+  "b_lsq_mean" = "Disproportionality, Mean",
+  "b_lsq_diff" = "Disproportionality, Difference",
+  "b_gdppc_mean" = "GDPpc, Mean",
+  "b_gdppc_diff" = "GDPpc, Difference",
+  "b_growth_mean" = "GDP Growth, Mean",
+  "b_growth_diff" = "GDP Growth, Difference",
+  "b_unemploy_mean" = "Unemployment, Mean",
+  "b_unemploy_diff" = "Unemployment, Difference",
+  "bsp_megini_meangini_mean_se" = "Income Inequality, Mean",
+  "bsp_megini_diffgini_diff_se" = "Income Inequality, Difference")
+
+# Create a modelsummary table with the number of observations included
+modelsummary(m1,
+    coef_map = vec_coefName,
+    metrics = c("R2", "RMSE"),
+    gof_omit = "[Mm]arg",
+    statistic = "conf.int",
+    notes = str_wrap("Unstandardized coefficients with associated 95-percent credible intervals in brackets below.", 100),
+    output = "kableExtra") %>% 
+    kableExtra::kable_styling(font_size = 10)
+# tinytable::style_tt(fontsize = .6,
+#                     tabularray_inner = "rowsep = 0pt")
+
+```
+
+<!-- \FloatBarrier -->
+
+\pagebreak
+
+# References {.unlisted .unnumbered}
+
+::: {#refs-appendix}
+:::
