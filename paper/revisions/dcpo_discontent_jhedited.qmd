@@ -1698,11 +1698,73 @@ scales = "free_y") +
 
 # The DCPO Model {#sec-app-dcpo}
 
-<!-- [Revise the following text!] -->
+Several recent studies have developed latent variable models of aggregate survey responses based on cross-national survey data [see @Claassen2019; @Caughey2019; @McGann2019; @Kolczynska2024].
+To estimate the extent of political discontent in the public across countries and over time, this study employs the latest of these methods suited to data that are both incomparable and sparse, the Dynamic Comparative Public Opinion (DCPO) model elaborated in @Solt2020c.
+@Solt2020c demonstrates that the DCPO model provides a better fit to survey data than the models put forward by @Claassen2019 or @Caughey2019.
+The @McGann2019 model depends on dense survey data unlike the sparse data on political discontent described in the preceding section.
+@Kolczynska2024 builds on each of these earlier models, but the MRP approach developed in that work is suitable only when the available survey data are dense and when ancillary data on population characteristics are available, making it similarly inappropriate for this application.
+The dyad ratio algorithm employed in @Peterson2022, meanwhile, leverages only over-time variation within a single country and not variation across countries, making it a poor choice for generating cross-national estimates [see @Caughey2019, p. 686].
 
-A number of recent studies have developed latent variable models of aggregate survey responses based on cross-national survey data [see @Claassen2019; @Caughey2019; @McGann2019; @Kolczynska2024].
-To estimate the extent of political discontent in the public across countries and over time, we employ the Dynamic Comparative Public Opinion (DCPO) model that is appropriate for data that is not only incomparable but also sparse.
 The DCPO model is a population-level two-parameter ordinal logistic item response theory (IRT) model with country-specific item-bias terms.
+The central challenge the model addresses is that the source data comprise heterogeneous surveys that differ in question wording, response scales, sampling designs, and field administration---differences that, if ignored, would render cross-national and over-time comparison meaningless.
+Rather than assuming comparability, DCPO treats each survey question as its own imperfect indicator of the latent trait and explicitly estimates the parameters that link observed responses to the underlying quantity of interest.
+Three sets of parameters do the substantive work of resolving incomparability; a fourth mechanism handles sparsity.
+Each is discussed in turn below, followed by the formal specification of the model.
+
+## Addressing Incomparability
+
+The first parameter set, *difficulty* ($\beta_{qr}$), represents the level of the latent trait needed for a respondent to endorse a particular response option of a survey question.
+That each response evinces a varying level of political discontent is most easily seen with regard to the ordinal responses to the same survey item: responding "strongly agree" to the statement "people like me don't have any say about what the government does" exhibits more political discontent than choosing "agree," which is a more discontented response than "disagree," which in turn is more discontented than "strongly disagree."
+More importantly, the difficulty parameter varies across different survey items.
+For example, strongly agreeing that "there is widespread corruption among those who govern the country" likely expresses even more discontent than strongly agreeing that "people like me can probably vote, but we cannot do anything else to influence politics."
+By estimating separate difficulty parameters for every response category of every question, DCPO places all items on a common scale---enabling comparison even when the original questions differ substantially in wording and response options.
+This is the primary mechanism by which the model converts heterogeneous survey data into commensurable information about a single latent trait.
+
+The second parameter set, *dispersion* ($\alpha_q$), captures each question's noisiness relative to the latent variable.
+A survey question may confuse some respondents or may not align cleanly with the concept of political discontent; such a question will exhibit high dispersion.
+On the contrary, the lower the dispersion, the better that changes in responses to the question map onto changes in discontent.
+The dispersion parameter matters because it downweights noisier items when the model forms its estimate, so that poorly performing questions do not distort the results.
+This feature directly addresses the concern that stitching together diverse surveys might simply average over incompatible signals: instead, the model learns how informative each question is and weights its contribution accordingly.
+
+The third parameter set, *country-specific item bias* ($\delta_{kq}$), shifts the difficulty of all responses for a particular question in a particular country.
+Translation issues, cultural differences in response styles, or other idiosyncrasies can render the same survey item not equivalent across national contexts.
+The $\delta_{kq}$ terms absorb these country-level deviations, preventing them from biasing cross-national comparisons.^[Estimating $\delta_{kq}$ requires repeated administrations of question $q$ in country $k$, so when responses to question $q$ are observed in country $k$ in only a single year, the DCPO model sets $\delta_{kq}$ to zero by assumption, increasing the error of the model by any country-item bias that is present. Questions that are asked repeatedly over time in only a single country pose no risk of country-specific item bias, so $\delta_{kq}$ in such cases are also set to zero.]
+
+Together, these three parameter sets represent not a "magic trick" but rather the standard logic of item response theory applied at the population level: each survey question is treated as its own imperfect measurement instrument, and the model estimates the characteristics of every instrument so that the underlying trait can be recovered despite the instruments' differences.
+The approach is analogous to that used in educational testing, where students take different test forms that contain different items, yet their abilities are placed on a common scale through the estimation of item parameters [@DeBoeck2004; @Fox2010].
+
+## Addressing Sparsity
+
+To address the sparsity of the source data---the fact that many country-year cells contain no observations at all, and even many observed country-years have only one or a few survey items---DCPO uses simple local-level dynamic linear models, i.e., random-walk priors, for each country.
+Within each country, each year's value of public political discontent is modeled as the previous year's estimate plus a random shock.
+These dynamic priors smooth the estimates over time and allow estimation even in years for which little or no survey data are available, albeit at the expense of greater measurement uncertainty: the posterior intervals for unobserved or thinly observed country-years are wider, transparently reflecting the limitations of the source data.
+
+## Sampling, Item Nonresponse, and Question Sensitivity
+
+Because the DCPO model operates on aggregate response distributions rather than individual-level microdata, several design-level features of the source surveys merit explicit discussion.
+
+*Sampling strategy differences within countries.*
+The surveys that contribute data to a given country-year often differ in their sampling designs---probability versus non-probability samples, varying population definitions (e.g., age cutoffs, minority inclusion, territorial exclusions), and different weighting procedures.
+Survey weights, where available, are incorporated in the source data (and the `DCPOtools` package applies them automatically), which reduces the influence of design differences on the aggregated response shares.
+Yet not all available weights yield fully representative samples, and some surveys lack weights entirely.
+Unlike the model employed by @Caughey2019, the DCPO model does not incorporate poststratification to correct for these issues.
+To the extent that such sample-representation differences vary across years for a single country and item---as is typically the case, given that more recent surveys tend to be more fully representative---the country-specific item bias terms will not fully remedy this problem.
+The downside is greater measurement uncertainty in the estimates in country-years where the data are relatively rich (via the overall dispersion parameter $\phi$) and potential bias in the estimates where data are more sparse.
+This is a limitation the model shares with many cross-national survey aggregation strategies, and it underscores the importance of the validation tests presented in Appendix\nobreakspace{}\@ref(sec-app-validation), which assess whether these residual design effects are consequential enough to undermine the resulting estimates.
+
+*Item nonresponse.*
+Missing responses at the item level---whether from respondents declining to answer a question or from "don't know" responses excluded by the survey organization---reduce the effective sample size ($n_{ktqr}$) for the affected question in a given country-year.
+The DCPO model accommodates this straightforwardly: $n_{ktqr}$ reflects only respondents who provided a substantive response, and the beta-binomial likelihood accounts for the resulting sampling variability.
+When item nonresponse is extensive, the effective sample shrinks, widening the posterior uncertainty for that observation and thereby limiting its influence on the country-year estimate.
+
+*Question sensitivity and differential nonresponse.*
+Certain survey questions---such as those about corruption or trust in political institutions---may induce differential nonresponse or social-desirability bias, producing response distributions that deviate from what the latent trait alone would predict.
+The DCPO model addresses this through two channels.
+First, if sensitivity inflates the noise in a question's responses, the dispersion parameter ($\alpha_q$) absorbs this excess variability, effectively downweighting the question's contribution to the estimate.
+Second, if a question's sensitivity operates differently across national contexts---for example, because political conditions make certain topics more taboo in some countries than in others---the country-specific item bias term ($\delta_{kq}$) captures these context-dependent deviations.
+These mechanisms do not eliminate sensitivity-related measurement error entirely, but they prevent it from systematically distorting the cross-national estimates by isolating it in question-level and country-question-level parameters rather than allowing it to propagate into the latent trait.
+
+## Formal Specification
 
 DCPO models the total number of survey responses expressing at least as much discontent as response category $r$ to each question $q$ in country $k$ at time $t$, $y_{ktqr}$, out of the total number of respondents surveyed, $n_{ktqr}$, using the beta-binomial distribution:
 
@@ -1714,9 +1776,7 @@ b_{ktqr} = \phi(1 - \eta_{ktqr}) \label{eq:bb_b}
 y_{ktqr} \sim \textrm{BetaBinomial}(n_{ktqr}, a_{ktqr}, b_{ktqr}) \label{eq:betabinomial}
 \end{equation}
 
-where $\phi$ represents an overall dispersion parameter to account for additional sources of survey error beyond sampling error and $\eta_{ktqr}$ is the expected probability that a random person in country $k$ at time $t$ answers question $q$ with a response at least as interested as response $r$.[^2]
-
-[^2]:  The ordinal responses to question $q$ are coded to range from 1 (expressing the least political discontent) to $R$ (expressing the most political discontent), and $r$ takes on all values greater than 1 and less than or equal to $R$.
+where $\phi$ represents an overall dispersion parameter to account for additional sources of survey error beyond sampling error and $\eta_{ktqr}$ is the expected probability that a random person in country $k$ at time $t$ answers question $q$ with a response at least as discontented as response $r$.^[The ordinal responses to question $q$ are coded to range from 1 (expressing the least political discontent) to $R$ (expressing the most political discontent), and $r$ takes on all values greater than 1 and less than or equal to $R$.]
 
 This expected probability, $\eta_{ktqr}$, is in turn estimated as follows:
 
@@ -1726,23 +1786,14 @@ This expected probability, $\eta_{ktqr}$, is in turn estimated as follows:
 \end{equation}
 ```
 In this equation, $\beta_{qr}$ represents the difficulty of response $r$ to question $q$, that is, the degree of political discontent the response expresses.
-The $\delta_{kq}$ term represents country-specific item bias: the extent to which all responses to a particular question $q$ may be more (or less) difficult in a given country $k$ due to translation issues, cultural differences in response styles, or other idiosyncrasies that render the same survey item not equivalent across countries.[^3]
+The $\delta_{kq}$ term represents country-specific item bias: the extent to which all responses to a particular question $q$ may be more (or less) difficult in a given country $k$ due to translation issues, cultural differences in response styles, or other idiosyncrasies that render the same survey item not equivalent across countries.
 The dispersion of question $q$, its noisiness in relation to the latent variable, is $\alpha_{q}$.
 The mean and standard deviation of the unbounded latent trait of public political discontent are $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, respectively.
 
-[^3]:  Estimating $\delta_{kq}$ requires repeated administrations of question $q$ in country $k$, so when responses to question $q$ are observed in country $k$ in only a single year, the DCPO model sets $\delta_{kq}$ to zero by assumption, increasing the error of the model by any country-item bias that is present.
-    Questions that are asked repeatedly over time in only a single country pose no risk of country-specific item bias, so $\delta_{kq}$ in such cases are also set to zero.
-
-Random-walk priors are used to account for the dynamics in $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, and weakly informative priors are placed on the other parameters.[^4]
+Random-walk priors are used to account for the dynamics in $\bar{\theta'}_{kt}$ and $\sigma_{kt}$, and weakly informative priors are placed on the other parameters.^[The dispersion parameters $\alpha_{q}$ are drawn from standard half-normal prior distributions, that is, the positive half of N(0, 1). The first difficulty parameters for each question, $\beta_{q1}$, are drawn from standard normal prior distributions, and the differences between $\beta$s for each $r$ for the same question $q$ are drawn from standard half-normal prior distributions. The item-bias parameters $\delta_{kq}$ receive normally-distributed hierarchical priors with mean 0 and standard deviations drawn from standard half-normal prior distributions. The initial value of the mean unbounded latent trait for each country, $\bar{\theta'}_{k1}$, is assigned a standard normal prior, as are the transition variances $\sigma_{\bar{\theta'}}^2$ and $\sigma_{\sigma}^2$; the initial value of the standard deviation of the unbounded latent trait for each country, $\sigma_{k1}$, is drawn from a standard lognormal prior distribution. The overall dispersion, $\phi$, receives a somewhat more informative prior drawn from a gamma(4, 0.1) distribution that yields values that are well scaled for that parameter.]
 The dispersion parameters $\alpha_q$ are constrained to be positive and all survey responses are coded with high values indicating more political discontent to fix direction.
 The difficulty $\beta$ of "run by a few big interests" to the oft-asked question "would you say that this country is run by a few big interests looking out for themselves, or that it is run for the benefit of all the people?" is set to 1 to identify location, and for each question $q$ the difficulties for increasing response categories $r$ are constrained to be increasing.
 The sum of $\delta_{kq}$ across all countries $k$ is set to zero for each question $q$:
-
-[^4]:  The dispersion parameters $\alpha_{q}$ are drawn from standard half-normal prior distributions, that is, the positive half of N(0, 1).
-    The first difficulty parameters for each question, $\beta_{q1}$, are drawn from standard normal prior distributions, and the differences between $\beta$s for each $r$ for the same question $q$ are drawn from standard half-normal prior distributions.
-    The item-bias parameters $\delta_{kq}$ receive normally-distributed hierarchical priors with mean 0 and standard deviations drawn from standard half-normal prior distributions.
-    The initial value of the mean unbounded latent trait for each country, $\bar{\theta'}_{k1}$, is assigned a standard normal prior, as are the transition variances $\sigma_{\bar{\theta'}}^2$ and $\sigma_{\sigma}^2$; the initial value of the standard deviation of the unbounded latent trait for each country, $\sigma_{k1}$, is drawn from a standard lognormal prior distribution.
-    The overall dispersion, $\phi$, receives a somewhat more informative prior drawn from a gamma(4, 0.1) distribution that yields values that are well scaled for that parameter.
 
 ```{=tex}
 \begin{equation}
@@ -1750,30 +1801,6 @@ The sum of $\delta_{kq}$ across all countries $k$ is set to zero for each questi
 \end{equation}
 ```
 Finally, the logistic function is used to transform $\bar{\theta'}_{kt}$ to the unit interval and so give the bounded mean of political discontent, $\bar{\theta}_{kt}$, which is our parameter of interest here.
-
-The DCPO model accounts for the incomparability of different survey questions with two parameters.
-First, the *difficulty* parameter indicates the level of the latent trait needed for a respondent to endorse a particular response option of a survey item (question).
-That each response evinces varying level of political discontent is most easily seen with regard to the ordinal responses to the same survey item.
-For example, responding “strongly agree” to the statement “people like me don’t have any say about what the government does” exhibits more political discontent than choosing “agree,” which is a more discontented response than “disagree,” which in turn is more discontented than “strongly disagree.”
-Moreover, and more importantly, the difficulty parameter varies across different survey items to reflect that a respondent may need to feel greater discontent to endorse a specific response option for one question compared to endorsing the same level of response for another question.
-For example, strongly agreeing that “there is widespread corruption among those who govern the country” likely expresses even more political discontent than strongly agreeing that “people like me can probably vote, but we cannot do anything else to influence politics.”
-
-Second, the *dispersion* parameter accounts for the noisiness (measurement error) in a survey question with respect to the latent trait.
-A question may confuse some respondents or may not align cleanly with the concept of political discontent.
-If such a question is nevertheless used as an indicator of political discontent, it will exhibit high dispersion.
-On the contrary, the lower the dispersion, the better that changes in responses to the question map onto changes in political discontent.
-By incorporating this parameter, we can address concerns that some survey questions selected to construct the discontent measure may not be perfectly associated with it.
-Together, the model's difficulty and dispersion estimates work to generate comparable estimates of the latent variable of public political discontent from the available but incomparable source data.
-
-To address the sparsity of the source data---the fact that there are gaps in the time series of each country, and even many observed country-years have only one or few observed items---DCPO uses simple local-level dynamic linear models, i.e., random-walk priors, for each country.
-That is, within each country, each year's value of public political discontent is modeled as the previous year's estimate plus a random shock.
-These dynamic models smooth the estimates of discontent over time and allow estimation even in years for which little or no survey data is available, albeit at the expense of greater measurement uncertainty.
-
-It is worth noting that not all sources of incomparability are likely to be fully addressed by the DCPO model.
-To the extent that survey sample representation issues---such as from variations in population definitions (such as age range, minority inclusion, and territorial exclusions) and sample designs (like probability versus non-probability samples, and older surveys' reliance on quota or random route samples without enumeration)---vary across years for a single country and item (as is typically the case, as more recent surveys are more likely to be fully representative), the country-specific item bias terms will not remedy this problem.
-And although survey weights are easily incorporated in the source data (and indeed the `DCPOtools` package does so automatically), not all available weights yield fully representative samples, and some surveys lack weights entirely.
-Unlike the model employed by @Caughey2019, the DCPO model does not incorporate poststratification to correct for these issues.
-While this does increase computational tractability and decrease data demands, the downside is clearly greater measurement uncertainty in the estimates in country-years where the data are relatively rich (via $\phi$) and potential bias in the estimates where data are more sparse.
 
 \pagebreak
 
