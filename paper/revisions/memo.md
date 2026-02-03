@@ -21,9 +21,8 @@ We acknowledges that these mechanisms mitigate rather than eliminate sensitivity
 
 
 # Response Memo: Validation Part
-
-We thank the reviewer for this thoughtful and careful comment and for emphasizing the importance of validation for a new measure.
-We fully agree that validation is central to the contribution of the paper, and the reviewer’s comments have helped us improve both the clarity and the prominence of the validation strategy in the revised manuscript.
+We thank the reviewer for this thoughtful and careful comments on the validation part, which have helped us improve both the clarity and the prominence of the validation strategy in the revised manuscript.
+We fully agree that validation is central to the contribution of the paper, and we have always treated it as such. In the original version of the manuscript, the full set of validation analyses was presented in detail in the appendix, with only a brief summary provided in the main text. In response to the reviewer’s comment, we have revised the paper to move the validation analyses into the main text and to present them more prominently and transparently.
 
 At the outset, we would like to clarify the overall structure of the paper.
 All validation of the PPD measure is conducted exclusively in the section titled “Validating Public Political Discontent” and consists of three distinct and standard validation exercises—internal convergent validation, external convergent validation, and construct validation—presented in Figures 2, 3, and 4, respectively.
@@ -41,5 +40,5 @@ That section is not intended to contribute to validation; instead, it serves as 
 Variables such as election years are therefore introduced solely in this application context and are not intended to function as validation benchmarks. In response to the reviewer’s comment, we have revised the language and structure of the manuscript to more clearly distinguish the validation section from the subsequent substantive analysis.
 
 Finally, in line with the reviewer’s suggestion—and in full agreement that validation should be prominent—we have moved key validation analyses from the appendix into the main text.
-At the same time, the appendix continues to provide detailed supporting information, including survey-item documentation, model specifications, and additional diagnostics, to ensure transparency and replicability.
-We hope these revisions clarify both the rigor of the validation exercises and their clear separation from the later application.
+The appendix continues to provide detailed supporting information—including model specifications, survey-item documentation, and full summary and numeric results—to ensure transparency and replicability.
+We hope that these revisions address the reviewer’s concern by foregrounding the validation strategy and maintaining a clear separation between validation and the subsequent illustrative analysis.
