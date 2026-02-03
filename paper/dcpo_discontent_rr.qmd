@@ -767,12 +767,20 @@ cby_map <- world_map %>%
 cby_map + (countries_plot/ ybc_plot) + plot_layout(widths = c(4, 1))
 ```
 
-To make this multiplicity of different survey items useful, we estimate a latent variable model of the aggregated survey responses using the Dynamic Comparative Public Opinion (DCPO) model.
+To make use of the large and heterogeneous set of survey items, we estimate a latent variable model of the aggregated survey responses using the Dynamic Comparative Public Opinion (DCPO) model.
 The DCPO model is a state-of-the-art population-level two-parameter ordinal logistic item response theory model with country-specific item-bias terms.^[
 A comprehensive description of the DCPO model is presented in Appendix\nobreakspace{}@sec-app-dcpo.]
-The DCPO model and similar approaches have been used in recent years to model public opinion across countries and over time on a variety of topics, such as policy ideology [@Caughey2019; @Berwick2025], gender egalitarianism [@Woo2023], political interest [@Hu2025b], and support for gay rights [@Woo2025].
-The underlying logic is that the probability that an individual responds affirmatively to a survey question is a function of the respondent’s score on the latent trait, in this case, political discontent.
-In this function, specifically, two parameters that characterize each question, along with country-specific bias parameters, are used to address the issue incomparability of different survey questions across different survey projects and rounds.
+
+The DCPO model and similar latent modeling approaches have been used in recent years to model public opinion across countries and over time on a variety of topics, such as policy ideology [@Caughey2019; @Berwick2025], gender egalitarianism [@Woo2023], political interest [@Hu2025b], and support for gay rights [@Woo2025].
+Conceptually, this approach is analogous to educational testing, where students may take different test forms containing different items, yet their abilities are placed on a common scale through the estimation of item parameters [@DeBoeck2004; @Fox2010].
+
+The core logic of a latent model is that the probability an individual responds affirmatively to a survey question depends on the respondent’s position on an underlying latent trait—in this case, political discontent.
+In the DCPO model, specifically, this relationship is characterized by two parameters that characterize each question, *difficulty* and *dispersion*, along with *country-specific bias parameters*.
+These parameters are explicitly estimated to address the problem of incomparability across survey questions, survey projects, and survey rounds.
+
+In other words, rather than assuming that different survey items are directly comparable, DCPO treats each question—regardless of its wording or source—as its own imperfect indicator of the latent trait and explicitly estimates, using three sets of parameters, how responses to that question relate to the underlying quantity of interest.
+In this way, differences across survey instruments are modeled rather than ignored.
+Each survey question is therefore treated as a distinct measurement instrument, and the model estimates the characteristics of each instrument so that the latent trait can be recovered despite differences among them.
 
 First, the *difficulty* parameter accounts for the level of the latent trait (i.e., how much political discontent) needed for a respondent to endorse a particular response option of a survey question.
 That each response evinces varying level of political discontent is most easily seen with regard to the ordinal responses to the same survey item.
