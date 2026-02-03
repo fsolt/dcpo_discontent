@@ -28,16 +28,16 @@ At the outset, we would like to clarify the overall structure of the paper.
 All validation of the PPD measure is conducted exclusively in the section titled “Validating Public Political Discontent” and consists of three distinct and standard validation exercises—internal convergent validation, external convergent validation, and construct validation—presented in Figures 2, 3, and 4, respectively.
 These three figures together constitute the full set of validation tests for the measure. In the revised manuscript, we now state this structure explicitly in the main text and more clearly signal the purpose of each validation exercise.
 
-With respect to Figure 3 in particular, we emphasize that this figure is the paper’s external convergent validation test.
-It compares PPD scores to evaluations of democratic performance drawn from the ISSP, WVS/EVS, and CSES—survey items that were deliberately excluded from the latent-variable estimation.
+With respect to the external convergent validation test, we emphasize that this test compares PPD scores to evaluations of democratic performance drawn from the ISSP, WVS/EVS, and CSES, which were deliberately excluded from the latent-variable estimation.
 Because these variables are entirely external to the measurement model, they provide strong benchmarks for assessing whether the PPD measure behaves as theoretically expected.
 Consistent with the reviewer’s point about validation, these relationships are presented as bivariate associations without covariates or adjustments, rather than as attempts at causal inference.
 We have revised the discussion of Figure 3 to make this role unambiguous.
 
-We would also like to clarify that Figure 3 and the external convergent validation it presents are entirely separate from the analyses in the section “Explaining Political Dissatisfaction.”
-The external variables used for validation are limited to the aforementioned items evaluating democratic performance drawn from the ISSP, WVS/EVS, and CSES, and do not include any variables introduced in the later section “Explaining Political Dissatisfaction.”
-That section is not intended to contribute to validation; instead, it serves as an illustrative application of the newly constructed dataset, following a common practice in data-oriented contributions to demonstrate substantive utility after validation has been established.
-Variables such as election years are therefore introduced solely in this application context and are not intended to function as validation benchmarks. In response to the reviewer’s comment, we have revised the language and structure of the manuscript to more clearly distinguish the validation section from the subsequent substantive analysis.
+We would also like to clarify that all validation tests are analytically separate from the analyses presented in the section “Explaining Political Dissatisfaction.”
+Any explanatory variables introduced in that later section—shown in Figure 3 in the originally submitted manuscript and now presented in Figure 6 in the revised version—are not used for validation purposes.
+The “Explaining Political Dissatisfaction” section instead serves as an illustrative application of the newly constructed dataset, following a common practice in data-oriented contributions to demonstrate substantive utility after validation has been established.
+Variables such as election years are therefore introduced solely in this application context and are not intended to function as validation benchmarks.
+In response to the reviewer’s comment, we have revised the language and structure of the manuscript to more clearly distinguish the validation section from the subsequent substantive analysis.
 
 Finally, in line with the reviewer’s suggestion—and in full agreement that validation should be prominent—we have moved key validation analyses from the appendix into the main text.
 The appendix continues to provide detailed supporting information—including model specifications, survey-item documentation, and full summary and numeric results—to ensure transparency and replicability.
