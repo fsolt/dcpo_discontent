@@ -1700,10 +1700,10 @@ scales = "free_y") +
 
 Several recent studies have developed latent variable models of aggregate survey responses based on cross-national survey data [see @Claassen2019; @Caughey2019; @McGann2019; @Kolczynska2024].
 To estimate the extent of political discontent in the public across countries and over time, this study employs the latest of these methods suited to data that are both incomparable and sparse, the Dynamic Comparative Public Opinion (DCPO) model elaborated in @Solt2020c.
-@Solt2020c demonstrates that the DCPO model provides a better fit to survey data than the models put forward by @Claassen2019 or @Caughey2019.
+@Solt2020c demonstrates that the DCPO model provides a better fit to comparative survey data than the models put forward by @Claassen2019 or @Caughey2019.
 The @McGann2019 model depends on dense survey data unlike the sparse data on political discontent described in the preceding section.
 @Kolczynska2024 builds on each of these earlier models, but the MRP approach developed in that work is suitable only when the available survey data are dense and when ancillary data on population characteristics are available, making it similarly inappropriate for this application.
-The dyad ratio algorithm employed in @Peterson2022, meanwhile, leverages only over-time variation within a single country and not variation across countries, making it a poor choice for generating cross-national estimates [see @Caughey2019, p. 686].
+The dyad ratio algorithm employed in @Peterson2022, meanwhile, leverages only over-time variation within a single country and not variation across countries, making it less geared toward generating cross-national estimates [see @Caughey2019, p. 686].
 
 The DCPO model is a population-level two-parameter ordinal logistic item response theory (IRT) model with country-specific item-bias terms.
 The central challenge the model addresses is that the source data comprise heterogeneous surveys that differ in question wording, response scales, sampling designs, and field administration---differences that, if ignored, would render cross-national and over-time comparison meaningless.
@@ -1723,8 +1723,9 @@ This is the primary mechanism by which the model converts heterogeneous survey d
 The second parameter set, *dispersion* ($\alpha_q$), captures each question's noisiness relative to the latent variable.
 A survey question may confuse some respondents or may not align cleanly with the concept of political discontent; such a question will exhibit high dispersion.
 On the contrary, the lower the dispersion, the better that changes in responses to the question map onto changes in discontent.
-The dispersion parameter matters because it downweights noisier items when the model forms its estimate, so that poorly performing questions do not distort the results.
-This feature directly addresses the concern that stitching together diverse surveys might simply average over incompatible signals: instead, the model learns how informative each question is and weights its contribution accordingly.
+The dispersion parameter matters because it downweights noisier items when the model forms its estimate, so poorly performing questions exert less influence on the results.
+This feature directly addresses the concern that stitching together diverse surveys might simply average over incompatible signals: instead, the model learns how informative each question is and lets more informative questions shape the estimates more strongly.
+As shown in @tbl-items, the dispersion estimates indicate that the survey items differ in noise but, overall, contribute informative signals about the single latent variable of political discontent. 
 
 The third parameter set, *country-specific item bias* ($\delta_{kq}$), shifts the difficulty of all responses for a particular question in a particular country.
 Translation issues, cultural differences in response styles, or other idiosyncrasies can render the same survey item not equivalent across national contexts.
