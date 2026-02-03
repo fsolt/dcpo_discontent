@@ -921,16 +921,270 @@ That is, within each country and region, each year’s value of public political
 These dynamic models smooth the estimates of public political discontent over time and allow estimation even in years for which little or no survey data is available, albeit at the expense of greater measurement uncertainty.
 As a result, we generated estimates of the public's political discontent in all `r res_cy` country-years spanned by the source data, which we call Public Political Discontent (PPD) scores.
 
-Validation of novel latent variables, as with any new measure, is crucial.
-To this end, we conduct a series of measurement validity tests to validate our PPD scores.
-We start with the tests of convergent validation, which refers to whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
-Specifically, we first perform tests of *internal convergent validity*, that is, whether the country-year PPD scores align with a few key individual-level survey items used to generate them.
-Then, we test our measure's *external convergent validity* by comparing the PPD scores with three individual-level survey items that asked respondents to evaluate “democracy” in their countries and regions - these items were not used in constructing our measure but provide good alternate indicators of the extent of political discontent.
-Last, we turn to *construct validity*, which refers to demonstrating that the tested measure is empirically associated with measures of other concepts believed causally related to the concept the measure seeks to represent [@Adcock2001, 542]. 
-Discontent with the political system should be closely tied to evaluations of recent government policy performance.
+# Validating Public Political Discontent {.unlisted .unnumbered}
+That we can *generate* estimates of political discontent does not automatically mean that they are suitable for analysis.
+Validation tests of this novel latent variable, as with any new measure, are therefore essential.
+To assess the validity of the Public Political Discontent (PPD) scores, we conduct three complementary validation exercises: internal convergent validation, external convergent validation, and construct validation.
+@fig-int-convergent, @fig-ext-convergent, and @fig-construct present the results of these analyses, which together provide evidence of the validity of the PPD measure.
 
-The methods and results of these tests are presented in full in online Appendix\nobreakspace{}@sec-app-validation.
-In summary, the PPD scores perform very robustly across all validation tests, providing evidence that they are appropriate estimates of the political discontent concept we theorize and thus suitable to be used in analysis.
+```{r int_convergent_val_dat}
+internal_tscs_dat <- dcpo_input_raw1 %>% 
+  filter(item == "trust_parties2") %>%  
+  mutate(title = "Eurobarometer",
+         neg = FALSE)
+
+internal_cs_dat <- dcpo_input_raw1 %>% 
+  filter(survey == "gallup_vop2005") %>%  
+  mutate(title = "Gallup Voice of\nthe People, 2005",
+         neg = FALSE)
+
+internal_ts_dat <- dcpo_input_raw1 %>% 
+  filter(item == "trust_parl5" & country == "Sweden") %>%  
+  mutate(title = "Sweden",
+         neg = FALSE)
+```
+
+```{r int_convergent, fig.height = 3.5, fig.cap = "Internal Convergent Validation: Correlations Between Public Political Discontent and Individual Source-Data Survey Items"}
+#| label: fig-int-convergent
+
+load(here("data", "theta_summary.rda"))
+load(here("data", "theta_results.rda"))
+
+internal_tscs_plot <- validation_plot(internal_tscs_dat,
+                                lab_x = 15,
+                                lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 8),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  labs(x = "PPD Score",
+       y = "% Who 'Tend Not to Trust' Political Parties")
+
+internal_cs_plot <- validation_plot(internal_cs_dat,
+                                lab_x = 15,
+                                lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 8),
+        # strip.text.x = element_text(size=5),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  labs(x = "PPD Score",
+       y = "% Disagreeing that Their 'Country\nis Governed by the Will of the People'")
+
+internal_ts_plot <- validation_plot(internal_ts_dat,
+                                    lab_x = 1990,
+                                    lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(ylim = c(0,100),
+                  xlim = c(1985, 2020)) +
+  labs(x = "Year",
+       y = "Score") +
+  annotate("text", x = 2010, y = 10, size = 2,
+           label = 'SOM') +
+  annotate("text", x = 2000, y = 59, size = 2,
+           label = "PPD Score")
+
+internal_tscs_plot + internal_cs_plot + internal_ts_plot  +
+  patchwork::plot_annotation(caption = "Note: Gray whiskers and shading represent 80% credible intervals.")
+```
+
+```{r ext_convergent_val_dat, eval=FALSE}
+ext_dat <- read_csv(here("data-raw",
+                         "surveys_ext_conv.csv"),
+                    col_types = "cccccc") %>% 
+    DCPOtools::dcpo_setup(datapath = here("..",
+                                          "data",
+                                          "dcpo_surveys"),
+                          file = here("data",
+                                      "ext_conv_dat.csv"))
+```
+
+```{r ext_convergent_dat, results=FALSE}
+ext_dat <- read_csv(here("data",
+                         "ext_conv_dat.csv"),
+                    col_types = "cdcddcd")
+
+ext_issp_dem_dat <- ext_dat %>%
+  filter(str_detect(item, "pride_dem4")) %>% 
+  mutate(title = "ISSP:\nNational Identity",
+         neg = FALSE)
+
+ext_wvs_dat <- ext_dat %>%
+  filter(str_detect(survey, "[ew]vs")) %>% 
+  mutate(title = "WVS & EVS",
+         neg = FALSE)
+
+ext_cses_dat <- ext_dat %>%
+  filter(str_detect(survey, "cses")) %>% 
+  mutate(title = "CSES",
+         neg = FALSE)
+```
+
+```{r ext_convergent, fig.cap="External Convergent Validation: Correlations Between PPD Scores and Evaluations of Democratic Performance", fig.height=3.5}
+#| label: fig-ext-convergent
+
+ext_issp_dem_plot <- validation_plot(ext_issp_dem_dat,
+                                     lab_x = 20,
+                                     lab_y = 5) +
+    theme_bw() +
+    theme(legend.position="none",
+          axis.text  = element_text(size=8),
+          axis.title = element_text(size=9),
+          plot.title = element_text(hjust = 0.5, size = 9),
+          strip.background = element_blank()) +
+    coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+    labs(x = "PPD Score",
+         y = "% Who Are 'Somewhat' or 'Very'\nProud of 'the Way Democracy Works'")
+
+ext_wvs_plot <- validation_plot(ext_wvs_dat,
+                                lab_x = 20,
+                                lab_y = 5) +
+    theme_bw() +
+    theme(legend.position="none",
+          axis.text  = element_text(size=8),
+          axis.title = element_text(size=9),
+          plot.title = element_text(hjust = 0.5, size = 9),
+          strip.background = element_blank()) +
+    coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+    labs(x = "PPD Score",
+         y = "% Who Are 'Rather' or 'Very' Satisfied\n'With the Way Democracy is Developing'")
+
+ext_cses_plot <- validation_plot(ext_cses_dat,
+                                 lab_x = 20,
+                                 lab_y = 5) +
+    theme_bw() +
+    theme(legend.position="none",
+          axis.text  = element_text(size=8),
+          axis.title = element_text(size=9),
+          plot.title = element_text(hjust = 0.5, size = 9),
+          strip.background = element_blank()) +
+    coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+    labs(x = "PPD Score",
+         y = "% Who Are 'Fairly' or 'Very' Satisfied\n'With the Way Democracy Works'")
+
+ext_issp_dem_plot + ext_wvs_plot + ext_cses_plot +
+  plot_annotation(
+    caption = "Note: Gray whiskers represent 80% credible intervals.")
+```
+
+Convergent validation refers to tests of whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
+Here, @fig-int-convergent offers 'internal' convergent validation tests [@Caughey2019, 686]: it compares PPD scores to responses to the individual source-data survey items that were used to generate them.
+On the left, PPD scores are plotted against the percentage of respondents across all country-years who responded "tend not to trust" rather than "tend to trust" to the Eurobarometer's dichotomous question, "How much trust do you have in certain institutions: Political parties?" This is the single most-asked item in the source data.
+The middle panel compares PPD scores to responses to the question with the most data-rich cross-section, "Would you say your country is governed by the will of the people?" in Gallup's 2005 Voice of the People survey.
+Finally, the right panel evaluates how well the PPD scores capture change over time by focusing on the item with the largest number of observations for a single country and region in the source data: Sweden's SOM surveys' question, "How much confidence do you have in the way the following institutions and groups do their job: The National Parliament?" In all three cases, the correlations, estimated taking into account the uncertainty in the measures, are strong.
+
+External convergent validation assesses whether a measure is empirically associated with alternative indicators of a closely related concept that are not used in its construction.
+In @fig-ext-convergent, we present three external convergent validation tests comparing PPD scores to responses to survey items that were *not* included in the source data used to estimate PPD: items that asked respondents to evaluate “democracy” in their countries and regions.
+LFollowing @Jennings2017, we excluded these questions from the latent-variable estimation, not least to avoid assuming that respondents necessarily identify the current political system of their country with democracy.
+Nevertheless, evaluations of democratic performance provide useful alternative indicators of the extent of political discontent and therefore serve as appropriate external benchmarks for validation.
+
+The left panel of @fig-ext-convergent shows the correlation between PPD scores and responses from three rounds of the International Social Survey Program’s National Identity module, which asked respondents how proud they were of how democracy works in their country.
+The center panel plots the correlation between PPD scores and respondents’ reported satisfaction with “the way democracy is developing” in their countries in the World Values Surveys and European Values Surveys.
+The right panel draws on data from the Comparative Study of Electoral Systems, showing the correlation between PPD scores and the share of respondents who were at least fairly satisfied “with the way democracy works” in their country.
+Across countries and years, and for all three of these survey items, our latent-variable measure of political discontent is strongly and negatively correlated with aggregate positive evaluations of democracy.
+Because these items capture closely related but conceptually distinct evaluations of the political system, they provide strong external benchmarks for assessing whether the PPD measure behaves as theoretically expected.
+
+```{r construct_val_dat, eval=FALSE}
+construct_dat <- read_csv(here("data-raw",
+                               "surveys_construct.csv"),
+                          col_types = "cccccc") %>% 
+    DCPOtools::dcpo_setup(datapath = here("..",
+                                          "data",
+                                          "dcpo_surveys"),
+                          file = here("data",
+                                      "construct_dat.csv"))
+```
+
+```{r construct_dat}
+construct_dat <- read_csv(here("data",
+                               "construct_dat.csv"),
+                          col_types = "cdcddcd")
+
+construct_hc_dat <- construct_dat %>%
+  filter(str_detect(item, "hc")) %>% 
+  mutate(title = "",
+         neg = FALSE)
+
+construct_env_dat <- construct_dat %>%
+  filter(str_detect(item, "env")) %>% 
+  mutate(title = "",
+         neg = FALSE)
+
+construct_old_dat <- construct_dat %>%
+  filter(str_detect(item, "old")) %>% 
+  mutate(title = "",
+         neg = FALSE)
+
+```
+
+```{r construct, fig.cap="Construct Validation: Correlations Between PPD Scores and Views of Government Success", fig.height=3.5}
+#| label: fig-construct
+
+construct_hc_plot <- validation_plot(construct_hc_dat,
+                                    lab_x = 20,
+                                    lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  labs(x = "PPD Score",
+       y = "% Who Say Government is 'Quite' or 'Very'\nSuccessful in Providing Health Care")
+
+construct_old_plot <- validation_plot(construct_old_dat,
+                                       lab_x = 20,
+                                       lab_y = 95) +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  labs(x = "PPD Score",
+       y = "% Who Say Government is 'Quite' or 'Very'\nSuccessful in Providing for the Elderly")
+
+construct_env_plot <- validation_plot(construct_env_dat,
+                                       lab_x = 20,
+                                       lab_y = 95)  +
+  theme_bw() +
+  theme(legend.position="none",
+        axis.text  = element_text(size=8),
+        axis.title = element_text(size=9),
+        plot.title = element_text(hjust = 0.5, size = 9),
+        strip.background = element_blank()) +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+    labs(x = "PPD Score",
+         y = "% Who Say Government is 'Quite' or 'Very'\nSuccessful in Protecting the Environment")
+
+construct_hc_plot + construct_old_plot + construct_env_plot +
+  plot_annotation(
+    caption = str_wrap("Note: Gray whiskers represent 80% credible intervals. Data from ISSP Role of Government surveys, 2006 and 2016.", 80))
+```
+
+With the success of these tests of convergent validation, we turn to construct validation.
+Construct validation refers to demonstrating that a measure is empirically associated with measures of *other* concepts that theory suggests are causally related to the concept the measure seeks to represent [@Adcock2001, 542].
+Because discontent with the political system should be closely tied to evaluations of recent government policy performance, we assess construct validity by examining the relationship between PPD scores and public evaluations of government effectiveness.
+
+@fig-construct depicts the relationships between PPD scores and three survey items from the International Social Survey Program Role of Government modules, which measure respondents’ assessments of the government’s success in providing health care, providing for the elderly, and protecting the environment.
+All three relationships are negative, as expected, and moderate to strong in magnitude.
+Together, these results provide further evidence of the construct validity of the PPD measure.
+
+Taken together, the validation tests presented in this section, as shown in @fig-int-convergent, @fig-ext-convergent, and @fig-construct, demonstrate that the PPD scores perform very robustly across all validation tests, providing evidence that they are appropriate estimates of the political discontent concept we theorize and thus suitable to be used in analysis.
+
 
 ```{r cs, fig.cap="PPD Scores, Most Recent Available Year \\label{cs_mry}", fig.height=10, fig.width=8, eval=FALSE}
 n_panes <- 2
@@ -987,8 +1241,7 @@ bottom5 <- p1_data %>%
 
 
 # Explaining Political Dissatisfaction {.unlisted .unnumbered}
-
-After estimating public political discontent across a wide range of countries and years, we focus on a group of countries where discontent has attracted particular public and scholarly concern, the advanced democracies of the OECD, in order to demonstrate the utility of the Public Political Discontent scores.
+After estimating public political discontent across a wide range of countries and years, we focus on a group of countries where discontent has attracted particular public and scholarly concern, the advanced democracies of the OECD, in order to demonstrate how the newly constructed PPD dataset can be used to address substantive questions in the literature.
 In @fig-ts, we present the evolution of political discontent over time across these OECD democracies.
 Substantial differences emerge both across countries and over time, raising important questions about the sources of cross national variation and the drivers of temporal change in political discontent.
 Existing scholarship offers a range of perspectives on if public political discontent has increased over time and how political and economic contexts shape it, yet empirical findings remain mixed, largely because previous studies rely on different conceptualizations and survey measures.
@@ -1802,266 +2055,6 @@ The sum of $\delta_{kq}$ across all countries $k$ is set to zero for each questi
 \end{equation}
 ```
 Finally, the logistic function is used to transform $\bar{\theta'}_{kt}$ to the unit interval and so give the bounded mean of political discontent, $\bar{\theta}_{kt}$, which is our parameter of interest here.
-
-\pagebreak
-
-# Validating Public Political Discontent {#sec-app-validation}
-That we can *generate* estimates of political discontent does not automatically mean that they are suitable for analysis.
-Validation tests of this novel latent variable, like for any new measure, are crucial.
-@fig-int-convergent, @fig-ext-convergent, and @fig-construct provide evidence of this measure's validity with tests of convergent validation and construct validation.
-
-```{r int_convergent_val_dat}
-internal_tscs_dat <- dcpo_input_raw1 %>% 
-  filter(item == "trust_parties2") %>%  
-  mutate(title = "Eurobarometer",
-         neg = FALSE)
-
-internal_cs_dat <- dcpo_input_raw1 %>% 
-  filter(survey == "gallup_vop2005") %>%  
-  mutate(title = "Gallup Voice of\nthe People, 2005",
-         neg = FALSE)
-
-internal_ts_dat <- dcpo_input_raw1 %>% 
-  filter(item == "trust_parl5" & country == "Sweden") %>%  
-  mutate(title = "Sweden",
-         neg = FALSE)
-```
-
-```{r int_convergent, fig.height = 3.5, fig.cap = "Internal Convergent Validation: Correlations Between Public Political Discontent and Individual Source-Data Survey Items"}
-#| label: fig-int-convergent
-
-load(here("data", "theta_summary.rda"))
-load(here("data", "theta_results.rda"))
-
-internal_tscs_plot <- validation_plot(internal_tscs_dat,
-                                lab_x = 15,
-                                lab_y = 95) +
-  theme_bw() +
-  theme(legend.position="none",
-        axis.text  = element_text(size=8),
-        axis.title = element_text(size=9),
-        plot.title = element_text(hjust = 0.5, size = 8),
-        strip.background = element_blank()) +
-  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
-  labs(x = "PPD Score",
-       y = "% Who 'Tend Not to Trust' Political Parties")
-
-internal_cs_plot <- validation_plot(internal_cs_dat,
-                                lab_x = 15,
-                                lab_y = 95) +
-  theme_bw() +
-  theme(legend.position="none",
-        axis.text  = element_text(size=8),
-        axis.title = element_text(size=9),
-        plot.title = element_text(hjust = 0.5, size = 8),
-        # strip.text.x = element_text(size=5),
-        strip.background = element_blank()) +
-  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
-  labs(x = "PPD Score",
-       y = "% Disagreeing that Their 'Country\nis Governed by the Will of the People'")
-
-internal_ts_plot <- validation_plot(internal_ts_dat,
-                                    lab_x = 1990,
-                                    lab_y = 95) +
-  theme_bw() +
-  theme(legend.position="none",
-        axis.text  = element_text(size=8),
-        axis.title = element_text(size=9),
-        plot.title = element_text(hjust = 0.5, size = 9),
-        strip.background = element_blank()) +
-  coord_cartesian(ylim = c(0,100),
-                  xlim = c(1985, 2020)) +
-  labs(x = "Year",
-       y = "Score") +
-  annotate("text", x = 2010, y = 10, size = 2,
-           label = 'SOM') +
-  annotate("text", x = 2000, y = 59, size = 2,
-           label = "PPD Score")
-
-internal_tscs_plot + internal_cs_plot + internal_ts_plot  +
-  patchwork::plot_annotation(caption = "Note: Gray whiskers and shading represent 80% credible intervals.")
-```
-
-```{r ext_convergent_val_dat, eval=FALSE}
-ext_dat <- read_csv(here("data-raw",
-                         "surveys_ext_conv.csv"),
-                    col_types = "cccccc") %>% 
-    DCPOtools::dcpo_setup(datapath = here("..",
-                                          "data",
-                                          "dcpo_surveys"),
-                          file = here("data",
-                                      "ext_conv_dat.csv"))
-```
-
-```{r ext_convergent_dat, results=FALSE}
-ext_dat <- read_csv(here("data",
-                         "ext_conv_dat.csv"),
-                    col_types = "cdcddcd")
-
-ext_issp_dem_dat <- ext_dat %>%
-  filter(str_detect(item, "pride_dem4")) %>% 
-  mutate(title = "ISSP:\nNational Identity",
-         neg = FALSE)
-
-ext_wvs_dat <- ext_dat %>%
-  filter(str_detect(survey, "[ew]vs")) %>% 
-  mutate(title = "WVS & EVS",
-         neg = FALSE)
-
-ext_cses_dat <- ext_dat %>%
-  filter(str_detect(survey, "cses")) %>% 
-  mutate(title = "CSES",
-         neg = FALSE)
-```
-
-```{r ext_convergent, fig.cap="External Convergent Validation: Correlations Between PPD Scores and Evaluations of Democratic Performance", fig.height=3.5}
-#| label: fig-ext-convergent
-
-ext_issp_dem_plot <- validation_plot(ext_issp_dem_dat,
-                                     lab_x = 20,
-                                     lab_y = 5) +
-    theme_bw() +
-    theme(legend.position="none",
-          axis.text  = element_text(size=8),
-          axis.title = element_text(size=9),
-          plot.title = element_text(hjust = 0.5, size = 9),
-          strip.background = element_blank()) +
-    coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
-    labs(x = "PPD Score",
-         y = "% Who Are 'Somewhat' or 'Very'\nProud of 'the Way Democracy Works'")
-
-ext_wvs_plot <- validation_plot(ext_wvs_dat,
-                                lab_x = 20,
-                                lab_y = 5) +
-    theme_bw() +
-    theme(legend.position="none",
-          axis.text  = element_text(size=8),
-          axis.title = element_text(size=9),
-          plot.title = element_text(hjust = 0.5, size = 9),
-          strip.background = element_blank()) +
-    coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
-    labs(x = "PPD Score",
-         y = "% Who Are 'Rather' or 'Very' Satisfied\n'With the Way Democracy is Developing'")
-
-ext_cses_plot <- validation_plot(ext_cses_dat,
-                                 lab_x = 20,
-                                 lab_y = 5) +
-    theme_bw() +
-    theme(legend.position="none",
-          axis.text  = element_text(size=8),
-          axis.title = element_text(size=9),
-          plot.title = element_text(hjust = 0.5, size = 9),
-          strip.background = element_blank()) +
-    coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
-    labs(x = "PPD Score",
-         y = "% Who Are 'Fairly' or 'Very' Satisfied\n'With the Way Democracy Works'")
-
-ext_issp_dem_plot + ext_wvs_plot + ext_cses_plot +
-  plot_annotation(
-    caption = "Note: Gray whiskers represent 80% credible intervals.")
-```
-
-Convergent validation refers to tests of whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
-Here, @fig-int-convergent offers 'internal' convergent validation tests [@Caughey2019, 686]: it compares PPD scores to responses to the individual source-data survey items that were used to generate them.
-On the left, PPD scores are plotted against the percentage of respondents across all country-years who responded "tend not to trust" rather than "tend to trust" to the Eurobarometer's dichotomous question, "How much trust do you have in certain institutions: Political parties?" This is the single most-asked item in the source data.
-The middle panel compares PPD scores to responses to the question with the most data-rich cross-section, "Would you say your country is governed by the will of the people?" in Gallup's 2005 Voice of the People survey.
-Finally, the right panel evaluates how well the PPD scores capture change over time by focusing on the item with the largest number of observations for a single country and region in the source data: Sweden's SOM surveys' question, "How much confidence do you have in the way the following institutions and groups do their job: The National Parliament?" In all three cases, the correlations, estimated taking into account the uncertainty in the measures, are strong.
-
-In @fig-ext-convergent, we present three 'external' convergent validation tests, comparing PPD scores to responses to survey items that were *not* included in the source data: items that asked respondents to evaluate "democracy" in their countries and regions.
-Like @Jennings2017, we excluded these questions not least to avoid assuming that respondents identify the current political system of their country with democracy.
-Nevertheless, evaluations of the democracy of respondents' countries provide good alternate indicators of the extent of political discontent.
-The left panel shows data from three rounds of the International Social Survey Program's National Identity module, which asked respondents how proud they were of how democracy works in their country.
-In the center, we plot how much satisfaction respondents reported with "the way democracy is developing" in their countries in the World Values Surveys and European Values Surveys.
-The right draws on data from the Comparative Study of Electoral Systems about how many respondents were at least fairly satisfied "with the way democracy works" in their country.
-Across countries and years and all three of these survey items, our latent-variable measure of political discontent is strongly negatively correlated with aggregate positive evaluations of democracy.
-
-```{r construct_val_dat, eval=FALSE}
-construct_dat <- read_csv(here("data-raw",
-                               "surveys_construct.csv"),
-                          col_types = "cccccc") %>% 
-    DCPOtools::dcpo_setup(datapath = here("..",
-                                          "data",
-                                          "dcpo_surveys"),
-                          file = here("data",
-                                      "construct_dat.csv"))
-```
-
-```{r construct_dat}
-construct_dat <- read_csv(here("data",
-                               "construct_dat.csv"),
-                          col_types = "cdcddcd")
-
-construct_hc_dat <- construct_dat %>%
-  filter(str_detect(item, "hc")) %>% 
-  mutate(title = "",
-         neg = FALSE)
-
-construct_env_dat <- construct_dat %>%
-  filter(str_detect(item, "env")) %>% 
-  mutate(title = "",
-         neg = FALSE)
-
-construct_old_dat <- construct_dat %>%
-  filter(str_detect(item, "old")) %>% 
-  mutate(title = "",
-         neg = FALSE)
-
-```
-
-```{r construct, fig.cap="Construct Validation: Correlations Between PPD Scores and Views of Government Success", fig.height=3.5}
-#| label: fig-construct
-
-construct_hc_plot <- validation_plot(construct_hc_dat,
-                                    lab_x = 20,
-                                    lab_y = 95) +
-  theme_bw() +
-  theme(legend.position="none",
-        axis.text  = element_text(size=8),
-        axis.title = element_text(size=9),
-        plot.title = element_text(hjust = 0.5, size = 9),
-        strip.background = element_blank()) +
-  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
-  labs(x = "PPD Score",
-       y = "% Who Say Government is 'Quite' or 'Very'\nSuccessful in Providing Health Care")
-
-construct_old_plot <- validation_plot(construct_old_dat,
-                                       lab_x = 20,
-                                       lab_y = 95) +
-  theme_bw() +
-  theme(legend.position="none",
-        axis.text  = element_text(size=8),
-        axis.title = element_text(size=9),
-        plot.title = element_text(hjust = 0.5, size = 9),
-        strip.background = element_blank()) +
-  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
-  labs(x = "PPD Score",
-       y = "% Who Say Government is 'Quite' or 'Very'\nSuccessful in Providing for the Elderly")
-
-construct_env_plot <- validation_plot(construct_env_dat,
-                                       lab_x = 20,
-                                       lab_y = 95)  +
-  theme_bw() +
-  theme(legend.position="none",
-        axis.text  = element_text(size=8),
-        axis.title = element_text(size=9),
-        plot.title = element_text(hjust = 0.5, size = 9),
-        strip.background = element_blank()) +
-  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
-    labs(x = "PPD Score",
-         y = "% Who Say Government is 'Quite' or 'Very'\nSuccessful in Protecting the Environment")
-
-construct_hc_plot + construct_old_plot + construct_env_plot +
-  plot_annotation(
-    caption = str_wrap("Note: Gray whiskers represent 80% credible intervals. Data from ISSP Role of Government surveys, 2006 and 2016.", 80))
-```
-
-With the success of these tests of convergent validation, we turn to construct validation.
-Construct validation refers to demonstrating that the tested measure is empirically associated with measures of *other* concepts believed causally related to the concept the measure seeks to represent [@Adcock2001, 542].
-Discontent with the political system should be closely tied to evaluations of recent government policy performance.
-
-@fig-construct depicts the relationships between PPD scores and three survey items from the International Social Survey Program module on the Role of Government on the extent of the government's success in providing health care, providing for the elderly, and in protecting the environment.
-All of these relationships are negative as expected and are moderate to strong in magnitude.
-The PPD scores perform very well in validation tests.
 
 \pagebreak
 
