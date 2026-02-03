@@ -18,3 +18,28 @@ When nonresponse is extensive, posterior uncertainty widens, automatically limit
 
 We also pointed out two channels through which the model handles sensitivity-induced bias: (a) the dispersion parameter absorbs excess noise from socially desirable responding, effectively downweighting the affected question; (b) the country-specific bias term captures context-dependent sensitivity (e.g., corruption questions being more taboo in some countries). 
 We acknowledges that these mechanisms mitigate rather than eliminate sensitivity-related error.
+
+
+# Response Memo: Validation Part
+
+We thank the reviewer for this thoughtful and careful comment and for emphasizing the importance of validation for a new measure.
+We fully agree that validation is central to the contribution of the paper, and the reviewer’s comments have helped us improve both the clarity and the prominence of the validation strategy in the revised manuscript.
+
+At the outset, we would like to clarify the overall structure of the paper.
+All validation of the PPD measure is conducted exclusively in the section titled “Validating Public Political Discontent” and consists of three distinct and standard validation exercises—internal convergent validation, external convergent validation, and construct validation—presented in Figures 2, 3, and 4, respectively.
+These three figures together constitute the full set of validation tests for the measure. In the revised manuscript, we now state this structure explicitly in the main text and more clearly signal the purpose of each validation exercise.
+
+With respect to Figure 3 in particular, we emphasize that this figure is the paper’s external convergent validation test.
+It compares PPD scores to evaluations of democratic performance drawn from the ISSP, WVS/EVS, and CSES—survey items that were deliberately excluded from the latent-variable estimation.
+Because these variables are entirely external to the measurement model, they provide strong benchmarks for assessing whether the PPD measure behaves as theoretically expected.
+Consistent with the reviewer’s point about validation, these relationships are presented as bivariate associations without covariates or adjustments, rather than as attempts at causal inference.
+We have revised the discussion of Figure 3 to make this role unambiguous.
+
+We would also like to clarify that Figure 3 and the external convergent validation it presents are entirely separate from the analyses in the section “Explaining Political Dissatisfaction.”
+The external variables used for validation are limited to the aforementioned items evaluating democratic performance drawn from the ISSP, WVS/EVS, and CSES, and do not include any variables introduced in the later section “Explaining Political Dissatisfaction.”
+That section is not intended to contribute to validation; instead, it serves as an illustrative application of the newly constructed dataset, following a common practice in data-oriented contributions to demonstrate substantive utility after validation has been established.
+Variables such as election years are therefore introduced solely in this application context and are not intended to function as validation benchmarks. In response to the reviewer’s comment, we have revised the language and structure of the manuscript to more clearly distinguish the validation section from the subsequent substantive analysis.
+
+Finally, in line with the reviewer’s suggestion—and in full agreement that validation should be prominent—we have moved key validation analyses from the appendix into the main text.
+At the same time, the appendix continues to provide detailed supporting information, including survey-item documentation, model specifications, and additional diagnostics, to ensure transparency and replicability.
+We hope these revisions clarify both the rigor of the validation exercises and their clear separation from the later application.
