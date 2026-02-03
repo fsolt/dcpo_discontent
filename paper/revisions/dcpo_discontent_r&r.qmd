@@ -1086,13 +1086,13 @@ Finally, the right panel evaluates how well the PPD scores capture change over t
 
 External convergent validation assesses whether a measure is empirically associated with alternative indicators of a closely related concept that are not used in its construction.
 In @fig-ext-convergent, we present three external convergent validation tests comparing PPD scores to responses to survey items that were *not* included in the source data used to estimate PPD: items that asked respondents to evaluate “democracy” in their countries and regions.
-LFollowing @Jennings2017, we excluded these questions from the latent-variable estimation, not least to avoid assuming that respondents necessarily identify the current political system of their country with democracy.
+Following @Jennings2017, we excluded these questions from the latent-variable estimation, not least to avoid assuming that respondents necessarily identify the current political system of their country with democracy.
 Nevertheless, evaluations of democratic performance provide useful alternative indicators of the extent of political discontent and therefore serve as appropriate external benchmarks for validation.
 
 The left panel of @fig-ext-convergent shows the correlation between PPD scores and responses from three rounds of the International Social Survey Program’s National Identity module, which asked respondents how proud they were of how democracy works in their country.
 The center panel plots the correlation between PPD scores and respondents’ reported satisfaction with “the way democracy is developing” in their countries in the World Values Surveys and European Values Surveys.
 The right panel draws on data from the Comparative Study of Electoral Systems, showing the correlation between PPD scores and the share of respondents who were at least fairly satisfied “with the way democracy works” in their country.
-Across countries and years, and for all three of these survey items, our latent-variable measure of political discontent is strongly and negatively correlated with aggregate positive evaluations of democracy.
+Across countries and years, and for all three of these survey items, our latent-variable measure of political discontent is strongly and negatively correlated with aggregate positive evaluations of a country's democracy.
 Because these items capture closely related but conceptually distinct evaluations of the political system, they provide strong external benchmarks for assessing whether the PPD measure behaves as theoretically expected.
 
 ```{r construct_val_dat, eval=FALSE}
