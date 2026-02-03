@@ -44,3 +44,14 @@ In response to the reviewer’s comment, we have revised the language and struct
 Finally, in line with the reviewer’s suggestion—and in full agreement that validation should be prominent—we have moved key validation analyses from the appendix into the main text.
 The appendix continues to provide detailed supporting information—including model specifications, survey-item documentation, and full summary and numeric results—to ensure transparency and replicability.
 We hope that these revisions address the reviewer’s concern by foregrounding the validation strategy and maintaining a clear separation between validation and the subsequent illustrative analysis.
+
+
+# Response Memo: Alternative Measure Suggestion
+We appreciate the reviewer’s concern regarding the selection of items included in the index and the implications of excluding certain widely used indicators.
+Rather than generating alternative specifications that incorporate these items into the construction of the PPD measure, we address this concern through external convergent validation.
+
+Specifically, items that were purposively excluded from the construction of the PPD measure for theoretical reasons—such as trust in the incumbent government, abstract support for democracy, and evaluations of democratic performance, drawn from the ISSP, WVS/EVS, and CSES—are instead used as external validation indicators.
+As shown in Figure 3, these measures exhibit strong and substantively meaningful correlations with the constructed PPD series, in line with theoretical expectations.
+These validation analyses were initially presented in the Appendix and, following substantial revisions, have now been incorporated into the main text in the measurement and validation section (see “Validating Public Political Discontent” section).
+
+We believe this approach is sufficient to demonstrate that our measures are well founded and to give readers greater confidence that the results are not artifacts of particular measurement choices.
