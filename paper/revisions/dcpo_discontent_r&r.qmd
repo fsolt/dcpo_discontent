@@ -1999,12 +1999,13 @@ Because the DCPO model operates on aggregate response distributions rather than 
 
 *Sampling strategy differences within countries.*
 The surveys that contribute data to a given country-year often differ in their sampling designs---probability versus non-probability samples, varying population definitions (e.g., age cutoffs, minority inclusion, territorial exclusions), and different weighting procedures.
-Survey weights, where available, are incorporated in the source data (and the `DCPOtools` package applies them automatically), which reduces the influence of design differences on the aggregated response shares.
-Yet not all available weights yield fully representative samples, and some surveys lack weights entirely.
-Unlike the model employed by @Caughey2019, the DCPO model does not incorporate poststratification to correct for these issues.
-To the extent that such sample-representation differences vary across years for a single country and item---as is typically the case, given that more recent surveys tend to be more fully representative---the country-specific item bias terms will not fully remedy this problem.
-The downside is greater measurement uncertainty in the estimates in country-years where the data are relatively rich (via the overall dispersion parameter $\phi$) and potential bias in the estimates where data are more sparse.
+DCPO mitigates these differences in two ways. 
+First, survey weights, where available, are incorporated in the source data (and the `DCPOtools` package applies them automatically), which reduces distortions from known design features.
+Second, country-specific item bias terms can absorb persistent, systematic survey-specific shifts within a country–item series.
+However, because the DCPO model does not poststratify to external population margins, time-varying sample-representation differences within a country–item series may not be fully removed.
+
 This is a limitation the model shares with many cross-national survey aggregation strategies, and it underscores the importance of the validation tests presented in Appendix\nobreakspace{}\@ref(sec-app-validation), which assess whether these residual design effects are consequential enough to undermine the resulting estimates.
+
 
 *Item nonresponse.*
 Missing responses at the item level---whether from respondents declining to answer a question or from "don't know" responses excluded by the survey organization---reduce the effective sample size ($n_{ktqr}$) for the affected question in a given country-year.
