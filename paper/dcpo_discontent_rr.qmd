@@ -71,7 +71,7 @@ Replication data is available on the Harvard Dataverse \[link tbd\], and the wor
 \textbf{Abstract}\par
 }
 \begin{abstract}
-    Public discontent with the political system has become an increasingly salient concern in recent years, with the argument that it undermines democratic stability and effective governance. Nevertheless, the understanding of the nature, trends, and drivers of political discontent remain debated, largely reflecting the constraints from available survey data and items in the construction of measurement. This article takes advantage of the state-of-the-art latent-variable modeling to aggregat survey responses and a comprehensive collection of survey data to generate dynamic comparative estimates of public political discontent (PPD) for over a hundred countries and regions over the past four decades. These PPD scores are validated with responses to the individual source-data survey items that were used to generate them as well as the democratic evaluation survey item that was not used in our estimation. Next, a cross-national and longitudinal analysis of PPD in advanced democracies (i.e., OECD countries) highlights that public political discontent has been on a rising trend, rather than merely "trendless fluctuations" as Norris (2011) claimed. Our results reveal that these increased discontents are largely attributable to worsening economic conditions, including low average income, slow growth, and high unemployment rates.
+    Public discontent with the political system has become an increasingly salient concern in recent years, with the argument that it undermines democratic stability and effective governance. Nevertheless, the understanding of the nature, trends, and drivers of political discontent remain debated, largely reflecting the constraints from available survey data and items in the construction of measurement. This article takes advantage of state-of-the-art latent-variable modeling to aggregate survey responses and a comprehensive collection of survey data to generate dynamic comparative estimates of public political discontent (PPD) for 136 countries and regions over 56 years (1968–2023). These PPD scores are validated with responses to the individual source-data survey items that were used to generate them as well as the democratic evaluation survey item that was not used in our estimation. Next, a cross-national and longitudinal analysis of PPD in advanced democracies (i.e., OECD countries) highlights that public political discontent has been on a rising trend, rather than merely “trendless fluctuations” as Norris (2011) claimed. Our results reveal that these increased discontents are largely attributable to worsening economic conditions, including low average income, slow growth, and high unemployment rates.
 \end{abstract}
 
 \renewcommand{\baselinestretch}{1.5}
@@ -395,6 +395,7 @@ Moreover, we employ the Dynamic Comparative Public Opinion (DCPO) model to estim
 This approach allows us to combine information from a multitude of survey questions while accounting for differences in question contents and response options.
 As a result, we generate estimates of the macro-level public’s political discontent across 136 countries and regions over 56 years (1968–2023), which we call Public Political Discontent (PPD) scores.
 Our PPD scores constitute the largest and most temporally and spatially comprehensive dataset on the topic to date.
+
 We further assess the convergent and construct validity of the PPD scores by examining their strong empirical correlations with three types of indicators: (1) the original individual-level survey items used to construct the scores, (2) independent survey items not included in the source data (e.g., evaluations of democratic performance), and (3) conceptually related variables, such as assessments of recent government policy performance.
 Across all tests, the PPD scores demonstrate robust validity, confirming their reliability for empirical analysis.
 
@@ -928,7 +929,10 @@ res_c <- theta_summary %>%
 To address sparsity in the source data—unpolled or thinly surveyed years in each country and region—DCPO uses simple local-level dynamic linear models, i.e., random-walk priors, for each country and region.
 That is, within each country and region, each year’s value of public political discontent is modeled as the previous year’s estimate plus a random shock.
 These dynamic models smooth the estimates of public political discontent over time and allow estimation even in years for which little or no survey data is available, albeit at the expense of greater measurement uncertainty.
-As a result, we generate estimates of the public's political discontent in all `r res_cy` country-years spanned by the source data, which we call Public Political Discontent (PPD) scores.
+
+As a result, we generated estimates of the public's political discontent in all `r res_cy` country-years spanned by the source data, which we call Public Political Discontent (PPD) scores.
+The PPD scores cover 136 countries and regions worldwide over a period of 56 years (1968–2023).
+The dataset is publicly available and open to public use.
 
 # Validating Public Political Discontent {.unlisted .unnumbered}
 That we can *generate* estimates of political discontent does not automatically mean that they are suitable for analysis.
@@ -1250,6 +1254,7 @@ bottom5 <- p1_data %>%
 
 
 # Explaining Political Dissatisfaction {.unlisted .unnumbered}
+
 We now focus on a group of countries where discontent has attracted particular public and scholarly concern, the advanced democracies of the OECD, in order to demonstrate how the newly constructed PPD dataset can be used to address substantive questions in the literature.
 In @fig-ts, we present the evolution of political discontent over time across these OECD democracies.
 Substantial differences emerge both across countries and over time, raising important questions about the sources of cross national variation and the drivers of temporal change in political discontent.
