@@ -2020,7 +2020,7 @@ First, survey weights, where available, are incorporated in the source data (and
 Second, country-specific item bias terms can absorb persistent, systematic survey-specific shifts within a country–item series.
 However, because the DCPO model does not poststratify to external population margins, time-varying sample-representation differences within a country–item series may not be fully removed.
 
-This is a limitation the model shares with many cross-national survey aggregation strategies, and it underscores the importance of the validation tests presented in Appendix\nobreakspace{}\@ref(sec-app-validation), which assess whether these residual design effects are consequential enough to undermine the resulting estimates.
+This is a limitation the model shares with many cross-national survey aggregation strategies, and it underscores the importance of the validation tests presented in the main text, which assess whether these residual design effects are consequential enough to undermine the resulting estimates.
 
 
 *Item nonresponse.*
