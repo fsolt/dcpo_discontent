@@ -5,15 +5,17 @@ title: |
 output: pdf_document
 ---
 
-We are grateful to the reviewers for their thoughtful reviews and their suggestions on how to improve the paper. We believe that the questions and the resulting changes to the manuscript have greatly improved the accessibility of the manuscript to future readers. In the following, we will respond to the individual queries.
+We are grateful to the reviewers for their thoughtful reviews, their enthusiasm for this project, and their suggestions on how to improve the paper. 
+We believe that the questions and the resulting changes to the manuscript have greatly improved the accessibility of the manuscript to future readers. 
+In the following, we respond to each of their individual queries.
 
-First, R1 worried that the DCPO model resembles a "magic trick" that stitches together fundamentally incomparable surveys, smooths them, and draws overly strong conclusions.
+1. R1 worried that the DCPO model resembles a "magic trick" that stitches together fundamentally incomparable surveys, smooths them, and draws overly strong conclusions.
 "There is a reason no one has done this before," R1 suggested, "and it may be that the assumptions required to make it work are quite heroic."
 R1's concern is far from trivial, and it is one that many readers are likely to share.
 
 We have done our best to put this concern to rest.
 First, we note at page 8 that the DCPO model and similar efforts to estimate latent variables of public opinion using diverse survey questions and aggregate IRT models actually _have_ been done before and in fact constitute a growing body of research.
-And second, we provide a fuller discussion of the model both in the text (at pages 9-10) and in a specific section in the supplementary material (Appendix A2).
+And second, in more direct response to R1's suggestion of more transparency, we provide a fuller discussion of the model both in the text (at pages 9-10) and in a specific section in the supplementary material (Appendix A2).
 This discussion now explains each of the model's three parameter sets functionally---i.e., what specific incomparability problem each one resolves.
 In short, difficulty places all survey items on a common scale by estimating how much of the latent trait each response option expresses, even when questions differ in wording and response formats.
 Dispersion downweights noisier questions so that poorly performing items do not distort the estimates---directly countering the concern that the model simply averages over incompatible signals.
@@ -21,13 +23,22 @@ Finally, country-specific item bias absorbs translation effects, cultural respon
 
 In the appendix, we also address specifically that surveys contributing to a given country-year often differ in sampling design, population definitions, and weighting.
 It explains (at A2.3) that survey weights are incorporated where available, notes the absence of poststratification, and characterizes the resulting limitation honestly---pointing readers to the validation tests in the text for evidence that residual design effects do not undermine the estimates.
-
 Further, the revised text explains that item-level missingness reduces the effective sample size entering the beta-binomial likelihood. 
 When nonresponse is extensive, posterior uncertainty widens, automatically limiting that observation's influence on the country-year estimate.
+We also point out two channels through which the model handles sensitivity-induced bias: (a) when sensitive questions generate more variable or inconsistent response patterns (e.g., due to social-desirability pressures), the item dispersion parameter increases, implying weaker measurement information and effectively reducing that item’s influence on the latent estimate; 
+(b) when sensitivity produces systematic shifts that differ across national contexts for particular items (e.g., corruption questions being more taboo in some countries), the country–specific item bias terms capture these context-dependent deviations rather than forcing the latent trait to explain them.
+Of course, we also acknowledge that these mechanisms mitigate, rather than fully eliminate, sensitivity-related error.
 
-We also pointed out two channels through which the model handles sensitivity-induced bias: (a) when sensitive questions generate more variable or inconsistent response patterns (e.g., due to social-desirability pressures),the item dispersion parameter increases, implying weaker measurement information and effectively reducing that item’s influence on the latent estimate; 
-(b) when sensitivity produces systematic shifts that differ across national contexts (e.g., corruption questions being more taboo in some countries), the country–item bias term captures these context-dependent deviations rather than forcing the latent trait to explain them.
-We acknowledges that these mechanisms mitigate rather than eliminate sensitivity-related error.
+2. On the topic of the country-specific item bias parameters, $\delta_{kq}$, R1 raises the concern that "in practice, such a parameter can end up absorbing almost everything."
+The reviewer is correct that these terms absorb any distinctive characteristic of a particular question in a particular country, not only translation issues or cultural idiosyncrasies but also features of the way a survey was implemented there such as "differences in survey mode, [or] sample representativeness."
+We worked this point into our discussion of these parameters in Appendix A2.1.
+These terms do not, however, absorb "genuine cross-national variation in discontent," the problematic possibility that prompts R1's concern.
+Each of the terms is estimated for a particular pair of country and item, and reflects how responses to that item are different _relative to other items_ in that country as opposed to other countries.
+That is, when item _q_ repeatedly tends to contradict what other items tell us about discontent in country _k_ but performs well elsewhere, $\delta_{kq}$ will be larger.^[
+If item _q_ often contradicts what other items tell us about discontent across _all_ countries, this noisiness will drive its dispersion parameter $\alpha_q$ will be larger.
+We discuss this in Appendix 2.1 also.]
+(This explains why $\delta_{kq}$ is set to zero when item _q_ is asked only once in country _k_, as we need to see how it performs relative to other items repeatedly, and when item _q_ is asked _only_ in country _k_, because we need to see how it performs in country _k_ relative to other countries.)
+We take care to elucidate this point in Appendix 2.1.
 
 
 # Response Memo: Validation Part
