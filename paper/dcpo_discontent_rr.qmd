@@ -413,7 +413,7 @@ To understand cross-national and temporal variations in regime stability, schola
 Equally important is attention to a general disposition toward the political system that emerges from individuals’ attitudes toward its various components, which we conceptualize as macro level political discontent.
 Accordingly, the concept of political discontent and the Public Political Discontent dataset developed in this article provide a more encompassing analytical lens for future research on the role of mass attitudes in democratic backsliding and regime stability.
 
-In the following section, we first review key scholarly debates surrounding the concept of political discontent and clarify our own conceptualization. We then outline our measurement strategy, explaining how it addresses incomparability across different survey datasets, and introduce the PPD scores together with evidence from validity tests. Next, we examine trends in political discontent and its determinants in advanced OECD countries, where prior findings remain mixed, to demonstrate the usefulness of our newly constructed data. In conclusion, we discuss the broader implications of our findings and directions for future research.
+In the following section, we first review key scholarly debates surrounding the concept of political discontent and clarify our own conceptualization. We then outline our measurement strategy, explaining how it addresses incomparability across different survey datasets, and introduce the PPD scores together with evidence from validity tests. Next, we examine trends in political discontent and its determinants in advanced OECD countries, where prior findings remain mixed, to demonstrate the usefulness of our newly constructed data. In conclusion, we discuss the broader implications of our findings and the directions for future research enabled by the PPD data.
 
 ```{r dcpo_input_raw, eval=FALSE, include=FALSE}
 # set eval to TRUE to run; running time is <5 minutes
@@ -1250,7 +1250,7 @@ bottom5 <- p1_data %>%
 
 
 # Explaining Political Dissatisfaction {.unlisted .unnumbered}
-After estimating public political discontent across a wide range of countries and years, we focus on a group of countries where discontent has attracted particular public and scholarly concern, the advanced democracies of the OECD, in order to demonstrate how the newly constructed PPD dataset can be used to address substantive questions in the literature.
+We now focus on a group of countries where discontent has attracted particular public and scholarly concern, the advanced democracies of the OECD, in order to demonstrate how the newly constructed PPD dataset can be used to address substantive questions in the literature.
 In @fig-ts, we present the evolution of political discontent over time across these OECD democracies.
 Substantial differences emerge both across countries and over time, raising important questions about the sources of cross national variation and the drivers of temporal change in political discontent.
 Existing scholarship offers a range of perspectives on if public political discontent has increased over time and how political and economic contexts shape it, yet empirical findings remain mixed, largely because previous studies rely on different conceptualizations and survey measures.
