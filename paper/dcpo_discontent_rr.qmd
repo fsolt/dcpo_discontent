@@ -779,7 +779,7 @@ To make use of the large and heterogeneous set of survey items, we estimate a la
 The DCPO model is a state-of-the-art population-level two-parameter ordinal logistic item response theory model with country-specific item-bias terms.^[
 A comprehensive description of the DCPO model is presented in @Solt2020c and Appendix\nobreakspace{}@sec-app-dcpo.]
 
-The DCPO model and similar latent modeling approaches have been used in recent years to model public opinion across countries and over time on a variety of topics, such as policy ideology [@Caughey2019; @Berwick2025], gender egalitarianism [@Woo2023], political interest [@Hu2025b], and support for gay rights [@Woo2025].
+The DCPO model and similar latent modeling approaches have been used in recent years to model public opinion across countries and over time for a variety of attitudes, such as policy ideology [@Caughey2019; @McGann2019; @Berwick2025], gender egalitarianism [@Woo2023], political interest [@Hu2025b], and support for gay rights [@Woo2025].
 Conceptually, this approach is analogous to educational testing, where students may take different test forms containing different items, yet their abilities are placed on a common scale through the estimation of item parameters [@DeBoeck2004; @Fox2010].
 
 The core logic of a latent variable model is that the probability an individual responds affirmatively to a survey question depends on the respondent’s position on an underlying latent trait---in this case, political discontent.
@@ -801,7 +801,7 @@ A survey question may confuse some respondents or may not align cleanly with the
 If such a question is nevertheless used as an indicator of political discontent, it will exhibit high dispersion.
 On the contrary, the lower the dispersion, the better that changes in responses to the question map onto changes in political discontent.
 
-Third, to allow for the possibility that translation issues or cultural differences result in the same question being interpreted differently in different countries, the model estimates *country-specific bias* parameters that shift the diﬀiculty of all responses for a particular question in a particular country.
+Third, to allow for the possibility that translation issues or cultural differences or other idiosyncracies result in the same question being answered differently in different countries, the model estimates *country-specific bias* parameters that shift the diﬀiculty of all responses for a particular question in a particular country.
 Together, the model’s diﬀiculty, dispersion, and country-specific bias parameters work to generate comparable estimates of the latent variable of political discontent from the available but incomparable source data.
 
 ```{r dcpo_input, eval=FALSE, include=FALSE, results=FALSE}
@@ -2001,7 +2001,7 @@ This feature directly addresses the concern that stitching together diverse surv
 As shown in @tbl-items, the dispersion estimates indicate that the survey items differ in noise but, overall, contribute informative signals about the single latent variable of political discontent. 
 
 The third parameter set, *country-specific item bias* ($\delta_{kq}$), shifts the difficulty of all responses for a particular question in a particular country.
-Translation issues, cultural differences in response styles, or other idiosyncrasies of a country can render the same survey item not equivalent in its performance there relative to other national contexts; this lack of equivalence is made empirically distinguishable from a difference in discontent by the country's contemporary responses to other included survey items.
+Translation issues, cultural differences in response styles, differences in survey mode, problems of sample representativeness, or other idiosyncrasies of a country or its survey implementation can render the same survey item not equivalent in its performance there relative to other national contexts; this lack of equivalence is made empirically distinguishable from a difference in discontent by the country's contemporary responses to other included survey items.
 The $\delta_{kq}$ terms absorb these country-level deviations in an item's performance, preventing them from biasing cross-national comparisons.
 Estimating $\delta_{kq}$ requires repeated administrations of question $q$ in country $k$, so when responses to question $q$ are observed in country $k$ in only a single year, the DCPO model sets $\delta_{kq}$ to zero by assumption, increasing the error of the model by any country-item bias that is present.
 Questions that are asked repeatedly over time in only a single country pose no risk of country-specific item bias, so $\delta_{kq}$ in such cases are also set to zero.
