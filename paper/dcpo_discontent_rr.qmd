@@ -4,6 +4,12 @@ format:
     number-sections: true
     papersize: a4
     keep-tex: false
+    extra_dependencies: ["float"]
+header-includes:
+    - \renewcommand{\topfraction}{.85}
+    - \renewcommand{\bottomfraction}{.85}
+    - \renewcommand{\textfraction}{.15}
+    - \renewcommand{\floatpagefraction}{.66}
 crossref:
 #  sec-prefix: OSM
   sec-labels: alpha A
@@ -2078,11 +2084,13 @@ Finally, the logistic function is used to transform $\bar{\theta'}_{kt}$ to the 
 # Numeric Results {#sec-app-numeric}
 
 ## Tabular Version of Results Presented in @fig-m1plot {#sec-m1table}
-
 <!-- \FloatBarrier -->
+\vspace{2cm}
+
 
 ```{r modelTB}
 #| label: tbl-m1
+#| fig-pos: "b!"
 
 vec_coefName <- c("b_year" = "Time Trend",
   "b_election" = "Election Year",
