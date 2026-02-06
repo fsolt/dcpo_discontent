@@ -2,6 +2,7 @@
 title: |
     | Macrodiscontent Across Countries
     | Response to Reviewers
+bibliography: "../p_dcpo_trustRegime_main.bib"
 output: pdf_document
 ---
 
@@ -9,7 +10,7 @@ We are grateful to the reviewers for their thoughtful reviews, their enthusiasm 
 We believe that the questions and the resulting changes to the manuscript have greatly improved the accessibility of the manuscript to future readers. 
 In the following, we respond to each of their individual queries.
 
-1. R1 worried that the DCPO model resembles a "magic trick" that stitches together fundamentally incomparable surveys, smooths them, and draws overly strong conclusions.
+1.1. Reviewer 1 worried that the DCPO model resembles a "magic trick" that stitches together fundamentally incomparable surveys, smooths them, and draws overly strong conclusions.
 "There is a reason no one has done this before," R1 suggested, "and it may be that the assumptions required to make it work are quite heroic."
 R1's concern is far from trivial, and it is one that many readers are likely to share.
 
@@ -29,10 +30,10 @@ We also point out two channels through which the model handles sensitivity-induc
 (b) when sensitivity produces systematic shifts that differ across national contexts for particular items (e.g., corruption questions being more taboo in some countries), the country–specific item bias terms capture these context-dependent deviations rather than forcing the latent trait to explain them.
 Of course, we also acknowledge that these mechanisms mitigate, rather than fully eliminate, sensitivity-related error.
 
-2. On the topic of the country-specific item bias parameters, $\delta_{kq}$, R1 raises the concern that "in practice, such a parameter can end up absorbing almost everything."
+1.2. On the topic of the country-specific item bias parameters, $\delta_{kq}$, R1 raises the concern that "in practice, such a parameter can end up absorbing almost everything."
 The reviewer is correct that these terms absorb any distinctive characteristic of a particular question in a particular country, not only translation issues or cultural idiosyncrasies but also features of the way a survey was implemented there such as "differences in survey mode, [or] sample representativeness."
 We worked this point into our discussion of these parameters in Appendix A2.1.
-These terms do not, however, absorb "genuine cross-national variation in discontent," the problematic possibility that prompts R1's concern.
+These terms do not, however, absorb "genuine cross-national variation in discontent," the problematic possibility that prompted R1's preoccupation.
 Each of the terms is estimated for a particular pair of country and item, and reflects how responses to that item are different _relative to other items_ in that country as opposed to other countries.
 That is, when item _q_ repeatedly tends to contradict what other items tell us about discontent in country _k_ but performs well elsewhere, $\delta_{kq}$ will be larger.^[
 If item _q_ often contradicts what other items tell us about discontent across _all_ countries, this noisiness will drive its dispersion parameter $\alpha_q$ will be larger.
@@ -40,10 +41,39 @@ We discuss this in Appendix 2.1 also.]
 (This explains why $\delta_{kq}$ is set to zero when item _q_ is asked only once in country _k_, as we need to see how it performs relative to other items repeatedly, and when item _q_ is asked _only_ in country _k_, because we need to see how it performs in country _k_ relative to other countries.)
 We take care to elucidate this point in Appendix 2.1.
 
+1.3. Finally, R1 also raised the issue of question choice, noting that we omit measures of concepts like satisfaction with democracy that are often used in studies of legitimacy and discontent.
+In response to this issue, first we make sure to elaborate the theoretical grounds for our selection of survey items as including measures of _diffuse_ rather than _specific_ support, building on such classic contributions as @Easton1965 and more recent empirical works such as @Jennings2017.
 
-# Response Memo: Validation Part
-We thank the reviewer for this thoughtful and careful comments on the validation part, which have helped us improve both the clarity and the prominence of the validation strategy in the revised manuscript.
-We fully agree that validation is central to the contribution of the paper, and we have always treated it as such. In the original version of the manuscript, the full set of validation analyses was presented in detail in the appendix, with only a brief summary provided in the main text. In response to the reviewer’s comment, we have revised the paper to move the validation analyses into the main text and to present them more prominently and transparently.
+And second, rather than compiling a comprehensive collection of such questions and generating an alternative PPD measure that incorporates them, we address this concern through external convergent validation.
+Specifically, items that were purposively excluded from the construction of the PPD measure for theoretical reasons—such as trust in the incumbent government, abstract support for democracy, and evaluations of democratic performance, drawn from the ISSP, WVS/EVS, and CSES—are instead used as external validation indicators.
+As shown in Figure 3, these measures exhibit strong and substantively meaningful correlations with the constructed PPD series, in line with theoretical expectations.
+These validation analyses were initially presented in the Appendix and, with substantial revisions, have now been incorporated into the main text in the measurement and validation section (see below).
+We believe this approach is sufficient to demonstrate that our measures are well founded and to give readers greater confidence that the results are not artifacts of particular measurement choices.
+
+2.1. Reviewer 2 questioned whether the piece fits the EPSR's 'original article' format, seeing it instead as a data paper and encouraging us to refocus our contribution in this direction.
+We thank the reviewer for this thoughtful and constructive comment.
+We agree that the manuscript, in its original form, may have appeared to sit uncomfortably between a theory-driven article and a data-focused contribution.
+In response, we have revised the manuscript throughout to more clearly position it as a data-focused paper whose primary contribution is the introduction of a novel time-series cross-national dataset on public political discontent, covering a substantially broader set of countries and years than existing measures.
+This new dataset allows, for example, a far more comprehensive examination of the extent and determinants of political discontent than has been possible in prior research.
+In particular, focusing on OECD countries—where previous studies have produced conflicting findings due to reliance on different datasets or survey items—our new data show that political discontent has increased over time and that this rise is primarily driven by worsening economic conditions, while institutional factors play a more limited role.
+This analysis clearly demonstrates how our novel data can contribute to existing literature on political discontent.
+
+At the same time, our contribution is not limited to the creation of a novel dataset.
+As discussed in the manuscript, prior research on political discontent has often relied on divergent conceptualizations, resulting in heterogeneous measures and conflicting empirical conclusions.
+To address this limitation, we advance a clearer conceptualization of political discontent as a lack of diffuse support for the political system, drawing on Easton’s distinction between diffuse and specific support.
+This conceptualization integrates multiple dimensions of system-level evaluations emphasized in prior studies and provides a coherent foundation for comparative measurement.
+Taken together, the main contribution of our paper lies in advancing a clearer concept of political discontent and providing a novel dataset grounded in that concept.
+
+To clarify these contributions, we have substantially revised the introduction, conceptualization, and conclusion sections to more explicitly discuss how our conceptual framework and the resulting dataset contribute to the literature.
+In addition, in response to the reviewer’s suggestion to more fully embrace the data-driven nature of the paper, we have expanded the discussion of our measurement strategy, including how the estimates are generated, how uncertainty should be interpreted, and how researchers can incorporate this uncertainty in subsequent analyses.
+Finally, we strengthen the conclusion by outlining how the PPD dataset can be used in future research on democratic backsliding, regime stability, and related topics.
+We sincerely appreciate the reviewer's suggestions in this regard; they have helped us clarify the core purpose of the paper and strengthen its identity.
+
+2.2. R2 also raised the issue of the role of measurement validation in the paper.
+We are grateful for these thoughtful and careful comments on the validation part, which have helped us improve both the clarity and the prominence of the validation strategy in the revised manuscript.
+We fully agree that validation is central to the contribution of the paper, and we have always intended to treat it as such.
+In the original version of the manuscript, the full set of validation analyses was presented in detail in the appendix, with only a brief summary provided in the main text.
+In response to the reviewer's comment, we have revised the paper to move the validation analyses into the main text and to present them more prominently and transparently.
 
 At the outset, we would like to clarify the overall structure of the paper.
 All validation of the PPD measure is conducted exclusively in the section titled “Validating Public Political Discontent” and consists of three distinct and standard validation exercises—internal convergent validation, external convergent validation, and construct validation—presented in Figures 2, 3, and 4, respectively.
@@ -57,6 +87,7 @@ We have revised the discussion of Figure 3 to make this role unambiguous.
 We would also like to clarify that all validation tests are analytically separate from the analyses presented in the section “Explaining Political Dissatisfaction.”
 Any explanatory variables introduced in that later section—shown in Figure 3 in the originally submitted manuscript and now presented in Figure 6 in the revised version—are not used for validation purposes.
 The “Explaining Political Dissatisfaction” section instead serves as an illustrative application of the newly constructed dataset, following a common practice in data-oriented contributions to demonstrate substantive utility after validation has been established.
+Among other things, this section illustrates how the uncertainty in the PPD estimates can be incorporated into analyses, which as we noted above is a point R2 helpfully reminded us to address.
 Variables such as election years are therefore introduced solely in this application context and are not intended to function as validation benchmarks.
 In response to the reviewer’s comment, we have revised the language and structure of the manuscript to more clearly distinguish the validation section from the subsequent substantive analysis.
 
@@ -64,13 +95,4 @@ Finally, in line with the reviewer’s suggestion—and in full agreement that v
 The appendix continues to provide detailed supporting information—including model specifications, survey-item documentation, and full summary and numeric results—to ensure transparency and replicability.
 We hope that these revisions address the reviewer’s concern by foregrounding the validation strategy and maintaining a clear separation between validation and the subsequent illustrative analysis.
 
-
-# Response Memo: Alternative Measure Suggestion
-We appreciate the reviewer’s concern regarding the selection of items included in the index and the implications of excluding certain widely used indicators.
-Rather than generating alternative specifications that incorporate these items into the construction of the PPD measure, we address this concern through external convergent validation.
-
-Specifically, items that were purposively excluded from the construction of the PPD measure for theoretical reasons—such as trust in the incumbent government, abstract support for democracy, and evaluations of democratic performance, drawn from the ISSP, WVS/EVS, and CSES—are instead used as external validation indicators.
-As shown in Figure 3, these measures exhibit strong and substantively meaningful correlations with the constructed PPD series, in line with theoretical expectations.
-These validation analyses were initially presented in the Appendix and, following substantial revisions, have now been incorporated into the main text in the measurement and validation section (see “Validating Public Political Discontent” section).
-
-We believe this approach is sufficient to demonstrate that our measures are well founded and to give readers greater confidence that the results are not artifacts of particular measurement choices.
+# References
