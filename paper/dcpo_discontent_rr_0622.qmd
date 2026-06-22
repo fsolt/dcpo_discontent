@@ -142,6 +142,46 @@ conflicted::conflicts_prefer(dplyr::filter,
                              posterior::sd,
                              posterior::mad,
                              DCPOtools::extract_dcpo_results)
+
+## ---- Figure export for journal submission --------------------------------
+## Each figure is also written to disk as a separate high-resolution file
+## (>= 300 dpi) for journal production. Toggle `save_figs` to FALSE to skip.
+save_figs   <- TRUE
+fig_dpi     <- 600                       # >= 300 dpi as required
+fig_formats <- c("tiff", "png")          # add/remove formats as needed
+fig_dir     <- here::here("submission_figures")
+if (save_figs && !dir.exists(fig_dir)) dir.create(fig_dir, recursive = TRUE)
+
+## Save a ggplot/patchwork object to one file per format in fig_dir.
+## width/height are in inches; defaults match this document's body width.
+save_fig <- function(plot, name, width = 6.5, height = 3.5) {
+    if (!isTRUE(save_figs)) return(invisible(NULL))
+    for (fmt in fig_formats) {
+        args <- list(
+            filename = file.path(fig_dir, paste0(name, ".", fmt)),
+            plot     = plot,
+            width    = width,
+            height   = height,
+            units    = "in",
+            dpi       = fig_dpi
+        )
+        ## Use the ragg device when available for crisp, consistent raster
+        ## output; fall back to base devices otherwise. LZW-compress TIFFs.
+        if (fmt == "tiff") {
+            if (requireNamespace("ragg", quietly = TRUE)) {
+                args$device <- ragg::agg_tiff
+            } else {
+                args$compression <- "lzw"
+            }
+        } else if (fmt == "png") {
+            if (requireNamespace("ragg", quietly = TRUE)) {
+                args$device <- ragg::agg_png
+            }
+        }
+        do.call(ggplot2::ggsave, args)
+    }
+    invisible(NULL)
+}
 ```
 
 ```{r define_funs}
@@ -785,7 +825,9 @@ cby_map <- world_map %>%
     scale_y_continuous(expand=c(0,0)) +
     scale_x_continuous(expand=c(0,0))
 
-cby_map + (countries_plot/ ybc_plot) + plot_layout(widths = c(4, 1))
+fig1 <- cby_map + (countries_plot/ ybc_plot) + plot_layout(widths = c(4, 1))
+fig1
+save_fig(fig1, "Figure_1", width = 6.5, height = 3.5)
 ```
 
 To make use of the large and heterogeneous set of survey items, we estimate a latent variable model of the aggregated survey responses using the Dynamic Comparative Public Opinion (DCPO) latent variable model.
@@ -1027,8 +1069,10 @@ internal_ts_plot <- validation_plot(internal_ts_dat,
   annotate("text", x = 2000, y = 59, size = 2,
            label = "PPD Score")
 
-internal_tscs_plot + internal_cs_plot + internal_ts_plot  +
+fig2 <- internal_tscs_plot + internal_cs_plot + internal_ts_plot  +
   patchwork::plot_annotation(caption = "Note: Gray whiskers and shading represent 80% credible intervals.")
+fig2
+save_fig(fig2, "Figure_2", width = 6.5, height = 3.5)
 ```
 
 ```{r ext_convergent_val_dat, eval=FALSE}
@@ -1105,9 +1149,11 @@ ext_cses_plot <- validation_plot(ext_cses_dat,
     labs(x = "PPD Score",
          y = "% Who Are 'Fairly' or 'Very' Satisfied\n'With the Way Democracy Works'")
 
-ext_issp_dem_plot + ext_wvs_plot + ext_cses_plot +
+fig3 <- ext_issp_dem_plot + ext_wvs_plot + ext_cses_plot +
   plot_annotation(
     caption = "Note: Gray whiskers represent 80% credible intervals.")
+fig3
+save_fig(fig3, "Figure_3", width = 6.5, height = 3.5)
 ```
 
 Convergent validation refers to tests of whether a measure is empirically associated with alternative indicators of the same concept [@Adcock2001, 540].
@@ -1205,9 +1251,11 @@ construct_env_plot <- validation_plot(construct_env_dat,
     labs(x = "PPD Score",
          y = "% Who Say Government is 'Quite' or 'Very'\nSuccessful in Protecting the Environment")
 
-construct_hc_plot + construct_old_plot + construct_env_plot +
+fig4 <- construct_hc_plot + construct_old_plot + construct_env_plot +
   plot_annotation(
     caption = str_wrap("Note: Gray whiskers represent 80% credible intervals. Data from ISSP Role of Government surveys, 2006 and 2016.", 80))
+fig4
+save_fig(fig4, "Figure_4", width = 6.5, height = 3.5)
 ```
 
 With the success of these tests of convergent validation, we turn to construct validation.
@@ -1309,7 +1357,7 @@ c_res <- theta_summary %>%
     ungroup() %>% 
     mutate(country = fct_reorder(country, last_mean, .desc = TRUE))
 
-ggplot(data = c_res, aes(x = year, y = mean)) +
+fig5 <- ggplot(data = c_res, aes(x = year, y = mean)) +
     theme_bw() +
     theme(legend.position = "none") +
     coord_cartesian(xlim = c(1968, 2024), ylim = c(0, 100)) +
@@ -1323,6 +1371,8 @@ ggplot(data = c_res, aes(x = year, y = mean)) +
                                       hjust = .95),
           strip.background = element_rect(fill = "white", colour = "white")) +
     plot_annotation(caption = str_wrap("Note: Countries are ordered by their most recent political discontent score; gray shading represents 80% credible intervals.", 80))
+fig5
+save_fig(fig5, "Figure_5", width = 6.5, height = 9)
 
 ```
 
@@ -1697,7 +1747,7 @@ coef_data <- coef_data0_m1 %>%
 
 plot_notes <- paste0("Notes: Dots indicate posterior means; whiskers, from thickest to thinnest, describe 80%,\n90%, and 95% credible intervals; shading depicts the posterior probability density function. Number of country-year observations: ", nrow(m1$data), ".")
 
-coef_data0_m1 %>% 
+fig6 <- coef_data0_m1 %>% 
     mutate(std_coef = .value * sd2,
            term = factor(var_names, levels = ordered)) %>% 
     ggplot(aes(y = term, x = std_coef)) +
@@ -1708,6 +1758,8 @@ coef_data0_m1 %>%
     xlab(NULL) +
     ylab(NULL) +
     plot_annotation(caption = str_wrap(plot_notes, 80))
+fig6
+save_fig(fig6, "Figure_6", width = 7.5, height = 5)
 ```
 
 The results of this analysis are displayed in @fig-m1plot.^[
@@ -1930,7 +1982,7 @@ group_by(continent) %>%
 mutate(mean_cc_rank = mean(cc_rank),
 continent = as_factor(continent))
 
-dcpo_input_plot %>%
+figA1 <- dcpo_input_plot %>%
 filter(continent %in% c("Europe", "Asia-Oceania")) %>%
 ggplot(aes(x = year, 
 y = forcats::fct_reorder(country, cc_rank),
@@ -1961,12 +2013,14 @@ facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
 ncol = 1,
 scales = "free_y") +
   plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of public political discontent presented in the main text.", 80))
+figA1
+save_fig(figA1, "Figure_A1", width = 6.5, height = 9)
 ```
 
 ```{r obs2, fig.cap = "Source Data Observations by Country/Region and Year, cont.", fig.height = 9}
 #| label: fig-obs2
 
-dcpo_input_plot %>%
+figA2 <- dcpo_input_plot %>%
 filter(!continent %in% c("Europe", "Asia-Oceania")) %>%
 ggplot(aes(x = year, 
 y = forcats::fct_reorder(country, cc_rank),
@@ -1992,6 +2046,8 @@ facet_wrap(~forcats::fct_reorder(continent, mean_cc_rank, .desc = TRUE),
 ncol = 1,
 scales = "free_y") +
   plot_annotation(caption = str_wrap("Starred countries are OECD democracies, the sample employed in the analysis of public political discontent presented in the main text.", 80))
+figA2
+save_fig(figA2, "Figure_A2", width = 6.5, height = 9)
 ```
 
 \pagebreak
